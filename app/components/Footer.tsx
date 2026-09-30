@@ -1,11 +1,16 @@
 import Logo from "./Logo";
 
-const serviceLinks = ["Website development", "App development", "SEO services"];
+const serviceLinks = [
+  { label: "Website development", href: "/web-development" },
+  { label: "App development", href: "/mobile-app-development" },
+  { label: "SEO services", href: "/seo-services" },
+];
 const companyLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
+  { label: "Process", href: "/process" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -24,10 +29,10 @@ export default function Footer() {
           <div>
             <p className="text-[12.5px] font-semibold text-white/70">Services</p>
             <ul className="mt-4 flex flex-col gap-2.5">
-              {serviceLinks.map((label) => (
-                <li key={label}>
-                  <a href="#services" className="text-[13.5px] text-white/45 hover:text-white/80">
-                    {label}
+              {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-[13.5px] text-white/45 hover:text-white/80">
+                    {link.label}
                   </a>
                 </li>
               ))}

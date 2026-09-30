@@ -75,7 +75,7 @@ export default function Pricing() {
               </ul>
 
               <a
-                href="#contact"
+                href="/contact"
                 className="mt-7 inline-flex items-center justify-center rounded-full border border-black/15 px-5 py-3 text-[13.5px] font-medium text-[#0b1220] transition-colors hover:bg-black/[0.03]"
               >
                 Request a quote

@@ -28,7 +28,7 @@ export default function RecentWork() {
             Recent work
           </h2>
           <a
-            href="#"
+            href="/work"
             className="text-[13.5px] font-medium text-[#1e8fe0] hover:text-[#1470c4]"
           >
             View all case studies →

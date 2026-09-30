@@ -46,6 +46,7 @@ const services = [
     ],
     stack: "Next.js · React · WordPress · Shopify",
     cta: "Explore website development",
+    href: "/web-development",
   },
   {
     icon: <AppIcon />,
@@ -60,6 +61,7 @@ const services = [
     ],
     stack: "Flutter · Supabase · Firebase",
     cta: "Explore app development",
+    href: "/mobile-app-development",
   },
 ];
 
@@ -122,7 +124,7 @@ export default function Services() {
                   {service.stack}
                 </span>
                 <a
-                  href="#"
+                  href={service.href}
                   className="text-[13.5px] font-medium text-[#1e8fe0] hover:text-[#1470c4]"
                 >
                   {service.cta} →
@@ -170,7 +172,7 @@ export default function Services() {
               </ul>
 
               <a
-                href="#"
+                href="/seo-services"
                 className="mt-7 inline-block text-[13.5px] font-medium text-[#5fb3ef] hover:text-white"
               >
                 Explore SEO services →
