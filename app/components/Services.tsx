@@ -78,8 +78,8 @@ const chartPoints = "0,58 40,52 80,44 120,46 160,30 200,20 240,6";
 
 export default function Services() {
   return (
-    <section id="services" className="bg-white py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="services" className="bg-white pt-14 pb-14 sm:pt-16 sm:pb-16">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr] lg:items-end">
           <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             Three services, one team that connects them.

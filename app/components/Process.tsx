@@ -27,24 +27,29 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-[#fafbfc] py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <h2 className="text-[2rem] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
+    <section id="process" className="bg-[#f5f7fa] pt-14 pb-14 sm:pt-16 sm:pb-16">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr] lg:items-start">
+          <h2 className="text-[2.25rem] leading-[1.1] font-semibold tracking-[-0.03em] text-[#0b1220] sm:text-[2.75rem]">
             How a project runs
           </h2>
-          <p className="max-w-md text-[15px] leading-7 text-black/55 lg:justify-self-end">
+          <p className="max-w-[23rem] text-[15px] leading-[1.7] text-slate-500 lg:justify-self-end">
             Clear stages, a shared project board and a staging link you can
             open any time.
           </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s) => (
-            <div key={s.title} className="border-t-2 border-[#0b1220] pt-5">
-              <span className="text-[12px] font-medium text-black/40">{s.step}</span>
-              <h3 className="mt-2 text-[17px] font-semibold text-[#0b1220]">{s.title}</h3>
-              <p className="mt-2.5 text-[13.5px] leading-6 text-black/55">
+          {steps.map((s, i) => (
+            <div
+              key={s.title}
+              className={`border-t-2 pt-7 ${i === 0 ? "border-[#0b1220]" : "border-slate-300"}`}
+            >
+              <span className="text-[13px] font-medium text-[#0a7bb5]">{s.step}</span>
+              <h3 className="mt-3 text-[19px] font-medium tracking-tight text-[#0b1220]">
+                {s.title}
+              </h3>
+              <p className="mt-4 text-[14.5px] leading-[1.65] text-slate-500">
                 {s.description}
               </p>
             </div>

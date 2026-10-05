@@ -30,7 +30,7 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="border-b border-black/[0.06] bg-white">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <ol className="flex items-center gap-2 py-3 text-[12.5px] text-black/40">
             {crumbs.map((c, i) => (
               <li key={c.href} className="flex items-center gap-2">

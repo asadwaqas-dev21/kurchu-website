@@ -137,7 +137,7 @@ export default function MobileAppDevelopmentPage() {
 
       {/* ── App Types Grid ────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="Types of apps we build"
             description="Every app starts with a clear use case. We build mobile applications for businesses that need customers or teams to interact through a dedicated, always-available interface."
@@ -159,7 +159,7 @@ export default function MobileAppDevelopmentPage() {
 
       {/* ── Flutter Section ────────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
@@ -194,7 +194,7 @@ export default function MobileAppDevelopmentPage() {
 
       {/* ── Backend & Integrations ─────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="Backend and integrations"
             description="Most apps require server-side logic, data storage and third-party integrations. We build the backend alongside the app so everything works together."
@@ -213,7 +213,7 @@ export default function MobileAppDevelopmentPage() {
 
       {/* ── App Development Process ────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="App development process"
             description="Structured stages from idea validation through store submission and ongoing development."
@@ -235,7 +235,7 @@ export default function MobileAppDevelopmentPage() {
 
       {/* ── MVP Section ────────────────────────────── */}
       <section className="bg-[#0b1220] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-white sm:text-[2.25rem]">
@@ -269,7 +269,7 @@ export default function MobileAppDevelopmentPage() {
 
       {/* ── Existing App Support ───────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="Existing app support"
             description="Already have an app that needs improvement, new features or ongoing development? We take over existing projects and improve them."

@@ -25,8 +25,8 @@ const projects = [
 
 export default function RecentWork() {
   return (
-    <section id="work" className="bg-white py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="work" className="bg-white pt-14 pb-10 sm:pt-16 sm:pb-12">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <h2 className="text-[2rem] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             Recent work

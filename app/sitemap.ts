@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "./lib/site-config";
+import { posts } from "./lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -12,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/process",
     "/contact",
     "/pricing",
+    "/blog",
+    ...posts.map((post) => `/blog/${post.slug}`),
   ];
 
   return routes.map((route) => ({

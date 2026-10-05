@@ -141,7 +141,7 @@ export default function WebDevelopmentPage() {
 
       {/* ── Services Grid ─────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="Website services"
             description="From single-page business sites to complex web applications. Every project includes planning, responsive design, performance and SEO foundations."
@@ -163,7 +163,7 @@ export default function WebDevelopmentPage() {
 
       {/* ── What is Included ──────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="What is included"
             description="Every website project includes the foundations needed for a professional, findable and maintainable website."
@@ -189,7 +189,7 @@ export default function WebDevelopmentPage() {
 
       {/* ── Development Process ────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="Development process"
             description="Clear stages so you always know what has been completed, what is next and when the project will be ready."
@@ -211,7 +211,7 @@ export default function WebDevelopmentPage() {
 
       {/* ── SEO-Ready Development ──────────────────── */}
       <section className="bg-[#0b1220] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-white sm:text-[2.25rem]">

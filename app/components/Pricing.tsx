@@ -33,8 +33,8 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-[#fafbfc] py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="pricing" className="bg-[#fafbfc] pt-10 pb-14 sm:pt-12 sm:pb-16">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
           <h2 className="text-[2rem] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             Ways to work with us

@@ -78,7 +78,7 @@ export default function AboutPage() {
 
       {/* ── Why Dev + SEO ──────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <h2 className="max-w-lg text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             Why development and SEO belong together
           </h2>
@@ -96,7 +96,7 @@ export default function AboutPage() {
 
       {/* ── Principles ─────────────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             How we work
           </h2>
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
       {/* ── Location ───────────────────────────────── */}
       <section className="bg-[#0b1220] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-white sm:text-[2.25rem]">
@@ -158,7 +158,7 @@ export default function AboutPage() {
 
       {/* ── Services Summary ───────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <h2 className="text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             What we do
           </h2>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1e8fe0"/>
+      <stop offset="1" stop-color="#0b3f78"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(980 120) scale(520)">
+      <stop stop-color="#7cc4ff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#7cc4ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#04182f" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#glow)"/>
+  <g opacity=".12" stroke="#fff">
+    <path d="M0 150h1200M0 300h1200M0 450h1200M0 600h1200M200 0v750M400 0v750M600 0v750M800 0v750M1000 0v750"/>
+  </g>
+  <!-- browser window -->
+  <g filter="url(#sh)">
+    <rect x="210" y="150" width="720" height="470" rx="22" fill="#fff"/>
+    <rect x="210" y="150" width="720" height="56" rx="22" fill="#eef4fb"/>
+    <rect x="210" y="184" width="720" height="22" fill="#eef4fb"/>
+    <circle cx="246" cy="178" r="8" fill="#ff6b6b"/>
+    <circle cx="272" cy="178" r="8" fill="#ffc94d"/>
+    <circle cx="298" cy="178" r="8" fill="#4cd38a"/>
+    <rect x="340" y="168" width="300" height="20" rx="10" fill="#dbe7f5"/>
+    <rect x="250" y="240" width="300" height="26" rx="8" fill="#0b1220"/>
+    <rect x="250" y="282" width="380" height="14" rx="7" fill="#c9d6e6"/>
+    <rect x="250" y="306" width="330" height="14" rx="7" fill="#c9d6e6"/>
+    <rect x="250" y="346" width="150" height="44" rx="22" fill="#1e8fe0"/>
+    <rect x="414" y="346" width="120" height="44" rx="22" stroke="#c9d6e6" stroke-width="2"/>
+    <rect x="660" y="236" width="230" height="160" rx="16" fill="#dcf0ff"/>
+    <path d="M690 366l50-62 40 44 30-30 50 48z" fill="#7cc4ff"/>
+    <circle cx="840" cy="276" r="18" fill="#fff"/>
+    <rect x="250" y="430" width="200" height="150" rx="16" fill="#f3f7fc"/>
+    <rect x="470" y="430" width="200" height="150" rx="16" fill="#f3f7fc"/>
+    <rect x="690" y="430" width="200" height="150" rx="16" fill="#f3f7fc"/>
+    <rect x="272" y="456" width="40" height="40" rx="10" fill="#1e8fe0" opacity=".2"/>
+    <rect x="492" y="456" width="40" height="40" rx="10" fill="#1e8fe0" opacity=".2"/>
+    <rect x="712" y="456" width="40" height="40" rx="10" fill="#1e8fe0" opacity=".2"/>
+    <rect x="272" y="516" width="140" height="12" rx="6" fill="#c9d6e6"/>
+    <rect x="492" y="516" width="140" height="12" rx="6" fill="#c9d6e6"/>
+    <rect x="712" y="516" width="140" height="12" rx="6" fill="#c9d6e6"/>
+    <rect x="272" y="540" width="100" height="12" rx="6" fill="#dbe5f1"/>
+    <rect x="492" y="540" width="100" height="12" rx="6" fill="#dbe5f1"/>
+    <rect x="712" y="540" width="100" height="12" rx="6" fill="#dbe5f1"/>
+  </g>
+  <!-- price tag -->
+  <g filter="url(#sh)" transform="rotate(-12 960 470)">
+    <path d="M860 380h170a20 20 0 0 1 20 20v150a20 20 0 0 1-20 20H860l-60-95z" fill="#0b1220"/>
+    <circle cx="842" cy="475" r="12" fill="#1e8fe0"/>
+    <text x="960" y="462" fill="#7cc4ff" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" text-anchor="middle">FROM</text>
+    <text x="960" y="512" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" text-anchor="middle">$3.5k</text>
+  </g>
+</svg>

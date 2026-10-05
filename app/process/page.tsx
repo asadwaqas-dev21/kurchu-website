@@ -112,7 +112,7 @@ export default function ProcessPage() {
 
       {/* ── Timeline ───────────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <ProcessTimeline steps={steps} />
         </div>
       </section>

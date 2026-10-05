@@ -23,7 +23,7 @@ export default function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden bg-white pt-16 pb-20 sm:pt-20 sm:pb-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
         {badge && (
           <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3.5 py-1.5 text-[12.5px] font-medium text-black/60 shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[#1e8fe0]" />

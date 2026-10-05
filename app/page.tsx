@@ -6,6 +6,7 @@ import Process from "./components/Process";
 import RecentWork from "./components/RecentWork";
 import Pricing from "./components/Pricing";
 import FaqContact from "./components/FaqContact";
+import LatestInsights from "./components/LatestInsights";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <RecentWork />
         <Pricing />
         <FaqContact />
+        <LatestInsights />
       </main>
       <Footer />
     </>

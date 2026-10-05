@@ -13,7 +13,7 @@ export default function TechStack({
 }) {
   return (
     <section className="bg-[#fafbfc] py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
           <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             {heading}

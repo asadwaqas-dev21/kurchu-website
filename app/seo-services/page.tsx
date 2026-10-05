@@ -140,7 +140,7 @@ export default function SeoServicesPage() {
 
       {/* ── SEO Services Grid ─────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="SEO services"
             description="From technical foundations to content strategy and local visibility. Each service can be part of an ongoing campaign or delivered as standalone work."
@@ -159,7 +159,7 @@ export default function SeoServicesPage() {
 
       {/* ── Technical SEO ──────────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
@@ -190,7 +190,7 @@ export default function SeoServicesPage() {
 
       {/* ── Local SEO ──────────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
@@ -215,7 +215,7 @@ export default function SeoServicesPage() {
 
       {/* ── Content Strategy ───────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
               SEO content strategy
@@ -229,7 +229,7 @@ export default function SeoServicesPage() {
 
       {/* ── Campaign Process ───────────────────────── */}
       <section className="bg-[#0b1220] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-white sm:text-[2.25rem]">
             SEO campaign process
           </h2>
@@ -260,7 +260,7 @@ export default function SeoServicesPage() {
 
       {/* ── SEO + Development ──────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
@@ -303,7 +303,7 @@ export default function SeoServicesPage() {
 
       {/* ── Modern Search ──────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="Visibility across modern search"
             description="Search is no longer just ten blue links. We build visibility across the different ways people now find businesses online."

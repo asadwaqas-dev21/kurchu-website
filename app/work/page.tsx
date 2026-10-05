@@ -85,7 +85,7 @@ export default function WorkPage() {
 
       {/* ── Project Grid ───────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {projects.map((p, i) => (
               <div
@@ -143,7 +143,7 @@ export default function WorkPage() {
 
       {/* ── Case Study Structure Note ──────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8 text-center">
+        <div className="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-center">
           <h2 className="text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             Case study structure
           </h2>

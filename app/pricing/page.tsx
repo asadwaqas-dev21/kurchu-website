@@ -82,7 +82,7 @@ export default function PricingPage() {
 
       {/* ── Engagement Types ───────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {engagements.map((eng) => (
               <div
@@ -117,7 +117,7 @@ export default function PricingPage() {
 
       {/* ── Pricing Factors ────────────────────────── */}
       <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="What affects pricing"
             description="Every quote is based on the specific requirements of your project. These are the main factors that influence the final figure."
@@ -136,7 +136,7 @@ export default function PricingPage() {
 
       {/* ── How It Works ───────────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <SectionHeading
             heading="How pricing works"
             description="A straightforward process from first conversation to signed proposal."

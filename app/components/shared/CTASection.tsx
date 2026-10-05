@@ -21,7 +21,7 @@ export default function CTASection({
 
   return (
     <section className={`${bg} py-24 sm:py-28`}>
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 text-center">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14 text-center">
         <h2 className={`mx-auto max-w-xl text-[2rem] leading-[1.15] font-semibold tracking-tight ${headingColor} sm:text-[2.25rem]`}>
           {heading}
         </h2>

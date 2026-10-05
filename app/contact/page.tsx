@@ -69,7 +69,7 @@ export default function ContactPage() {
 
       {/* ── Hero + Form ────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             {/* Left: copy */}
             <div>
@@ -280,7 +280,7 @@ export default function ContactPage() {
 
       {/* ── What Happens Next ──────────────────────── */}
       <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <h2 className="text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
             What happens next?
           </h2>
