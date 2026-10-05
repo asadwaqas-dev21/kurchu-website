@@ -170,13 +170,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────── */}
-      <CTASection
-        heading="Ready to scope your project?"
-        ctaLabel="Request a Project Estimate"
-        ctaHref="/contact"
-        dark
-      />
+
     </InnerLayout>
   );
 }

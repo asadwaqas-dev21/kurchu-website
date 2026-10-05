@@ -50,18 +50,20 @@ export default function Header() {
                 </a>
 
                 {showServices && (
-                  <div className="absolute top-full left-0 z-50 mt-2 w-56 rounded-xl border border-black/[0.07] bg-white p-2 shadow-lg">
-                    {serviceDropdown.map((s) => (
-                      <a
-                        key={s.href}
-                        href={s.href}
-                        className={`block rounded-lg px-3 py-2.5 text-[13.5px] font-medium transition-colors hover:bg-black/[0.03] hover:text-[#0b1220] ${
-                          pathname === s.href ? "bg-black/[0.03] text-[#0b1220]" : "text-black/65"
-                        }`}
-                      >
-                        {s.label}
-                      </a>
-                    ))}
+                  <div className="absolute top-full left-0 z-50 pt-2 w-56">
+                    <div className="rounded-xl border border-black/[0.07] bg-white p-2 shadow-lg">
+                      {serviceDropdown.map((s) => (
+                        <a
+                          key={s.href}
+                          href={s.href}
+                          className={`block rounded-lg px-3 py-2.5 text-[13.5px] font-medium transition-colors hover:bg-black/[0.03] hover:text-[#0b1220] ${
+                            pathname === s.href ? "bg-black/[0.03] text-[#0b1220]" : "text-black/65"
+                          }`}
+                        >
+                          {s.label}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
