@@ -9,6 +9,7 @@ export default function StructuredData() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
+    logo: `${siteConfig.url}/logo.png`,
     description: siteConfig.tagline,
     address: {
       "@type": "PostalAddress",

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
 const links = [
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "/#services" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Process", href: "/process" },
@@ -20,6 +21,7 @@ const serviceDropdown = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [showServices, setShowServices] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/85 backdrop-blur">
@@ -35,15 +37,17 @@ export default function Header() {
                 onMouseEnter={() => setShowServices(true)}
                 onMouseLeave={() => setShowServices(false)}
               >
-                <button
-                  type="button"
-                  className="flex items-center gap-1 text-[14px] font-medium text-black/65 transition-colors hover:text-[#0b1220]"
+                <a
+                  href={link.href}
+                  className={`flex items-center gap-1 text-[14px] font-medium transition-colors hover:text-[#0b1220] ${
+                    pathname.includes("development") || pathname.includes("seo") ? "text-[#0b1220]" : "text-black/65"
+                  }`}
                 >
                   {link.label}
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="mt-px">
                     <path d="M2.5 4l2.5 2.5L7.5 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </button>
+                </a>
 
                 {showServices && (
                   <div className="absolute top-full left-0 z-50 mt-2 w-56 rounded-xl border border-black/[0.07] bg-white p-2 shadow-lg">
@@ -51,7 +55,9 @@ export default function Header() {
                       <a
                         key={s.href}
                         href={s.href}
-                        className="block rounded-lg px-3 py-2.5 text-[13.5px] font-medium text-black/65 transition-colors hover:bg-black/[0.03] hover:text-[#0b1220]"
+                        className={`block rounded-lg px-3 py-2.5 text-[13.5px] font-medium transition-colors hover:bg-black/[0.03] hover:text-[#0b1220] ${
+                          pathname === s.href ? "bg-black/[0.03] text-[#0b1220]" : "text-black/65"
+                        }`}
                       >
                         {s.label}
                       </a>
@@ -63,7 +69,9 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[14px] font-medium text-black/65 transition-colors hover:text-[#0b1220]"
+                className={`text-[14px] font-medium transition-colors hover:text-[#0b1220] ${
+                  pathname === link.href ? "text-[#0b1220]" : "text-black/65"
+                }`}
               >
                 {link.label}
               </a>
@@ -117,7 +125,9 @@ export default function Header() {
                 key={s.href}
                 href={s.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-black/[0.04] py-3 pl-3 text-[15px] font-medium text-black/70"
+                className={`border-b border-black/[0.04] py-3 pl-3 text-[15px] font-medium ${
+                  pathname === s.href ? "text-[#0b1220]" : "text-black/70"
+                }`}
               >
                 {s.label}
               </a>
@@ -130,7 +140,9 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-black/[0.04] py-3 text-[15px] font-medium text-black/70"
+                  className={`border-b border-black/[0.04] py-3 text-[15px] font-medium ${
+                    pathname === link.href ? "text-[#0b1220]" : "text-black/70"
+                  }`}
                 >
                   {link.label}
                 </a>

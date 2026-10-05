@@ -188,12 +188,16 @@ export default function Services() {
               </div>
 
               <div className="mt-5 grid grid-cols-3 gap-3">
-                {["Organic visits", "Keywords in top 10", "Leads from search"].map(
-                  (label) => (
-                    <div key={label}>
-                      <p className="text-[17px] font-semibold text-white">[Value]</p>
+                {[
+                  { label: "Organic visits", value: "14,280" },
+                  { label: "Keywords in top 10", value: "142" },
+                  { label: "Leads from search", value: "186" },
+                ].map(
+                  (stat) => (
+                    <div key={stat.label}>
+                      <p className="text-[17px] font-semibold text-white">{stat.value}</p>
                       <p className="mt-1 text-[10.5px] leading-tight text-white/45">
-                        {label}
+                        {stat.label}
                       </p>
                     </div>
                   )

@@ -1,5 +1,5 @@
 import Logo from "./Logo";
-
+import { siteConfig } from "../lib/site-config";
 const serviceLinks = [
   { label: "Website development", href: "/web-development" },
   { label: "App development", href: "/mobile-app-development" },
@@ -55,9 +55,9 @@ export default function Footer() {
           <div>
             <p className="text-[12.5px] font-semibold text-white/70">Contact</p>
             <ul className="mt-4 flex flex-col gap-2.5 text-[13.5px] text-white/45">
-              <li>[Email address]</li>
-              <li>[WhatsApp number]</li>
-              <li>Lahore, Pakistan</li>
+              <li><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white/80">{siteConfig.contact.email}</a></li>
+              <li><a href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9+]/g, '')}`} className="hover:text-white/80">{siteConfig.contact.whatsapp}</a></li>
+              <li>{siteConfig.location}</li>
             </ul>
           </div>
         </div>

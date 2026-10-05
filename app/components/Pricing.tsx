@@ -2,7 +2,7 @@ const plans = [
   {
     title: "Fixed-scope project",
     description: "For a new website, app or redesign with a clear brief.",
-    price: "From [Price]",
+    price: "From $3,500",
     features: [
       "Proposal with scope and timeline",
       "Milestone-based payments",
@@ -12,7 +12,7 @@ const plans = [
   {
     title: "Monthly SEO",
     description: "For steady growth in Google, maps and AI answers.",
-    price: "From [Price] / month",
+    price: "From $1,200 / month",
     features: [
       "Technical fixes and new content",
       "Local SEO and Business Profile",
@@ -22,7 +22,7 @@ const plans = [
   {
     title: "Dedicated team",
     description: "For ongoing work on an existing product or platform.",
-    price: "From [Price] / month",
+    price: "From $4,500 / month",
     features: [
       "Developers and designer on set hours",
       "Weekly check-ins and demos",

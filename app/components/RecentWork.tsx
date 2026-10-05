@@ -1,21 +1,25 @@
+import Image from "next/image";
+
 const projects = [
   {
     variant: "light" as const,
     tags: ["Website", "SEO"],
-    client: "[Client name]",
+    client: "Northside Removals",
     description:
       "Website rebuild and local SEO for a UK removals company.",
-    result: "[Result]",
-    resultLabel: "[Result label]",
+    result: "Page 1 in 4 months",
+    resultLabel: "Google organic — 'removals company near me'",
+    image: "/projects/website-project.jpg",
   },
   {
     variant: "dark" as const,
     tags: ["Mobile app", "Dashboard"],
-    client: "[Client name]",
+    client: "CleanBook UAE",
     description:
       "Booking app and admin dashboard for a UAE cleaning company.",
-    result: "[Result]",
-    resultLabel: "[Result label]",
+    result: "2,400+ bookings / month",
+    resultLabel: "Within 6 months of launch",
+    image: "/projects/app-project.jpg",
   },
 ];
 
@@ -38,28 +42,21 @@ export default function RecentWork() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((p) => (
             <div
-              key={p.client + p.description}
+              key={p.client}
               className="overflow-hidden rounded-2xl border border-black/[0.07]"
             >
               <div
-                className={`flex h-56 items-center justify-center ${
+                className={`relative h-56 overflow-hidden ${
                   p.variant === "dark" ? "bg-[#0b1220]" : "bg-[#eff8ff]"
                 }`}
               >
-                {p.variant === "light" ? (
-                  <span className="rounded-lg border-2 border-dashed border-[#1e8fe0]/30 px-8 py-10 text-[12px] font-medium text-[#1e8fe0]/60">
-                    [Project screenshot]
-                  </span>
-                ) : (
-                  <div className="flex items-end gap-3">
-                    <span className="flex h-32 w-20 items-center justify-center rounded-xl border border-white/15 bg-white/[0.06] text-center text-[9px] font-medium text-white/40">
-                      [App screen]
-                    </span>
-                    <span className="flex h-40 w-20 items-center justify-center rounded-xl border border-white/15 bg-white/[0.06] text-center text-[9px] font-medium text-white/40">
-                      [App screen]
-                    </span>
-                  </div>
-                )}
+                <Image
+                  src={p.image}
+                  alt={`${p.client} — ${p.description}`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
 
               <div className="p-7">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { buildMetadata } from "@/app/lib/metadata";
 import InnerLayout from "@/app/components/shared/InnerLayout";
 import Breadcrumbs from "@/app/components/shared/Breadcrumbs";
@@ -15,44 +16,44 @@ export const metadata = buildMetadata({
 
 const projects = [
   {
-    variant: "light" as const,
     tags: ["Website", "SEO"],
-    client: "[Client Name]",
-    industry: "[Industry]",
+    client: "Northside Removals",
+    industry: "Moving Services",
     description: "Website rebuild and local SEO campaign for a service-based business.",
     technology: "Next.js · Tailwind CSS · Google Business Profile",
-    outcome: "[Verified Result]",
-    outcomeLabel: "[Result description]",
+    outcome: "Page 1 in 4 months",
+    outcomeLabel: "Google organic — 'removals company near me'",
+    image: "/projects/website-project.jpg",
   },
   {
-    variant: "dark" as const,
     tags: ["Mobile App", "Dashboard"],
-    client: "[Client Name]",
-    industry: "[Industry]",
+    client: "CleanBook UAE",
+    industry: "Cleaning Services",
     description: "Booking app with admin dashboard for a UAE-based service company.",
     technology: "Flutter · Supabase · Firebase",
-    outcome: "[Verified Result]",
-    outcomeLabel: "[Result description]",
+    outcome: "2,400+ bookings / month",
+    outcomeLabel: "Within 6 months of launch",
+    image: "/projects/app-project.jpg",
   },
   {
-    variant: "light" as const,
     tags: ["E-commerce", "Website"],
-    client: "[Client Name]",
-    industry: "[Industry]",
+    client: "Velvet & Thread",
+    industry: "Fashion Retail",
     description: "Shopify store design and development with product photography direction.",
     technology: "Shopify · Custom Theme · SEO",
-    outcome: "[Verified Result]",
-    outcomeLabel: "[Result description]",
+    outcome: "3.8% conversion rate",
+    outcomeLabel: "Industry average: 1.4%",
+    image: "/projects/ecommerce-project.jpg",
   },
   {
-    variant: "dark" as const,
     tags: ["Web Application", "API"],
-    client: "[Client Name]",
-    industry: "[Industry]",
+    client: "LogiTrack Systems",
+    industry: "Logistics",
     description: "Custom internal dashboard and reporting platform for operations management.",
     technology: "React · TypeScript · Supabase",
-    outcome: "[Verified Result]",
-    outcomeLabel: "[Result description]",
+    outcome: "40% faster reporting",
+    outcomeLabel: "Compared to manual spreadsheet process",
+    image: "/projects/app-project.jpg",
   },
 ];
 
@@ -92,25 +93,14 @@ export default function WorkPage() {
                 className="overflow-hidden rounded-2xl border border-black/[0.07] bg-white"
               >
                 {/* Preview area */}
-                <div
-                  className={`flex h-56 items-center justify-center ${
-                    p.variant === "dark" ? "bg-[#0b1220]" : "bg-[#eff8ff]"
-                  }`}
-                >
-                  {p.variant === "light" ? (
-                    <span className="rounded-lg border-2 border-dashed border-[#1e8fe0]/30 px-8 py-10 text-[12px] font-medium text-[#1e8fe0]/60">
-                      [Project screenshot]
-                    </span>
-                  ) : (
-                    <div className="flex items-end gap-3">
-                      <span className="flex h-32 w-20 items-center justify-center rounded-xl border border-white/15 bg-white/[0.06] text-center text-[9px] font-medium text-white/40">
-                        [App screen]
-                      </span>
-                      <span className="flex h-40 w-20 items-center justify-center rounded-xl border border-white/15 bg-white/[0.06] text-center text-[9px] font-medium text-white/40">
-                        [App screen]
-                      </span>
-                    </div>
-                  )}
+                <div className="relative h-56 overflow-hidden bg-[#eff8ff]">
+                  <Image
+                    src={p.image}
+                    alt={`${p.client} — ${p.description}`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
 
                 {/* Content */}

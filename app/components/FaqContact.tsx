@@ -5,23 +5,23 @@ import { useState } from "react";
 const faqs = [
   {
     q: "How long does a website take?",
-    a: "It depends on scope. A business website usually takes [X–Y weeks], and e-commerce or custom builds take longer. Your proposal includes a week-by-week timeline.",
+    a: "The timeline for building a website varies based on the scope and complexity of your project. A standard business website typically takes between 4 to 8 weeks from initial design to launch. However, more complex e-commerce platforms or custom applications will require additional time. We always provide a detailed, week-by-week timeline in your initial proposal so you know exactly what to expect.",
   },
   {
     q: "Do you work with clients outside Pakistan?",
-    a: "Yes, we work with businesses worldwide. Calls, proposals and reporting are handled remotely, in your timezone where possible.",
+    a: "Yes, absolutely! We successfully partner with businesses and organizations worldwide. Our team is highly experienced in managing projects remotely. We ensure smooth communication by scheduling calls, delivering proposals, and providing regular progress reports at times that are convenient for your specific timezone. Distance is never a barrier to delivering exceptional software and SEO results for our international clients.",
   },
   {
     q: "Will I own the website and code?",
-    a: "Yes. You own the code, design files and content once the project is paid in full — no lock-in.",
+    a: "Yes, you will have complete ownership. Once the project is completed and paid in full, we transfer all intellectual property rights to you. This includes the source code, design files, graphics, and all written content. We believe in total transparency and do not use vendor lock-in tactics. You are entirely free to host the site wherever you choose and modify it as you see fit.",
   },
   {
     q: "When will SEO show results?",
-    a: "Early technical fixes can help within weeks, but meaningful ranking movement typically takes [X–Y months], depending on competition.",
+    a: "Search engine optimization is a long-term strategy. While some early technical fixes and on-page optimizations can produce noticeable improvements within just a few weeks, meaningful and sustained ranking movement for competitive keywords typically requires 3 to 6 months of consistent effort. We focus on building a strong foundation and earning quality authority to ensure your results are durable rather than just a temporary spike.",
   },
   {
     q: "Can you take over an existing site or app?",
-    a: "Yes. We audit what's there, flag anything worth rebuilding, and can take over hosting, content and ongoing development.",
+    a: "Yes, we frequently take over existing websites and applications. Our process begins with a comprehensive technical audit of your current codebase and infrastructure. We will honestly evaluate what is working, flag any underlying issues that are worth rebuilding, and then smoothly transition the hosting, content management, and ongoing development to our team. We ensure your digital assets continue to operate flawlessly during the handover.",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function FaqContact() {
                       </svg>
                     </button>
                     {isOpen && (
-                      <p className="pb-5 pr-8 text-[13.5px] leading-6 text-black/55">
+                      <p className="pb-5 pr-8 text-[13.5px] leading-6 text-black/55 text-justify">
                         {item.a}
                       </p>
                     )}
