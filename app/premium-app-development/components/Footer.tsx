@@ -12,7 +12,7 @@ export function Footer() {
                 <LogoMark />
                 Kurchu
               </a>
-              <p>An independent product studio designing and engineering iOS, Android and cross-platform apps for founders and operating teams.</p>
+              <p>An independent software company designing and engineering iOS, Android and cross-platform apps for founders and operating teams.</p>
               <a className="tlink" href={`mailto:${email}`}>
                 {email} <ExternalArrow />
               </a>
@@ -36,7 +36,7 @@ export function Footer() {
             kurchu
           </div>
           <div className="foot-bar">
-            <span>© {new Date().getFullYear()} Kurchu Product Studio. Concept work shown is illustrative.</span>
+            <span>© {new Date().getFullYear()} Kurchu Software Solutions. Concept work shown is illustrative.</span>
             <nav aria-label="Legal">
               <a href="#privacy">Privacy</a>
               <a href="#terms">Terms</a>

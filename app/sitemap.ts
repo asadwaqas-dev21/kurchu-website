@@ -4,7 +4,7 @@ import { posts } from "./lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
-    "/",
+    "/", // homepage (premium-app-development design); /classic is noindex and left out
     "/web-development",
     "/mobile-app-development",
     "/seo-services",

@@ -8,7 +8,7 @@ export function Nav() {
         <div className="wrap nav-inner">
           <a href="#top" className="logo" aria-label="Kurchu — home">
             <LogoMark />
-            Kurchu<small>Product Studio</small>
+            Kurchu<small>Software Solutions</small>
           </a>
           <nav aria-label="Primary">
             <ul className="nav-links">

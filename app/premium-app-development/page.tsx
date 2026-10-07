@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./premium.css";
+import { faqs } from "./data";
 import { fontVariables } from "./fonts";
 import { Engagement } from "./components/Engagement";
 import { Engineering } from "./components/Engineering";
@@ -21,15 +22,15 @@ import { Trust } from "./components/Trust";
 import { WhyUs } from "./components/WhyUs";
 import { Work } from "./components/Work";
 
-const title = "Kurchu — Mobile Product Studio";
+const title = "Kurchu Software Solutions — Mobile App Development Company";
 const description =
-  "Kurchu is a senior product studio that designs, engineers and launches iOS, Android and cross-platform apps for founders and operating teams.";
+  "Kurchu designs, engineers and launches iOS, Android and cross-platform apps for founders and operating teams. Senior-led, fixed-scope phases, and you own the code.";
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/" },
-  openGraph: { title, description, url: "/", type: "website" },
+  openGraph: { title, description, url: "/", siteName: "Kurchu Software Solutions", locale: "en_US", type: "website" },
   twitter: { card: "summary_large_image", title, description },
 };
 
@@ -38,10 +39,24 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
 export default function PremiumAppDevelopmentPage() {
   return (
     // `js` hides [data-reveal] content until the observer reveals it.
     <PremiumRoot className={`kp js ${fontVariables}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
+      />
       <a className="skip" href="#main">
         Skip to content
       </a>

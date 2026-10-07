@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useId, type CSSProperties, type ReactNode } from "react";
 import { renderDevice, type ScreenName } from "../screens";
 
@@ -53,13 +54,7 @@ export function Check() {
 }
 
 export function LogoMark() {
-  return (
-    <svg viewBox="0 0 26 26" aria-hidden="true">
-      <rect x="1.75" y="5.75" width="14.5" height="19.5" rx="4" fill="none" stroke="currentColor" strokeWidth="1.5" opacity=".55" />
-      <rect x="9" y="1" width="16" height="20.5" rx="4.4" fill="#7EA6FF" />
-      <rect x="13.5" y="3.6" width="7" height="1.6" rx=".8" fill="#0A1430" opacity=".55" />
-    </svg>
-  );
+  return <Image src="/logo.png" alt="" width={28} height={28} priority />;
 }
 
 /** A 3D phone showing one of the screen mockups. */
