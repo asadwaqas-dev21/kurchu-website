@@ -4,6 +4,7 @@ import "./globals.css";
 import StructuredData from "./components/shared/StructuredData";
 import { ChatWidget } from "./components/chat/ChatWidget";
 import MobileBottomNav from "./components/MobileBottomNav";
+import HideOnRoutes from "./components/shared/HideOnRoutes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,8 +48,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-white pb-[calc(68px+env(safe-area-inset-bottom))] text-[#0b1220] lg:pb-0">
         <StructuredData />
         {children}
-        <MobileBottomNav />
-        <ChatWidget />
+        <HideOnRoutes exact={["/"]} prefixes={["/premium-app-development"]}>
+          <MobileBottomNav />
+          <ChatWidget />
+        </HideOnRoutes>
       </body>
     </html>
   );
