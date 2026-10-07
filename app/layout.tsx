@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "./lib/site-config";
 import StructuredData from "./components/shared/StructuredData";
 import { ChatWidget } from "./components/chat/ChatWidget";
 import MobileBottomNav from "./components/MobileBottomNav";
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
   title: "Kurchu Software Solutions — Websites, apps and SEO",
   description:
     "Kurchu Software Solutions designs, builds and grows digital products for businesses worldwide. Websites, apps and SEO that turn visitors into customers.",
-  metadataBase: new URL("https://kurchu.com"),
+  metadataBase: new URL(siteConfig.url),
   alternates: { canonical: "/" },
   openGraph: {
     title: "Kurchu Software Solutions — Websites, apps and SEO",
     description:
       "Kurchu Software Solutions designs, builds and grows digital products for businesses worldwide. Websites, apps and SEO that turn visitors into customers.",
-    url: "https://kurchu.com",
+    url: siteConfig.url,
     siteName: "Kurchu Software Solutions",
     locale: "en_US",
     type: "website",

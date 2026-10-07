@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "Kurchu Software Solutions",
   shortName: "Kurchu",
   tagline: "Websites, apps and SEO that turn visitors into customers.",
-  url: "https://kurchu.com", // TODO: replace with production URL
+  url: "https://www.kurchu.com", // production origin (kurchu.com redirects here)
   location: "Lahore, Pakistan",
 
   /** Replace with genuine contact info */
