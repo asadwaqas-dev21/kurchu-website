@@ -5,9 +5,12 @@
  * ──────────────────────────────────────────────*/
 
 export type BlogSection = {
+  /** Phrase as the question a reader would search for — answer engines match on it. */
   heading: string;
   paragraphs: string[];
   bullets?: string[];
+  /** A comparison table; rendered as a real <table> so it can be quoted. */
+  table?: { caption: string; headers: string[]; rows: string[][] };
 };
 
 export type BlogPost = {
@@ -20,9 +23,21 @@ export type BlogPost = {
   image: string;
   imageAlt: string;
   sections: BlogSection[];
+  /** Answer-first summary (40–70 words) shown under the title as "In short". */
+  summary?: string;
+  takeaways?: string[];
+  /** FAQ answers are 60–65 words each and emitted as FAQPage schema. */
+  faqs?: Array<{ q: string; a: string }>;
+  /** ISO date of the last substantive update, if after `date`. */
+  updated?: string;
+  keywords?: string[];
+  relatedLinks?: Array<{ href: string; label: string }>;
 };
 
+import { newPosts } from "./blog-posts";
+
 export const posts: BlogPost[] = [
+  ...newPosts,
   {
     slug: "flutter-vs-native-mobile-app",
     title: "Flutter vs native: choosing the right approach for your app",
