@@ -7,8 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // /classic is the retired homepage (noindex); /api holds route handlers, not pages.
-        disallow: ["/api/", "/classic"],
+        // Route handlers only. /classic/* stays crawlable on purpose: its pages
+        // carry `noindex`, and Google can only obey that if it may fetch them.
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,

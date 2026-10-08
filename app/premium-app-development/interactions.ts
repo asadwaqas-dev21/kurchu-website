@@ -113,19 +113,23 @@ export function initPremiumPage(root: HTMLElement): () => void {
     if (window.innerWidth > 1024 && root.classList.contains("nav-open")) setNav(false);
   });
 
-  const navLinks = $$<HTMLAnchorElement>(".nav-links a");
-  observe(
-    new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          navLinks.forEach((a) => a.classList.toggle("is-current", a.getAttribute("href") === `#${e.target.id}`));
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    ),
-    ["services", "work", "process", "technology", "about"].map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el),
-  );
+  // On the one-page homepage the current link follows the section in view;
+  // inner pages mark their own link on the server (data-page on #nav).
+  if (!nav.dataset.page) {
+    const navLinks = $$<HTMLAnchorElement>(".nav-links a[data-section]");
+    observe(
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            navLinks.forEach((a) => a.classList.toggle("is-current", a.dataset.section === e.target.id));
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px" },
+      ),
+      navLinks.map((a) => document.getElementById(a.dataset.section!)).filter((el): el is HTMLElement => !!el),
+    );
+  }
 
   /* ---------- Reveals ---------- */
   const pipeItems = $$("#pipe li");
@@ -153,51 +157,61 @@ export function initPremiumPage(root: HTMLElement): () => void {
 
   if (!root.classList.contains("is-loaded")) later(() => root.classList.add("is-loaded"), 80);
 
-  /* ---------- Hero motion ---------- */
-  const hero = $("#top")!;
-  const rig = $("#stageRig")!;
-  const stage = $("#heroStage")!;
-  const small = window.matchMedia("(max-width: 640px)");
-  let heroVisible = true;
-  let tx = 0, ty = 0, cx = 0, cy = 0;
-  let pointerActive = false;
-  let heroFrame = 0;
+  // Every optional section below registers what it needs to do on scroll / resize.
+  const onScrollFns: Array<(y: number) => void> = [];
+  const onResizeFns: Array<() => void> = [];
 
-  function heroLoop(t: number) {
-    heroFrame = 0;
-    if (!heroVisible || reduce) return;
-    if (!pointerActive) {
-      tx = Math.sin(t / 4200) * 0.22;
-      ty = Math.cos(t / 5300) * 0.14;
+  /* ---------- Hero motion (homepage) ---------- */
+  const hero = $("#top");
+  const rig = $("#stageRig");
+  const stage = $("#heroStage");
+  if (hero && rig && stage) {
+    const small = window.matchMedia("(max-width: 640px)");
+    let heroVisible = true;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    let pointerActive = false;
+    let heroFrame = 0;
+
+    const heroLoop = (t: number) => {
+      heroFrame = 0;
+      if (!heroVisible || reduce) return;
+      if (!pointerActive) {
+        tx = Math.sin(t / 4200) * 0.22;
+        ty = Math.cos(t / 5300) * 0.14;
+      }
+      cx += (tx - cx) * 0.055;
+      cy += (ty - cy) * 0.055;
+      const base = small.matches ? [6, -12, 0] : [7, -16, 1.5];
+      rig.style.transform = `rotateX(${(base[0] - cy * 7).toFixed(3)}deg) rotateY(${(base[1] + cx * 12).toFixed(3)}deg) rotateZ(${base[2]}deg)`;
+      heroFrame = requestAnimationFrame(heroLoop);
+    };
+    observe(
+      new IntersectionObserver((entries) => {
+        heroVisible = entries[0].isIntersecting;
+        if (heroVisible && !reduce && !heroFrame) heroFrame = requestAnimationFrame(heroLoop);
+      }),
+      [hero],
+    );
+    disposers.push(() => cancelAnimationFrame(heroFrame));
+    if (!reduce) {
+      listen(hero, "pointermove", (e: PointerEvent) => {
+        if (e.pointerType !== "mouse") return;
+        pointerActive = true;
+        const r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;
+        ty = (e.clientY - r.top) / r.height - 0.5;
+      });
+      listen(hero, "pointerleave", () => { pointerActive = false; tx = 0; ty = 0; });
+      onScrollFns.push((y) => {
+        if (y <= window.innerHeight * 1.2) stage.style.transform = `translate3d(0,${(y * 0.1).toFixed(1)}px,0)`;
+      });
     }
-    cx += (tx - cx) * 0.055;
-    cy += (ty - cy) * 0.055;
-    const base = small.matches ? [6, -12, 0] : [7, -16, 1.5];
-    rig.style.transform = `rotateX(${(base[0] - cy * 7).toFixed(3)}deg) rotateY(${(base[1] + cx * 12).toFixed(3)}deg) rotateZ(${base[2]}deg)`;
-    heroFrame = requestAnimationFrame(heroLoop);
-  }
-  observe(
-    new IntersectionObserver((entries) => {
-      heroVisible = entries[0].isIntersecting;
-      if (heroVisible && !reduce && !heroFrame) heroFrame = requestAnimationFrame(heroLoop);
-    }),
-    [hero],
-  );
-  disposers.push(() => cancelAnimationFrame(heroFrame));
-  if (!reduce) {
-    listen(hero, "pointermove", (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
-      pointerActive = true;
-      const r = hero.getBoundingClientRect();
-      tx = (e.clientX - r.left) / r.width - 0.5;
-      ty = (e.clientY - r.top) / r.height - 0.5;
-    });
-    listen(hero, "pointerleave", () => { pointerActive = false; tx = 0; ty = 0; });
   }
 
   /* ---------- Services ---------- */
   const svcs = $$(".svc");
-  const pvs = $$(".pv", $("#svcPreview")!);
+  const svcPreview = $("#svcPreview");
+  const pvs = svcPreview ? $$(".pv", svcPreview) : [];
   let svcActive = 0;
   const showPv = (i: number) => pvs.forEach((p, k) => p.classList.toggle("is-active", k === i));
   function setSvc(i: number) {
@@ -218,103 +232,113 @@ export function initPremiumPage(root: HTMLElement): () => void {
   if (fine && svcList) listen(svcList, "mouseleave", () => { if (svcActive >= 0) showPv(svcActive); });
 
   /* ---------- Idea → product ---------- */
-  const i2p = $("#idea")!;
-  const evLayers = $$(".ev-l", i2p);
-  const i2pBtns = $$(".i2p-step", i2p);
-  const artifacts = $$("#i2pArtifact .a");
-  const i2pMobN = $("#i2pMobN")!, i2pMobT = $("#i2pMobT")!, i2pMobD = $("#i2pMobD")!;
-  let i2pCur = -1;
-  function i2pUpdate() {
-    const r = i2p.getBoundingClientRect();
-    const total = r.height - window.innerHeight;
-    if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
-    const p = clamp(-r.top / total, 0, 1);
-    i2p.style.setProperty("--p", p.toFixed(4));
-    const s = Math.min(5, Math.floor(p * 6));
-    if (s === i2pCur) return;
-    i2pCur = s;
-    i2p.setAttribute("data-stage", String(s));
-    evLayers.forEach((l) => l.classList.toggle("on", Number(l.getAttribute("data-i")) <= s));
-    i2pBtns.forEach((b, k) => {
-      b.classList.toggle("is-active", k === s);
-      b.setAttribute("aria-current", k === s ? "step" : "false");
+  const i2p = $("#idea");
+  if (i2p) {
+    const evLayers = $$(".ev-l", i2p);
+    const i2pBtns = $$(".i2p-step", i2p);
+    const artifacts = $$("#i2pArtifact .a", i2p);
+    const i2pMobN = $("#i2pMobN", i2p)!, i2pMobT = $("#i2pMobT", i2p)!, i2pMobD = $("#i2pMobD", i2p)!;
+    let i2pCur = -1;
+    onScrollFns.push(() => {
+      const r = i2p.getBoundingClientRect();
+      const total = r.height - window.innerHeight;
+      if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
+      const p = clamp(-r.top / total, 0, 1);
+      i2p.style.setProperty("--p", p.toFixed(4));
+      const s = Math.min(5, Math.floor(p * 6));
+      if (s === i2pCur) return;
+      i2pCur = s;
+      i2p.setAttribute("data-stage", String(s));
+      evLayers.forEach((l) => l.classList.toggle("on", Number(l.getAttribute("data-i")) <= s));
+      i2pBtns.forEach((b, k) => {
+        b.classList.toggle("is-active", k === s);
+        b.setAttribute("aria-current", k === s ? "step" : "false");
+      });
+      artifacts.forEach((a, k) => a.classList.toggle("on", k === s));
+      const btn = i2pBtns[s];
+      if (btn) {
+        i2pMobN.textContent = `0${s + 1} / 06`;
+        i2pMobT.textContent = $(".t", btn)!.lastChild!.textContent;
+        i2pMobD.textContent = $(".d span", btn)!.textContent;
+      }
     });
-    artifacts.forEach((a, k) => a.classList.toggle("on", k === s));
-    const btn = i2pBtns[s];
-    if (btn) {
-      i2pMobN.textContent = `0${s + 1} / 06`;
-      i2pMobT.textContent = $(".t", btn)!.lastChild!.textContent;
-      i2pMobD.textContent = $(".d span", btn)!.textContent;
-    }
+    onResizeFns.push(() => { i2pCur = -1; });
+    i2pBtns.forEach((b, k) =>
+      listen(b, "click", () => {
+        const top = i2p.getBoundingClientRect().top + window.scrollY;
+        const total = i2p.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: top + (total * (k + 0.5)) / 6, behavior: reduce ? "auto" : "smooth" });
+      }),
+    );
   }
-  i2pBtns.forEach((b, k) =>
-    listen(b, "click", () => {
-      const top = i2p.getBoundingClientRect().top + window.scrollY;
-      const total = i2p.offsetHeight - window.innerHeight;
-      window.scrollTo({ top: top + (total * (k + 0.5)) / 6, behavior: reduce ? "auto" : "smooth" });
-    }),
-  );
 
   /* ---------- Gallery ---------- */
-  const gallery = $("#gallery")!;
-  const track = $("#gTrack")!;
-  function galleryUpdate() {
-    if (reduce || window.innerWidth <= 640) { track.style.transform = ""; return; }
-    const r = gallery.getBoundingClientRect();
-    if (r.bottom < 0 || r.top > window.innerHeight) return;
-    const p = clamp((window.innerHeight - r.top) / (window.innerHeight + r.height), 0, 1);
-    const max = Math.max(0, track.scrollWidth - window.innerWidth);
-    track.style.transform = `translate3d(${(-max * p).toFixed(1)}px,0,0)`;
+  const gallery = $("#gallery");
+  const track = $("#gTrack");
+  if (gallery && track) {
+    onScrollFns.push(() => {
+      if (reduce || window.innerWidth <= 640) { track.style.transform = ""; return; }
+      const r = gallery.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      const p = clamp((window.innerHeight - r.top) / (window.innerHeight + r.height), 0, 1);
+      const max = Math.max(0, track.scrollWidth - window.innerWidth);
+      track.style.transform = `translate3d(${(-max * p).toFixed(1)}px,0,0)`;
+    });
   }
 
   /* ---------- Process ---------- */
-  const steps = $$(".step");
-  const procList = $("#procList")!;
-  const procFill = $("#procFill")!;
-  const procCur = $("#procCur")!, procName = $("#procName")!, procDel = $("#procDel")!, procDelD = $("#procDelD")!;
-  const segs = $$("#procSegs i");
-  let procIdx = 0;
-  function setProc(i: number) {
-    if (i === procIdx) return;
-    procIdx = i;
-    steps.forEach((s, k) => { s.classList.toggle("is-active", k === i); s.classList.toggle("is-past", k < i); });
-    segs.forEach((s, k) => s.classList.toggle("on", k <= i));
-    procCur.textContent = String(i + 1).padStart(2, "0");
-    procName.textContent = $("h3", steps[i])!.textContent;
-    procDel.textContent = steps[i].getAttribute("data-del");
-    procDelD.textContent = steps[i].getAttribute("data-deld");
-    [procCur, procName, procDel].forEach((el) => {
-      el.classList.remove("flash");
-      void el.offsetWidth;
-      el.classList.add("flash");
+  const procList = $("#procList");
+  if (procList) {
+    const steps = $$(".step", procList);
+    const procFill = $("#procFill", procList)!;
+    const procCur = $("#procCur")!, procName = $("#procName")!, procDel = $("#procDel")!, procDelD = $("#procDelD")!;
+    const segs = $$("#procSegs i");
+    let procIdx = 0;
+    const setProc = (i: number) => {
+      if (i === procIdx) return;
+      procIdx = i;
+      steps.forEach((s, k) => { s.classList.toggle("is-active", k === i); s.classList.toggle("is-past", k < i); });
+      segs.forEach((s, k) => s.classList.toggle("on", k <= i));
+      procCur.textContent = String(i + 1).padStart(2, "0");
+      procName.textContent = $("h3", steps[i])!.textContent;
+      procDel.textContent = steps[i].getAttribute("data-del");
+      procDelD.textContent = steps[i].getAttribute("data-deld");
+      [procCur, procName, procDel].forEach((el) => {
+        el.classList.remove("flash");
+        void el.offsetWidth;
+        el.classList.add("flash");
+      });
+    };
+    observe(
+      new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) setProc(steps.indexOf(e.target as HTMLElement)); }),
+        { rootMargin: "-42% 0px -52% 0px" },
+      ),
+      steps,
+    );
+    onScrollFns.push(() => {
+      const r = procList.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+      const p = clamp((window.innerHeight * 0.5 - r.top) / r.height, 0, 1);
+      procFill.style.transform = `scaleY(${p.toFixed(4)})`;
     });
   }
-  observe(
-    new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) setProc(steps.indexOf(e.target as HTMLElement)); }),
-      { rootMargin: "-42% 0px -52% 0px" },
-    ),
-    steps,
-  );
-  function procUpdate() {
-    const r = procList.getBoundingClientRect();
-    if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
-    const p = clamp((window.innerHeight * 0.5 - r.top) / r.height, 0, 1);
-    procFill.style.transform = `scaleY(${p.toFixed(4)})`;
+
+  /* ---------- Mobile sticky CTA ---------- */
+  const mcta = $("#mcta");
+  if (mcta) {
+    const finalSection = $("#contact");
+    onScrollFns.push((y) => {
+      const beforeFinal = !finalSection || finalSection.getBoundingClientRect().top > window.innerHeight * 0.6;
+      mcta.classList.toggle("is-visible", y > window.innerHeight * 0.7 && beforeFinal);
+    });
   }
 
   /* ---------- Scroll (single rAF-throttled handler) ---------- */
-  const mcta = $("#mcta")!;
-  const finalSection = $("#contact")!;
   function onScroll() {
     const y = window.scrollY;
     nav.classList.toggle("is-scrolled", y > 12);
-    if (!reduce && y <= window.innerHeight * 1.2) stage.style.transform = `translate3d(0,${(y * 0.1).toFixed(1)}px,0)`;
-    i2pUpdate();
-    galleryUpdate();
-    procUpdate();
-    const fr = finalSection.getBoundingClientRect();
-    mcta.classList.toggle("is-visible", y > window.innerHeight * 0.7 && fr.top > window.innerHeight * 0.6);
+    onScrollFns.forEach((fn) => fn(y));
   }
   let ticking = false;
   listen(window, "scroll", () => {
@@ -322,7 +346,7 @@ export function initPremiumPage(root: HTMLElement): () => void {
     ticking = true;
     requestAnimationFrame(() => { onScroll(); ticking = false; });
   }, { passive: true });
-  listen(window, "resize", () => { i2pCur = -1; onScroll(); });
+  listen(window, "resize", () => { onResizeFns.forEach((fn) => fn()); onScroll(); });
   onScroll();
 
   /* ---------- Inquiry dialog ---------- */
@@ -536,67 +560,69 @@ export function initPremiumPage(root: HTMLElement): () => void {
   });
 
   /* ---------- Estimator ---------- */
-  const estForm = $<HTMLFormElement>("#estForm")!;
-  const scopeEl = $("#estScope")!;
-  let lastLevel = -1;
-  let estState = { platform: "both", stage: "idea", complexity: "mvp", feats: [] as string[], level: 0 };
+  const estForm = $<HTMLFormElement>("#estForm");
+  if (estForm) {
+    const scopeEl = $("#estScope")!;
+    let lastLevel = -1;
+    let estState = { platform: "both", stage: "idea", complexity: "mvp", feats: [] as string[], level: 0 };
 
-  function estimate() {
-    const fd = new FormData(estForm);
-    const platform = String(fd.get("platform"));
-    const stage = String(fd.get("stage"));
-    const complexity = String(fd.get("complexity"));
-    const feats = fd.getAll("feat").map(String);
+    const estimate = () => {
+      const fd = new FormData(estForm);
+      const platform = String(fd.get("platform"));
+      const stage = String(fd.get("stage"));
+      const complexity = String(fd.get("complexity"));
+      const feats = fd.getAll("feat").map(String);
 
-    const stageWeight: Record<string, number> = { idea: 2, design: 0, existing: 1.5 };
-    const complexityWeight: Record<string, number> = { mvp: 0, standard: 3, advanced: 6 };
-    const featWeight: Record<string, number> = { auth: 0.5, payments: 1.5, maps: 1.5, chat: 2, push: 0.5, admin: 2, subs: 1.5 };
-    let score = (platform === "both" ? 2 : 1) + stageWeight[stage] + complexityWeight[complexity];
-    feats.forEach((f) => (score += featWeight[f] ?? 0));
-    const level = score <= 4.5 ? 0 : score <= 8.5 ? 1 : score <= 12.5 ? 2 : 3;
+      const stageWeight: Record<string, number> = { idea: 2, design: 0, existing: 1.5 };
+      const complexityWeight: Record<string, number> = { mvp: 0, standard: 3, advanced: 6 };
+      const featWeight: Record<string, number> = { auth: 0.5, payments: 1.5, maps: 1.5, chat: 2, push: 0.5, admin: 2, subs: 1.5 };
+      let score = (platform === "both" ? 2 : 1) + stageWeight[stage] + complexityWeight[complexity];
+      feats.forEach((f) => (score += featWeight[f] ?? 0));
+      const level = score <= 4.5 ? 0 : score <= 8.5 ? 1 : score <= 12.5 ? 2 : 3;
 
-    const notes: string[] = [];
-    if (platform === "both" && complexity !== "advanced") notes.push("One cross-platform codebase (Flutter or React Native) could cover both stores efficiently.");
-    if (platform === "both" && complexity === "advanced") notes.push("At this ambition, native iOS and Android builds are likely worth the investment.");
-    if (feats.includes("payments")) notes.push("Payments via Stripe keep card data out of your PCI scope.");
-    if (feats.includes("chat")) notes.push("Chat implies realtime infrastructure and moderation tooling.");
-    if (feats.includes("admin")) notes.push("An admin panel is a second product — we'd scope it on its own.");
-    if (feats.includes("subs")) notes.push("Subscriptions need App Store and Play billing plus receipt validation.");
-    if (feats.includes("maps")) notes.push("Live location needs battery and accuracy testing on real devices.");
-    if (stage === "existing") notes.push("We'd start by auditing what to keep — rewrites are rarely the answer.");
+      const notes: string[] = [];
+      if (platform === "both" && complexity !== "advanced") notes.push("One cross-platform codebase (Flutter or React Native) could cover both stores efficiently.");
+      if (platform === "both" && complexity === "advanced") notes.push("At this ambition, native iOS and Android builds are likely worth the investment.");
+      if (feats.includes("payments")) notes.push("Payments via Stripe keep card data out of your PCI scope.");
+      if (feats.includes("chat")) notes.push("Chat implies realtime infrastructure and moderation tooling.");
+      if (feats.includes("admin")) notes.push("An admin panel is a second product — we'd scope it on its own.");
+      if (feats.includes("subs")) notes.push("Subscriptions need App Store and Play billing plus receipt validation.");
+      if (feats.includes("maps")) notes.push("Live location needs battery and accuracy testing on real devices.");
+      if (stage === "existing") notes.push("We'd start by auditing what to keep — rewrites are rarely the answer.");
 
-    scopeEl.innerHTML = level === 1 ? "<em>Medium</em>" : LEVELS[level];
-    if (level !== lastLevel) {
-      scopeEl.classList.remove("flash");
-      void scopeEl.offsetWidth;
-      scopeEl.classList.add("flash");
-      lastLevel = level;
-    }
-    $$("#estMeter i").forEach((i, k) => i.classList.toggle("on", k <= level));
-    $("#estTime")!.textContent = TIMELINES[level];
-    $("#estTeam")!.textContent = TEAMS[level];
-    $("#estStart")!.textContent = STARTS[stage];
-    $("#estNotes")!.innerHTML = notes.slice(0, 3).map((n) => `<li>${n}</li>`).join("");
-    $("#featCount")!.textContent = `${feats.length} selected`;
-    estState = { platform, stage, complexity, feats, level };
+      scopeEl.innerHTML = level === 1 ? "<em>Medium</em>" : LEVELS[level];
+      if (level !== lastLevel) {
+        scopeEl.classList.remove("flash");
+        void scopeEl.offsetWidth;
+        scopeEl.classList.add("flash");
+        lastLevel = level;
+      }
+      $$("#estMeter i").forEach((i, k) => i.classList.toggle("on", k <= level));
+      $("#estTime")!.textContent = TIMELINES[level];
+      $("#estTeam")!.textContent = TEAMS[level];
+      $("#estStart")!.textContent = STARTS[stage];
+      $("#estNotes")!.innerHTML = notes.slice(0, 3).map((n) => `<li>${n}</li>`).join("");
+      $("#featCount")!.textContent = `${feats.length} selected`;
+      estState = { platform, stage, complexity, feats, level };
+    };
+    listen(estForm, "submit", (e: Event) => e.preventDefault());
+    listen(estForm, "change", estimate);
+    estimate();
+    listen($("#estCta")!, "click", (e: MouseEvent) => {
+      const platformLabel: Record<string, string> = { ios: "iOS", android: "Android", both: "Both" };
+      const stageLabel: Record<string, string> = { idea: "Idea", design: "Design ready", existing: "Existing product" };
+      const type = estState.stage === "existing" ? "Existing app upgrade" : estState.complexity === "mvp" ? "MVP" : "New mobile app";
+      openInquiry(
+        {
+          type,
+          platform: platformLabel[estState.platform],
+          stage: stageLabel[estState.stage],
+          details: `Estimator: ${LEVELS[estState.level]} scope. Features: ${estState.feats.join(", ") || "none selected"}.`,
+        },
+        e.currentTarget as HTMLElement,
+      );
+    });
   }
-  listen(estForm, "submit", (e: Event) => e.preventDefault());
-  listen(estForm, "change", estimate);
-  estimate();
-  listen($("#estCta")!, "click", (e: MouseEvent) => {
-    const platformLabel: Record<string, string> = { ios: "iOS", android: "Android", both: "Both" };
-    const stageLabel: Record<string, string> = { idea: "Idea", design: "Design ready", existing: "Existing product" };
-    const type = estState.stage === "existing" ? "Existing app upgrade" : estState.complexity === "mvp" ? "MVP" : "New mobile app";
-    openInquiry(
-      {
-        type,
-        platform: platformLabel[estState.platform],
-        stage: stageLabel[estState.stage],
-        details: `Estimator: ${LEVELS[estState.level]} scope. Features: ${estState.feats.join(", ") || "none selected"}.`,
-      },
-      e.currentTarget as HTMLElement,
-    );
-  });
 
   /* ---------- FAQ ---------- */
   $$(".faq-item").forEach((item) => {

@@ -1205,3 +1205,44 @@ body:has(.kp){padding-bottom:0;background:#09090A}
 /* Keep the "Concept case study" tag clear of the phones on tablets / phones. */
 @media (max-width:1024px){.kp .cs-rig{top:14px}}
 @media (max-width:640px){.kp .case-stage .device,.kp .case-split .case-stage .device{--w:clamp(128px,36vw,172px)}}
+
+/* =========================================================
+   12. INNER-PAGE HERO
+   ========================================================= */
+.kp .ph{position:relative;padding:calc(var(--nav-h) + clamp(40px,7vw,104px)) 0 clamp(56px,7vw,104px);overflow:hidden;overflow:clip;isolation:isolate}
+.kp .ph-crumb{display:flex;align-items:center;gap:10px;margin-bottom:28px;font:500 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.kp .ph-crumb a{color:var(--text-2);transition:color .3s}
+.kp .ph-crumb a:hover{color:var(--text)}
+.kp .ph-crumb [aria-current]{color:var(--text)}
+.kp .ph-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,72px);align-items:end}
+.kp .ph .h1{margin:28px 0 0;font-size:clamp(44px,5.6vw,92px)}
+.kp .ph-side{display:grid;gap:32px;justify-items:start;padding-bottom:10px}
+.kp .ph .hero-ctas{margin-top:0}
+.kp .ph-meta{margin-top:clamp(48px,6vw,88px);grid-template-columns:repeat(3,auto) 1fr}
+@media (max-width:1024px){
+  .kp .ph-grid{grid-template-columns:1fr;align-items:start}
+  .kp .ph-meta{grid-template-columns:1fr 1fr 1fr}
+}
+@media (max-width:640px){
+  .kp .ph .h1{font-size:clamp(40px,11.6vw,58px)}
+  .kp .ph .hero-ctas .btn{flex:1 1 auto;justify-content:space-between}
+  .kp .ph-meta{grid-template-columns:1fr}
+}
+
+/* =========================================================
+   13. SERVICE LINES (services hub)
+   ========================================================= */
+.kp .svl{padding-bottom:0}
+.kp .svl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.kp .svl-grid>li{display:flex}
+.kp .svl-card{position:relative;display:flex;flex-direction:column;gap:14px;width:100%;padding:30px 28px;border-radius:var(--r-xl);border:1px solid var(--line);background:radial-gradient(90% 60% at 100% 0%,rgba(126,166,255,.07),transparent 60%),linear-gradient(180deg,var(--surface),var(--bg-2));transition:border-color .5s var(--ease),transform .7s var(--ease)}
+.kp .svl-card:hover{border-color:rgba(126,166,255,.45);transform:translateY(-4px)}
+.kp .svl-n{color:var(--accent)}
+.kp .svl-card h3{font:500 clamp(24px,2.2vw,30px)/1.1 var(--f-display);letter-spacing:-.025em}
+.kp .svl-card p{color:var(--text-2);font-size:15px;line-height:1.6}
+.kp .svl-points{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.kp .svl-go{margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:10px;font-size:14.5px;color:var(--text)}
+.kp .svl-go svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s var(--ease)}
+.kp .svl-card:hover .svl-go svg{transform:translateX(4px)}
+.kp .svl-more{margin-top:28px;color:var(--text-2);font-size:15px}
+@media (max-width:1024px){.kp .svl-grid{grid-template-columns:1fr}}

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { ArrowDown2, MessageText } from "iconsax-react";
+import { faqPageJsonLd } from "@/app/lib/jsonld";
+import JsonLd from "./JsonLd";
 
 export interface FAQItem {
   q: string;
@@ -19,6 +21,7 @@ export default function FAQSection({
   items,
   id,
   className = "py-24 sm:py-28",
+  schema = true,
 }: {
   eyebrow?: string;
   heading?: string;
@@ -26,11 +29,14 @@ export default function FAQSection({
   items: FAQItem[];
   id?: string;
   className?: string;
+  /** Emit FAQPage structured data. Turn off if the same questions already appear on another indexed page. */
+  schema?: boolean;
 }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section id={id} className={`bg-white ${className}`}>
+      {schema && <JsonLd data={faqPageJsonLd(items)} />}
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-14">
         {/* Left: intro + Ask AI */}
         <div className="lg:sticky lg:top-24 lg:self-start">

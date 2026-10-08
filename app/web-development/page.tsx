@@ -7,6 +7,7 @@ import { CheckIcon } from "@/app/components/shared/ServiceCard";
 import TechStack from "@/app/components/shared/TechStack";
 import FAQSection from "@/app/components/shared/FAQSection";
 import CTASection from "@/app/components/shared/CTASection";
+import RelatedServices from "@/app/components/shared/RelatedServices";
 
 export const metadata = buildMetadata({
   title: "Web Development Company in Lahore | Kurchu Software Solutions",
@@ -127,7 +128,7 @@ const faqs = [
 export default function WebDevelopmentPage() {
   return (
     <InnerLayout>
-      <Breadcrumbs items={[{ label: "Web Development", href: "/web-development" }]} />
+      <Breadcrumbs path="/web-development" />
 
       <PageHero
         badge="Web Development"
@@ -246,6 +247,8 @@ export default function WebDevelopmentPage() {
       <FAQSection heading="Web development FAQ" items={faqs} />
 
       {/* ── Final CTA ──────────────────────────────── */}
+      <RelatedServices current="/web-development" />
+
       <CTASection
         heading="Ready to build a better website?"
         ctaLabel="Get a Website Development Quote"

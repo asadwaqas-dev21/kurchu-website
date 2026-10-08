@@ -7,6 +7,9 @@ import { ChatWidget } from "./components/chat/ChatWidget";
 import MobileBottomNav from "./components/MobileBottomNav";
 import HideOnRoutes from "./components/shared/HideOnRoutes";
 
+// Pages built on the dark premium design have their own nav and inquiry flow.
+const premiumRoutes = ["/", "/services", "/work", "/process", "/technology", "/about"];
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -49,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-white pb-[calc(68px+env(safe-area-inset-bottom))] text-[#0b1220] lg:pb-0">
         <StructuredData />
         {children}
-        <HideOnRoutes exact={["/"]} prefixes={["/premium-app-development"]}>
+        <HideOnRoutes exact={premiumRoutes} prefixes={["/premium-app-development"]}>
           <MobileBottomNav />
           <ChatWidget />
         </HideOnRoutes>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { email, footerColumns } from "../data";
 import { Arr, ExternalArrow, LogoMark, inquiry } from "./ui";
 
@@ -8,10 +9,10 @@ export function Footer() {
         <div className="wrap">
           <div className="foot-grid">
             <div className="foot-brand">
-              <a href="#top" className="logo" aria-label="Kurchu — back to top">
+              <Link href="/" className="logo" aria-label="Kurchu — home">
                 <LogoMark />
                 Kurchu
-              </a>
+              </Link>
               <p>An independent software company designing and engineering iOS, Android and cross-platform apps for founders and operating teams.</p>
               <a className="tlink" href={`mailto:${email}`}>
                 {email} <ExternalArrow />
@@ -23,9 +24,13 @@ export function Footer() {
                 <ul>
                   {column.links.map((link) => (
                     <li key={link.label}>
-                      <a href={link.href} {...("external" in link ? { target: "_blank", rel: "noopener" } : {})}>
-                        {link.label}
-                      </a>
+                      {link.href.startsWith("/") ? (
+                        <Link href={link.href}>{link.label}</Link>
+                      ) : (
+                        <a href={link.href} {...(link.external ? { target: "_blank", rel: "noopener" } : {})}>
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

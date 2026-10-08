@@ -1,19 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import "./premium.css";
 import { faqs } from "./data";
-import { fontVariables } from "./fonts";
 import { Engagement } from "./components/Engagement";
 import { Engineering } from "./components/Engineering";
 import { Estimator } from "./components/Estimator";
 import { Faq } from "./components/Faq";
 import { FinalCta } from "./components/FinalCta";
-import { Footer } from "./components/Footer";
 import { Gallery } from "./components/Gallery";
 import { Hero } from "./components/Hero";
 import { IdeaToProduct } from "./components/IdeaToProduct";
-import { InquiryModal } from "./components/InquiryModal";
-import { Nav } from "./components/Nav";
-import { PremiumRoot } from "./components/PremiumRoot";
+import { PremiumShell } from "./components/PremiumShell";
 import { Process } from "./components/Process";
 import { Services } from "./components/Services";
 import { Technology } from "./components/Technology";
@@ -22,9 +17,11 @@ import { Trust } from "./components/Trust";
 import { WhyUs } from "./components/WhyUs";
 import { Work } from "./components/Work";
 
-const title = "Kurchu Software Solutions — Mobile App Development Company";
+// Brand-level title: the specific service keywords belong to /services and the
+// service line pages, so the homepage does not compete with them.
+const title = "Kurchu Software Solutions — App, Web & Software Development";
 const description =
-  "Kurchu designs, engineers and launches iOS, Android and cross-platform apps for founders and operating teams. Senior-led, fixed-scope phases, and you own the code.";
+  "Kurchu designs, engineers and launches mobile apps, websites and web platforms for founders and operating teams — senior-led from Lahore for clients worldwide, with SEO built in.";
 
 export const metadata: Metadata = {
   title,
@@ -51,35 +48,26 @@ const faqJsonLd = {
 
 export default function PremiumAppDevelopmentPage() {
   return (
-    // `js` hides [data-reveal] content until the observer reveals it.
-    <PremiumRoot className={`kp js ${fontVariables}`}>
+    <PremiumShell>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
-      <Nav />
-      <main id="main">
-        <Hero />
-        <Trust />
-        <Services />
-        <IdeaToProduct />
-        <Work />
-        <Gallery />
-        <Process />
-        <Technology />
-        <Engineering />
-        <WhyUs />
-        <Engagement />
-        <Estimator />
-        <Testimonials />
-        <Faq />
-        <FinalCta />
-      </main>
-      <Footer />
-      <InquiryModal />
-    </PremiumRoot>
+      <Hero />
+      <Trust />
+      <Services />
+      <IdeaToProduct />
+      <Work />
+      <Gallery />
+      <Process />
+      <Technology />
+      <Engineering />
+      <WhyUs />
+      <Engagement />
+      <Estimator />
+      <Testimonials />
+      <Faq />
+      <FinalCta />
+    </PremiumShell>
   );
 }

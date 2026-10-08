@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Arr, Device, inquiry } from "./ui";
 
 const flexRow = { display: "flex", gap: "12px", alignItems: "center" } as const;
@@ -34,9 +35,9 @@ export function Hero() {
             <button className="btn btn-primary" data-magnetic="" {...inquiry()}>
               Start a Project <Arr />
             </button>
-            <a className="btn btn-ghost" href="#work">
+            <Link className="btn btn-ghost" href="/work">
               See selected work
-            </a>
+            </Link>
           </div>
         </div>
 

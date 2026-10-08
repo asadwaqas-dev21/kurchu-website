@@ -8,7 +8,7 @@ const items = [
   { label: "Home", href: "/", icon: Home2, match: (p: string) => p === "/" },
   {
     label: "Services",
-    href: "/#services",
+    href: "/services",
     icon: Category,
     match: (p: string) => p.includes("development") || p.includes("seo"),
   },

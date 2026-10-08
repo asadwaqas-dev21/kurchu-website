@@ -7,6 +7,7 @@ import { CheckIcon } from "@/app/components/shared/ServiceCard";
 import TechStack from "@/app/components/shared/TechStack";
 import FAQSection from "@/app/components/shared/FAQSection";
 import CTASection from "@/app/components/shared/CTASection";
+import RelatedServices from "@/app/components/shared/RelatedServices";
 
 export const metadata = buildMetadata({
   title: "Mobile App Development Company Lahore | Flutter Apps | Kurchu",
@@ -125,7 +126,7 @@ const faqs = [
 export default function MobileAppDevelopmentPage() {
   return (
     <InnerLayout>
-      <Breadcrumbs items={[{ label: "Mobile App Development", href: "/mobile-app-development" }]} />
+      <Breadcrumbs path="/mobile-app-development" />
 
       <PageHero
         badge="Mobile App Development"
@@ -297,6 +298,8 @@ export default function MobileAppDevelopmentPage() {
       <FAQSection heading="App development FAQ" items={faqs} />
 
       {/* ── Final CTA ──────────────────────────────── */}
+      <RelatedServices current="/mobile-app-development" />
+
       <CTASection
         heading="Have an app idea?"
         description="Tell us what people should be able to do inside the application and what business problem you want it to solve."

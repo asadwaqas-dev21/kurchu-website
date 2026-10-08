@@ -1,16 +1,19 @@
 /** Copy for the repeated blocks on the page. */
 
-export const email = "info@thekurchu.com";
+import { siteConfig } from "@/app/lib/site-config";
 
+export const email = siteConfig.contact.email;
+
+/** Top-level pages. `section` is the matching section id on the one-page homepage. */
 export const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
-  { href: "#process", label: "Process" },
-  { href: "#technology", label: "Technology" },
-  { href: "#about", label: "About" },
+  { href: "/services", label: "Services", section: "services" },
+  { href: "/work", label: "Work", section: "work" },
+  { href: "/process", label: "Process", section: "process" },
+  { href: "/technology", label: "Technology", section: "technology" },
+  { href: "/about", label: "About", section: "about" },
 ];
 
-export const drawerLinks = [...navLinks, { href: "#faq", label: "FAQ" }];
+export const drawerLinks = [...navLinks, { href: "/#faq", label: "FAQ", section: "faq" }];
 
 export const trustFacts: Array<{ value: string; unit?: string; label: string }> = [
   { value: "38", label: "Products shipped to the App Store and Google Play" },
@@ -326,31 +329,36 @@ export const inquiryStarters = [
   { title: "Not sure yet", sub: "Let's talk it through", preset: { type: "Not sure yet" } },
 ];
 
-export const footerColumns = [
+/** Footer = the site map in miniature: every hub and service line is linked from every page. */
+export const footerColumns: Array<{ title: string; links: Array<{ href: string; label: string; external?: boolean }> }> = [
   {
-    title: "Studio",
+    title: "Services",
     links: [
-      { href: "#services", label: "Services" },
-      { href: "#work", label: "Work" },
-      { href: "#process", label: "Process" },
-      { href: "#about", label: "About" },
+      { href: "/services", label: "All services" },
+      { href: "/mobile-app-development", label: "Mobile app development" },
+      { href: "/web-development", label: "Web development" },
+      { href: "/seo-services", label: "SEO services" },
+      { href: "/pricing", label: "Pricing" },
     ],
   },
   {
-    title: "Engage",
+    title: "Company",
     links: [
-      { href: "#engagement", label: "Engagement models" },
-      { href: "#estimate", label: "Scope estimator" },
-      { href: "#faq", label: "FAQ" },
-      { href: "#contact", label: "Contact" },
+      { href: "/work", label: "Work" },
+      { href: "/process", label: "Process" },
+      { href: "/technology", label: "Technology" },
+      { href: "/about", label: "About" },
+      { href: "/blog", label: "Blog" },
     ],
   },
   {
-    title: "Elsewhere",
+    title: "Contact",
     links: [
-      { href: "https://www.linkedin.com/", label: "LinkedIn ↗", external: true },
-      { href: "https://dribbble.com/", label: "Dribbble ↗", external: true },
-      { href: `mailto:${email}`, label: "Email ↗" },
+      { href: "/contact", label: "Start a project" },
+      { href: `mailto:${email}`, label: "Email us" },
+      ...Object.entries(siteConfig.social)
+        .filter(([, href]) => href.startsWith("http"))
+        .map(([name, href]) => ({ href, label: `${name[0].toUpperCase()}${name.slice(1)} ↗`, external: true })),
     ],
   },
 ];

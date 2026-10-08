@@ -16,7 +16,7 @@ export const metadata = buildMetadata({
 export default function BlogPage() {
   return (
     <InnerLayout>
-      <Breadcrumbs items={[{ label: "Blog", href: "/blog" }]} />
+      <Breadcrumbs path="/blog" />
 
       <PageHero
         badge="News & insights"

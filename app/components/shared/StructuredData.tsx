@@ -1,40 +1,57 @@
 /**
- * Global structured data injected in the root layout.
+ * Global structured data injected in the root layout: the Organization and
+ * WebSite nodes every page-level node (Service, BreadcrumbList, BlogPosting…)
+ * points back to by `@id`.
  */
+import { ORGANIZATION_ID, WEBSITE_ID } from "@/app/lib/jsonld";
+import { serviceLines } from "@/app/lib/services";
 import { siteConfig } from "@/app/lib/site-config";
+import JsonLd from "./JsonLd";
 
 export default function StructuredData() {
-  const org = {
+  // Placeholder links ("#") would be invalid sameAs values, so only real URLs are listed.
+  const sameAs = Object.values(siteConfig.social).filter((href) => href.startsWith("http"));
+
+  const graph = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
-    description: siteConfig.tagline,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Lahore",
-      addressCountry: "PK",
-    },
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": ORGANIZATION_ID,
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/logo.png`,
+        image: `${siteConfig.url}/opengraph-image.jpg`,
+        description: siteConfig.tagline,
+        email: siteConfig.contact.email,
+        telephone: siteConfig.contact.phone,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Lahore",
+          addressCountry: "PK",
+        },
+        areaServed: "Worldwide",
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: siteConfig.contact.email,
+          telephone: siteConfig.contact.phone,
+          availableLanguage: "English",
+        },
+        knowsAbout: serviceLines.map((service) => service.serviceType),
+        ...(sameAs.length > 0 && { sameAs }),
+      },
+      {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        inLanguage: "en",
+        publisher: { "@id": ORGANIZATION_ID },
+      },
+    ],
   };
 
-  const website = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteConfig.name,
-    url: siteConfig.url,
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(org) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
-      />
-    </>
-  );
+  return <JsonLd data={graph} />;
 }

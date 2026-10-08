@@ -65,7 +65,7 @@ export default function ContactPage() {
 
   return (
     <InnerLayout>
-      <Breadcrumbs items={[{ label: "Contact", href: "/contact" }]} />
+      <Breadcrumbs path="/contact" />
 
       {/* ── Hero + Form ────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20">

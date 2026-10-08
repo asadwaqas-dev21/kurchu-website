@@ -6,6 +6,9 @@ import { formatPostDate, getPost, posts } from "@/app/lib/blog";
 import { siteConfig } from "@/app/lib/site-config";
 import InnerLayout from "@/app/components/shared/InnerLayout";
 import Breadcrumbs from "@/app/components/shared/Breadcrumbs";
+import JsonLd from "@/app/components/shared/JsonLd";
+import { ORGANIZATION_ID, WEBSITE_ID } from "@/app/lib/jsonld";
+import { serviceLines } from "@/app/lib/services";
 
 export const dynamicParams = false;
 
@@ -31,30 +34,32 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
 
   const recent = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
+  const url = `${siteConfig.url}/blog/${post.slug}`;
+  const relatedService = serviceLines.find((service) => service.blogCategory === post.category);
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${url}#article`,
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.date,
     image: `${siteConfig.url}${post.image}`,
-    url: `${siteConfig.url}/blog/${post.slug}`,
-    author: { "@type": "Organization", name: siteConfig.name },
-    publisher: { "@type": "Organization", name: siteConfig.name },
+    url,
+    mainEntityOfPage: url,
+    articleSection: post.category,
+    inLanguage: "en",
+    isPartOf: { "@id": WEBSITE_ID },
+    author: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": ORGANIZATION_ID },
+    ...(relatedService && { about: { "@id": `${siteConfig.url}${relatedService.path}#service` } }),
   };
 
   return (
     <InnerLayout>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <Breadcrumbs
-        items={[
-          { label: "Blog", href: "/blog" },
-          { label: post.category, href: `/blog/${post.slug}` },
-        ]}
-      />
+      <JsonLd data={articleJsonLd} />
+      <Breadcrumbs path={`/blog/${post.slug}`} />
 
       <article className="bg-white pt-14 pb-20 sm:pt-16 sm:pb-24">
         <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
@@ -115,9 +120,21 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
                   </section>
                 ))}
 
+                {relatedService && (
+                  <Link
+                    href={relatedService.path}
+                    className="mt-14 flex flex-col gap-1 rounded-3xl border border-black/[0.07] bg-[#f5f7fa] p-7 transition-colors hover:border-[#1e8fe0]/40"
+                  >
+                    <span className="text-[12px] font-semibold tracking-[0.08em] text-black/45 uppercase">Related service</span>
+                    <span className="text-[19px] font-semibold text-[#0b1220]">{relatedService.name}</span>
+                    <span className="text-[14.5px] leading-6 text-black/60">{relatedService.description}</span>
+                    <span className="mt-2 text-[14px] font-semibold text-[#1470c4]">See how we can help →</span>
+                  </Link>
+                )}
+
                 <Link
                   href="/blog"
-                  className="mt-14 inline-flex items-center gap-2 text-[14.5px] font-semibold text-[#1470c4] hover:text-[#0b1220]"
+                  className="mt-10 inline-flex items-center gap-2 text-[14.5px] font-semibold text-[#1470c4] hover:text-[#0b1220]"
                 >
                   ← Back to all articles
                 </Link>

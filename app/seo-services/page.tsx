@@ -6,6 +6,7 @@ import SectionHeading from "@/app/components/shared/SectionHeading";
 import { CheckIcon } from "@/app/components/shared/ServiceCard";
 import FAQSection from "@/app/components/shared/FAQSection";
 import CTASection from "@/app/components/shared/CTASection";
+import RelatedServices from "@/app/components/shared/RelatedServices";
 
 export const metadata = buildMetadata({
   title: "SEO Services in Lahore & Pakistan | Kurchu Software Solutions",
@@ -128,7 +129,7 @@ const faqs = [
 export default function SeoServicesPage() {
   return (
     <InnerLayout>
-      <Breadcrumbs items={[{ label: "SEO Services", href: "/seo-services" }]} />
+      <Breadcrumbs path="/seo-services" />
 
       <PageHero
         badge="SEO Services"
@@ -324,6 +325,8 @@ export default function SeoServicesPage() {
       <FAQSection heading="SEO FAQ" items={faqs} />
 
       {/* ── Final CTA ──────────────────────────────── */}
+      <RelatedServices current="/seo-services" />
+
       <CTASection
         heading="Want to know what is holding your website back?"
         ctaLabel="Request an SEO Consultation"

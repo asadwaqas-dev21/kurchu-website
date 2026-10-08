@@ -73,7 +73,7 @@ const pricingFactors = [
 export default function PricingPage() {
   return (
     <InnerLayout>
-      <Breadcrumbs items={[{ label: "Pricing", href: "/pricing" }]} />
+      <Breadcrumbs path="/pricing" />
 
       <PageHero
         heading="Honest pricing starts with clear scope."
