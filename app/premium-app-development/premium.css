@@ -1099,10 +1099,10 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
   .kp .hero-ctas .btn{flex:1 1 auto;justify-content:space-between}
   .kp .hero-stage{height:min(128vw,560px);margin-top:4px}
   .kp .hp .device{--w:clamp(150px,42vw,200px)}
-  .kp .hp-l{transform:translate3d(-118%,-44%,-120px) rotateY(6deg)}
-  .kp .hp-r{transform:translate3d(18%,-56%,-200px) rotateY(-4deg)}
+  .kp .hp-l{transform:translate3d(-112%,-44%,-120px) rotateY(6deg)}
+  .kp .hp-r{transform:translate3d(-2%,-56%,-200px) rotateY(-4deg)}
   .kp .stage-rig{transform:rotateX(6deg) rotateY(-12deg)}
-  .kp .fc-1{left:0;top:10%}
+  .kp .fc-1{left:11%;top:10%}
   .kp .fc-2{right:0;bottom:12%}
   .kp .fcard{padding:10px 12px 10px 10px;font-size:11.5px}
   .kp .fcard small{font-size:10.5px}
