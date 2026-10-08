@@ -1202,3 +1202,6 @@ body:has(.kp){padding-bottom:0;background:#09090A}
 .kp{width:100%}
 @media (max-width:1024px){html:has(.kp){scroll-padding-top:80px}}
 .kp .logo img{width:28px;height:28px;border-radius:7px;flex:none}
+/* Keep the "Concept case study" tag clear of the phones on tablets / phones. */
+@media (max-width:1024px){.kp .cs-rig{top:14px}}
+@media (max-width:640px){.kp .case-stage .device,.kp .case-split .case-stage .device{--w:clamp(128px,36vw,172px)}}
