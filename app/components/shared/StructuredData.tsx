@@ -5,6 +5,7 @@
  */
 import { ORGANIZATION_ID, WEBSITE_ID, marketsAreaServed } from "@/app/lib/jsonld";
 import { companySummary, technologies } from "@/app/lib/facts";
+import { regions } from "@/app/lib/regions";
 import { serviceLines } from "@/app/lib/services";
 import { siteConfig } from "@/app/lib/site-config";
 import JsonLd from "./JsonLd";
@@ -40,6 +41,7 @@ export default function StructuredData() {
           email: siteConfig.contact.email,
           telephone: siteConfig.contact.phone,
           availableLanguage: "English",
+          areaServed: regions.map((region) => region.countryCode),
         },
         knowsAbout: [...serviceLines.map((service) => service.serviceType), ...technologies],
         ...(sameAs.length > 0 && { sameAs }),

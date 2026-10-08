@@ -7,6 +7,8 @@
  * mount it repeatedly without leaking listeners).
  */
 
+import { enquiryMailto, enquiryWhatsApp } from "@/app/lib/enquiry";
+
 type Preset = Record<string, string | string[] | undefined>;
 
 type InquiryState = {
@@ -455,20 +457,36 @@ export function initPremiumPage(root: HTMLElement): () => void {
       type: state.type, platform: state.platform, need: state.need, stage: state.stage, budget: state.budget, timeline: state.timeline,
       name: value("f-name"), email: value("f-email"), company: value("f-company"), details: value("f-details"),
     };
-    // Integration point: POST `data` to your CRM / form endpoint here, e.g.
-    // fetch('/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    // No form backend yet: hand the finished brief to the visitor's email app
+    // (see lib/enquiry.ts to switch to a CRM or form endpoint).
+    const enquiry = {
+      name: data.name,
+      email: data.email,
+      company: data.company,
+      details: data.details,
+      answers: [
+        ["Building", data.type],
+        ["Platforms", data.platform],
+        ["Needs", data.need],
+        ["Stage", data.stage],
+        ["Budget", data.budget],
+        ["Timeline", data.timeline],
+      ] as Array<[string, string | string[] | null]>,
+    };
     const chips = ([data.type, data.platform, data.stage, data.budget, data.timeline, ...data.need] as Array<string | null>)
       .filter((c): c is string => !!c)
       .map((c) => `<span class="chip">${escapeHtml(c)}</span>`)
       .join("");
     form.innerHTML =
       '<div class="done" role="status"><div class="done-ic"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></div>' +
-      `<h3 class="qh" tabindex="-1">Thank you, ${escapeHtml(data.name.split(" ")[0])}.</h3>` +
-      `<p class="qhint">Your brief is with us. A senior member of the team will reply to <strong style="color:var(--text);font-weight:500">${escapeHtml(data.email)}</strong> within one working day with a few questions and suggested times for a call.</p>` +
-      `<div class="done-sum">${chips}</div></div>`;
+      `<h3 class="qh" tabindex="-1">Your brief is ready, ${escapeHtml(data.name.split(" ")[0])}.</h3>` +
+      `<p class="qhint">Your email app should have opened with everything filled in — press <strong style="color:var(--text);font-weight:500">send</strong> and a senior member of the team will reply within one working day. If it didn't open, send it on WhatsApp instead.</p>` +
+      `<div class="done-sum">${chips}</div>` +
+      `<p style="margin-top:24px"><a class="btn btn-primary btn-sm" href="${enquiryWhatsApp(enquiry)}" target="_blank" rel="noopener">Send on WhatsApp</a></p></div>`;
+    window.location.href = enquiryMailto(enquiry);
     foot.style.display = "none";
     bar.style.width = "100%";
-    stepLabel.textContent = "Received";
+    stepLabel.textContent = "Ready to send";
     $(".qh", form)!.focus();
   }
 

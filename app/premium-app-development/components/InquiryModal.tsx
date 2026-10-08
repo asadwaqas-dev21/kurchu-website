@@ -24,7 +24,9 @@ export function InquiryModal() {
         </div>
         <form className="dlg-body" id="inqForm" noValidate></form>
         <div className="dlg-foot" id="dlgFoot">
-          <span className="hint">Press Enter ↵ to continue</span>
+          <span className="hint">
+            Press Enter ↵ to continue · <a href="/privacy">Privacy</a>
+          </span>
           <div className="acts">
             <button type="button" className="btn btn-ghost btn-sm" id="dlgBack" style={{ paddingRight: 18 }}>
               Back

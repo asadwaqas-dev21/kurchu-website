@@ -11,7 +11,18 @@ import { PremiumRoot } from "./PremiumRoot";
  * nav, footer, sticky mobile CTA and the inquiry dialog. `lang` overrides the
  * document language on regional pages, e.g. "en-GB".
  */
-export function PremiumShell({ current, lang, children }: { current?: string; lang?: string; children: ReactNode }) {
+export function PremiumShell({
+  current,
+  lang,
+  stickyCta = true,
+  children,
+}: {
+  current?: string;
+  lang?: string;
+  /** Show the floating mobile "Start a Project" bar. */
+  stickyCta?: boolean;
+  children: ReactNode;
+}) {
   return (
     // `js` hides [data-reveal] content until the observer reveals it.
     <PremiumRoot className={`kp js ${fontVariables}`} lang={lang}>
@@ -24,7 +35,7 @@ export function PremiumShell({ current, lang, children }: { current?: string; la
       </a>
       <Nav current={current} />
       <main id="main">{children}</main>
-      <Footer />
+      <Footer stickyCta={stickyCta} />
       <InquiryModal />
     </PremiumRoot>
   );

@@ -15,6 +15,8 @@ export const siteConfig = {
     email: "info@thekurchu.com",
     whatsapp: "+923028207226",
     phone: "+923028207226",
+    /** Phone number as shown on the page. */
+    phoneDisplay: "+92 3028207226",
   },
 
   social: {

@@ -26,6 +26,8 @@ export type SiteRoute = {
 const HOMEPAGE_REDESIGNED = "2026-10-07";
 const PAGES_REDESIGNED = "2026-10-08";
 const MARKETS_ADDED = "2026-10-08";
+const CONTACT_REBUILT = "2026-10-08";
+const LEGAL_UPDATED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
 
 export const routes: SiteRoute[] = [
@@ -52,7 +54,11 @@ export const routes: SiteRoute[] = [
   { path: "/process", name: "Process", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.7 },
   { path: "/technology", name: "Technology", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.7 },
   { path: "/about", name: "About", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.7 },
-  { path: "/contact", name: "Contact", parent: "/", priority: 0.6 },
+  { path: "/contact", name: "Contact", parent: "/", lastModified: CONTACT_REBUILT, priority: 0.8 },
+
+  // Legal.
+  { path: "/privacy", name: "Privacy Policy", parent: "/", lastModified: LEGAL_UPDATED, changeFrequency: "yearly", priority: 0.3 },
+  { path: "/terms", name: "Terms of Use", parent: "/", lastModified: LEGAL_UPDATED, changeFrequency: "yearly", priority: 0.3 },
 
   // Blog hub and articles.
   { path: "/blog", name: "Blog", parent: "/", lastModified: latestPostDate, changeFrequency: "weekly", priority: 0.7 },

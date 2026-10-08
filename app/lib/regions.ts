@@ -87,6 +87,18 @@ export const regions: Region[] = [
         q: "Do you integrate UK payment providers?",
         a: "Yes. We integrate Stripe, Apple Pay and Google Pay for card payments, GoCardless for Direct Debit and subscriptions, and Open Banking for account-to-account payments and bank data. Accounting can sync automatically with Xero or Sage, so invoices and payments reconcile without manual work. We recommend the right combination during discovery, based on your customers, margins and how they prefer to pay.",
       },
+      {
+        q: "Can you build apps for FCA-regulated fintech products?",
+        a: "Yes. We design fintech journeys with Consumer Duty in mind: clear pricing, plain-language disclosures, strong customer authentication and complete audit trails. We integrate regulated partners such as Open Banking providers or e-money institutions rather than holding customer funds ourselves. Regulatory approval and final sign-off stay with your firm and its compliance advisers, supported by the technical documentation we provide throughout the build.",
+      },
+      {
+        q: "How do you make apps accessible for UK users?",
+        a: "We design and test to WCAG 2.2 AA, which supports your duties under the Equality Act 2010. That means sufficient colour contrast, scalable text, clear focus states and every control labelled for VoiceOver and TalkBack. Accessibility is checked in design reviews and again on real devices before release, because fixing it at the end costs far more than building it in.",
+      },
+      {
+        q: "Can you take over an app built by another UK agency?",
+        a: "Yes. We start with a fixed-price, two-week audit of the code, architecture, infrastructure and user experience, then give you a prioritised report of what to keep, fix or rebuild. We favour incremental improvement over risky rewrites, so your app keeps serving customers throughout. Access to repositories, store accounts and cloud services is transferred into your own accounts as part of the handover.",
+      },
     ],
   },
   {
@@ -143,6 +155,18 @@ export const regions: Region[] = [
         q: "Do you handle US payments and subscriptions?",
         a: "Yes. We integrate Stripe, Apple Pay and Google Pay for cards, ACH transfers and bank linking through Plaid, and in-app subscriptions through App Store and Google Play billing with server-side receipt validation. Sales-tax-aware pricing and receipts can be included, and accounting can sync with QuickBooks. We help you choose the mix that balances fees, conversion and how your customers prefer to pay.",
       },
+      {
+        q: "How do you reduce ADA accessibility risk in apps?",
+        a: "We design and test to WCAG 2.2 AA, the standard most often referenced in US accessibility complaints and settlements. Every screen gets sufficient contrast, scalable text, logical focus order and labelled controls for VoiceOver and TalkBack. Accessibility is reviewed during design and verified on real devices before each release, and we document the results so your legal team can see what was tested.",
+      },
+      {
+        q: "Can you build apps that are used by children?",
+        a: "Yes. For apps directed at children under 13, we design around COPPA from the start: verifiable parental consent, collecting only the data the app genuinely needs, no behavioural advertising, and clear deletion on request. Third-party SDKs are reviewed for what they collect, because analytics and ad tools are a common source of violations. Final compliance sign-off should come from your counsel.",
+      },
+      {
+        q: "Can you work alongside our in-house US engineering team?",
+        a: "Yes. Through our dedicated team model we join your rituals, tools and code review process, working in your repositories under your engineering standards. Calls happen in your morning, and work continues through your night, so your team often starts the day with reviewed pull requests waiting. You can scale our involvement up or down monthly as your roadmap and hiring plans change.",
+      },
     ],
   },
   {
@@ -198,6 +222,18 @@ export const regions: Region[] = [
         q: "Which Canadian payment methods do you integrate?",
         a: "We integrate Interac and Moneris alongside Stripe, Apple Pay and Google Pay, so Canadian customers can pay the way they already prefer. Subscriptions can run through App Store and Google Play billing with receipt validation, and pricing and receipts are GST/HST-aware. During discovery we recommend the combination that best balances processing fees, checkout conversion and the reporting your finance team needs.",
       },
+      {
+        q: "Do your apps meet Canadian accessibility requirements?",
+        a: "We design and test to WCAG 2.2 AA, which aligns with the AODA in Ontario and the Accessible Canada Act for federally regulated organisations. That covers colour contrast, scalable text, focus order and labelled controls for VoiceOver and TalkBack, in both English and French. Accessibility is checked during design and again on real devices before every release, then documented for your records.",
+      },
+      {
+        q: "How do you handle CASL for marketing email and SMS?",
+        a: "Marketing consent is captured explicitly, with a record of when and how each person agreed, and every commercial email or SMS identifies your business and includes a working unsubscribe. Transactional messages such as receipts and password resets are kept separate from marketing, so users never lose essential notifications by opting out. Your counsel should confirm the final consent wording before launch.",
+      },
+      {
+        q: "How do you work across Toronto and Vancouver time zones?",
+        a: "Lahore is nine to ten hours ahead of Eastern time and twelve to thirteen hours ahead of Pacific time, depending on daylight saving. For teams spread across both coasts, we schedule calls in the Pacific morning, which is midday in Toronto and our evening. Written updates and fresh builds arrive overnight, so both offices start their day with something new to review.",
+      },
     ],
   },
   {
@@ -252,6 +288,18 @@ export const regions: Region[] = [
       {
         q: "How do you handle UAE data protection?",
         a: "We design consent, data-subject rights and breach handling around the UAE Personal Data Protection Law, or around DIFC and ADGM rules if your company is registered in those free zones. Where sector rules require data to stay in the country, such as health information, we host it in the UAE. Legal sign-off should come from your adviser, supported by our documentation.",
+      },
+      {
+        q: "Can you integrate UAE PASS sign-in?",
+        a: "Yes. UAE PASS is the national digital identity, and integration requires your organisation to be onboarded with the UAE PASS programme first. Once you are approved, we implement the sign-in flow, map the verified identity attributes your product needs, and design a fallback for users without an account. The result is faster onboarding and stronger identity checks for regulated services.",
+      },
+      {
+        q: "Can the app show Hijri dates and Arabic numerals?",
+        a: "Yes. Dates, times and numbers are formatted through the platform's localisation libraries rather than hard-coded, so the app can show Hijri or Gregorian dates and Arabic-Indic or Western digits according to the user's settings and language. Currency, phone numbers and addresses follow UAE conventions too. Everything is tested in both Arabic and English before release, on real iOS and Android devices.",
+      },
+      {
+        q: "Can you take over an app built by another UAE agency?",
+        a: "Yes. We begin with a fixed-price, two-week audit of the code, architecture, hosting and user experience, including how well Arabic and right-to-left layouts actually work. You receive a prioritised plan of what to keep, fix or rebuild. We favour incremental improvement over risky rewrites, and all repositories, store listings and cloud accounts are moved into your own ownership during the handover.",
       },
     ],
   },

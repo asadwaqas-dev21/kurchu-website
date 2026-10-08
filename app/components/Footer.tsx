@@ -182,11 +182,11 @@ export default function Footer() {
             © {year} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-[12.5px] text-white/40 transition-colors hover:text-white/80">
+            <a href="/privacy" className="text-[12.5px] text-white/40 transition-colors hover:text-white/80">
               Privacy policy
             </a>
-            <a href="#" className="text-[12.5px] text-white/40 transition-colors hover:text-white/80">
-              Terms of service
+            <a href="/terms" className="text-[12.5px] text-white/40 transition-colors hover:text-white/80">
+              Terms of use
             </a>
             <a
               href="#"

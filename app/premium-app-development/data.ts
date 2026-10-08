@@ -12,6 +12,7 @@ export const navLinks = [
   { href: "/process", label: "Process", section: "process" },
   { href: "/technology", label: "Technology", section: "technology" },
   { href: "/about", label: "About", section: "about" },
+  { href: "/contact", label: "Contact", section: "contact" },
 ];
 
 export const drawerLinks = [...navLinks, { href: "/#faq", label: "FAQ", section: "faq" }];
@@ -361,7 +362,8 @@ export const footerColumns: Array<{ title: string; links: Array<{ href: string; 
     title: "Contact",
     links: [
       { href: "/contact", label: "Start a project" },
-      { href: `mailto:${email}`, label: "Email us" },
+      { href: `mailto:${email}`, label: email },
+      { href: `tel:${siteConfig.contact.phone}`, label: siteConfig.contact.phoneDisplay },
       ...Object.entries(siteConfig.social)
         .filter(([, href]) => href.startsWith("http"))
         .map(([name, href]) => ({ href, label: `${name[0].toUpperCase()}${name.slice(1)} ↗`, external: true })),

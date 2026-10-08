@@ -2,7 +2,8 @@ import Link from "next/link";
 import { email, footerColumns } from "../data";
 import { Arr, ExternalArrow, LogoMark, inquiry } from "./ui";
 
-export function Footer() {
+/** `stickyCta` is off on /contact, where the page itself is the call to action. */
+export function Footer({ stickyCta = true }: { stickyCta?: boolean }) {
   return (
     <>
       <footer className="footer">
@@ -43,19 +44,21 @@ export function Footer() {
           <div className="foot-bar">
             <span>© {new Date().getFullYear()} Kurchu Software Solutions. Concept work shown is illustrative.</span>
             <nav aria-label="Legal">
-              <a href="#privacy">Privacy</a>
-              <a href="#terms">Terms</a>
+              <Link href="/privacy">Privacy</Link>
+              <Link href="/terms">Terms</Link>
             </nav>
           </div>
         </div>
       </footer>
 
-      <div className="mcta" id="mcta">
-        <span>Have an app in mind?</span>
-        <button className="btn btn-primary btn-sm" {...inquiry()}>
-          Start a Project <Arr />
-        </button>
-      </div>
+      {stickyCta && (
+        <div className="mcta" id="mcta">
+          <span>Have an app in mind?</span>
+          <button className="btn btn-primary btn-sm" {...inquiry()}>
+            Start a Project <Arr />
+          </button>
+        </div>
+      )}
     </>
   );
 }
