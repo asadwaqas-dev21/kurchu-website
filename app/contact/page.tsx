@@ -8,10 +8,10 @@ import { siteConfig } from "@/app/lib/site-config";
 /* ── Data ─────────────────────────────────────── */
 
 const serviceOptions = [
-  "Website Development",
-  "Mobile App Development",
-  "SEO",
-  "Existing Product Support",
+  "New Mobile App",
+  "MVP",
+  "Existing App Upgrade",
+  "Ongoing App Support",
   "Not Sure",
 ];
 
@@ -41,7 +41,7 @@ const nextSteps = [
     step: "03",
     title: "Proposal or next step",
     description:
-      "We prepare the appropriate next step — a project proposal, detailed scope document or SEO audit — depending on what you need.",
+      "We prepare the appropriate next step — a project proposal, detailed scope document or app audit — depending on what you need.",
   },
 ];
 
@@ -50,7 +50,7 @@ const nextSteps = [
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 export default function ContactPage() {
-  const [service, setService] = useState("Website Development");
+  const [service, setService] = useState("New Mobile App");
   const [status, setStatus] = useState<FormStatus>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

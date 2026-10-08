@@ -21,9 +21,9 @@ import { Work } from "./components/Work";
 
 // Brand-level title: the specific service keywords belong to /services and the
 // service line pages, so the homepage does not compete with them.
-const title = "Kurchu Software Solutions — App, Web & Software Development";
+const title = "Kurchu Software Solutions — Mobile App Design & Development";
 const description =
-  "Kurchu designs, engineers and launches mobile apps, websites and web platforms — senior-led from Lahore for clients in the UK, USA, Canada and UAE.";
+  "Kurchu designs, engineers and launches iOS, Android and cross-platform apps — senior-led from Lahore for clients in the UK, USA, Canada and UAE.";
 
 export const metadata: Metadata = {
   title,

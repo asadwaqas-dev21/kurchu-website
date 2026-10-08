@@ -75,14 +75,14 @@ export function serviceListJsonLd(services: ServiceLine[]) {
   };
 }
 
-/** The market page's own Service node: all three service lines, scoped to one country. */
+/** The market page's own Service node: app development, scoped to one country. */
 export function regionalServiceJsonLd(region: Region, path: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${absolute(path)}#service`,
-    name: `App, web and SEO services in ${regionPhrase(region)}`,
-    serviceType: ["Mobile application development", "Web development", "Search engine optimization"],
+    name: `Mobile app development in ${regionPhrase(region)}`,
+    serviceType: "Mobile application development",
     url: absolute(path),
     provider: { "@id": ORGANIZATION_ID },
     areaServed: country(region),

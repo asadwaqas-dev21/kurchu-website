@@ -2,7 +2,7 @@
  * Breadcrumb navigation for inner pages, plus matching BreadcrumbList JSON-LD.
  *
  * Pass `path` to build the trail from the site architecture in lib/routes.ts
- * (Home → Services → Web Development); `items` is kept for pages outside it.
+ * (Home → Services → Mobile App Development); `items` is kept for pages outside it.
  */
 import { breadcrumbJsonLd } from "@/app/lib/jsonld";
 import { breadcrumbTrail } from "@/app/lib/routes";

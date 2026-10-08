@@ -6,7 +6,7 @@
 export const siteConfig = {
   name: "Kurchu Software Solutions",
   shortName: "Kurchu",
-  tagline: "Websites, apps and SEO that turn visitors into customers.",
+  tagline: "Mobile apps, designed and engineered to be kept.",
   url: "https://www.kurchu.com", // production origin (kurchu.com redirects here)
   location: "Lahore, Pakistan",
 

@@ -8,26 +8,13 @@ import { CheckIcon } from "@/app/components/shared/ServiceCard";
 export const metadata = buildMetadata({
   title: "Pricing & Project Estimates | Kurchu Software Solutions",
   description:
-    "Transparent project pricing for website development, mobile app development and SEO services. Request a detailed scope and quote for your project.",
+    "Transparent pricing for mobile app projects, app upgrades and ongoing support. Request a detailed scope and fixed-price quote for your app.",
   path: "/pricing",
 });
 
 /* ── Data ─────────────────────────────────────── */
 
 const engagements = [
-  {
-    title: "Website Projects",
-    description: "New websites, redesigns, e-commerce stores and custom web applications.",
-    includes: [
-      "Discovery and scoping",
-      "UX and UI design",
-      "Frontend and backend development",
-      "CMS configuration",
-      "Performance and SEO foundations",
-      "Launch and handover",
-    ],
-    cta: "Request Website Scope",
-  },
   {
     title: "Mobile App Projects",
     description: "Android and iOS applications with backend services and admin tools.",
@@ -42,28 +29,41 @@ const engagements = [
     cta: "Request App Scope",
   },
   {
-    title: "SEO Campaigns",
-    description: "Technical SEO, local SEO, content strategy and ongoing search optimisation.",
+    title: "App Upgrades",
+    description: "Live apps that need modernising, stabilising or extending.",
     includes: [
-      "SEO audit and research",
-      "Technical fixes",
-      "On-page optimisation",
-      "Content creation",
-      "Local SEO and Google Business Profile",
-      "Monthly reporting",
+      "Fixed-price two-week audit",
+      "Code, architecture and UX review",
+      "Prioritised improvement plan",
+      "Incremental migration",
+      "Testing and QA",
+      "Phased release",
     ],
-    cta: "Request SEO Consultation",
+    cta: "Request an App Audit",
+  },
+  {
+    title: "Ongoing Support",
+    description: "A monthly plan that keeps your app healthy and moving forward after launch.",
+    includes: [
+      "Monitoring and crash reporting",
+      "Operating-system updates",
+      "Bug fixes",
+      "New releases",
+      "Monthly product review",
+      "Documentation kept current",
+    ],
+    cta: "Discuss a Support Plan",
   },
 ];
 
 const pricingFactors = [
   "Project scope and complexity",
-  "Number of pages or screens",
+  "Number of screens and user roles",
   "Custom functionality requirements",
   "Third-party integrations",
   "Backend and API complexity",
-  "Content creation requirements",
-  "SEO competition level",
+  "Platforms — iOS, Android or both",
+  "Admin dashboard requirements",
   "Ongoing support and maintenance",
 ];
 

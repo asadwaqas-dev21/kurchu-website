@@ -1,7 +1,7 @@
 /** ──────────────────────────────────────────────
- *  Service lines under the /services hub.
- *  Drives the hub cards, Service structured data, related-service links
- *  on each service page and the "related service" link on blog posts.
+ *  Service lines. Kurchu now offers mobile app development only; the list
+ *  shape is kept so a future service line is a one-entry change. Drives
+ *  Service structured data, llms.txt and the blog's related-service link.
  * ──────────────────────────────────────────────*/
 import type { ServiceLine } from "./jsonld";
 
@@ -23,26 +23,6 @@ export const serviceLines: ServiceLineDetail[] = [
       "Android and iOS apps — native or Flutter — taken from product strategy and UX through backend, QA, store launch and ongoing support.",
     points: ["iOS & Android", "Flutter & native", "Backend & admin tools"],
     blogCategory: "Mobile apps",
-  },
-  {
-    label: "websites",
-    name: "Web Development",
-    path: "/web-development",
-    serviceType: "Web development",
-    description:
-      "Business websites, e-commerce stores and custom web applications built on Next.js, WordPress or Shopify — fast, accessible and easy to update.",
-    points: ["Business websites", "E-commerce", "Web applications"],
-    blogCategory: "Web development",
-  },
-  {
-    label: "SEO",
-    name: "SEO Services",
-    path: "/seo-services",
-    serviceType: "Search engine optimization",
-    description:
-      "Technical, local and on-page SEO with content strategy, so the right customers find you on Google in the UK, USA, Canada and UAE.",
-    points: ["Technical SEO", "Local SEO", "Content strategy"],
-    blogCategory: "SEO",
   },
 ];
 

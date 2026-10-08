@@ -11,15 +11,15 @@ import { siteConfig } from "./site-config";
 
 export const companySummary =
   `${siteConfig.name} is a software development company based in ${siteConfig.location} that designs, builds and launches ` +
-  `mobile apps, websites and SEO programmes for businesses in ${marketsSentence}. A small senior team runs strategy, ` +
+  `iOS, Android and cross-platform mobile apps for businesses in ${marketsSentence}. A small senior team runs strategy, ` +
   `design, engineering and launch end to end, and clients own all of the code.`;
 
 export const companyFacts: Array<[string, string]> = [
   ["Company", siteConfig.name],
   ["Based in", siteConfig.location],
   ["Markets served", "United Kingdom, United States, Canada, United Arab Emirates"],
-  ["Services", "Mobile app development, web development, SEO"],
-  ["Platforms", "iOS, Android, Flutter, React Native, Next.js, WordPress, Shopify"],
+  ["Services", "Mobile app development — strategy, UX/UI, iOS & Android, backend, QA and launch"],
+  ["Platforms", "iOS (Swift), Android (Kotlin), Flutter, React Native"],
   ["Typical MVP timeline", "12–16 weeks from discovery to store launch"],
   ["Engagement models", "MVP launch, full product, dedicated team, app upgrade"],
   ["Code ownership", "The client owns all code, designs and documentation"],
@@ -27,4 +27,4 @@ export const companyFacts: Array<[string, string]> = [
 ];
 
 /** Technologies the site describes working with — used for Organization `knowsAbout`. */
-export const technologies = ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "Flutter", "React Native", "Next.js", "React", "Node.js", "PostgreSQL", "Firebase", "Supabase", "WordPress", "Shopify"];
+export const technologies = ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "Flutter", "React Native", "Next.js", "React", "Node.js", "PostgreSQL", "Firebase", "Supabase"];

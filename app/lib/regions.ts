@@ -51,13 +51,13 @@ export const regions: Region[] = [
     languages: "English (British)",
     cities: ["London", "Manchester", "Birmingham", "Edinburgh"],
     seo: {
-      title: "App & Web Development Company for UK Businesses | Kurchu",
+      title: "Mobile App Development Company for UK Businesses | Kurchu",
       description:
-        "Mobile app development, web development and SEO for UK businesses — UK GDPR-ready builds, UK payment integrations and calls inside UK business hours.",
+        "iOS and Android app development for UK businesses — UK GDPR-ready builds, UK payment integrations and calls inside UK business hours.",
     },
     hero: {
-      eyebrow: "App & web development · United Kingdom",
-      lines: ["Apps, websites", "and SEO for", "UK businesses."],
+      eyebrow: "Mobile app development · United Kingdom",
+      lines: ["Mobile apps", "designed and built", "for UK businesses."],
       lede: "A senior product team for founders and operators in London, Manchester and across the UK — building to UK GDPR from day one, integrating the payment rails your customers use, and meeting inside your working day.",
       meta: ["Calls inside UK business hours", "UK GDPR & PECR-ready builds", "Proposals priced in GBP"],
     },
@@ -106,13 +106,13 @@ export const regions: Region[] = [
     languages: "English (American)",
     cities: ["New York", "San Francisco", "Austin", "Chicago"],
     seo: {
-      title: "App & Web Development Company for US Businesses | Kurchu",
+      title: "Mobile App Development Company for US Businesses | Kurchu",
       description:
-        "Mobile app development, web development and SEO for US startups and businesses — CCPA- and HIPAA-aware builds, US payment integrations and overlap with US hours.",
+        "iOS and Android app development for US startups and businesses — CCPA- and HIPAA-aware builds, US payment integrations and overlap with US hours.",
     },
     hero: {
-      eyebrow: "App & web development · United States",
-      lines: ["Apps, websites", "and SEO for", "US businesses."],
+      eyebrow: "Mobile app development · United States",
+      lines: ["Mobile apps", "designed and built", "for US businesses."],
       lede: "A senior product team for founders and operators from New York to San Francisco — building with US privacy and accessibility law in mind, integrating the payment stack US customers expect, and meeting at the start of your day.",
       meta: ["Morning overlap with US time zones", "CCPA, HIPAA & COPPA-aware builds", "Proposals priced in USD"],
     },
@@ -161,13 +161,13 @@ export const regions: Region[] = [
     languages: "English and French",
     cities: ["Toronto", "Vancouver", "Montreal", "Calgary"],
     seo: {
-      title: "App & Web Development Company for Canadian Businesses | Kurchu",
+      title: "Mobile App Development Company for Canadian Businesses | Kurchu",
       description:
-        "Mobile app development, web development and SEO for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
+        "iOS and Android app development for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
     },
     hero: {
-      eyebrow: "App & web development · Canada",
-      lines: ["Apps, websites", "and SEO for", "Canadian businesses."],
+      eyebrow: "Mobile app development · Canada",
+      lines: ["Mobile apps", "designed and built", "for Canadian businesses."],
       lede: "A senior product team for founders and operators in Toronto, Vancouver, Montreal and beyond — building to Canadian privacy law, planning English and French from the first wireframe, and integrating Canadian payment rails.",
       meta: ["Overlap with Eastern & Pacific time", "PIPEDA & Quebec Law 25-ready", "English–French localisation"],
     },
@@ -217,13 +217,13 @@ export const regions: Region[] = [
     languages: "Arabic and English (right-to-left)",
     cities: ["Dubai", "Abu Dhabi", "Sharjah"],
     seo: {
-      title: "App & Web Development Company in Dubai & the UAE | Kurchu",
+      title: "Mobile App Development Company in Dubai & the UAE | Kurchu",
       description:
-        "Mobile app development, web development and SEO for UAE businesses — Arabic and right-to-left apps, UAE PDPL-ready builds and local payment gateways.",
+        "iOS and Android app development for UAE businesses — Arabic and right-to-left apps, UAE PDPL-ready builds and local payment gateways.",
     },
     hero: {
-      eyebrow: "App & web development · United Arab Emirates",
-      lines: ["Apps, websites", "and SEO for", "UAE businesses."],
+      eyebrow: "Mobile app development · United Arab Emirates",
+      lines: ["Mobile apps", "designed and built", "for UAE businesses."],
       lede: "A senior product team for founders and operators in Dubai, Abu Dhabi and across the Emirates — Arabic and right-to-left from day one, built for UAE data protection law, and just one hour ahead of your working day.",
       meta: ["Only 1 hour from UAE time", "Arabic & right-to-left built in", "Proposals priced in AED or USD"],
     },
@@ -239,7 +239,7 @@ export const regions: Region[] = [
       "UAE PASS sign-in for products that need verified identity",
     ],
     payments: ["Network International, Telr and PayTabs", "Apple Pay and Google Pay", "Tabby and Tamara buy-now-pay-later", "VAT-aware pricing and receipts"],
-    localisation: ["Arabic and English with full right-to-left layouts", "Arabic typography, numerals and date formats done properly", "Store listings and SEO in both languages"],
+    localisation: ["Arabic and English with full right-to-left layouts", "Arabic typography, numerals and date formats done properly", "App Store and Google Play listings in both languages"],
     faqs: [
       {
         q: "Do you build Arabic and right-to-left apps?",

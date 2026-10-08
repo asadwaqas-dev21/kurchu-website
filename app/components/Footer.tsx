@@ -4,9 +4,8 @@ import { siteConfig } from "../lib/site-config";
 import { regionPath, regions } from "../lib/regions";
 
 const serviceLinks = [
-  { label: "Website development", href: "/web-development" },
   { label: "App development", href: "/mobile-app-development" },
-  { label: "SEO services", href: "/seo-services" },
+  { label: "All services", href: "/services" },
 ];
 const marketLinks = [
   ...regions.map((region) => ({ label: region.name, href: regionPath(region) })),
@@ -89,7 +88,7 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <Logo light />
             <p className="mt-5 max-w-xs text-[14px] leading-6 text-white/55">
-              We design, build and grow websites, mobile apps and search visibility for
+              We design, engineer and launch iOS, Android and cross-platform apps for
               businesses in the UK, USA, Canada and UAE.
             </p>
             <div className="mt-6 flex gap-2.5">

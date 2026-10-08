@@ -1,6 +1,6 @@
 /**
  * Reusable full-width CTA block.
- * Dark variant matches the SEO card on the homepage.
+ * Dark variant for the closing call to action on inner pages.
  */
 export default function CTASection({
   heading,

@@ -11,7 +11,6 @@ import { MarketDetails, Markets } from "@/app/premium-app-development/components
 import { PageHero } from "@/app/premium-app-development/components/PageHero";
 import { Summary } from "@/app/premium-app-development/components/Summary";
 import { PremiumShell } from "@/app/premium-app-development/components/PremiumShell";
-import { ServiceLines } from "@/app/premium-app-development/components/ServiceLines";
 
 export const dynamicParams = false;
 
@@ -59,18 +58,17 @@ export default async function RegionPage(props: PageProps<"/locations/[region]">
             Kurchu <em>in {regionPhrase(region)}.</em>
           </>
         }
-        answer={`Kurchu Software Solutions builds mobile apps, websites and SEO for businesses in ${regionPhrase(region)}. Products are planned around ${region.privacyLaw}, integrate ${region.payments[0]}, and support ${region.languages}. ${region.timeZone.difference}`}
+        answer={`Kurchu Software Solutions builds iOS, Android and cross-platform apps for businesses in ${regionPhrase(region)}. Products are planned around ${region.privacyLaw}, integrate ${region.payments[0]}, and support ${region.languages}. ${region.timeZone.difference}`}
         facts={[
           ["Market", region.name],
           ["Key privacy law", region.privacyLaw],
           ["Local payments", region.payments.slice(0, 3).join("; ")],
           ["Interface languages", region.languages],
           ["Time zone", `${region.timeZone.zone} — ${region.timeZone.callWindow}`],
-          ["Services", "Mobile app development, web development, SEO"],
+          ["Services", "Mobile app strategy, UX/UI, iOS & Android development, backend, QA and launch"],
         ]}
       />
       <MarketDetails region={region} />
-      <ServiceLines schema={false} />
       <Engagement />
       <Faq
         items={region.faqs}

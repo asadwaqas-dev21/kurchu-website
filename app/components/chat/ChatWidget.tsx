@@ -36,7 +36,7 @@ const INTRO: Message = {
 const STARTERS = [
   "Do you build e-commerce sites?",
   "What are your starting prices?",
-  "How does your SEO process work?",
+  "Native or cross-platform — which do I need?",
 ];
 
 /** Photos are sent to the model as a JPEG no wider than 1280px. */
@@ -376,7 +376,7 @@ export function ChatWidget() {
                   }}
                   rows={1}
                   maxLength={600}
-                  placeholder="Ask about websites or pricing…"
+                  placeholder="Ask about apps or pricing…"
                   className="min-h-10 flex-1 resize-none overflow-y-hidden bg-transparent px-1 py-2 text-[15px] leading-6 text-ink outline-none placeholder:text-muted"
                 />
                 <button

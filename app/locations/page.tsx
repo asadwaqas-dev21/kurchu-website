@@ -9,9 +9,9 @@ import { PremiumShell } from "@/app/premium-app-development/components/PremiumSh
 
 // Hub of the four market pages and their hreflang x-default.
 export const metadata = buildMetadata({
-  title: "App & Web Development for the UK, USA, Canada & UAE | Kurchu",
+  title: "Mobile App Development for the UK, USA, Canada & UAE | Kurchu",
   description:
-    "Kurchu builds mobile apps, websites and SEO for businesses in the UK, USA, Canada and UAE — planned around each market's privacy law, payments and time zone.",
+    "iOS, Android and cross-platform apps for businesses in the UK, USA, Canada and UAE — planned around each market's privacy law, payments and time zone.",
   path: "/locations",
   languages: regionLanguageAlternates(),
 });
@@ -24,7 +24,7 @@ export default function LocationsPage() {
       <PageHero
         path="/locations"
         eyebrow="Markets we serve"
-        lines={["Apps, websites and SEO", "for the UK, USA,", <em key="em">Canada and the UAE.</em>]}
+        lines={["Mobile apps", "for the UK, USA,", <em key="em">Canada and the UAE.</em>]}
         lede="One senior team in Lahore, working with founders and operators in four markets. Each market page covers the privacy law, payment providers, languages and working hours we plan your product around."
         meta={["United Kingdom · United States", "Canada · United Arab Emirates", "One team, every market"]}
         cta={{ label: "Start a Project" }}
@@ -37,7 +37,7 @@ export default function LocationsPage() {
             Where Kurchu <em>works.</em>
           </>
         }
-        answer="Kurchu Software Solutions builds mobile apps, websites and SEO for businesses in four markets: the United Kingdom, the United States, Canada and the United Arab Emirates. Each product is planned around that market's privacy law, payment providers, languages and time zone, by one senior team based in Lahore, Pakistan."
+        answer="Kurchu Software Solutions builds mobile apps for businesses in four markets: the United Kingdom, the United States, Canada and the United Arab Emirates. Each product is planned around that market's privacy law, payment providers, languages and time zone, by one senior team based in Lahore, Pakistan."
         facts={regions.map((region) => [region.name, `${region.privacyLaw} · ${region.languages}`])}
       />
       <Markets

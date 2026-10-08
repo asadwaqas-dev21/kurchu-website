@@ -22,15 +22,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kurchu Software Solutions — Websites, apps and SEO",
+  title: "Kurchu Software Solutions — Mobile App Development",
   description:
-    "Kurchu Software Solutions designs, builds and grows digital products for businesses worldwide. Websites, apps and SEO that turn visitors into customers.",
+    "Kurchu Software Solutions designs, engineers and launches iOS, Android and cross-platform apps for businesses in the UK, USA, Canada and UAE.",
   metadataBase: new URL(siteConfig.url),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Kurchu Software Solutions — Websites, apps and SEO",
+    title: "Kurchu Software Solutions — Mobile App Development",
     description:
-      "Kurchu Software Solutions designs, builds and grows digital products for businesses worldwide. Websites, apps and SEO that turn visitors into customers.",
+      "Kurchu Software Solutions designs, engineers and launches iOS, Android and cross-platform apps for businesses in the UK, USA, Canada and UAE.",
     url: siteConfig.url,
     siteName: "Kurchu Software Solutions",
     locale: "en_US",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kurchu Software Solutions — Websites, apps and SEO",
+    title: "Kurchu Software Solutions — Mobile App Development",
     description:
-      "Kurchu Software Solutions designs, builds and grows digital products for businesses worldwide.",
+      "Kurchu Software Solutions designs, engineers and launches mobile apps for businesses in the UK, USA, Canada and UAE.",
   },
 };
 

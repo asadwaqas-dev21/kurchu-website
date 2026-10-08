@@ -31,11 +31,9 @@ const latestPostDate = posts.map((post) => post.date).sort().at(-1);
 export const routes: SiteRoute[] = [
   { path: "/", name: "Home", lastModified: HOMEPAGE_REDESIGNED, changeFrequency: "weekly", priority: 1 },
 
-  // Services hub and its service lines.
+  // Services and the mobile app development detail page.
   { path: "/services", name: "Services", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.9 },
   { path: "/mobile-app-development", name: "Mobile App Development", parent: "/services", priority: 0.9 },
-  { path: "/web-development", name: "Web Development", parent: "/services", priority: 0.9 },
-  { path: "/seo-services", name: "SEO Services", parent: "/services", priority: 0.9 },
   { path: "/pricing", name: "Pricing", parent: "/services", priority: 0.7 },
 
   // Target markets: a hub (hreflang x-default) and one page per region.

@@ -337,8 +337,6 @@ export const footerColumns: Array<{ title: string; links: Array<{ href: string; 
     links: [
       { href: "/services", label: "All services" },
       { href: "/mobile-app-development", label: "Mobile app development" },
-      { href: "/web-development", label: "Web development" },
-      { href: "/seo-services", label: "SEO services" },
       { href: "/pricing", label: "Pricing" },
     ],
   },

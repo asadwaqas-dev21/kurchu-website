@@ -14,9 +14,8 @@ const links = [
 ];
 
 const serviceDropdown = [
-  { label: "Web Development", href: "/web-development" },
   { label: "Mobile App Development", href: "/mobile-app-development" },
-  { label: "SEO Services", href: "/seo-services" },
+  { label: "All services", href: "/services" },
 ];
 
 export default function Header() {

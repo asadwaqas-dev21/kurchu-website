@@ -9,7 +9,7 @@ import CTASection from "@/app/components/shared/CTASection";
 export const metadata = buildMetadata({
   title: "Blog — News & Insights | Kurchu Software Solutions",
   description:
-    "Practical advice on website development, mobile apps and SEO from the team at Kurchu Software Solutions.",
+    "Practical advice on planning, designing and building mobile apps from the team at Kurchu Software Solutions.",
   path: "/blog",
 });
 
@@ -21,7 +21,7 @@ export default function BlogPage() {
       <PageHero
         badge="News & insights"
         heading="Ideas to help your business grow online."
-        description="Practical, jargon-free advice on websites, mobile apps and SEO — written by the team that builds them."
+        description="Practical, jargon-free advice on planning and building mobile apps — written by the team that builds them."
       />
 
       <section className="bg-[#f5f7fa] py-20 sm:py-24">

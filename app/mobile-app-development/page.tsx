@@ -7,7 +7,9 @@ import { CheckIcon } from "@/app/components/shared/ServiceCard";
 import TechStack from "@/app/components/shared/TechStack";
 import FAQSection from "@/app/components/shared/FAQSection";
 import CTASection from "@/app/components/shared/CTASection";
-import RelatedServices from "@/app/components/shared/RelatedServices";
+import JsonLd from "@/app/components/shared/JsonLd";
+import { serviceJsonLd } from "@/app/lib/jsonld";
+import { getServiceLine } from "@/app/lib/services";
 
 export const metadata = buildMetadata({
   title: "Mobile App Development Company — UK, USA, Canada & UAE | Kurchu",
@@ -127,6 +129,7 @@ export default function MobileAppDevelopmentPage() {
   return (
     <InnerLayout>
       <Breadcrumbs path="/mobile-app-development" />
+      <JsonLd data={serviceJsonLd(getServiceLine("/mobile-app-development")!)} />
 
       <PageHero
         badge="Mobile App Development"
@@ -298,8 +301,6 @@ export default function MobileAppDevelopmentPage() {
       <FAQSection heading="App development FAQ" items={faqs} />
 
       {/* ── Final CTA ──────────────────────────────── */}
-      <RelatedServices current="/mobile-app-development" />
-
       <CTASection
         heading="Have an app idea?"
         description="Tell us what people should be able to do inside the application and what business problem you want it to solve."
