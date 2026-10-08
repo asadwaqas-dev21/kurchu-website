@@ -1,11 +1,13 @@
 import type { Viewport } from "next";
 import { buildMetadata } from "@/app/lib/metadata";
+import { serviceLines } from "@/app/lib/services";
 import { Engagement } from "@/app/premium-app-development/components/Engagement";
 import { Estimator } from "@/app/premium-app-development/components/Estimator";
 import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
 import { PageHero } from "@/app/premium-app-development/components/PageHero";
 import { PremiumShell } from "@/app/premium-app-development/components/PremiumShell";
 import { ServiceLines } from "@/app/premium-app-development/components/ServiceLines";
+import { Summary } from "@/app/premium-app-development/components/Summary";
 import { Services } from "@/app/premium-app-development/components/Services";
 
 // Hub of the service architecture: links down to each service line page
@@ -13,7 +15,7 @@ import { Services } from "@/app/premium-app-development/components/Services";
 export const metadata = buildMetadata({
   title: "Software Development Services — Apps, Websites & SEO | Kurchu",
   description:
-    "Mobile app development, web development and SEO services from one senior team in Lahore, working with clients worldwide. Fixed scope per phase; you own the code.",
+    "Mobile app development, web development and SEO services from one senior team for clients in the UK, USA, Canada and UAE. Fixed scope per phase; you own the code.",
   path: "/services",
 });
 
@@ -30,6 +32,16 @@ export default function ServicesPage() {
         meta={["Mobile apps · Websites · SEO", "Fixed scope per phase", "You own 100% of the code"]}
         cta={{ label: "Start a Project" }}
         secondary={{ href: "/work", label: "See selected work" }}
+        pageType="CollectionPage"
+      />
+      <Summary
+        title={
+          <>
+            What Kurchu <em>offers.</em>
+          </>
+        }
+        answer="Kurchu Software Solutions offers three services — mobile app development, web development and SEO — delivered by one senior team for businesses in the UK, USA, Canada and UAE. Projects are scoped in fixed-price phases, and clients own all of the code, designs and documentation."
+        facts={serviceLines.map((service) => [service.name, service.description])}
       />
       <ServiceLines />
       <Services />

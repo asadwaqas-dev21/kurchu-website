@@ -10,9 +10,9 @@ import CTASection from "@/app/components/shared/CTASection";
 import RelatedServices from "@/app/components/shared/RelatedServices";
 
 export const metadata = buildMetadata({
-  title: "Web Development Company in Lahore | Kurchu Software Solutions",
+  title: "Web Development Company — UK, USA, Canada & UAE | Kurchu",
   description:
-    "Custom websites, WordPress, Shopify, Next.js and web applications built by Kurchu Software Solutions for businesses in Pakistan and worldwide.",
+    "Custom websites, e-commerce stores and web applications on Next.js, WordPress and Shopify for businesses in the UK, USA, Canada and UAE.",
   path: "/web-development",
 });
 
@@ -103,23 +103,23 @@ const seoFeatures = [
 const faqs = [
   {
     q: "How long does website development take?",
-    a: "Timelines depend on scope. A business website typically takes four to eight weeks from discovery to launch. E-commerce and custom web applications require longer depending on functionality, integrations and content volume. Every proposal includes a week-by-week timeline.",
+    a: "Timelines depend on scope. A business website typically takes four to eight weeks from discovery to launch, including content, design, development and testing. E-commerce stores and custom web applications take longer, depending on functionality, integrations and the volume of content involved. Every proposal includes a week-by-week timeline, so you know exactly what is delivered when and what we need from you.",
   },
   {
     q: "Can I update the website myself?",
-    a: "Yes. If content management is part of the brief, we configure a CMS — typically WordPress or a headless solution — so your team can edit pages, blog posts and product listings without touching code.",
+    a: "Yes. If content management is part of the brief, we configure a CMS, typically WordPress or a headless solution, so your team can edit pages, blog posts and product listings without touching code. We set up editing roles and reusable page sections, so editors can publish new content confidently without accidentally breaking layouts, styling or the structure that search engines rely on.",
   },
   {
     q: "Do I own the finished website?",
-    a: "Yes. You own the code, design files and all content once the project is paid in full. There is no ongoing lock-in or proprietary platform dependency.",
+    a: "Yes. Once the project is paid in full, you own the code, design files and all content. There is no proprietary platform or ongoing lock-in, so you can move hosting, change providers or bring development fully in-house whenever you choose, without asking our permission. Logins, documentation and source files are handed over as part of the launch, so nothing important ever stays with us.",
   },
   {
     q: "Can you redesign my current website?",
-    a: "Yes. We audit the existing site, identify what to preserve and what to improve, plan redirects for important pages, and rebuild with a modern stack while protecting existing search visibility.",
+    a: "Yes. We audit the existing site first, identifying which pages, content and rankings are worth preserving and what needs to improve. We then plan redirects for every important URL and rebuild on a modern stack, protecting the search visibility you have already earned. After launch we monitor traffic and search performance closely, fixing any issues before they affect enquiries or sales.",
   },
   {
     q: "Can Kurchu provide website development and SEO together?",
-    a: "Yes. Because we handle both development and SEO, technical recommendations are implemented directly rather than passed between separate agencies. This tends to produce better results and fewer communication delays.",
+    a: "Yes. Because we handle both development and SEO, technical recommendations are implemented directly in the code instead of being passed between separate agencies. Site structure, page speed, structured data and content are planned together from the start. This tends to produce better results, fewer communication delays and lower overall cost than coordinating a web developer and an SEO agency separately.",
   },
 ];
 

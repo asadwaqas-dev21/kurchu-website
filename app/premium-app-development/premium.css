@@ -948,7 +948,7 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
 
 /* ---- Footer ---- */
 .kp .footer{position:relative;border-top:1px solid var(--line);padding-top:clamp(64px,8vw,104px);overflow:hidden;overflow:clip}
-.kp .foot-grid{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2.2fr));gap:clamp(32px,4vw,64px)}
+.kp .foot-grid{display:grid;grid-template-columns:minmax(0,4fr) repeat(4,minmax(0,2fr));gap:clamp(32px,4vw,64px)}
 .kp .foot-brand p{margin-top:20px;color:var(--text-2);max-width:34ch}
 .kp .foot-brand .tlink{margin-top:24px;font:400 20px var(--f-display)}
 .kp .foot-col h4{font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:18px}
@@ -1063,7 +1063,7 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
   .kp .faq-grid{grid-template-columns:1fr}
   .kp .faq-side{position:relative;top:0}
   .kp .final-grid{grid-template-columns:1fr;align-items:start}
-  .kp .foot-grid{grid-template-columns:1fr 1fr 1fr}
+  .kp .foot-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   .kp .foot-brand{grid-column:1/-1}
   .kp .mcta{display:flex}
   }
@@ -1246,3 +1246,61 @@ body:has(.kp){padding-bottom:0;background:#09090A}
 .kp .svl-card:hover .svl-go svg{transform:translateX(4px)}
 .kp .svl-more{margin-top:28px;color:var(--text-2);font-size:15px}
 @media (max-width:1024px){.kp .svl-grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   14. MARKETS (locations hub, market pages, homepage)
+   ========================================================= */
+.kp .mkt-grid{display:grid;gap:16px}
+.kp .mkt-grid.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kp .mkt-grid.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kp .mkt-grid>li{display:flex}
+.kp .mkt-card{display:flex;flex-direction:column;gap:10px;width:100%;padding:26px 24px;border-radius:var(--r-lg);border:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--bg-2));transition:border-color .5s var(--ease),transform .7s var(--ease)}
+.kp .mkt-card:hover{border-color:rgba(126,166,255,.45);transform:translateY(-4px)}
+.kp .mkt-card h3{font:500 clamp(22px,1.9vw,26px)/1.1 var(--f-display);letter-spacing:-.02em}
+.kp .mkt-card p{color:var(--text-2);font-size:14px}
+.kp .mkt-code{color:var(--accent)}
+.kp .mkt-tz{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+.kp .mkt-card:hover .svl-go svg{transform:translateX(4px)}
+.kp .mk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.kp .mk-col{padding:28px 26px;border-radius:var(--r-xl);border:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--bg-2))}
+.kp .mk-col h3{font:500 20px/1.2 var(--f-display);letter-spacing:-.015em;margin-bottom:18px}
+.kp .mk-col li{position:relative;padding:10px 0 10px 18px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.55;color:var(--text-2)}
+.kp .mk-col li::before{content:"";position:absolute;left:0;top:1.25em;width:7px;height:1px;background:var(--accent)}
+.kp .mk-tz{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:end;margin-top:16px;padding:26px 28px;border-radius:var(--r-xl);border:1px solid var(--line-2);background:radial-gradient(80% 120% at 100% 0%,rgba(126,166,255,.1),transparent 60%),var(--surface)}
+.kp .mk-tz-diff{margin-top:10px;font:400 clamp(18px,1.6vw,22px)/1.4 var(--f-display);letter-spacing:-.01em}
+.kp .mk-tz-call{color:var(--text-2);font-size:15px}
+.kp .mk-note{margin-top:18px;font-size:12.5px;color:var(--text-3)}
+@media (max-width:1024px){
+  .kp .mkt-grid.n4,.kp .mkt-grid.n3{grid-template-columns:1fr 1fr}
+  .kp .mk-grid{grid-template-columns:1fr}
+  .kp .mk-tz{grid-template-columns:1fr}
+}
+@media (max-width:640px){.kp .mkt-grid.n4,.kp .mkt-grid.n3{grid-template-columns:1fr}}
+.kp .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-xl);background:var(--bg-2)}
+.kp .tbl{width:100%;min-width:760px;border-collapse:collapse;font-size:14px;line-height:1.5}
+.kp .tbl th,.kp .tbl td{padding:18px 20px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.kp .tbl thead th{border-top:0;font:500 10.5px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.kp .tbl tbody th{font:500 16px/1.3 var(--f-display);color:var(--text);white-space:nowrap}
+.kp .tbl tbody th a{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:2px}
+.kp .tbl td{color:var(--text-2)}
+
+/* =========================================================
+   15. "IN SHORT" ANSWER SUMMARY (answer / generative engines)
+   ========================================================= */
+.kp .sum{padding-block:clamp(56px,7vw,104px);border-block:1px solid var(--line);background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+.kp .sum-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,88px);align-items:start}
+.kp .sum-h{margin-top:22px;font:500 clamp(28px,3vw,44px)/1.05 var(--f-display);letter-spacing:-.03em}
+.kp .sum-h em{font-family:var(--f-serif);font-style:italic;font-weight:400}
+.kp .sum-answer{font:400 clamp(18px,1.5vw,22px)/1.55 var(--f-display);letter-spacing:-.01em;color:var(--text);max-width:62ch;text-wrap:pretty}
+.kp .sum-facts{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;margin-top:32px;border-top:1px solid var(--line)}
+.kp .sum-facts div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.kp .sum-facts dt{font:500 10.5px/1.6 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.kp .sum-facts dd{font-size:14.5px;line-height:1.5;color:var(--text-2)}
+.kp .ph-updated{margin-left:auto;color:var(--text-3)}
+.kp .mk-sources{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:13px;color:var(--text-3)}
+.kp .mk-sources a{color:var(--text-2)}
+@media (max-width:1024px){.kp .sum-grid{grid-template-columns:1fr}.kp .sum-facts{grid-template-columns:1fr}}
+@media (max-width:640px){.kp .sum-facts div{grid-template-columns:1fr;gap:4px}}
+
+/* FAQ answers: justified, with hyphenation so narrow screens don't get wide gaps. */
+.kp .faq-a p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}

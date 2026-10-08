@@ -1,8 +1,9 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Logo({ light = false }: { light?: boolean }) {
   return (
-    <a href="/" className="flex items-center gap-2.5">
+    <Link href="/" className="flex items-center gap-2.5">
       <Image
         src="/logo.png"
         alt="Kurchu Software Solutions"
@@ -27,6 +28,6 @@ export default function Logo({ light = false }: { light?: boolean }) {
           Software Solutions
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

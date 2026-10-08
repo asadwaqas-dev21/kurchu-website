@@ -8,7 +8,7 @@ import { initPremiumPage } from "../interactions";
  * with `.kp`, and this component attaches the page's interactions to it.
  * The server-rendered sections are passed in as children.
  */
-export function PremiumRoot({ className, children }: { className: string; children: ReactNode }) {
+export function PremiumRoot({ className, lang, children }: { className: string; lang?: string; children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function PremiumRoot({ className, children }: { className: string; childr
   }, []);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} lang={lang}>
       {children}
     </div>
   );

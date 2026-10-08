@@ -9,9 +9,9 @@ import CTASection from "@/app/components/shared/CTASection";
 import RelatedServices from "@/app/components/shared/RelatedServices";
 
 export const metadata = buildMetadata({
-  title: "SEO Services in Lahore & Pakistan | Kurchu Software Solutions",
+  title: "SEO Services for the UK, USA, Canada & UAE | Kurchu",
   description:
-    "Technical SEO, local SEO, on-page optimisation, SEO content and search strategy for businesses in Lahore, Pakistan and international markets.",
+    "Technical SEO, local SEO, on-page optimisation and content strategy for businesses that need to rank on Google in the UK, USA, Canada and UAE.",
   path: "/seo-services",
 });
 
@@ -100,27 +100,27 @@ const modernSearchChannels = [
 const faqs = [
   {
     q: "How quickly does SEO work?",
-    a: "Early technical fixes can produce improvements within weeks. Meaningful ranking movement for competitive terms typically requires three to six months of consistent work. Results depend on the starting position, competition and the scope of work.",
+    a: "Early technical fixes can produce improvements within weeks, especially on sites with crawl or speed problems. Meaningful ranking movement for competitive terms typically requires three to six months of consistent work. Results depend on your starting position, the competition in your market and the scope of work. We report progress regularly, so you can always see what has changed and why.",
   },
   {
     q: "Do you guarantee first-page rankings?",
-    a: "No. No SEO provider can guarantee specific rankings because search algorithms are controlled by Google, not by any external company. We focus on building strong technical foundations, creating genuinely useful content and improving authority over time.",
+    a: "No. No SEO provider can honestly guarantee specific rankings, because search algorithms are controlled by Google, not by any outside company, so guaranteed positions are a warning sign. We focus on what reliably works over time: strong technical foundations, genuinely useful content that answers real questions, and steadily improving authority, measured against the traffic and enquiries that matter to you.",
   },
   {
     q: "Do you provide local SEO?",
-    a: "Yes. Local SEO is a core part of our service. We optimise Google Business Profiles, build local citations, create location-focused content and implement local structured data to improve visibility in map and local search results.",
+    a: "Yes. Local SEO is a core part of our service. We optimise Google Business Profiles, build consistent local citations, create location-focused content and implement local structured data to improve visibility in map and local search results. For businesses serving several cities or countries, we plan location pages that each offer genuinely useful local information rather than duplicated, thin copy that search engines ignore.",
   },
   {
     q: "Do you write SEO content?",
-    a: "Yes. We plan content around genuine search intent and customer needs, then write and publish it. Content exists to answer real questions your customers have — not simply to create more pages.",
+    a: "Yes. We plan content around genuine search intent and real customer needs, then write, optimise and publish it for you. Every article or page exists to answer questions your customers actually ask, not simply to create more pages. Content is structured with clear headings and direct answers, so it performs well in both traditional search results and AI-generated answers from tools like ChatGPT.",
   },
   {
     q: "Can you fix technical SEO problems?",
-    a: "Yes. Because we are also a development company, we can implement technical SEO fixes directly — including site speed improvements, structured data, redirect management, crawl fixes and architecture changes.",
+    a: "Yes. Because we are also a development company, we implement technical SEO fixes directly rather than sending you a list of recommendations. That includes site speed improvements, structured data, redirect management, crawl and indexing fixes, internal linking and site architecture changes. Fixes are tested before release and checked afterwards in Google Search Console, so improvements are verified rather than assumed.",
   },
   {
     q: "Can Kurchu redesign my website and handle SEO?",
-    a: "Yes. Handling both development and SEO under one roof means technical recommendations are implemented correctly during the build, redirects are managed properly during migration, and SEO strategy informs the site structure from the start.",
+    a: "Yes. Handling development and SEO under one roof means technical recommendations are implemented correctly during the build, redirects are managed properly during migration, and SEO strategy shapes the site structure from the very start. You avoid the common situation where an attractive new site loses its existing rankings overnight because the developers and the SEO agency never properly coordinated the launch.",
   },
 ];
 

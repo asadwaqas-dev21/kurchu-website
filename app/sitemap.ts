@@ -10,5 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: route.changeFrequency ?? "monthly",
     priority: route.priority ?? 0.5,
     ...(route.images && { images: route.images.map((image) => `${siteConfig.url}${image}`) }),
+    // hreflang for the regional market pages (en-GB / en-US / en-CA / en-AE + x-default).
+    ...(route.languages && {
+      alternates: {
+        languages: Object.fromEntries(
+          Object.entries(route.languages).map(([lang, path]) => [lang, `${siteConfig.url}${path}`]),
+        ),
+      },
+    }),
   }));
 }

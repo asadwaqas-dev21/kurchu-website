@@ -5,6 +5,7 @@
  *  once in the root layout), so Google reads the site as one connected graph
  *  instead of unrelated snippets.
  * ──────────────────────────────────────────────*/
+import { regionPhrase, regions, type Region } from "./regions";
 import { breadcrumbTrail } from "./routes";
 import { siteConfig } from "./site-config";
 
@@ -13,10 +14,16 @@ export const WEBSITE_ID = `${siteConfig.url}/#website`;
 
 const absolute = (path: string) => `${siteConfig.url}${path}`;
 
+const country = (region: Region) => ({ "@type": "Country", name: region.name, identifier: region.countryCode });
+
+/** The four target markets, as schema.org Country nodes. */
+export const marketsAreaServed = () => regions.map(country);
+
 export function breadcrumbJsonLd(path: string) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${absolute(path)}#breadcrumb`,
     itemListElement: breadcrumbTrail(path).map((crumb, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -50,7 +57,7 @@ export function serviceJsonLd(service: ServiceLine) {
     description: service.description,
     url: absolute(service.path),
     provider: { "@id": ORGANIZATION_ID },
-    areaServed: "Worldwide",
+    areaServed: marketsAreaServed(),
   };
 }
 
@@ -65,5 +72,61 @@ export function serviceListJsonLd(services: ServiceLine[]) {
       position: i + 1,
       item: serviceJsonLd(service),
     })),
+  };
+}
+
+/** The market page's own Service node: all three service lines, scoped to one country. */
+export function regionalServiceJsonLd(region: Region, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${absolute(path)}#service`,
+    name: `App, web and SEO services in ${regionPhrase(region)}`,
+    serviceType: ["Mobile application development", "Web development", "Search engine optimization"],
+    url: absolute(path),
+    provider: { "@id": ORGANIZATION_ID },
+    areaServed: country(region),
+    availableLanguage: ({ uae: ["English", "Arabic"], canada: ["English", "French"] } as Record<string, string[]>)[region.slug] ?? "English",
+  };
+}
+
+export type PageType = "WebPage" | "AboutPage" | "CollectionPage" | "ContactPage";
+
+/** The page itself, tied to the site, the organization and its breadcrumb trail. */
+export function webPageJsonLd({ path, name, type = "WebPage", lang = "en", dateModified }: {
+  path: string;
+  name: string;
+  type?: PageType;
+  lang?: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": type,
+    "@id": `${absolute(path)}#webpage`,
+    url: absolute(path),
+    name,
+    inLanguage: lang,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORGANIZATION_ID },
+    breadcrumb: { "@id": `${absolute(path)}#breadcrumb` },
+    ...(dateModified && { dateModified }),
+  };
+}
+
+/** A delivery process as ordered steps — lets answer engines quote "how it works" accurately. */
+export function howToJsonLd({ path, name, description, steps }: {
+  path: string;
+  name: string;
+  description: string;
+  steps: Array<{ name: string; text: string }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${absolute(path)}#howto`,
+    name,
+    description,
+    step: steps.map((step, i) => ({ "@type": "HowToStep", position: i + 1, name: step.name, text: step.text })),
   };
 }

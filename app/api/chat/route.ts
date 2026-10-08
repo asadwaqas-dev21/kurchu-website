@@ -27,7 +27,7 @@ Verified business facts:
 - E-commerce and custom apps take longer, timeline provided in proposal.
 - SEO results usually show meaningful movement in 3-6 months.
 - Clients get full ownership of code and design once paid in full.
-- We work with clients globally, not just in Pakistan.
+- We are based in Lahore, Pakistan and work with clients in our four target markets: the UK, USA, Canada and UAE (market pages at /locations).
 - Pricing starts from $3,500 for fixed-scope projects, $1,200/mo for SEO, and $4,500/mo for a dedicated team.
 
 Rules:

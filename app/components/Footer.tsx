@@ -1,11 +1,16 @@
 import { ArrowRight, ArrowUp, Location, Sms, Whatsapp } from "iconsax-react";
 import Logo from "./Logo";
 import { siteConfig } from "../lib/site-config";
+import { regionPath, regions } from "../lib/regions";
 
 const serviceLinks = [
   { label: "Website development", href: "/web-development" },
   { label: "App development", href: "/mobile-app-development" },
   { label: "SEO services", href: "/seo-services" },
+];
+const marketLinks = [
+  ...regions.map((region) => ({ label: region.name, href: regionPath(region) })),
+  { label: "All locations", href: "/locations" },
 ];
 const companyLinks = [
   { label: "About", href: "/about" },
@@ -35,9 +40,9 @@ const socialLinks = [
   },
 ];
 
-function FooterHeading({ children }: { children: React.ReactNode }) {
+function FooterHeading({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className="text-[11.5px] font-semibold tracking-[0.14em] text-white/40 uppercase">
+    <p className={`text-[11.5px] font-semibold tracking-[0.14em] text-white/40 uppercase ${className}`}>
       {children}
     </p>
   );
@@ -85,7 +90,7 @@ export default function Footer() {
             <Logo light />
             <p className="mt-5 max-w-xs text-[14px] leading-6 text-white/55">
               We design, build and grow websites, mobile apps and search visibility for
-              ambitious businesses worldwide.
+              businesses in the UK, USA, Canada and UAE.
             </p>
             <div className="mt-6 flex gap-2.5">
               {socialLinks.map((social) => (
@@ -109,6 +114,14 @@ export default function Footer() {
             <FooterHeading>Services</FooterHeading>
             <ul className="mt-5 flex flex-col gap-3">
               {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+            <FooterHeading className="mt-10">Markets</FooterHeading>
+            <ul className="mt-5 flex flex-col gap-3">
+              {marketLinks.map((link) => (
                 <li key={link.label}>
                   <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
@@ -158,7 +171,7 @@ export default function Footer() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] text-[#5fb4f0]">
                   <Location size={17} color="currentColor" variant="Bulk" />
                 </span>
-                {siteConfig.location} · Working worldwide
+                {siteConfig.location} · Serving the UK, USA, Canada & UAE
               </li>
             </ul>
           </div>

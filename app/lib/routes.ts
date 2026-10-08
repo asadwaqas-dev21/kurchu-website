@@ -8,6 +8,7 @@
  * ──────────────────────────────────────────────*/
 import type { MetadataRoute } from "next";
 import { posts } from "./blog";
+import { regionLanguageAlternates, regionPath, regions } from "./regions";
 
 export type SiteRoute = {
   path: string;
@@ -18,10 +19,13 @@ export type SiteRoute = {
   changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
   priority?: number;
   images?: string[];
+  /** hreflang → path, for pages that have regional variants. */
+  languages?: Record<string, string>;
 };
 
 const HOMEPAGE_REDESIGNED = "2026-10-07";
 const PAGES_REDESIGNED = "2026-10-08";
+const MARKETS_ADDED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
 
 export const routes: SiteRoute[] = [
@@ -33,6 +37,17 @@ export const routes: SiteRoute[] = [
   { path: "/web-development", name: "Web Development", parent: "/services", priority: 0.9 },
   { path: "/seo-services", name: "SEO Services", parent: "/services", priority: 0.9 },
   { path: "/pricing", name: "Pricing", parent: "/services", priority: 0.7 },
+
+  // Target markets: a hub (hreflang x-default) and one page per region.
+  { path: "/locations", name: "Locations", parent: "/", lastModified: MARKETS_ADDED, priority: 0.8, languages: regionLanguageAlternates() },
+  ...regions.map<SiteRoute>((region) => ({
+    path: regionPath(region),
+    name: region.name,
+    parent: "/locations",
+    lastModified: MARKETS_ADDED,
+    priority: 0.8,
+    languages: regionLanguageAlternates(),
+  })),
 
   // Company.
   { path: "/work", name: "Work", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.8 },

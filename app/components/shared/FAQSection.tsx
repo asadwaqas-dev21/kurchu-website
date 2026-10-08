@@ -98,7 +98,7 @@ export default function FAQSection({
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-6 text-[15px] leading-7 text-black/60 sm:px-6">{item.a}</p>
+                    <p className="px-5 pb-6 text-justify text-[15px] leading-7 text-black/60 hyphens-auto sm:px-6">{item.a}</p>
                   </div>
                 </div>
               </div>

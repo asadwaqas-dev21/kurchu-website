@@ -3,7 +3,8 @@
  * WebSite nodes every page-level node (Service, BreadcrumbList, BlogPosting…)
  * points back to by `@id`.
  */
-import { ORGANIZATION_ID, WEBSITE_ID } from "@/app/lib/jsonld";
+import { ORGANIZATION_ID, WEBSITE_ID, marketsAreaServed } from "@/app/lib/jsonld";
+import { companySummary, technologies } from "@/app/lib/facts";
 import { serviceLines } from "@/app/lib/services";
 import { siteConfig } from "@/app/lib/site-config";
 import JsonLd from "./JsonLd";
@@ -23,7 +24,8 @@ export default function StructuredData() {
         url: siteConfig.url,
         logo: `${siteConfig.url}/logo.png`,
         image: `${siteConfig.url}/opengraph-image.jpg`,
-        description: siteConfig.tagline,
+        description: companySummary,
+        slogan: siteConfig.tagline,
         email: siteConfig.contact.email,
         telephone: siteConfig.contact.phone,
         address: {
@@ -31,7 +33,7 @@ export default function StructuredData() {
           addressLocality: "Lahore",
           addressCountry: "PK",
         },
-        areaServed: "Worldwide",
+        areaServed: marketsAreaServed(),
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
@@ -39,7 +41,7 @@ export default function StructuredData() {
           telephone: siteConfig.contact.phone,
           availableLanguage: "English",
         },
-        knowsAbout: serviceLines.map((service) => service.serviceType),
+        knowsAbout: [...serviceLines.map((service) => service.serviceType), ...technologies],
         ...(sameAs.length > 0 && { sameAs }),
       },
       {

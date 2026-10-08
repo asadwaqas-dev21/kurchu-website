@@ -1,0 +1,8 @@
+import { llmsFullTxt } from "@/app/lib/llms";
+
+// llms.txt plus every FAQ answer and market detail, for assistants that want full text.
+export const dynamic = "force-static";
+
+export function GET() {
+  return new Response(llmsFullTxt(), { headers: { "Content-Type": "text/markdown; charset=utf-8" } });
+}

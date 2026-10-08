@@ -4,7 +4,6 @@ import Breadcrumbs from "@/app/components/shared/Breadcrumbs";
 import PageHero from "@/app/components/shared/PageHero";
 import SectionHeading from "@/app/components/shared/SectionHeading";
 import { CheckIcon } from "@/app/components/shared/ServiceCard";
-import CTASection from "@/app/components/shared/CTASection";
 
 export const metadata = buildMetadata({
   title: "Pricing & Project Estimates | Kurchu Software Solutions",

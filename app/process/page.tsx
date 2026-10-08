@@ -1,5 +1,8 @@
 import type { Viewport } from "next";
+import JsonLd from "@/app/components/shared/JsonLd";
+import { howToJsonLd } from "@/app/lib/jsonld";
 import { buildMetadata } from "@/app/lib/metadata";
+import { processSteps } from "@/app/premium-app-development/data";
 import { Faq } from "@/app/premium-app-development/components/Faq";
 import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
 import { IdeaToProduct } from "@/app/premium-app-development/components/IdeaToProduct";
@@ -19,6 +22,14 @@ export const viewport: Viewport = { themeColor: "#09090A", viewportFit: "cover" 
 export default function ProcessPage() {
   return (
     <PremiumShell current="process">
+      <JsonLd
+        data={howToJsonLd({
+          path: "/process",
+          name: "How Kurchu takes an app from idea to launch",
+          description: "Eight delivery stages, each ending with a deliverable the client can review.",
+          steps: processSteps.map((step) => ({ name: step.name, text: `${step.body} Deliverable: ${step.deliverable}.` })),
+        })}
+      />
       <PageHero
         path="/process"
         eyebrow="How we work"

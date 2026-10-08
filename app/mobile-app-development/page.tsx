@@ -10,9 +10,9 @@ import CTASection from "@/app/components/shared/CTASection";
 import RelatedServices from "@/app/components/shared/RelatedServices";
 
 export const metadata = buildMetadata({
-  title: "Mobile App Development Company Lahore | Flutter Apps | Kurchu",
+  title: "Mobile App Development Company — UK, USA, Canada & UAE | Kurchu",
   description:
-    "Custom Android and iOS app development using Flutter, Firebase and Supabase. From planning and UI/UX through backend development, launch and support.",
+    "Custom iOS and Android app development with Flutter, Firebase and Supabase for businesses in the UK, USA, Canada and UAE — from UX to launch and support.",
   path: "/mobile-app-development",
 });
 
@@ -101,23 +101,23 @@ const technologies = [
 const faqs = [
   {
     q: "Can one app work on Android and iPhone?",
-    a: "Yes. Using Flutter, we build from a single codebase that compiles to native Android and iOS applications. This reduces development time and cost while maintaining native performance on both platforms.",
+    a: "Yes. Using Flutter, we build from a single codebase that compiles to native Android and iOS applications. This reduces development time and cost while keeping smooth, native-feeling performance on both platforms. Where a product depends heavily on device-specific features, we may recommend fully native Swift and Kotlin instead, and we explain that recommendation and its costs in writing before you decide.",
   },
   {
     q: "Do I need an admin dashboard?",
-    a: "Most apps that manage bookings, orders, content or users benefit from an admin dashboard. We build admin interfaces alongside the app so your team can manage the business side without contacting a developer.",
+    a: "Most apps that manage bookings, orders, content or users benefit from an admin dashboard. We build admin interfaces alongside the app, so your team can manage customers, update content, process orders and view reports without contacting a developer. Access is role-based, so staff only see what they need, and the dashboard works in any modern browser on desktop or tablet.",
   },
   {
     q: "Can you integrate the app with my website?",
-    a: "Yes. If you have an existing website or are building one alongside the app, we can share authentication, data and APIs between both platforms for a consistent user experience.",
+    a: "Yes. If you have an existing website, or are building one alongside the app, we can share authentication, data and APIs between both platforms. Customers then use one account everywhere, see the same orders and content on web and mobile, and enjoy a consistent experience. A single shared backend also means less duplicated work and lower long-term maintenance costs for your business.",
   },
   {
     q: "Can Kurchu assist with App Store and Google Play submission?",
-    a: "Yes. We prepare store listings, screenshots, privacy policies and handle the submission process. We also manage any review feedback or compliance issues during the approval process.",
+    a: "Yes. We prepare the store listings, screenshots, app descriptions and privacy policies, then handle the full submission process for both the App Store and Google Play. We also manage any reviewer feedback or compliance issues during approval and resubmit as needed. Submissions are made under your own developer accounts, so you keep full ownership of the app and its store listings.",
   },
   {
     q: "How much does an app cost?",
-    a: "App costs depend on the number of screens, features, backend complexity and integrations required. We scope every project individually and provide a written proposal with clear pricing before any work begins.",
+    a: "App costs depend on the number of screens, features, backend complexity and integrations required, so we never quote blind. We scope every project individually and provide a written proposal with clear, itemised pricing before any work begins. Projects are usually split into phases with a fixed price for each, so you can launch a focused first version and expand it later.",
   },
 ];
 

@@ -1,0 +1,281 @@
+/** ──────────────────────────────────────────────
+ *  Target markets.
+ *
+ *  Each market gets one landing page at /locations/<slug>. The four pages are
+ *  regional variants of each other and are linked with hreflang
+ *  (en-GB / en-US / en-CA / en-AE), with /locations as x-default.
+ *
+ *  Laws, time zones and payment providers below are general facts. Lines that
+ *  describe how Kurchu works (call hours, invoicing currency) are business
+ *  commitments — confirm them before publishing.
+ * ──────────────────────────────────────────────*/
+
+export type Region = {
+  slug: string;
+  /** Full country name, e.g. "United Kingdom". */
+  name: string;
+  /** Short form used in copy, e.g. "UK". */
+  short: string;
+  /** BCP 47 tag for hreflang and the page's lang attribute. */
+  hreflang: string;
+  ogLocale: string;
+  /** ISO 3166-1 alpha-2, for structured data. */
+  countryCode: string;
+  currency: string;
+  cities: string[];
+  /** Headline privacy law and interface languages, for the comparison table. */
+  privacyLaw: string;
+  languages: string;
+  seo: { title: string; description: string };
+  hero: { eyebrow: string; lines: [string, string, string]; lede: string; meta: [string, string, string] };
+  timeZone: { zone: string; difference: string; callWindow: string };
+  compliance: string[];
+  /** Official regulators / guidance, cited on the page. */
+  sources: Array<{ label: string; url: string }>;
+  payments: string[];
+  localisation: string[];
+  faqs: Array<{ q: string; a: string }>;
+};
+
+export const regions: Region[] = [
+  {
+    slug: "uk",
+    name: "United Kingdom",
+    short: "UK",
+    hreflang: "en-GB",
+    ogLocale: "en_GB",
+    countryCode: "GB",
+    sources: [{ label: "Information Commissioner's Office (ICO)", url: "https://ico.org.uk/" }],
+    currency: "GBP",
+    privacyLaw: "UK GDPR & Data Protection Act 2018",
+    languages: "English (British)",
+    cities: ["London", "Manchester", "Birmingham", "Edinburgh"],
+    seo: {
+      title: "App & Web Development Company for UK Businesses | Kurchu",
+      description:
+        "Mobile app development, web development and SEO for UK businesses — UK GDPR-ready builds, UK payment integrations and calls inside UK business hours.",
+    },
+    hero: {
+      eyebrow: "App & web development · United Kingdom",
+      lines: ["Apps, websites", "and SEO for", "UK businesses."],
+      lede: "A senior product team for founders and operators in London, Manchester and across the UK — building to UK GDPR from day one, integrating the payment rails your customers use, and meeting inside your working day.",
+      meta: ["Calls inside UK business hours", "UK GDPR & PECR-ready builds", "Proposals priced in GBP"],
+    },
+    timeZone: {
+      zone: "GMT / BST",
+      difference: "Lahore is 5 hours ahead of the UK in winter and 4 hours ahead during British Summer Time.",
+      callWindow: "Calls, demos and stand-ups are scheduled between 9:00 and 17:00 UK time.",
+    },
+    compliance: [
+      "UK GDPR and the Data Protection Act 2018 — lawful basis, data minimisation and retention built into the data model",
+      "PECR-compliant cookie consent and marketing permissions",
+      "The ICO Children's Code for apps likely to be used by under-18s",
+      "Consumer Duty-friendly journeys for FCA-regulated fintech products",
+    ],
+    payments: ["Stripe and Apple Pay / Google Pay", "GoCardless Direct Debit", "Open Banking payments and account data", "Xero and Sage accounting integrations"],
+    localisation: ["British English copy, dates and currency formats", "WCAG 2.2 AA accessibility, in line with the Equality Act 2010", "VAT-aware pricing and receipts"],
+    faqs: [
+      {
+        q: "Can you work during UK business hours?",
+        a: "Yes. Lahore is five hours ahead of the UK in winter and four hours ahead during British Summer Time, so our afternoon and evening cover your entire working day. Calls, demos and stand-ups are booked in UK time, and work continues in our morning, so updates and fresh builds are often waiting for you before your own day even starts.",
+      },
+      {
+        q: "Will my app comply with UK GDPR?",
+        a: "We design the data model, consent flows and retention rules around UK GDPR and PECR from the first sprint, collect only the data the product genuinely needs, and document every data flow for your privacy notice and records. Final legal sign-off should still come from your own adviser, because we are engineers rather than lawyers, but they will receive clear documentation.",
+      },
+      {
+        q: "Do you integrate UK payment providers?",
+        a: "Yes. We integrate Stripe, Apple Pay and Google Pay for card payments, GoCardless for Direct Debit and subscriptions, and Open Banking for account-to-account payments and bank data. Accounting can sync automatically with Xero or Sage, so invoices and payments reconcile without manual work. We recommend the right combination during discovery, based on your customers, margins and how they prefer to pay.",
+      },
+    ],
+  },
+  {
+    slug: "usa",
+    name: "United States",
+    short: "US",
+    hreflang: "en-US",
+    ogLocale: "en_US",
+    countryCode: "US",
+    sources: [
+      { label: "California Privacy Protection Agency", url: "https://cppa.ca.gov/" },
+      { label: "HHS — HIPAA", url: "https://www.hhs.gov/hipaa/" },
+      { label: "Federal Trade Commission", url: "https://www.ftc.gov/" },
+    ],
+    currency: "USD",
+    privacyLaw: "CCPA / CPRA and state privacy laws; HIPAA for health",
+    languages: "English (American)",
+    cities: ["New York", "San Francisco", "Austin", "Chicago"],
+    seo: {
+      title: "App & Web Development Company for US Businesses | Kurchu",
+      description:
+        "Mobile app development, web development and SEO for US startups and businesses — CCPA- and HIPAA-aware builds, US payment integrations and overlap with US hours.",
+    },
+    hero: {
+      eyebrow: "App & web development · United States",
+      lines: ["Apps, websites", "and SEO for", "US businesses."],
+      lede: "A senior product team for founders and operators from New York to San Francisco — building with US privacy and accessibility law in mind, integrating the payment stack US customers expect, and meeting at the start of your day.",
+      meta: ["Morning overlap with US time zones", "CCPA, HIPAA & COPPA-aware builds", "Proposals priced in USD"],
+    },
+    timeZone: {
+      zone: "ET / CT / MT / PT",
+      difference:
+        "Lahore is 9–10 hours ahead of US Eastern time and 12–13 hours ahead of Pacific time, depending on daylight saving.",
+      callWindow: "Calls and demos are scheduled in your morning, US time; progress is ready when your day starts.",
+    },
+    compliance: [
+      "CCPA / CPRA and other state privacy laws — data inventories, opt-outs and deletion flows",
+      "HIPAA-aware architecture for apps that handle protected health information",
+      "COPPA consent flows for apps directed at children under 13",
+      "ADA expectations met through WCAG 2.2 AA accessibility",
+    ],
+    payments: ["Stripe, Apple Pay and Google Pay", "ACH payments and bank linking via Plaid", "Subscriptions with App Store and Google Play billing", "QuickBooks accounting integration"],
+    localisation: ["American English copy, date and number formats", "Sales-tax-aware pricing and receipts", "Accessibility tested with VoiceOver and TalkBack"],
+    faqs: [
+      {
+        q: "How do you work with US time zones?",
+        a: "Lahore is nine to ten hours ahead of US Eastern time and twelve to thirteen hours ahead of Pacific time, depending on daylight saving. We hold calls and demos in your morning, then keep working through your night. Most US clients find new progress, answered questions and a fresh build waiting for them when their working day begins, which keeps projects moving quickly.",
+      },
+      {
+        q: "Can you build HIPAA-compliant apps?",
+        a: "We build HIPAA-aware architecture: encryption in transit and at rest, audit logs, role-based access controls, and hosting on cloud providers that will sign a Business Associate Agreement. Protected health information is kept out of analytics and push notifications. Formal compliance sign-off remains with your compliance lead or counsel, and we provide the technical documentation they need to review it with confidence.",
+      },
+      {
+        q: "Do you handle US payments and subscriptions?",
+        a: "Yes. We integrate Stripe, Apple Pay and Google Pay for cards, ACH transfers and bank linking through Plaid, and in-app subscriptions through App Store and Google Play billing with server-side receipt validation. Sales-tax-aware pricing and receipts can be included, and accounting can sync with QuickBooks. We help you choose the mix that balances fees, conversion and how your customers prefer to pay.",
+      },
+    ],
+  },
+  {
+    slug: "canada",
+    name: "Canada",
+    short: "Canada",
+    hreflang: "en-CA",
+    ogLocale: "en_CA",
+    countryCode: "CA",
+    sources: [
+      { label: "Office of the Privacy Commissioner of Canada", url: "https://www.priv.gc.ca/" },
+      { label: "Commission d'accès à l'information du Québec", url: "https://www.cai.gouv.qc.ca/" },
+    ],
+    currency: "CAD",
+    privacyLaw: "PIPEDA; Quebec Law 25",
+    languages: "English and French",
+    cities: ["Toronto", "Vancouver", "Montreal", "Calgary"],
+    seo: {
+      title: "App & Web Development Company for Canadian Businesses | Kurchu",
+      description:
+        "Mobile app development, web development and SEO for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
+    },
+    hero: {
+      eyebrow: "App & web development · Canada",
+      lines: ["Apps, websites", "and SEO for", "Canadian businesses."],
+      lede: "A senior product team for founders and operators in Toronto, Vancouver, Montreal and beyond — building to Canadian privacy law, planning English and French from the first wireframe, and integrating Canadian payment rails.",
+      meta: ["Overlap with Eastern & Pacific time", "PIPEDA & Quebec Law 25-ready", "English–French localisation"],
+    },
+    timeZone: {
+      zone: "ET / PT",
+      difference:
+        "Lahore is 9–10 hours ahead of Toronto and Montreal, and 12–13 hours ahead of Vancouver, depending on daylight saving.",
+      callWindow: "Calls and demos are scheduled in your morning; progress is ready when your day starts.",
+    },
+    compliance: [
+      "PIPEDA — consent, purpose limitation and access requests designed into the product",
+      "Quebec Law 25 — privacy impact assessments, consent and data-transfer records",
+      "Provincial health privacy rules such as Ontario's PHIPA for health apps",
+      "CASL-compliant consent for marketing email and SMS",
+    ],
+    payments: ["Interac and Moneris", "Stripe, Apple Pay and Google Pay", "Subscriptions with App Store and Google Play billing", "GST/HST-aware pricing and receipts"],
+    localisation: ["English and French interfaces, with French ready for Quebec users", "Canadian English spelling, dates and currency formats", "Accessibility aligned with the AODA and WCAG 2.2 AA"],
+    faqs: [
+      {
+        q: "Can you build bilingual English–French apps?",
+        a: "Yes. We plan English and French from the first wireframe: layouts that accommodate longer French strings, translated app store listings, and a content workflow your team can maintain without developers. Quebec users get a complete French experience rather than a partial translation, which matters under Quebec's French-language rules. Both languages are tested on real devices before every release, not just checked in a spreadsheet.",
+      },
+      {
+        q: "How do you handle PIPEDA and Quebec Law 25?",
+        a: "Consent, data minimisation, access requests and deletion are designed into the product from the start rather than added just before launch. We document every data flow and third-party processor to support your privacy impact assessment, which Quebec's Law 25 requires in many cases. Legal sign-off should come from your own counsel, but they will receive clear documentation to review rather than guesswork.",
+      },
+      {
+        q: "Which Canadian payment methods do you integrate?",
+        a: "We integrate Interac and Moneris alongside Stripe, Apple Pay and Google Pay, so Canadian customers can pay the way they already prefer. Subscriptions can run through App Store and Google Play billing with receipt validation, and pricing and receipts are GST/HST-aware. During discovery we recommend the combination that best balances processing fees, checkout conversion and the reporting your finance team needs.",
+      },
+    ],
+  },
+  {
+    slug: "uae",
+    name: "United Arab Emirates",
+    short: "UAE",
+    hreflang: "en-AE",
+    ogLocale: "en_AE",
+    countryCode: "AE",
+    sources: [
+      { label: "UAE Government portal", url: "https://u.ae/" },
+      { label: "DIFC", url: "https://www.difc.ae/" },
+      { label: "ADGM", url: "https://www.adgm.com/" },
+    ],
+    currency: "AED",
+    privacyLaw: "UAE PDPL; DIFC and ADGM rules in free zones",
+    languages: "Arabic and English (right-to-left)",
+    cities: ["Dubai", "Abu Dhabi", "Sharjah"],
+    seo: {
+      title: "App & Web Development Company in Dubai & the UAE | Kurchu",
+      description:
+        "Mobile app development, web development and SEO for UAE businesses — Arabic and right-to-left apps, UAE PDPL-ready builds and local payment gateways.",
+    },
+    hero: {
+      eyebrow: "App & web development · United Arab Emirates",
+      lines: ["Apps, websites", "and SEO for", "UAE businesses."],
+      lede: "A senior product team for founders and operators in Dubai, Abu Dhabi and across the Emirates — Arabic and right-to-left from day one, built for UAE data protection law, and just one hour ahead of your working day.",
+      meta: ["Only 1 hour from UAE time", "Arabic & right-to-left built in", "Proposals priced in AED or USD"],
+    },
+    timeZone: {
+      zone: "GST (UTC+4)",
+      difference: "Lahore is just 1 hour ahead of the UAE, with no daylight-saving changes on either side.",
+      callWindow: "Our working day overlaps almost all of yours, Monday to Friday.",
+    },
+    compliance: [
+      "UAE PDPL (Federal Decree-Law No. 45 of 2021) — consent, data-subject rights and breach handling",
+      "DIFC and ADGM data protection rules for free-zone companies",
+      "UAE hosting for health data and other sectors with data-residency rules",
+      "UAE PASS sign-in for products that need verified identity",
+    ],
+    payments: ["Network International, Telr and PayTabs", "Apple Pay and Google Pay", "Tabby and Tamara buy-now-pay-later", "VAT-aware pricing and receipts"],
+    localisation: ["Arabic and English with full right-to-left layouts", "Arabic typography, numerals and date formats done properly", "Store listings and SEO in both languages"],
+    faqs: [
+      {
+        q: "Do you build Arabic and right-to-left apps?",
+        a: "Yes. Right-to-left layouts, Arabic typography and bilingual content are designed in from the first wireframe rather than bolted on at the end. Icons, navigation and animations are mirrored correctly, Arabic numerals and dates are handled properly, and store listings are prepared in both languages. Every release is tested in Arabic and English on real devices before it reaches your customers.",
+      },
+      {
+        q: "Which UAE payment gateways do you integrate?",
+        a: "We integrate local gateways such as Network International, Telr and PayTabs, alongside Apple Pay and Google Pay, which are widely used across the Emirates. Buy-now-pay-later options such as Tabby and Tamara can be added for higher-value purchases, and pricing and receipts are VAT-aware. During discovery we recommend the combination that best suits your customers, your average order value and your settlement needs.",
+      },
+      {
+        q: "How do you handle UAE data protection?",
+        a: "We design consent, data-subject rights and breach handling around the UAE Personal Data Protection Law, or around DIFC and ADGM rules if your company is registered in those free zones. Where sector rules require data to stay in the country, such as health information, we host it in the UAE. Legal sign-off should come from your adviser, supported by our documentation.",
+      },
+    ],
+  },
+];
+
+export function getRegion(slug: string) {
+  return regions.find((region) => region.slug === slug);
+}
+
+export const regionPath = (region: Region) => `/locations/${region.slug}`;
+
+/** The market as it reads mid-sentence: "the UK", "the US", "Canada", "the UAE". */
+export const regionPhrase = (region: Region) => (region.slug === "canada" ? "Canada" : `the ${region.short}`);
+
+/** "UK, USA, Canada and UAE" — for meta descriptions and copy. */
+export const marketsSentence = "the UK, USA, Canada and UAE";
+
+/**
+ * hreflang map shared by every market page: each lists all four variants plus
+ * x-default, which is required for Google to trust the annotations.
+ */
+export function regionLanguageAlternates(): Record<string, string> {
+  return {
+    ...Object.fromEntries(regions.map((region) => [region.hreflang, regionPath(region)])),
+    "x-default": "/locations",
+  };
+}

@@ -5,10 +5,11 @@ import { serviceLines } from "@/app/lib/services";
 import { SectionHead, rv } from "./ui";
 
 /** Hub-and-spoke links from /services to each service line page. */
-export function ServiceLines() {
+/** `schema` is off on pages that already describe their own Service node (the market pages). */
+export function ServiceLines({ schema = true }: { schema?: boolean }) {
   return (
     <section className="section svl" id="service-lines" aria-labelledby="svl-title">
-      <JsonLd data={serviceListJsonLd(serviceLines)} />
+      {schema && <JsonLd data={serviceListJsonLd(serviceLines)} />}
       <div className="wrap">
         <SectionHead
           eyebrow="Service lines"
@@ -35,7 +36,7 @@ export function ServiceLines() {
                   ))}
                 </ul>
                 <span className="svl-go">
-                  Explore {service.label.toLowerCase()}
+                  Explore {service.label}
                   <svg viewBox="0 0 16 16" aria-hidden="true">
                     <path d="M3 8h10M9 4l4 4-4 4" />
                   </svg>

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import JsonLd from "@/app/components/shared/JsonLd";
-import { breadcrumbJsonLd } from "@/app/lib/jsonld";
-import { breadcrumbTrail } from "@/app/lib/routes";
+import { breadcrumbJsonLd, webPageJsonLd, type PageType } from "@/app/lib/jsonld";
+import { breadcrumbTrail, getRoute } from "@/app/lib/routes";
 import { Arr, inquiry } from "./ui";
 
 type Props = {
@@ -15,15 +15,20 @@ type Props = {
   meta: string[];
   cta: { label: string; preset?: Record<string, string | string[]> };
   secondary?: { href: string; label: string };
+  /** schema.org page type, e.g. "AboutPage" or "CollectionPage" for hubs. */
+  pageType?: PageType;
+  lang?: string;
 };
 
 /** Top-of-page hero for the inner pages — the page's only <h1>. */
-export function PageHero({ path, eyebrow, lines, lede, meta, cta, secondary }: Props) {
+export function PageHero({ path, eyebrow, lines, lede, meta, cta, secondary, pageType, lang }: Props) {
   const trail = breadcrumbTrail(path);
+  const updated = getRoute(path)?.lastModified;
 
   return (
     <section className="ph" aria-labelledby="page-title">
       <JsonLd data={breadcrumbJsonLd(path)} />
+      <JsonLd data={webPageJsonLd({ path, name: trail.at(-1)?.name ?? "", type: pageType, lang, dateModified: updated })} />
       <div className="hero-bg" aria-hidden="true"></div>
       <div className="wrap">
         <nav className="ph-crumb hero-fade" aria-label="Breadcrumb">
@@ -38,6 +43,14 @@ export function PageHero({ path, eyebrow, lines, lede, meta, cta, secondary }: P
                 <span aria-hidden="true">/</span>
               </Fragment>
             ),
+          )}
+          {updated && (
+            <span className="ph-updated">
+              Updated{" "}
+              <time dateTime={updated}>
+                {new Date(`${updated}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
+              </time>
+            </span>
           )}
         </nav>
         <div className="ph-grid">

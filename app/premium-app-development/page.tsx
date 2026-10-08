@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { companyFacts, companySummary } from "@/app/lib/facts";
 import { faqs } from "./data";
 import { Engagement } from "./components/Engagement";
 import { Engineering } from "./components/Engineering";
@@ -11,6 +12,7 @@ import { IdeaToProduct } from "./components/IdeaToProduct";
 import { PremiumShell } from "./components/PremiumShell";
 import { Process } from "./components/Process";
 import { Services } from "./components/Services";
+import { Summary } from "./components/Summary";
 import { Technology } from "./components/Technology";
 import { Testimonials } from "./components/Testimonials";
 import { Trust } from "./components/Trust";
@@ -21,7 +23,7 @@ import { Work } from "./components/Work";
 // service line pages, so the homepage does not compete with them.
 const title = "Kurchu Software Solutions — App, Web & Software Development";
 const description =
-  "Kurchu designs, engineers and launches mobile apps, websites and web platforms for founders and operating teams — senior-led from Lahore for clients worldwide, with SEO built in.";
+  "Kurchu designs, engineers and launches mobile apps, websites and web platforms — senior-led from Lahore for clients in the UK, USA, Canada and UAE.";
 
 export const metadata: Metadata = {
   title,
@@ -55,6 +57,15 @@ export default function PremiumAppDevelopmentPage() {
       />
       <Hero />
       <Trust />
+      <Summary
+        title={
+          <>
+            Kurchu <em>at a glance.</em>
+          </>
+        }
+        answer={companySummary}
+        facts={companyFacts}
+      />
       <Services />
       <IdeaToProduct />
       <Work />

@@ -32,7 +32,7 @@ export default function RelatedServices({ current }: { current: string }) {
               >
                 <h3 className="text-[17px] font-semibold text-[#0b1220] group-hover:text-[#1470c4]">{s.name}</h3>
                 <p className="mt-2 text-[14px] leading-6 text-black/55">{s.description}</p>
-                <span className="mt-5 text-[13.5px] font-semibold text-[#1470c4]">Explore {s.label.toLowerCase()} →</span>
+                <span className="mt-5 text-[13.5px] font-semibold text-[#1470c4]">Explore {s.label} →</span>
               </Link>
             </li>
           ))}

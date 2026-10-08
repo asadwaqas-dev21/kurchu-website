@@ -6,7 +6,7 @@
 import type { ServiceLine } from "./jsonld";
 
 export type ServiceLineDetail = ServiceLine & {
-  /** Short label for cards and links. */
+  /** Short label for links, written as it should appear mid-sentence ("Explore mobile apps"). */
   label: string;
   points: string[];
   /** Blog category whose posts belong to this service line. */
@@ -15,7 +15,7 @@ export type ServiceLineDetail = ServiceLine & {
 
 export const serviceLines: ServiceLineDetail[] = [
   {
-    label: "Mobile apps",
+    label: "mobile apps",
     name: "Mobile App Development",
     path: "/mobile-app-development",
     serviceType: "Mobile application development",
@@ -25,7 +25,7 @@ export const serviceLines: ServiceLineDetail[] = [
     blogCategory: "Mobile apps",
   },
   {
-    label: "Websites",
+    label: "websites",
     name: "Web Development",
     path: "/web-development",
     serviceType: "Web development",
@@ -40,7 +40,7 @@ export const serviceLines: ServiceLineDetail[] = [
     path: "/seo-services",
     serviceType: "Search engine optimization",
     description:
-      "Technical, local and on-page SEO with content strategy, so the right customers find you on Google in Pakistan and international markets.",
+      "Technical, local and on-page SEO with content strategy, so the right customers find you on Google in the UK, USA, Canada and UAE.",
     points: ["Technical SEO", "Local SEO", "Content strategy"],
     blogCategory: "SEO",
   },

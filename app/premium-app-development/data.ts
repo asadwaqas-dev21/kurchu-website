@@ -1,5 +1,6 @@
 /** Copy for the repeated blocks on the page. */
 
+import { regionPath, regions } from "@/app/lib/regions";
 import { siteConfig } from "@/app/lib/site-config";
 
 export const email = siteConfig.contact.email;
@@ -282,43 +283,43 @@ export const testimonials = [
 export const faqs = [
   {
     q: "How much does it cost to build an app?",
-    a: "It depends on scope, platforms and integrations, so we don't quote blind. As a guide, focused MVPs typically start in the mid five figures and full platforms run into six. After a short call we send a written scope with a fixed price for the first phase.",
+    a: "It depends on scope, platforms and integrations, so we never quote blind. As a guide, focused MVPs typically start in the mid five figures, while full platforms with several apps and an admin panel run into six. After a short discovery call we send a written scope with a fixed price for the first phase, so you know the commitment before any work begins.",
   },
   {
     q: "How long does a mobile app take?",
-    a: "Most MVPs take 12–16 weeks from discovery to store launch. Larger platforms take 5–9 months, usually released in phases so real users arrive well before the full scope is done.",
+    a: "Most MVPs take 12–16 weeks from discovery to store launch, with design and engineering overlapping so the first installable build arrives early. Larger platforms with several apps and an admin panel take five to nine months. Those are usually released in phases, so real users arrive and give feedback long before the full scope is finished, and priorities can shift with evidence.",
   },
   {
     q: "Native or cross-platform?",
-    a: "Native (Swift, Kotlin) when the product leans heavily on device features, performance or platform conventions. Cross-platform (Flutter, React Native) when reaching both stores quickly with one team matters more. We recommend one in writing, with the trade-offs explained.",
+    a: "Native Swift and Kotlin suit products that lean heavily on device features, demanding animation, top performance or strict platform conventions. Cross-platform Flutter or React Native suits products that need to reach both stores quickly with one team and one codebase. We recommend one approach in writing during strategy, with the costs and trade-offs of each option explained, so the final decision is yours.",
   },
   {
     q: "Can you build an MVP first?",
-    a: "Yes — it's how most of our engagements start. We define the smallest product that tests your riskiest assumption, build it to production standard, and architect it so version two extends rather than replaces it.",
+    a: "Yes — it is how most of our engagements start. We define the smallest product that tests your riskiest assumption, build it to production standard rather than as a throwaway prototype, and architect it so version two extends it instead of replacing it. You launch sooner, learn from real users, and spend the larger budget only once the idea has earned it.",
   },
   {
     q: "Can you improve an existing app?",
-    a: "We start with a fixed-price, two-week audit of code, architecture and UX. You get a prioritised report and a phased plan. We favour incremental migration over risky big-bang rewrites.",
+    a: "Yes. We start with a fixed-price, two-week audit of your code, architecture and user experience. You receive a prioritised report of what to keep, what to fix and what to rebuild, plus a phased plan with clear costs and timelines. We favour incremental migration over risky big-bang rewrites, so your app keeps serving customers and earning revenue while it steadily improves.",
   },
   {
     q: "Do you design the UX/UI as well?",
-    a: "Yes. Research, user flows, prototypes and visual design are done in-house by designers who work in the same sprints as our engineers. We can also work from your existing designs or design system.",
+    a: "Yes. User research, flows, prototypes and visual design are done in-house by designers who work in the same sprints as our engineers, so nothing is lost in a hand-off. Key journeys are tested with real users before engineering starts. We can also work from your existing designs or design system and extend it wherever the product needs new screens or flows.",
   },
   {
     q: "Who owns the source code?",
-    a: "You do. All code, designs and documentation are assigned to you, and repositories live in your accounts from day one — not ours.",
+    a: "You do. All code, designs and documentation are assigned to you, and the repositories, cloud accounts and app store listings live in your own accounts from day one rather than ours. If you ever move to an in-house team or another partner, everything they need is already in your hands, with documentation written so a new engineer can start quickly.",
   },
   {
     q: "Do you publish the app to the stores?",
-    a: "Yes. We prepare listings, screenshots, privacy declarations and review notes, and submit under your developer accounts. We also handle any reviewer questions until the app is live.",
+    a: "Yes. We prepare the store listings, screenshots, privacy declarations and review notes, then submit the app under your own Apple and Google developer accounts. We answer reviewer questions and handle any rejections until the app is approved and live. Releases go out as phased rollouts with crash monitoring and analytics running, so any problems reach a small share of users first.",
   },
   {
     q: "What happens after launch?",
-    a: "Most clients keep us on a monthly plan for monitoring, OS updates and new releases. If you're building an in-house team, we hand over with documentation and paired onboarding.",
+    a: "Most clients keep us on a monthly plan covering monitoring, operating-system updates, bug fixes and new releases, with a monthly product review to decide what to build next. If you are building an in-house team instead, we hand over the codebase with full documentation and paired onboarding sessions, so your engineers can take ownership confidently without a long and costly ramp-up period.",
   },
   {
     q: "How do you communicate during development?",
-    a: "A shared Slack channel, a named product lead, fortnightly demos with installable builds, and a written weekly summary of progress, decisions and risks. No status chasing required.",
+    a: "You get a shared Slack channel, a named product lead and a fortnightly demo with an installable build you can try on your own phone. Every week we also send a short written summary of progress, decisions made and risks to watch. Questions in the channel are answered within one working day, so you never need to chase anyone for a status update.",
   },
 ];
 
@@ -339,6 +340,13 @@ export const footerColumns: Array<{ title: string; links: Array<{ href: string; 
       { href: "/web-development", label: "Web development" },
       { href: "/seo-services", label: "SEO services" },
       { href: "/pricing", label: "Pricing" },
+    ],
+  },
+  {
+    title: "Markets",
+    links: [
+      ...regions.map((region) => ({ href: regionPath(region), label: region.name })),
+      { href: "/locations", label: "All locations" },
     ],
   },
   {

@@ -10,6 +10,10 @@ export function buildMetadata(opts: {
   description: string;
   path?: string;
   noIndex?: boolean;
+  /** hreflang → path for pages with regional variants (emits <link rel="alternate" hreflang>). */
+  languages?: Record<string, string>;
+  /** Open Graph locale, e.g. "en_GB" on the UK page. */
+  locale?: string;
 }): Metadata {
   const url = `${siteConfig.url}${opts.path ?? ""}`;
 
@@ -17,13 +21,13 @@ export function buildMetadata(opts: {
     title: opts.title,
     description: opts.description,
     metadataBase: new URL(siteConfig.url),
-    alternates: { canonical: opts.path ?? "/" },
+    alternates: { canonical: opts.path ?? "/", ...(opts.languages && { languages: opts.languages }) },
     openGraph: {
       title: opts.title,
       description: opts.description,
       url,
       siteName: siteConfig.name,
-      locale: "en_US",
+      locale: opts.locale ?? "en_US",
       type: "website",
     },
     twitter: {
