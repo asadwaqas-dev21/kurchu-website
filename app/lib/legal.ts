@@ -35,7 +35,7 @@ export const privacyPolicy: LegalDoc = {
       heading: "Information we collect",
       paragraphs: ["We only collect what we need to answer enquiries and run this website:"],
       bullets: [
-        "Enquiries you send us — your name, email address, company, phone number and anything you tell us about your project, budget or timeline. Our project-brief forms do not send this data to our servers: they open your own email app or WhatsApp with the message prepared, and the information reaches us when you choose to send it.",
+        "Enquiries you send us — your name, email address, company, phone number and anything you tell us about your project, budget or timeline. When you submit a project-brief form, your details are sent to our server and delivered to our inbox by our email provider, Resend. If that delivery fails, the form opens your own email app or WhatsApp with the message prepared instead.",
         "Conversations with our AI assistant — the messages you type and any images you attach are sent to Google's Gemini API to generate a reply. We do not keep a stored history of these chats on our servers. Please do not share sensitive personal information in the chat.",
         "Technical data — like most websites, our hosting provider records basic server logs (such as IP address, browser type and the pages requested) to keep the site secure and working.",
       ],
@@ -73,7 +73,7 @@ export const privacyPolicy: LegalDoc = {
       heading: "Who we share it with",
       paragraphs: ["We share personal information only with:"],
       bullets: [
-        "Service providers that help us operate — our email and messaging providers, our hosting provider and Google (for the AI assistant).",
+        "Service providers that help us operate — our email providers (including Resend, which delivers form submissions), WhatsApp, our hosting provider and Google (for the AI assistant).",
         "Professional advisers such as lawyers and accountants, where needed.",
         "Authorities, where the law requires it.",
         "A successor business, if our business is ever reorganised or sold, under the same protections.",

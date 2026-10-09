@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
-import { enquiryMailto, enquiryWhatsApp, type EnquiryFields } from "@/app/lib/enquiry";
+import { enquiryMailto, enquiryWhatsApp, submitEnquiry, type EnquiryFields } from "@/app/lib/enquiry";
 import { siteConfig } from "@/app/lib/site-config";
 import { Arr } from "./ui";
 
@@ -13,12 +13,15 @@ const BUDGETS = ["Under $25k", "$25k – $60k", "$60k – $150k", "$150k+", "Not
 type Errors = Partial<Record<"name" | "email", string>>;
 
 /**
- * Contact form. Hands the finished brief to the visitor's email app (or
- * WhatsApp) — see lib/enquiry.ts for why, and how to switch to a backend.
+ * Contact form. Sends the brief to /api/inquiry (emailed to the team via
+ * Resend); if that fails, hands it to the visitor's email app or WhatsApp.
  */
 export function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState<EnquiryFields | null>(null);
+  /** "delivered" = our server accepted it; "fallback" = handed to the visitor's email app. */
+  const [mode, setMode] = useState<"delivered" | "fallback">("delivered");
+  const [sending, setSending] = useState(false);
 
   function read(form: HTMLFormElement): EnquiryFields {
     const data = new FormData(form);
@@ -44,12 +47,17 @@ export function ContactForm() {
     return Object.keys(next).length === 0;
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fields = read(e.currentTarget);
+    const form = e.currentTarget;
+    const fields = read(form);
     if (!validate(fields)) return;
+    setSending(true);
+    const delivered = await submitEnquiry(fields, String(new FormData(form).get("website") ?? ""));
+    setSending(false);
+    setMode(delivered ? "delivered" : "fallback");
     setSent(fields);
-    window.location.href = enquiryMailto(fields);
+    if (!delivered) window.location.href = enquiryMailto(fields);
   }
 
   if (sent) {
@@ -60,6 +68,21 @@ export function ContactForm() {
             <path d="m5 12 5 5 9-10" />
           </svg>
         </div>
+        {mode === "delivered" ? (
+          <>
+            <h3>Thank you, {sent.name.split(" ")[0]} — we have your brief.</h3>
+            <p>
+              A senior member of the team will reply to <strong>{sent.email}</strong> within one working day with a few questions and
+              suggested times for a call. If you would rather talk sooner, message us on WhatsApp.
+            </p>
+            <div className="cf-acts">
+              <a className="btn btn-ghost" href={enquiryWhatsApp(sent)} target="_blank" rel="noopener">
+                Message us on WhatsApp
+              </a>
+            </div>
+          </>
+        ) : (
+          <>
         <h3>Your brief is ready, {sent.name.split(" ")[0]}.</h3>
         <p>
           Your email app should have opened with everything filled in — press <strong>send</strong> and a senior member of the team will
@@ -77,12 +100,19 @@ export function ContactForm() {
             Edit my brief
           </button>
         </div>
+          </>
+        )}
       </div>
     );
   }
 
   return (
     <form className="cf" onSubmit={onSubmit} noValidate aria-label="Project enquiry">
+      {/* Honeypot: hidden from people, filled in by spam bots. */}
+      <div className="cf-trap" aria-hidden="true">
+        <label htmlFor="cf-website">Website</label>
+        <input id="cf-website" name="website" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="fields">
         <div className={`field${errors.name ? " err" : ""}`}>
           <label htmlFor="cf-name">
@@ -137,11 +167,11 @@ export function ContactForm() {
         </div>
       </div>
       <div className="cf-acts">
-        <button type="submit" className="btn btn-primary">
-          Send my brief <Arr />
+        <button type="submit" className="btn btn-primary" disabled={sending}>
+          {sending ? "Sending…" : "Send my brief"} <Arr />
         </button>
         <p className="cf-fine">
-          Opens your email app with your brief ready to send. We reply within one working day. See our{" "}
+          Sent straight to our team. A senior member replies within one working day. See our{" "}
           <Link href="/privacy">privacy policy</Link>.
         </p>
       </div>

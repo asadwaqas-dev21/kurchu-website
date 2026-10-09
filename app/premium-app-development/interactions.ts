@@ -7,7 +7,7 @@
  * mount it repeatedly without leaking listeners).
  */
 
-import { enquiryMailto, enquiryWhatsApp } from "@/app/lib/enquiry";
+import { enquiryMailto, enquiryWhatsApp, submitEnquiry } from "@/app/lib/enquiry";
 
 type Preset = Record<string, string | string[] | undefined>;
 
@@ -450,15 +450,14 @@ export function initPremiumPage(root: HTMLElement): () => void {
     return ok;
   }
 
-  function submit() {
+  async function submit() {
     if (!validate()) return;
     const value = (id: string) => $<HTMLInputElement>(`#${id}`, form)!.value.trim();
     const data = {
       type: state.type, platform: state.platform, need: state.need, stage: state.stage, budget: state.budget, timeline: state.timeline,
       name: value("f-name"), email: value("f-email"), company: value("f-company"), details: value("f-details"),
     };
-    // No form backend yet: hand the finished brief to the visitor's email app
-    // (see lib/enquiry.ts to switch to a CRM or form endpoint).
+    // Send to /api/inquiry; if that fails, hand the brief to the visitor's email app.
     const enquiry = {
       name: data.name,
       email: data.email,
@@ -477,9 +476,27 @@ export function initPremiumPage(root: HTMLElement): () => void {
       .filter((c): c is string => !!c)
       .map((c) => `<span class="chip">${escapeHtml(c)}</span>`)
       .join("");
+    btnNext.disabled = true;
+    btnNext.firstChild!.nodeValue = "Sending… ";
+    const delivered = await submitEnquiry(enquiry);
+    btnNext.disabled = false;
+    const firstName = escapeHtml(data.name.split(" ")[0]);
+    const tick = '<div class="done" role="status"><div class="done-ic"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></div>';
+    if (delivered) {
+      form.innerHTML =
+        tick +
+        `<h3 class="qh" tabindex="-1">Thank you, ${firstName} — we have your brief.</h3>` +
+        `<p class="qhint">A senior member of the team will reply to <strong style="color:var(--text);font-weight:500">${escapeHtml(data.email)}</strong> within one working day with a few questions and suggested times for a call.</p>` +
+        `<div class="done-sum">${chips}</div></div>`;
+      foot.style.display = "none";
+      bar.style.width = "100%";
+      stepLabel.textContent = "Received";
+      $(".qh", form)!.focus();
+      return;
+    }
     form.innerHTML =
-      '<div class="done" role="status"><div class="done-ic"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></div>' +
-      `<h3 class="qh" tabindex="-1">Your brief is ready, ${escapeHtml(data.name.split(" ")[0])}.</h3>` +
+      tick +
+      `<h3 class="qh" tabindex="-1">Your brief is ready, ${firstName}.</h3>` +
       `<p class="qhint">Your email app should have opened with everything filled in — press <strong style="color:var(--text);font-weight:500">send</strong> and a senior member of the team will reply within one working day. If it didn't open, send it on WhatsApp instead.</p>` +
       `<div class="done-sum">${chips}</div>` +
       `<p style="margin-top:24px"><a class="btn btn-primary btn-sm" href="${enquiryWhatsApp(enquiry)}" target="_blank" rel="noopener">Send on WhatsApp</a></p></div>`;

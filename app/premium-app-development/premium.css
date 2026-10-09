@@ -1358,3 +1358,4 @@ body:has(.kp){padding-bottom:0;background:#09090A}
 .kp .legal-sections li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:var(--accent)}
 .kp .cf-fine a,.kp .dlg-foot .hint a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:1024px){.kp .legal-body{grid-template-columns:1fr}.kp .legal-toc{position:relative;top:0;padding:20px 22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}}
+.kp .cf-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
