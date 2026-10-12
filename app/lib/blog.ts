@@ -16,6 +16,8 @@ export type BlogSection = {
 export type BlogPost = {
   slug: string;
   title: string;
+  /** Shorter <title> when `title` runs past ~60 characters and Google would cut it off. */
+  seoTitle?: string;
   excerpt: string;
   category: string;
   date: string; // ISO date

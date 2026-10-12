@@ -5,6 +5,7 @@
  *  once in the root layout), so Google reads the site as one connected graph
  *  instead of unrelated snippets.
  * ──────────────────────────────────────────────*/
+import type { City } from "./cities";
 import { regionPhrase, regions, type Region } from "./regions";
 import { breadcrumbTrail } from "./routes";
 import { siteConfig } from "./site-config";
@@ -87,6 +88,15 @@ export function regionalServiceJsonLd(region: Region, path: string) {
     provider: { "@id": ORGANIZATION_ID },
     areaServed: country(region),
     availableLanguage: ({ uae: ["English", "Arabic"], canada: ["English", "French"] } as Record<string, string[]>)[region.slug] ?? "English",
+  };
+}
+
+/** A city page's Service node: app development for one city, inside its country. */
+export function cityServiceJsonLd(city: City, region: Region, path: string) {
+  return {
+    ...regionalServiceJsonLd(region, path),
+    name: `Mobile app development in ${city.name}`,
+    areaServed: { "@type": "City", name: city.name, containedInPlace: country(region) },
   };
 }
 

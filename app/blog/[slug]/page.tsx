@@ -21,7 +21,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">) {
   const post = getPost(slug);
   if (!post) return {};
   return buildMetadata({
-    title: `${post.title} | Kurchu`,
+    title: post.seoTitle ?? (post.title.length > 51 ? post.title : `${post.title} | Kurchu`),
     description: post.excerpt,
     path: `/blog/${post.slug}`,
   });
@@ -64,7 +64,15 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
     isPartOf: { "@id": WEBSITE_ID },
     author: { "@id": ORGANIZATION_ID },
     publisher: { "@id": ORGANIZATION_ID },
-    ...(relatedService && { about: { "@id": `${siteConfig.url}${relatedService.path}#service` } }),
+    // The Service node lives on its own page; type, name and url let this page's graph stand alone.
+    ...(relatedService && {
+      about: {
+        "@type": "Service",
+        "@id": `${siteConfig.url}${relatedService.path}#service`,
+        name: relatedService.name,
+        url: `${siteConfig.url}${relatedService.path}`,
+      },
+    }),
   };
 
   return (

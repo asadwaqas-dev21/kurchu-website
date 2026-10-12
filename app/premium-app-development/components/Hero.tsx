@@ -10,11 +10,11 @@ export function Hero() {
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <span className="pill-tag hero-fade">
-            <span className="dot"></span>Mobile software solutions · iOS, Android &amp; cross-platform
+            <span className="dot"></span>Mobile app development company · iOS, Android &amp; cross-platform
           </span>
           <h1 className="h1" id="hero-title">
             <span className="ln">
-              <span>Mobile products,</span>
+              <span>Mobile apps,</span>
             </span>
             <span className="ln">
               <span>designed and</span>

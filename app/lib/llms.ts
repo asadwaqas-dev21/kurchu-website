@@ -3,6 +3,7 @@
  *  AI assistants. Built from the same data as the pages, so it never drifts.
  * ──────────────────────────────────────────────*/
 import { posts } from "./blog";
+import { cities, cityPath, citiesIn } from "./cities";
 import { companyFacts, companySummary } from "./facts";
 import { regionPath, regions } from "./regions";
 import { serviceLines } from "./services";
@@ -39,6 +40,9 @@ export function llmsTxt() {
       (r) => `- [${r.name}](${url(regionPath(r))}): ${r.privacyLaw}; ${r.languages}; ${r.timeZone.difference}`,
     ),
     "",
+    "## Cities",
+    ...cities.map((c) => `- [App development in ${c.name}](${url(cityPath(c))}): ${c.answer}`),
+    "",
     "## Company",
     ...company.map(([name, path, desc]) => `- [${name}](${url(path)}): ${desc}`),
     "",
@@ -64,6 +68,19 @@ export function llmsFullTxt() {
     `- Localisation & accessibility: ${r.localisation.join("; ")}`,
     "",
     ...r.faqs.flatMap((f) => [`**${f.q}**`, f.a, ""]),
+    ...citiesIn(r).flatMap((c) => [
+      `#### ${c.name} (${url(cityPath(c))})`,
+      "",
+      c.context,
+      "",
+      `- Time zone: ${c.timeZone.difference} ${c.timeZone.callWindow}`,
+      `- Sectors: ${c.sectors.join("; ")}`,
+      `- Laws & rules: ${c.rules.join("; ")}`,
+      `- Payments & integrations: ${c.integrations.join("; ")}`,
+      `- Apps commonly built: ${c.appIdeas.map((idea) => `${idea.title} (${idea.desc})`).join("; ")}`,
+      "",
+      ...c.faqs.flatMap((f) => [`**${f.q}**`, f.a, ""]),
+    ]),
   ]);
 
   return [

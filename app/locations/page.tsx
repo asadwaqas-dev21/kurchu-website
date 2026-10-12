@@ -1,6 +1,7 @@
 import type { Viewport } from "next";
 import { buildMetadata } from "@/app/lib/metadata";
 import { regionLanguageAlternates, regions } from "@/app/lib/regions";
+import { CityIndex } from "@/app/premium-app-development/components/Cities";
 import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
 import { Markets, MarketsTable } from "@/app/premium-app-development/components/Markets";
 import { PageHero } from "@/app/premium-app-development/components/PageHero";
@@ -9,7 +10,7 @@ import { PremiumShell } from "@/app/premium-app-development/components/PremiumSh
 
 // Hub of the four market pages and their hreflang x-default.
 export const metadata = buildMetadata({
-  title: "Mobile App Development for the UK, USA, Canada & UAE | Kurchu",
+  title: "App Development for the UK, USA, Canada & UAE | Kurchu",
   description:
     "iOS, Android and cross-platform apps for businesses in the UK, USA, Canada and UAE — planned around each market's privacy law, payments and time zone.",
   path: "/locations",
@@ -49,6 +50,7 @@ export default function LocationsPage() {
         }
       />
       <MarketsTable />
+      <CityIndex />
       <FinalCta />
     </PremiumShell>
   );

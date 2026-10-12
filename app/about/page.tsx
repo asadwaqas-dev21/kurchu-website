@@ -11,7 +11,7 @@ import { Trust } from "@/app/premium-app-development/components/Trust";
 import { WhyUs } from "@/app/premium-app-development/components/WhyUs";
 
 export const metadata = buildMetadata({
-  title: "About Kurchu Software Solutions | Senior App Development Team",
+  title: "About Kurchu | Senior Mobile App Development Team",
   description:
     "A small, senior team of product strategists, designers and engineers. The people you meet in the first call are the people who build your app.",
   path: "/about",

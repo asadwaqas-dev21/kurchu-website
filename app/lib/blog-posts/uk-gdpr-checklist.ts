@@ -120,6 +120,7 @@ export const ukGdprChecklist: BlogPost = {
   ],
   relatedLinks: [
     { href: "/locations/uk", label: "App development for UK businesses" },
+    { href: "/locations/uk/london", label: "App development in London" },
     { href: "/privacy", label: "How Kurchu handles your data" },
     { href: "/technology", label: "Our engineering and security standards" },
   ],

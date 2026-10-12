@@ -12,7 +12,7 @@ import { serviceJsonLd } from "@/app/lib/jsonld";
 import { getServiceLine } from "@/app/lib/services";
 
 export const metadata = buildMetadata({
-  title: "Mobile App Development Company — UK, USA, Canada & UAE | Kurchu",
+  title: "Mobile App Development Company | iOS & Android | Kurchu",
   description:
     "Custom iOS and Android app development with Flutter, Firebase and Supabase for businesses in the UK, USA, Canada and UAE — from UX to launch and support.",
   path: "/mobile-app-development",

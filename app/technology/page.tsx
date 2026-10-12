@@ -7,7 +7,7 @@ import { PremiumShell } from "@/app/premium-app-development/components/PremiumSh
 import { Technology } from "@/app/premium-app-development/components/Technology";
 
 export const metadata = buildMetadata({
-  title: "Technology & Engineering Standards | Kurchu Software Solutions",
+  title: "Technology & Engineering Standards | Kurchu",
   description:
     "Swift, Kotlin, Flutter and React Native apps on typed APIs, PostgreSQL and managed cloud — with CI, automated tests, security checks and phased rollouts.",
   path: "/technology",

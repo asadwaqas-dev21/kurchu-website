@@ -12,7 +12,7 @@ export const siteConfig = {
 
   /** Replace with genuine contact info */
   contact: {
-    email: "info@thekurchu.com",
+    email: "info@kurchu.com",
     whatsapp: "+923028207226",
     phone: "+923028207226",
     /** Phone number as shown on the page. */

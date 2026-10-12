@@ -35,11 +35,14 @@ export type Region = {
   payments: string[];
   localisation: string[];
   faqs: Array<{ q: string; a: string }>;
+  /** Blog slugs linked from the market and city pages, most relevant first. */
+  guides: string[];
 };
 
 export const regions: Region[] = [
   {
     slug: "uk",
+    guides: ["uk-gdpr-checklist-for-mobile-apps", "how-long-does-it-take-to-build-an-mvp", "how-to-choose-an-app-development-company"],
     name: "United Kingdom",
     short: "UK",
     hreflang: "en-GB",
@@ -103,6 +106,7 @@ export const regions: Region[] = [
   },
   {
     slug: "usa",
+    guides: ["flutter-vs-react-native", "how-long-does-it-take-to-build-an-mvp", "how-to-choose-an-app-development-company"],
     name: "United States",
     short: "US",
     hreflang: "en-US",
@@ -171,6 +175,7 @@ export const regions: Region[] = [
   },
   {
     slug: "canada",
+    guides: ["flutter-vs-react-native", "how-long-does-it-take-to-build-an-mvp", "how-to-choose-an-app-development-company"],
     name: "Canada",
     short: "Canada",
     hreflang: "en-CA",
@@ -185,7 +190,7 @@ export const regions: Region[] = [
     languages: "English and French",
     cities: ["Toronto", "Vancouver", "Montreal", "Calgary"],
     seo: {
-      title: "Mobile App Development Company for Canadian Businesses | Kurchu",
+      title: "App Development Company for Canadian Businesses | Kurchu",
       description:
         "iOS and Android app development for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
     },
@@ -238,6 +243,7 @@ export const regions: Region[] = [
   },
   {
     slug: "uae",
+    guides: ["arabic-rtl-app-development-uae", "how-long-does-it-take-to-build-an-mvp", "how-to-choose-an-app-development-company"],
     name: "United Arab Emirates",
     short: "UAE",
     hreflang: "en-AE",

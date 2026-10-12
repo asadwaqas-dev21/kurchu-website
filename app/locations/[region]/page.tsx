@@ -4,6 +4,7 @@ import JsonLd from "@/app/components/shared/JsonLd";
 import { faqPageJsonLd, regionalServiceJsonLd } from "@/app/lib/jsonld";
 import { buildMetadata } from "@/app/lib/metadata";
 import { getRegion, regionLanguageAlternates, regionPath, regionPhrase, regions } from "@/app/lib/regions";
+import { CityLinks, Guides } from "@/app/premium-app-development/components/Cities";
 import { Engagement } from "@/app/premium-app-development/components/Engagement";
 import { Faq } from "@/app/premium-app-development/components/Faq";
 import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
@@ -69,7 +70,18 @@ export default async function RegionPage(props: PageProps<"/locations/[region]">
         ]}
       />
       <MarketDetails region={region} />
+      <CityLinks
+        region={region}
+        eyebrow={`Cities in ${regionPhrase(region)}`}
+        title={
+          <>
+            App development <em>city by city.</em>
+          </>
+        }
+        lede={`Local sectors, rules and integrations for each city we work with in ${regionPhrase(region)}.`}
+      />
       <Engagement />
+      <Guides slugs={region.guides} place={regionPhrase(region)} />
       <Faq
         items={region.faqs}
         eyebrow={`FAQ · ${region.short}`}

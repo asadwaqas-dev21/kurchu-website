@@ -3,6 +3,7 @@ import type { BlogPost } from "../blog";
 export const chooseAppDevelopmentCompany: BlogPost = {
   slug: "how-to-choose-an-app-development-company",
   title: "How to choose an app development company: 15 questions to ask",
+  seoTitle: "How to Choose an App Development Company: 15 Questions",
   excerpt:
     "Hiring an app agency is a big decision. These questions separate a reliable partner from an expensive mistake — with the answers you should listen for.",
   category: "Hiring",

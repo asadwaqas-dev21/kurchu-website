@@ -8,6 +8,7 @@
  * ──────────────────────────────────────────────*/
 import type { MetadataRoute } from "next";
 import { posts } from "./blog";
+import { cities, cityPath } from "./cities";
 import { regionLanguageAlternates, regionPath, regions } from "./regions";
 
 export type SiteRoute = {
@@ -26,6 +27,7 @@ export type SiteRoute = {
 const HOMEPAGE_REDESIGNED = "2026-10-07";
 const PAGES_REDESIGNED = "2026-10-08";
 const MARKETS_ADDED = "2026-10-08";
+const CITIES_ADDED = "2026-10-12";
 const CONTACT_REBUILT = "2026-10-08";
 const LEGAL_UPDATED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
@@ -47,6 +49,14 @@ export const routes: SiteRoute[] = [
     lastModified: MARKETS_ADDED,
     priority: 0.8,
     languages: regionLanguageAlternates(),
+  })),
+  // City pages under each market.
+  ...cities.map<SiteRoute>((city) => ({
+    path: cityPath(city),
+    name: city.name,
+    parent: `/locations/${city.region}`,
+    lastModified: CITIES_ADDED,
+    priority: 0.7,
   })),
 
   // Company.
