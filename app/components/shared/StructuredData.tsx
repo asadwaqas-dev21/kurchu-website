@@ -49,7 +49,9 @@ export default function StructuredData() {
       {
         "@type": "WebSite",
         "@id": WEBSITE_ID,
-        name: siteConfig.name,
+        // Google takes the site name shown in results from here; a short brand name is preferred.
+        name: siteConfig.shortName,
+        alternateName: [siteConfig.name, "kurchu.com"],
         url: siteConfig.url,
         inLanguage: "en",
         publisher: { "@id": ORGANIZATION_ID },
