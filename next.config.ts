@@ -12,10 +12,14 @@ const LEGACY_PAGES: Record<string, string> = {
   "crm-solutions": "/services",
   payments: "/services",
   compare: "/services",
+  industries: "/services",
+  support: "/contact",
   "case-studies": "/work",
   download: "/",
   author: "/about",
   "blog/small-business-mobile-app-guide": "/blog",
+  "blog/page": "/blog",
+  tag: "/blog",
 };
 
 // That earlier site had untranslated /ar, /ur and /it copies of every page,
