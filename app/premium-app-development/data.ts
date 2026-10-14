@@ -10,8 +10,10 @@ export const navLinks = [
   { href: "/services", label: "Services", section: "services" },
   { href: "/work", label: "Work", section: "work" },
   { href: "/process", label: "Process", section: "process" },
+  { href: "/pricing", label: "Pricing", section: "pricing" },
   { href: "/technology", label: "Technology", section: "technology" },
   { href: "/about", label: "About", section: "about" },
+  { href: "/blog", label: "Blog", section: "blog" },
   { href: "/contact", label: "Contact", section: "contact" },
 ];
 
@@ -368,5 +370,92 @@ export const footerColumns: Array<{ title: string; links: Array<{ href: string; 
         .filter(([, href]) => href.startsWith("http"))
         .map(([name, href]) => ({ href, label: `${name[0].toUpperCase()}${name.slice(1)} ↗`, external: true })),
     ],
+  },
+];
+
+/* ── Pricing page ─────────────────────────────── */
+
+export const priceDrivers: Array<{ title: string; items: string[] }> = [
+  {
+    title: "Scope",
+    items: [
+      "Number of screens and user roles",
+      "iOS, Android or both — native or cross-platform",
+      "Admin panel or back-office tools",
+      "Offline mode and real-time features",
+    ],
+  },
+  {
+    title: "Integrations",
+    items: [
+      "Payments, subscriptions and payouts",
+      "Maps, location and booking",
+      "Your existing systems — CRM, ERP, POS",
+      "AI features and third-party APIs",
+    ],
+  },
+  {
+    title: "Requirements",
+    items: [
+      "Privacy law — UK GDPR, CCPA, PIPEDA, UAE PDPL",
+      "Regulated sectors — health, finance, children",
+      "Extra languages and right-to-left layouts",
+      "Security reviews and accessibility testing",
+    ],
+  },
+];
+
+export const quoteSteps = [
+  {
+    title: "Discovery call",
+    body: "A conversation about your goals, users, timeline and budget. No charge and no obligation — and if we are not the right fit, we will say so.",
+  },
+  {
+    title: "Written scope",
+    body: "Features, deliverables, timeline and a fixed price for the first phase, priced in GBP, USD, CAD or AED — so you know the commitment up front.",
+  },
+  {
+    title: "Approve and start",
+    body: "Work begins only once you approve the scope. Each later phase is priced the same way, using what the previous phase taught us.",
+  },
+];
+
+/** Running costs that sit outside any proposal; the client holds every account. */
+export const outsideCosts: Array<{ item: string; amount: string; note: string }> = [
+  { item: "Apple Developer Program", amount: "US$99 per year", note: "Needed to publish on the App Store; set up in your company's name." },
+  { item: "Google Play developer account", amount: "US$25 one-time", note: "Needed to publish on Google Play; set up in your company's name." },
+  { item: "Hosting and cloud services", amount: "Usage-based", note: "Billed by the provider to your account; we size it to your expected traffic." },
+  { item: "Third-party APIs", amount: "Usage-based", note: "Maps, SMS, email, AI models and similar services, billed to you by each provider." },
+  { item: "Payment processing", amount: "Per transaction", note: "Fees charged by your payment provider or the app stores on each sale." },
+];
+
+export const pricingFaqs = [
+  {
+    q: "How much does it cost to build an app with Kurchu?",
+    a: "It depends on scope, platforms and integrations. As a guide, focused MVPs typically start in the mid five figures, while full platforms with several apps and an admin panel run into six. Every project starts with a written scope and a fixed price for the first phase, so you know the commitment before any work begins.",
+  },
+  {
+    q: "Do you charge by the hour?",
+    a: "No. MVPs are priced as fixed-scope phases, full platforms by milestone, dedicated teams as a monthly retainer, and app upgrades as a fixed-price two-week audit followed by fixed phases. You always know the price of the next piece of work before it starts, rather than watching hours accumulate.",
+  },
+  {
+    q: "Is the first call free?",
+    a: "Yes. The discovery call costs nothing and carries no obligation. We use it to understand your goals, users, timeline and budget, and to tell you honestly whether we are the right team. If we are, a written scope with a fixed price for the first phase follows.",
+  },
+  {
+    q: "What happens if the scope changes during the project?",
+    a: "Changes are normal once real users are involved. New requests are written up with their effect on price and timeline, and nothing outside the agreed scope is built until you approve it. Often a new idea can replace something lower-priority in the same phase, keeping the price unchanged.",
+  },
+  {
+    q: "Which currencies do you invoice in?",
+    a: "Proposals are priced in British pounds, US dollars, Canadian dollars or UAE dirhams, depending on where your business is based. UAE clients can also choose US dollars. The currency is fixed in the proposal, so the price you approve is the price you pay.",
+  },
+  {
+    q: "What costs are not included in your price?",
+    a: "Running costs that belong to you: the Apple Developer Program at US$99 a year, a one-time US$25 Google Play registration, hosting, third-party APIs such as maps, SMS or AI models, and payment processing fees. Every account is set up in your name, so you keep full control and ownership.",
+  },
+  {
+    q: "How much does maintenance cost after launch?",
+    a: "Most clients move to a monthly support plan covering monitoring, operating-system updates, bug fixes and new releases, with a monthly product review. The plan is priced to the size of the app and how often you want to release, and it is scoped near launch, once real usage shows what the app needs.",
   },
 ];

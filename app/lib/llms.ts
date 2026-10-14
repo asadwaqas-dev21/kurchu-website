@@ -18,7 +18,7 @@ const company = [
   ["Process", "/process", "The eight delivery stages, what each produces and how clients are involved."],
   ["Technology", "/technology", "Reference architecture and the engineering standard applied to every build."],
   ["About", "/about", "Who Kurchu is, how the team works and why clients choose it."],
-  ["Pricing", "/pricing", "How projects are priced and estimated."],
+  ["Pricing", "/pricing", "How projects are priced: fixed-price phases, milestones or a monthly team; running costs outside the price; pricing FAQ."],
   ["Contact", "/contact", "Start a project; replies within one working day."],
 ];
 

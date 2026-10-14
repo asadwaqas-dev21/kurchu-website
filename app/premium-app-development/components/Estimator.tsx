@@ -29,12 +29,12 @@ const features: Array<[string, string, boolean?]> = [
 ];
 
 /** Markup only — the scoring logic lives in interactions.ts. */
-export function Estimator() {
+export function Estimator({ eyebrow = "09 — Scope estimator" }: { eyebrow?: string }) {
   return (
     <section className="section" id="estimate" aria-labelledby="est-title" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <SectionHead
-          eyebrow="09 — Scope estimator"
+          eyebrow={eyebrow}
           titleId="est-title"
           title={
             <>

@@ -28,6 +28,7 @@ const HOMEPAGE_REDESIGNED = "2026-10-07";
 const PAGES_REDESIGNED = "2026-10-08";
 const MARKETS_ADDED = "2026-10-08";
 const CITIES_ADDED = "2026-10-12";
+const PRICING_REDESIGNED = "2026-10-13";
 const CONTACT_REBUILT = "2026-10-08";
 const LEGAL_UPDATED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
@@ -38,7 +39,7 @@ export const routes: SiteRoute[] = [
   // Services and the mobile app development detail page.
   { path: "/services", name: "Services", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.9 },
   { path: "/mobile-app-development", name: "Mobile App Development", parent: "/services", priority: 0.9 },
-  { path: "/pricing", name: "Pricing", parent: "/services", priority: 0.7 },
+  { path: "/pricing", name: "Pricing", parent: "/services", lastModified: PRICING_REDESIGNED, priority: 0.7 },
 
   // Target markets: a hub (hreflang x-default) and one page per region.
   { path: "/locations", name: "Locations", parent: "/", lastModified: MARKETS_ADDED, priority: 0.8, languages: regionLanguageAlternates() },

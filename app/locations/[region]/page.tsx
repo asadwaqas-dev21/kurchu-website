@@ -80,7 +80,7 @@ export default async function RegionPage(props: PageProps<"/locations/[region]">
         }
         lede={`Local sectors, rules and integrations for each city we work with in ${regionPhrase(region)}.`}
       />
-      <Engagement />
+      <Engagement eyebrow="Ways to work together" />
       <Guides slugs={region.guides} place={regionPhrase(region)} />
       <Faq
         items={region.faqs}

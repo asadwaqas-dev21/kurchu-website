@@ -8,8 +8,8 @@ import MobileBottomNav from "./components/MobileBottomNav";
 import HideOnRoutes from "./components/shared/HideOnRoutes";
 
 // Pages built on the dark premium design have their own nav and inquiry flow.
-const premiumRoutes = ["/", "/services", "/work", "/process", "/technology", "/about", "/contact", "/privacy", "/terms"];
-const premiumPrefixes = ["/premium-app-development", "/locations"];
+const premiumRoutes = ["/", "/services", "/work", "/process", "/technology", "/about", "/contact", "/pricing", "/privacy", "/terms"];
+const premiumPrefixes = ["/premium-app-development", "/locations", "/blog"];
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
