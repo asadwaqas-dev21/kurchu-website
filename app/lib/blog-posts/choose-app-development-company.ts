@@ -93,6 +93,10 @@ export const chooseAppDevelopmentCompany: BlogPost = {
   ],
   faqs: [
     {
+      q: "Should I hire an app developer or an app development company?",
+      a: "A freelance developer can suit a small, well-defined app when you can manage the project yourself. An app development company is safer when the app needs design, iOS and Android, a backend and long-term support, because one accountable team covers all of it. Either way, ask the questions in this guide before you hire an app developer, and make sure you will own the code and every account.",
+    },
+    {
       q: "How much should I budget for building an app?",
       a: "It depends on the number of screens, user roles, integrations and platforms, so be wary of anyone who quotes without asking about them. Ask for an itemised proposal with a fixed price for the first phase, and keep a contingency of around fifteen to twenty percent for changes. Phased delivery lets you launch a focused version first and invest more once it proves itself.",
     },

@@ -32,6 +32,7 @@ const CITIES_ADDED = "2026-10-12";
 const PRICING_REDESIGNED = "2026-10-13";
 const ESTIMATOR_ADDED = "2026-10-14";
 const APP_IDEAS_ADDED = "2026-10-15";
+const SERVICE_PAGE_REBUILT = "2026-10-16";
 const CONTACT_REBUILT = "2026-10-08";
 const LEGAL_UPDATED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
@@ -41,7 +42,7 @@ export const routes: SiteRoute[] = [
 
   // Services and the mobile app development detail page.
   { path: "/services", name: "Services", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.9 },
-  { path: "/mobile-app-development", name: "Mobile App Development", parent: "/services", priority: 0.9 },
+  { path: "/mobile-app-development", name: "Mobile App Development", parent: "/services", lastModified: SERVICE_PAGE_REBUILT, priority: 0.9 },
   { path: "/pricing", name: "Pricing", parent: "/services", lastModified: PRICING_REDESIGNED, priority: 0.7 },
   { path: "/app-cost-estimator", name: "App Cost Estimator", parent: "/pricing", lastModified: ESTIMATOR_ADDED, priority: 0.8 },
 

@@ -1,313 +1,404 @@
-import { buildMetadata } from "@/app/lib/metadata";
-import InnerLayout from "@/app/components/shared/InnerLayout";
-import Breadcrumbs from "@/app/components/shared/Breadcrumbs";
-import PageHero from "@/app/components/shared/PageHero";
-import SectionHeading from "@/app/components/shared/SectionHeading";
-import { CheckIcon } from "@/app/components/shared/ServiceCard";
-import TechStack from "@/app/components/shared/TechStack";
-import FAQSection from "@/app/components/shared/FAQSection";
-import CTASection from "@/app/components/shared/CTASection";
+import type { Viewport } from "next";
+import Link from "next/link";
 import JsonLd from "@/app/components/shared/JsonLd";
-import { serviceJsonLd } from "@/app/lib/jsonld";
+import { appIdeaPath, appIdeas } from "@/app/lib/app-ideas";
+import { MIN_PRICE, formatUsd, priceFor, type FeatureKey } from "@/app/lib/estimator";
+import { faqPageJsonLd, serviceJsonLd } from "@/app/lib/jsonld";
+import { buildMetadata } from "@/app/lib/metadata";
+import { PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 import { getServiceLine } from "@/app/lib/services";
+import { Guides } from "@/app/premium-app-development/components/Cities";
+import { Faq } from "@/app/premium-app-development/components/Faq";
+import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
+import { Markets } from "@/app/premium-app-development/components/Markets";
+import { PageHero } from "@/app/premium-app-development/components/PageHero";
+import { PremiumShell } from "@/app/premium-app-development/components/PremiumShell";
+import { Summary } from "@/app/premium-app-development/components/Summary";
+import { SectionHead, rv } from "@/app/premium-app-development/components/ui";
 
+// The primary commercial page: "custom mobile app development company / services".
 export const metadata = buildMetadata({
-  title: "Mobile App Development Company | iOS & Android | Kurchu",
-  description:
-    "Custom iOS and Android app development with Flutter, Firebase and Supabase for businesses in the UK, USA, Canada and UAE — from UX to launch and support.",
+  title: "Custom Mobile App Development Company | Kurchu",
+  description: `Custom mobile app development services for startups and businesses: iOS, Android, Flutter and React Native apps priced by scope from ${formatUsd(MIN_PRICE)}, with a free AI estimate.`,
   path: "/mobile-app-development",
 });
 
-/* ── Data ─────────────────────────────────────── */
+export const viewport: Viewport = { themeColor: "#09090A", viewportFit: "cover" };
 
-const appTypes = [
+const idea = (slug: string) => appIdeas.find((i) => i.slug === slug);
+
+/** First-release timelines across the App Ideas plans, from the pricing table — so this page can't contradict the estimator. */
+const mvpWeeks = appIdeas.map((i) => priceFor(i.mvp.map(([key]) => key as FeatureKey), "cross-platform", "template").weeks);
+const WEEKS = `${Math.min(...mvpWeeks.map((w) => w[0]))}–${Math.max(...mvpWeeks.map((w) => w[1]))} weeks`;
+
+const appTypes: Array<{ title: string; description: string; links?: Array<{ href: string; label: string }> }> = [
   {
-    title: "Business Applications",
-    description: "Custom apps that digitise core business workflows — staff management, client portals and service delivery tools.",
+    title: "Booking app development",
+    description: "Appointment booking apps for service businesses: real-time availability, reminders and deposits.",
+    links: [
+      { href: appIdeaPath(idea("salon-booking-app")!), label: "Salon booking app" },
+      { href: appIdeaPath(idea("doctor-appointment-app")!), label: "Clinic appointments" },
+    ],
   },
   {
-    title: "Booking Applications",
-    description: "Real-time scheduling, availability management, reminders and payment integration for service-based businesses.",
+    title: "Ordering & delivery app development",
+    description: "Restaurant ordering apps and delivery apps: menus or catalogues, checkout, live tracking and riders.",
+    links: [
+      { href: appIdeaPath(idea("food-delivery-app")!), label: "Food delivery app" },
+      { href: appIdeaPath(idea("grocery-delivery-app")!), label: "Grocery delivery app" },
+    ],
   },
   {
-    title: "Restaurant & Ordering Apps",
-    description: "Menu management, online ordering, table booking and kitchen display systems for hospitality businesses.",
+    title: "Marketplace apps",
+    description: "Listings, search, chat, payments and reviews connecting buyers and sellers.",
+    links: [{ href: appIdeaPath(idea("buy-sell-marketplace-app")!), label: "Buy & sell marketplace" }],
   },
   {
-    title: "Delivery Applications",
-    description: "Order tracking, driver assignment, route optimisation and customer notifications for logistics workflows.",
+    title: "E-commerce & loyalty apps",
+    description: "Fast checkout, drops, back-in-stock alerts, points and rewards for repeat customers.",
+    links: [{ href: appIdeaPath(idea("ecommerce-app")!), label: "E-commerce app" }],
   },
   {
-    title: "Marketplace Apps",
-    description: "Multi-vendor platforms connecting buyers and sellers with listings, payments and review systems.",
+    title: "Transport & field apps",
+    description: "Live maps, dispatch, driver or technician flows and proof of delivery.",
+    links: [{ href: appIdeaPath(idea("taxi-booking-app")!), label: "Taxi & ride-hailing app" }],
   },
   {
-    title: "Customer Loyalty Apps",
-    description: "Points, rewards, push notification campaigns and engagement analytics to increase repeat business.",
+    title: "Education & membership apps",
+    description: "Parents, students or members in one place — schedules, payments, content and messages.",
+    links: [
+      { href: appIdeaPath(idea("school-management-app")!), label: "School management app" },
+      { href: appIdeaPath(idea("fitness-coaching-app")!), label: "Fitness coaching app" },
+    ],
   },
   {
-    title: "Internal Operations Apps",
-    description: "Field service tools, inventory management, reporting dashboards and team communication for internal teams.",
+    title: "Custom business apps",
+    description: "Client portals, staff tools, inventory and reporting that digitise how your business works.",
+    links: [{ href: appIdeaPath(idea("real-estate-app")!), label: "Real estate app" }],
   },
   {
-    title: "MVP Development",
-    description: "Focused first releases that validate a product idea with real users before committing to a full feature set.",
+    title: "MVP app development",
+    description: "A focused first release that proves the idea with real users before the full build.",
+    links: [{ href: "/blog/how-long-does-it-take-to-build-an-mvp", label: "How long an MVP takes" }],
   },
 ];
 
-const backendFeatures = [
-  "User authentication",
-  "Cloud databases",
-  "REST and GraphQL APIs",
-  "Admin dashboards",
-  "Payment processing",
-  "Push notifications",
+const platforms = [
+  {
+    name: "iOS app development",
+    tech: "Swift · SwiftUI",
+    when: "Your audience is mostly on iPhone, or the product leans on Apple-only features.",
+  },
+  {
+    name: "Android app development",
+    tech: "Kotlin · Jetpack Compose",
+    when: "Your audience is mostly on Android — common in Pakistan, India and many emerging markets.",
+  },
+  {
+    name: "Flutter app development",
+    tech: "Dart · one codebase",
+    when: "You need iOS and Android quickly from one team, with a highly custom interface.",
+  },
+  {
+    name: "React Native development",
+    tech: "TypeScript · one codebase",
+    when: "You want iOS and Android from one codebase and already work with React on the web.",
+  },
+];
+
+const backend = [
+  "Authentication and user roles",
+  "Cloud databases and REST or GraphQL APIs",
+  "Admin dashboards for your team",
+  "Payments, subscriptions and payouts",
+  "Push notifications, email and SMS",
+  "Maps, location and live tracking",
   "File uploads and storage",
-  "Analytics and event tracking",
-  "Maps and location services",
-  "Third-party API integrations",
-  "Firebase backend services",
-  "Supabase backend services",
+  "Firebase or Supabase backends",
+  "Integrations with CRMs, ERPs and POS systems",
 ];
 
-const processSteps = [
-  { title: "Product Discovery", description: "Understand the problem the app should solve, the users and the business model." },
-  { title: "Feature Scope", description: "Define what the first version includes and what can wait for a future release." },
-  { title: "UX & UI Design", description: "Design the user experience, navigation and visual interface across all key screens." },
-  { title: "Development", description: "Build the app, backend services and admin tools in iterative development sprints." },
-  { title: "Testing", description: "Device testing, performance profiling, edge-case handling and accessibility checks." },
-  { title: "Store Preparation", description: "Prepare App Store and Google Play listings, screenshots, descriptions and compliance." },
-  { title: "Launch", description: "Submit the app for review, manage the release and configure production monitoring." },
-  { title: "Ongoing Development", description: "New features, performance improvements, user feedback and platform updates after launch." },
-];
-
-const existingAppSupport = [
+const existingApps = [
+  "Code, architecture and UX audit",
   "New feature development",
   "UI/UX improvements",
-  "Backend integrations",
-  "Flutter migration",
-  "Admin dashboard development",
-  "Ongoing maintenance",
-  "Performance improvements",
+  "Performance and stability fixes",
+  "Migration to Flutter or native",
+  "Ongoing maintenance and OS updates",
 ];
 
-const technologies = [
-  { name: "Flutter", description: "Cross-platform framework for building native Android and iOS apps from one codebase." },
-  { name: "Dart", description: "Strongly typed language optimised for building fast mobile interfaces." },
-  { name: "Firebase", description: "Authentication, cloud functions, real-time database and hosting from Google." },
-  { name: "Supabase", description: "Open-source backend with PostgreSQL, authentication and real-time subscriptions." },
-  { name: "REST APIs", description: "Standard API architecture for connecting apps to existing services and data." },
-  { name: "Google Play & App Store", description: "Store submission, listing optimisation and compliance management." },
+const launch = [
+  "App Store and Google Play listings and screenshots",
+  "Privacy declarations and review notes",
+  "Submission under your own developer accounts",
+  "Phased rollout with crash monitoring and analytics",
+  "Documentation and a clean handover",
+];
+
+const process = [
+  { title: "Discovery", body: "The problem, the users and the business model." },
+  { title: "Scope", body: "What the first version includes — and what can wait." },
+  { title: "UX & UI design", body: "Flows and screens you can click through before code." },
+  { title: "Development", body: "App, backend and admin tools in short sprints." },
+  { title: "Testing", body: "Real devices, edge cases and accessibility checks." },
+  { title: "Store preparation", body: "Listings, screenshots and compliance." },
+  { title: "Launch", body: "Submission, review and production monitoring." },
+  { title: "Growth", body: "New features driven by real usage." },
 ];
 
 const faqs = [
   {
+    q: "How much does a custom mobile app cost?",
+    a: `With Kurchu, ${PRICE_SCOPE}. ${PRICE_EXAMPLES} You can price your own idea in seconds with the free AI cost estimator; a written scope with a fixed price for the first phase follows a short discovery call.`,
+  },
+  {
+    q: "What is a typical mobile app development timeline?",
+    a: `It depends on scope. First releases of the apps in our App Ideas library are estimated at ${WEEKS} from discovery to store launch with one codebase for iOS and Android. Native apps for both platforms, or a custom design, add time; the estimator shows the timeline for your own feature list.`,
+  },
+  {
+    q: "How do you build an app for a business?",
+    a: "Start with the problem and the people who will use the app, then decide the smallest first release that solves it. From there: design the key screens, build the app and its admin tools, test on real devices, and launch to the App Store and Google Play. Our process covers each step with something you can review, and the AI cost estimator turns your idea into a feature list and price in seconds.",
+  },
+  {
     q: "Can one app work on Android and iPhone?",
-    a: "Yes. Using Flutter, we build from a single codebase that compiles to native Android and iOS applications. This reduces development time and cost while keeping smooth, native-feeling performance on both platforms. Where a product depends heavily on device-specific features, we may recommend fully native Swift and Kotlin instead, and we explain that recommendation and its costs in writing before you decide.",
+    a: "Yes. With Flutter or React Native, one codebase produces native-feeling apps for both Android and iOS, which reduces development time and cost. Where a product depends heavily on device-specific features, we may recommend fully native Swift and Kotlin instead, and explain that recommendation and its cost in writing before you decide.",
   },
   {
     q: "Do I need an admin dashboard?",
-    a: "Most apps that manage bookings, orders, content or users benefit from an admin dashboard. We build admin interfaces alongside the app, so your team can manage customers, update content, process orders and view reports without contacting a developer. Access is role-based, so staff only see what they need, and the dashboard works in any modern browser on desktop or tablet.",
+    a: "Most apps that manage bookings, orders, content or users benefit from one. We build admin interfaces alongside the app, so your team can manage customers, update content, process orders and view reports without contacting a developer. Access is role-based and the dashboard works in any modern browser.",
   },
   {
-    q: "Can you integrate the app with my website?",
-    a: "Yes. If you have an existing website, or are building one alongside the app, we can share authentication, data and APIs between both platforms. Customers then use one account everywhere, see the same orders and content on web and mobile, and enjoy a consistent experience. A single shared backend also means less duplicated work and lower long-term maintenance costs for your business.",
+    q: "Can you integrate the app with my website or existing systems?",
+    a: "Yes. The app can share accounts, data and APIs with your website, and connect to systems such as a CRM, ERP or point of sale. Customers use one account everywhere, and one shared backend means less duplicated work and lower long-term maintenance.",
   },
   {
-    q: "Can Kurchu assist with App Store and Google Play submission?",
-    a: "Yes. We prepare the store listings, screenshots, app descriptions and privacy policies, then handle the full submission process for both the App Store and Google Play. We also manage any reviewer feedback or compliance issues during approval and resubmit as needed. Submissions are made under your own developer accounts, so you keep full ownership of the app and its store listings.",
-  },
-  {
-    q: "How much does an app cost?",
-    a: "App costs depend on the number of screens, features, backend complexity and integrations required, so we never quote blind. We scope every project individually and provide a written proposal with clear, itemised pricing before any work begins. Projects are usually split into phases with a fixed price for each, so you can launch a focused first version and expand it later.",
+    q: "Do you publish the app to the App Store and Google Play?",
+    a: "Yes. We prepare listings, screenshots, descriptions and privacy declarations, handle submission and any reviewer feedback, and resubmit as needed. Everything is submitted under your own developer accounts, so you keep full ownership of the app and its store listings.",
   },
 ];
 
-/* ── Page ──────────────────────────────────────── */
-
 export default function MobileAppDevelopmentPage() {
+  const service = getServiceLine("/mobile-app-development");
   return (
-    <InnerLayout>
-      <Breadcrumbs path="/mobile-app-development" />
-      <JsonLd data={serviceJsonLd(getServiceLine("/mobile-app-development")!)} />
-
+    <PremiumShell current="services">
+      {service && <JsonLd data={serviceJsonLd(service)} />}
+      <JsonLd data={faqPageJsonLd(faqs)} />
       <PageHero
-        badge="Mobile App Development"
-        heading="Mobile apps designed around a real reason to exist."
-        description="When customers need frequent access, booking, ordering, notifications, location features or a dedicated digital experience, a mobile app can become an important part of the business. Kurchu designs and develops custom mobile applications for startups and established businesses."
-        primaryCta="Discuss Your App Idea"
-        primaryHref="/contact"
+        path="/mobile-app-development"
+        eyebrow="Mobile app development services"
+        lines={["Custom mobile app", "development for", <em key="em">startups & businesses.</em>]}
+        lede="iOS and Android apps — native, Flutter or React Native — taken from product strategy and UX through backend, testing, store launch and ongoing support by one senior team."
+        meta={["iOS · Android · Flutter · React Native", `Apps from ${formatUsd(MIN_PRICE)}, priced by scope`, "You own 100% of the code"]}
+        cta={{ label: "Start a Project" }}
+        secondary={{ href: "/app-cost-estimator", label: "Estimate my app free" }}
       />
 
-      {/* ── App Types Grid ────────────────────────── */}
-      <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <SectionHeading
-            heading="Types of apps we build"
-            description="Every app starts with a clear use case. We build mobile applications for businesses that need customers or teams to interact through a dedicated, always-available interface."
+      <Summary
+        title={
+          <>
+            Mobile app development services <em>with Kurchu.</em>
+          </>
+        }
+        answer={`Kurchu Software Solutions is a custom mobile app development company based in Lahore, Pakistan, building iOS, Android and cross-platform apps for startups and businesses in the US, UK, UAE and Canada. One senior team handles strategy, UX/UI, engineering, backend, testing and store launch. ${PRICE_SCOPE.charAt(0).toUpperCase()}${PRICE_SCOPE.slice(1)}, and clients own all of the code.`}
+        facts={[
+          ["Platforms", "iOS (Swift), Android (Kotlin), Flutter, React Native"],
+          ["Services", "Strategy, UX/UI, app & backend development, QA, store launch, support"],
+          ["Pricing", `From ${formatUsd(MIN_PRICE)}, priced by features, platforms and design`],
+          ["First release", `${WEEKS} for typical app types (one codebase)`],
+          ["Markets", "US, UK, UAE, Canada — working remotely from Lahore"],
+          ["Ownership", "All code, designs and accounts in your name"],
+        ]}
+      />
+
+      <section className="section mkt" id="app-types" aria-labelledby="app-types-title">
+        <div className="wrap">
+          <SectionHead
+            eyebrow="What we build"
+            titleId="app-types-title"
+            title={
+              <>
+                Apps for the way <em>your business works.</em>
+              </>
+            }
+            lede="Each type links to a worked plan with features, estimated cost, timeline and wireframes."
           />
-
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {appTypes.map((app) => (
-              <div
-                key={app.title}
-                className="flex flex-col rounded-2xl border border-black/[0.07] bg-white p-6 shadow-sm"
-              >
-                <h3 className="text-[16px] font-semibold text-[#0b1220]">{app.title}</h3>
-                <p className="mt-2 text-[13px] leading-5 text-black/55">{app.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Flutter Section ────────────────────────── */}
-      <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-[#0b1220] sm:text-[2.25rem]">
-                Cross-platform development with Flutter
-              </h2>
-              <p className="mt-4 max-w-md text-[15px] leading-7 text-black/55">
-                Flutter allows us to build Android and iOS applications from a single shared codebase. This means faster development, lower cost and consistent behaviour across devices — without sacrificing native performance.
-              </p>
-              <p className="mt-4 max-w-md text-[14px] leading-6 text-black/45">
-                Flutter is not always the right choice. For projects requiring deep native platform integration or highly platform-specific features, we recommend the most appropriate approach during discovery.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-black/[0.07] bg-[#fafbfc] p-8">
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { label: "One codebase", detail: "Shared code for Android and iOS" },
-                  { label: "Native performance", detail: "Compiled to native ARM code" },
-                  { label: "Fast iteration", detail: "Hot reload during development" },
-                  { label: "Lower cost", detail: "One team, one build, two platforms" },
-                ].map((item) => (
-                  <div key={item.label}>
-                    <p className="text-[15px] font-semibold text-[#0b1220]">{item.label}</p>
-                    <p className="mt-1 text-[12px] text-black/50">{item.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Backend & Integrations ─────────────────── */}
-      <section className="bg-[#fafbfc] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <SectionHeading
-            heading="Backend and integrations"
-            description="Most apps require server-side logic, data storage and third-party integrations. We build the backend alongside the app so everything works together."
-          />
-
-          <ul className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {backendFeatures.map((f) => (
-              <li key={f} className="flex items-start gap-2.5 text-[14px] text-black/60">
-                <CheckIcon />
-                {f}
+          <ul className="mkt-grid n4">
+            {appTypes.map((type, i) => (
+              <li key={type.title} {...rv(i % 4 ? `${((i % 4) * 0.05).toFixed(2)}s` : undefined)}>
+                <div className="mkt-card">
+                  <h3>{type.title}</h3>
+                  <p>{type.description}</p>
+                  {type.links && (
+                    <span className="mad-links">
+                      {type.links.map((link) => (
+                        <Link key={link.href} className="tlink" href={link.href}>
+                          {link.label}
+                        </Link>
+                      ))}
+                    </span>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* ── App Development Process ────────────────── */}
-      <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <SectionHeading
-            heading="App development process"
-            description="Structured stages from idea validation through store submission and ongoing development."
+      <section className="section mkt" id="platforms" aria-labelledby="platforms-title" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <SectionHead
+            eyebrow="Platforms"
+            titleId="platforms-title"
+            title={
+              <>
+                Native or cross-platform — <em>chosen for your product.</em>
+              </>
+            }
+            lede={
+              <>
+                We recommend one approach in writing, with the cost of each option. Still deciding? Read{" "}
+                <Link className="tlink" href="/blog/flutter-vs-react-native">
+                  Flutter vs React Native
+                </Link>{" "}
+                and{" "}
+                <Link className="tlink" href="/blog/flutter-vs-native-mobile-app">
+                  Flutter vs native
+                </Link>
+                .
+              </>
+            }
           />
-
-          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map((step, i) => (
-              <div key={step.title} className="border-t-2 border-[#0b1220] pt-5">
-                <span className="text-[12px] font-medium text-black/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 text-[17px] font-semibold text-[#0b1220]">{step.title}</h3>
-                <p className="mt-2 text-[13px] leading-5 text-black/55">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── MVP Section ────────────────────────────── */}
-      <section className="bg-[#0b1220] py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h2 className="max-w-md text-[2rem] leading-[1.15] font-semibold tracking-tight text-white sm:text-[2.25rem]">
-                Start with the features that prove the idea.
-              </h2>
-              <p className="mt-4 max-w-md text-[15px] leading-7 text-white/55">
-                Building every feature before launch is risky and expensive. A minimum viable product focuses on the core functionality that lets real users validate the concept. Kurchu helps define what belongs in the first release and what can be added once the idea is proven.
-              </p>
-              <a
-                href="/contact"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-[13.5px] font-medium text-[#0b1220] transition-colors hover:bg-white/90"
-              >
-                Discuss an MVP
-              </a>
-            </div>
-
-            <div className="rounded-xl bg-white/[0.04] p-6">
-              <p className="text-[13px] font-semibold text-white">Typical MVP scope</p>
-              <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                {["Core user flow", "Authentication", "Essential screens", "Backend API", "Admin basics", "Store submission"].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-[13px] leading-5 text-white/60">
-                    <CheckIcon light />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Existing App Support ───────────────────── */}
-      <section className="bg-white py-24 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <SectionHeading
-            heading="Existing app support"
-            description="Already have an app that needs improvement, new features or ongoing development? We take over existing projects and improve them."
-          />
-
-          <ul className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {existingAppSupport.map((f) => (
-              <li key={f} className="flex items-start gap-2.5 text-[14px] text-black/60">
-                <CheckIcon />
-                {f}
+          <ul className="mkt-grid n4">
+            {platforms.map((platform, i) => (
+              <li key={platform.name} {...rv(i ? `${(i * 0.05).toFixed(2)}s` : undefined)}>
+                <div className="mkt-card">
+                  <span className="mkt-code mono">{platform.tech}</span>
+                  <h3>{platform.name}</h3>
+                  <p>{platform.when}</p>
+                </div>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* ── Technology ─────────────────────────────── */}
-      <TechStack
-        heading="Technology"
-        description="We select technology based on each project's requirements. These are the tools we use most frequently for mobile app development."
-        technologies={technologies}
+      <section className="section mk" id="scope" aria-labelledby="scope-title" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <SectionHead
+            eyebrow="Scope & deliverables"
+            titleId="scope-title"
+            title={
+              <>
+                More than the app <em>on your phone.</em>
+              </>
+            }
+          />
+          <div className="mk-grid" {...rv()}>
+            {[
+              { title: "Backend & integrations", items: backend },
+              { title: "Existing app support", items: existingApps },
+              { title: "Store launch & handover", items: launch },
+            ].map((column) => (
+              <div className="mk-col" key={column.title}>
+                <h3>{column.title}</h3>
+                <ul>
+                  {column.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section mkt" id="process" aria-labelledby="process-title" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <SectionHead
+            eyebrow="How it works"
+            titleId="process-title"
+            title={
+              <>
+                From idea to store, <em>in eight steps.</em>
+              </>
+            }
+            lede={
+              <>
+                Every step ends with something you can review.{" "}
+                <Link className="tlink" href="/process">
+                  See the full process
+                </Link>
+                .
+              </>
+            }
+          />
+          <ol className="mkt-grid n4">
+            {process.map((step, i) => (
+              <li key={step.title} {...rv(i % 4 ? `${((i % 4) * 0.05).toFixed(2)}s` : undefined)}>
+                <div className="mkt-card">
+                  <span className="mkt-code mono">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section mkt" id="cost" aria-labelledby="cost-title" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <SectionHead
+            eyebrow="Cost"
+            titleId="cost-title"
+            title={
+              <>
+                Priced by scope, <em>never by the hour.</em>
+              </>
+            }
+            lede={`${PRICE_SCOPE.charAt(0).toUpperCase()}${PRICE_SCOPE.slice(1)}. ${PRICE_EXAMPLES}`}
+          />
+          <ul className="mkt-grid n3">
+            {[
+              { href: "/app-cost-estimator", code: "Free · 10 seconds", title: "AI cost estimator", body: "Describe your idea and get features, wireframes, a budget planner and a price." },
+              { href: "/app-ideas", code: `${appIdeas.length} app types`, title: "App ideas library", body: "Worked plans with features, cost and timeline for popular apps." },
+              { href: "/pricing", code: "How we price", title: "Pricing & running costs", body: "Engagement models, what drives the price and costs outside it." },
+            ].map((card, i) => (
+              <li key={card.href} {...rv(i ? `${(i * 0.06).toFixed(2)}s` : undefined)}>
+                <Link href={card.href} className="mkt-card">
+                  <span className="mkt-code mono">{card.code}</span>
+                  <h3>{card.title}</h3>
+                  <p>{card.body}</p>
+                  <span className="svl-go">Open →</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <Markets
+        eyebrow="Where we work"
+        title={
+          <>
+            Building for <em>four markets.</em>
+          </>
+        }
       />
 
-      {/* ── FAQ ────────────────────────────────────── */}
-      <FAQSection heading="App development FAQ" items={faqs} />
-
-      {/* ── Final CTA ──────────────────────────────── */}
-      <CTASection
-        heading="Have an app idea?"
-        description="Tell us what people should be able to do inside the application and what business problem you want it to solve."
-        ctaLabel="Request an App Consultation"
-        ctaHref="/contact"
-        dark
+      <Faq
+        items={faqs}
+        eyebrow="Mobile app development FAQ"
+        title={
+          <>
+            Questions, <em>answered.</em>
+          </>
+        }
       />
-    </InnerLayout>
+
+      <Guides slugs={["how-long-does-it-take-to-build-an-mvp", "flutter-vs-react-native", "how-to-choose-an-app-development-company"]} place="your business" />
+
+      <FinalCta />
+    </PremiumShell>
   );
 }

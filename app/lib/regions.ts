@@ -54,9 +54,9 @@ export const regions: Region[] = [
     languages: "English (British)",
     cities: ["London", "Manchester", "Birmingham", "Edinburgh"],
     seo: {
-      title: "Mobile App Development Company for UK Businesses | Kurchu",
+      title: "Mobile App Developers for UK Businesses | Kurchu",
       description:
-        "iOS and Android app development for UK businesses — UK GDPR-ready builds, UK payment integrations and calls inside UK business hours.",
+        "Mobile app developers for UK businesses — iOS and Android apps with UK GDPR-ready builds, UK payment integrations and calls inside UK business hours.",
     },
     hero: {
       eyebrow: "Mobile app development · United Kingdom",
@@ -122,9 +122,9 @@ export const regions: Region[] = [
     languages: "English (American)",
     cities: ["New York", "San Francisco", "Austin", "Chicago"],
     seo: {
-      title: "Mobile App Development Company for US Businesses | Kurchu",
+      title: "Mobile App Development Company for USA Businesses | Kurchu",
       description:
-        "iOS and Android app development for US startups and businesses — CCPA- and HIPAA-aware builds, US payment integrations and overlap with US hours.",
+        "Mobile app development company for USA startups and businesses — CCPA- and HIPAA-aware iOS and Android builds, US payments and overlap with US hours.",
     },
     hero: {
       eyebrow: "Mobile app development · United States",
@@ -190,9 +190,9 @@ export const regions: Region[] = [
     languages: "English and French",
     cities: ["Toronto", "Vancouver", "Montreal", "Calgary"],
     seo: {
-      title: "App Development Company for Canadian Businesses | Kurchu",
+      title: "Mobile App Development Services for Canada | Kurchu",
       description:
-        "iOS and Android app development for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
+        "Mobile app development services for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
     },
     hero: {
       eyebrow: "Mobile app development · Canada",
@@ -259,9 +259,9 @@ export const regions: Region[] = [
     languages: "Arabic and English (right-to-left)",
     cities: ["Dubai", "Abu Dhabi", "Sharjah"],
     seo: {
-      title: "Mobile App Development Company in Dubai & the UAE | Kurchu",
+      title: "Mobile App Development Company for Dubai & the UAE | Kurchu",
       description:
-        "iOS and Android app development for UAE businesses — Arabic and right-to-left apps, UAE PDPL-ready builds and local payment gateways.",
+        "Custom app development for UAE businesses — Arabic and right-to-left iOS and Android apps, UAE PDPL-ready builds and local payment gateways.",
     },
     hero: {
       eyebrow: "Mobile app development · United Arab Emirates",

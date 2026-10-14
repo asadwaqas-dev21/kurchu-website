@@ -1698,3 +1698,6 @@ body:has(.kp){padding-bottom:0;background:#09090A}
 .kp .ie-cost-tbl tfoot tr.is-total th,.kp .ie-cost-tbl tfoot tr.is-total td{font:500 17px/1.3 var(--f-display);color:var(--text);background:rgba(126,166,255,.08)}
 .kp .ie-cost-tbl tfoot tr.is-total td:nth-child(2){color:var(--accent)}
 @media print{.kp .ie-costs{background:#fff!important;border:1px solid rgba(0,0,0,.14)!important;break-inside:avoid}.kp .ie-costs .ie-choice{display:none}}
+
+/* Mobile app development page: links inside app-type cards */
+.kp .mad-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:auto;padding-top:12px;font-size:14px}

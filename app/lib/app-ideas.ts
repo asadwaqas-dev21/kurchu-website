@@ -393,7 +393,7 @@ export const appIdeas: AppIdea[] = [
     sampleName: "CareSlot",
     category: "Healthcare",
     intro:
-      "A doctor appointment app lets patients find a doctor, book an available slot and get reminders — while the clinic manages schedules, patient details and follow-ups from one dashboard.",
+      "A doctor appointment booking app lets patients find a doctor, book an available slot and get reminders — while the clinic manages schedules, patient details and follow-ups from one dashboard.",
     audience: "Clinics, hospitals, diagnostic centres and multi-doctor practices.",
     mvp: [
       ["accounts", "Patients keep appointments and details in one secure account."],
@@ -474,6 +474,94 @@ export const appIdeas: AppIdea[] = [
       {
         q: "Should a marketplace app take payments at launch?",
         a: "Many marketplaces launch with chat and meet-in-person deals, then add in-app payments once trust and volume grow. It keeps the first version cheaper and faster to launch.",
+      },
+    ],
+  },
+  {
+    slug: "tailor-shop-app",
+    name: "Tailor & alterations app",
+    sampleName: "Stitch Studio",
+    category: "Fashion & tailoring",
+    intro:
+      "A tailor app lets customers save their measurements, choose designs and fabrics, book fittings and follow each stitching order until it is ready for pickup — while the shop manages orders and deadlines in one place.",
+    audience: "Tailoring shops, boutiques, alteration services and made-to-measure brands.",
+    mvp: [
+      ["accounts", "Customers keep their orders and details in one account."],
+      ["profiles", "Saved measurements, so repeat orders need no re-measuring."],
+      ["listings", "A catalogue of designs, styles and fabrics to choose from."],
+      ["booking", "Book measurement and fitting appointments."],
+      ["push", "Order stages and 'ready for pickup' alerts."],
+      ["admin", "The shop tracks orders, deadlines and tailor workloads."],
+    ],
+    later: [
+      ["payments", "Advance payment when the order is placed."],
+      ["media", "Customers share reference photos of the style they want."],
+      ["chat", "Clarify design details without a shop visit."],
+      ["loyalty", "Rewards for repeat stitching orders."],
+    ],
+    standOut: [
+      "Store each customer's measurements so reorders take one tap.",
+      "Show every order's stage — cutting, stitching, finishing, ready.",
+      "Remind customers of seasonal deadlines, such as Eid or wedding orders.",
+    ],
+    launchTips: [
+      "Enter your regular customers' measurements first so they start with a full profile.",
+      "Share the app link on order receipts and WhatsApp.",
+      "Set honest delivery dates in busy seasons and stick to them.",
+    ],
+    questions: ["Do customers visit for measurements, or measure themselves?", "Do you need home delivery or pickup only?"],
+    faqs: [
+      {
+        q: "Can customers enter their own measurements in a tailor app?",
+        a: "Yes. The app can guide customers through self-measurement with diagrams, while the shop can mark measurements as verified after a fitting — so repeat orders use numbers the tailor trusts.",
+      },
+      {
+        q: "Can a tailor app handle busy seasons like Eid?",
+        a: "Yes. The dashboard shows every order's stage and deadline, so the shop can cap new orders per day, warn customers about cut-off dates and keep promised delivery dates realistic.",
+      },
+    ],
+  },
+  {
+    slug: "cleaning-service-app",
+    name: "Cleaning business app",
+    sampleName: "Sparkle Home",
+    category: "Home services",
+    intro:
+      "A cleaning service app lets customers book a clean, choose the service and time, pay online and rate the visit — while the business assigns cleaners, manages schedules and handles repeat bookings.",
+    audience: "Home and office cleaning companies, maid services and other home-service businesses.",
+    mvp: [
+      ["accounts", "Customers save addresses, preferences and past bookings."],
+      ["booking", "Pick the service, date and time slot."],
+      ["payments", "Pay online at booking or after the visit."],
+      ["roles", "Separate flows for customers and cleaners."],
+      ["push", "Booking confirmations, cleaner on the way and reminders."],
+      ["admin", "Assign cleaners, manage schedules, prices and areas."],
+    ],
+    later: [
+      ["subscriptions", "Weekly or monthly cleans billed automatically."],
+      ["reviews", "Ratings per visit keep quality consistent."],
+      ["maps", "Service areas and cleaner arrival on a map."],
+      ["chat", "Customers share access notes with the cleaner."],
+    ],
+    standOut: [
+      "Make repeat bookings automatic with a recurring schedule.",
+      "Send the cleaner's name and photo before every visit.",
+      "Price instantly by home size and add-ons, with no call needed.",
+    ],
+    launchTips: [
+      "Start with your busiest service areas and expand by postcode.",
+      "Move existing repeat customers onto recurring bookings first.",
+      "Ask for a rating after every visit and act on low scores the same day.",
+    ],
+    questions: ["Are cleaners employees or independent contractors?", "Do customers book one-off cleans, recurring cleans, or both?"],
+    faqs: [
+      {
+        q: "Can a cleaning app handle recurring bookings?",
+        a: "Yes. Customers choose a weekly, fortnightly or monthly schedule, and the app creates each visit automatically, assigns a cleaner and charges as agreed — the most valuable feature for repeat revenue.",
+      },
+      {
+        q: "How does a cleaning app assign cleaners?",
+        a: "The dashboard matches bookings to cleaners by area, availability and skills. Staff can reassign with a tap, and cleaners see their day's jobs, addresses and notes in their own view of the app.",
       },
     ],
   },

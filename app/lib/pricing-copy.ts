@@ -18,3 +18,9 @@ export const PRICE_SCOPE = `prices start from ${formatUsd(MIN_PRICE)} and grow w
 
 /** Two concrete examples from the App Ideas plans, as a full sentence. */
 export const PRICE_EXAMPLES = `For example, a salon booking app's first release is estimated at ${range(firstRelease("salon-booking-app"))}, and a food delivery app's at ${range(firstRelease("food-delivery-app"))}.`;
+
+/** "What does MVP development cost?" — from the same table. */
+export const MVP_COST_ANSWER = `It depends on what the first release must do: ${PRICE_SCOPE}. ${PRICE_EXAMPLES} The App Ideas library lists MVP development cost for ${appIdeas.length} popular app types, and the AI estimator prices your own idea.`;
+
+/** "What does booking app development cost?" — salon, clinic and cleaning plans. */
+export const BOOKING_COST_ANSWER = `Booking app development with Kurchu is priced from our feature table: a salon booking app's first release is estimated at ${range(firstRelease("salon-booking-app"))}, a clinic appointment app at ${range(firstRelease("doctor-appointment-app"))} and a cleaning business app at ${range(firstRelease("cleaning-service-app"))}. Calendars, reminders and an admin dashboard are included; extras such as loyalty or reviews add to the price.`;

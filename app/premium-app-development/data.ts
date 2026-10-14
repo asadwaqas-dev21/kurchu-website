@@ -1,6 +1,6 @@
 /** Copy for the repeated blocks on the page. */
 
-import { PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
+import { BOOKING_COST_ANSWER, MVP_COST_ANSWER, PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 import { regionPath, regions } from "@/app/lib/regions";
 import { siteConfig } from "@/app/lib/site-config";
 
@@ -434,8 +434,16 @@ export const outsideCosts: Array<{ item: string; amount: string; note: string }>
 
 export const pricingFaqs = [
   {
-    q: "How much does it cost to build an app with Kurchu?",
+    q: "How much does mobile app development cost?",
     a: `It depends on scope: ${PRICE_SCOPE}. ${PRICE_EXAMPLES} Every project starts with a written scope and a fixed price for the first phase, so you know the commitment before any work begins.`,
+  },
+  {
+    q: "What does MVP development cost?",
+    a: MVP_COST_ANSWER,
+  },
+  {
+    q: "What does booking app development cost?",
+    a: BOOKING_COST_ANSWER,
   },
   {
     q: "Do you charge by the hour?",
