@@ -20,6 +20,7 @@ export const siteConfig = {
   },
 
   social: {
+    facebook: "https://www.facebook.com/thekurchu/",
     linkedin: "#",
     github: "#",
   },
