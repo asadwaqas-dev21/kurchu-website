@@ -3,6 +3,7 @@
  *  AI assistants. Built from the same data as the pages, so it never drifts.
  * ──────────────────────────────────────────────*/
 import { posts } from "./blog";
+import { appIdeaPath, appIdeas } from "./app-ideas";
 import { cities, cityPath, citiesIn } from "./cities";
 import { companyFacts, companySummary } from "./facts";
 import { regionPath, regions } from "./regions";
@@ -19,6 +20,7 @@ const company = [
   ["Technology", "/technology", "Reference architecture and the engineering standard applied to every build."],
   ["About", "/about", "Who Kurchu is, how the team works and why clients choose it."],
   ["Pricing", "/pricing", "How projects are priced: fixed-price phases, milestones or a monthly team; running costs outside the price; pricing FAQ."],
+  ["AI app cost estimator", "/app-cost-estimator", "Describe an app idea; get an improved plan, features, advice and an estimated price from Kurchu's feature price table."],
   ["Contact", "/contact", "Start a project; replies within one working day."],
 ];
 
@@ -42,6 +44,10 @@ export function llmsTxt() {
     "",
     "## Cities",
     ...cities.map((c) => `- [App development in ${c.name}](${url(cityPath(c))}): ${c.answer}`),
+    "",
+    "## App ideas",
+    `- [App ideas library](${url("/app-ideas")}): Features, estimated cost and timeline for popular app types.`,
+    ...appIdeas.map((idea) => `- [${idea.name}](${url(appIdeaPath(idea))}): ${idea.intro}`),
     "",
     "## Company",
     ...company.map(([name, path, desc]) => `- [${name}](${url(path)}): ${desc}`),

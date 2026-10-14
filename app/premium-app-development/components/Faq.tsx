@@ -34,7 +34,11 @@ export function Faq({
             <a className="tlink" href={`mailto:${email}`}>
               {email}
             </a>{" "}
-            — a senior person replies within one working day.
+            — a senior person replies within one working day. Or{" "}
+            <button type="button" className="ask-link" data-ask-kurchu="">
+              ask our AI assistant
+            </button>{" "}
+            for a quick answer.
           </p>
         </div>
         <div className="faq-list" id="faqList" {...rv()}>

@@ -10,6 +10,7 @@
  *  says so plainly. Laws, regulators and time differences are general facts;
  *  lines about how Kurchu works are business commitments to confirm.
  * ──────────────────────────────────────────────*/
+import { PRICE_SCOPE } from "./pricing-copy";
 import { getRegion, type Region } from "./regions";
 
 export type City = {
@@ -47,8 +48,6 @@ const searchTerms = (city: string) => [
   `app development cost in ${city}`,
 ];
 
-const MID_FIVE_FIGURES =
-  "focused MVPs typically start in the mid five figures, while full platforms with several apps and an admin panel run into six";
 
 export const cities: City[] = [
   // ── United Kingdom ──────────────────────────────
@@ -99,7 +98,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does app development cost in London?",
-        a: `Central-London agencies charge some of the highest day rates in the UK. With us, ${MID_FIVE_FIGURES}. For London fintech, the biggest cost drivers are Open Banking integration, strong customer authentication and the audit trail regulators expect, so we price those as separate line items. You get a fixed GBP price for the first phase after a short discovery call.`,
+        a: `Central-London agencies charge some of the highest day rates in the UK. With us, ${PRICE_SCOPE}. For London fintech, the biggest cost drivers are Open Banking integration, strong customer authentication and the audit trail regulators expect, so we price those as separate line items. You get a fixed GBP price for the first phase after a short discovery call.`,
       },
       {
         q: "Can you build an Open Banking app for a London fintech?",
@@ -154,7 +153,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does a retail app cost to build in Manchester?",
-        a: `With us, ${MID_FIVE_FIGURES}. For a retail app, cost depends mostly on how much it shares with your existing store: reading products and orders from Shopify is quick, while custom loyalty rules, returns flows or a headless rebuild add weeks. We price each of those separately, in GBP, so you can launch lean and add the rest later.`,
+        a: `With us, ${PRICE_SCOPE}. For a retail app, cost depends mostly on how much it shares with your existing store: reading products and orders from Shopify is quick, while custom loyalty rules, returns flows or a headless rebuild add weeks. We price each of those separately, in GBP, so you can launch lean and add the rest later.`,
       },
       {
         q: "We already sell on Shopify. Do we need a mobile app?",
@@ -213,7 +212,7 @@ export const cities: City[] = [
       },
       {
         q: "What does a field-service app cost in Birmingham?",
-        a: `With us, ${MID_FIVE_FIGURES}. For field and warehouse apps, the cost is driven less by screens than by integration: two-way sync with your ERP, offline conflict handling and the number of user roles. We confirm what your systems support during discovery and give you a fixed GBP price for the first phase.`,
+        a: `With us, ${PRICE_SCOPE}. For field and warehouse apps, the cost is driven less by screens than by integration: two-way sync with your ERP, offline conflict handling and the number of user roles. We confirm what your systems support during discovery and give you a fixed GBP price for the first phase.`,
       },
       {
         q: "Can you build an app for field engineers that works without signal?",
@@ -272,7 +271,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does an app cost for an Edinburgh financial firm?",
-        a: `With us, ${MID_FIVE_FIGURES}. Financial-services apps cost more than consumer apps of the same size because of security work: multi-factor sign-in, encryption, penetration-test fixes and audit logging. We list those items separately in the GBP proposal so your risk team can see exactly what is included.`,
+        a: `With us, ${PRICE_SCOPE}. Financial-services apps cost more than consumer apps of the same size because of security work: multi-factor sign-in, encryption, penetration-test fixes and audit logging. We list those items separately in the GBP proposal so your risk team can see exactly what is included.`,
       },
       {
         q: "Does Scottish law change how my app handles personal data?",
@@ -333,7 +332,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does it cost to build an app in New York?",
-        a: `New York agency rates are among the highest in the US. With us, ${MID_FIVE_FIGURES}. For regulated New York companies, budget separately for the evidence compliance teams ask for — access reviews, encryption details and secure-development records — which we list as its own line in the USD proposal.`,
+        a: `New York agency rates are among the highest in the US. With us, ${PRICE_SCOPE}. For regulated New York companies, budget separately for the evidence compliance teams ask for — access reviews, encryption details and secure-development records — which we list as its own line in the USD proposal.`,
       },
       {
         q: "Can you build apps for NYDFS-regulated companies?",
@@ -388,7 +387,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does an MVP cost for a San Francisco startup?",
-        a: `With us, ${MID_FIVE_FIGURES}. If your MVP includes AI features, budget for ongoing model usage as well as the build — we set per-user cost caps and choose between hosted and on-device models so usage costs stay predictable. The first phase is a fixed USD price, agreed after a short discovery call.`,
+        a: `With us, ${PRICE_SCOPE}. If your MVP includes AI features, budget for ongoing model usage as well as the build — we set per-user cost caps and choose between hosted and on-device models so usage costs stay predictable. The first phase is a fixed USD price, agreed after a short discovery call.`,
       },
       {
         q: "Can you add AI features to our app?",
@@ -444,7 +443,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does app development cost in Austin?",
-        a: `With us, ${MID_FIVE_FIGURES}. In Texas, two features often change the budget: subscriptions, which need server-side receipt checks and a paywall you can test, and any biometric feature beyond the phone's own Face ID, which needs consent and retention flows under CUBI. We price both separately in USD.`,
+        a: `With us, ${PRICE_SCOPE}. In Texas, two features often change the budget: subscriptions, which need server-side receipt checks and a paywall you can test, and any biometric feature beyond the phone's own Face ID, which needs consent and retention flows under CUBI. We price both separately in USD.`,
       },
       {
         q: "What does the Texas Data Privacy and Security Act mean for my app?",
@@ -500,7 +499,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does an enterprise app cost in Chicago?",
-        a: `With us, ${MID_FIVE_FIGURES}. Enterprise apps cost more because of what sits behind them: single sign-on, role-based access, and integrations with Salesforce, an ERP or a telematics platform. Each integration is scoped and priced on its own in the USD proposal after we have seen your systems' documentation.`,
+        a: `With us, ${PRICE_SCOPE}. Enterprise apps cost more because of what sits behind them: single sign-on, role-based access, and integrations with Salesforce, an ERP or a telematics platform. Each integration is scoped and priced on its own in the USD proposal after we have seen your systems' documentation.`,
       },
       {
         q: "How do you handle BIPA if our app uses biometrics?",
@@ -561,7 +560,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does it cost to build an app in Toronto?",
-        a: `With us, ${MID_FIVE_FIGURES}. Toronto projects often add two cost items: Canadian data hosting with the access logging PHIPA expects for health apps, and Interac or Moneris alongside card payments. Both are priced separately in the CAD proposal, so you can see what compliance adds to the build.`,
+        a: `With us, ${PRICE_SCOPE}. Toronto projects often add two cost items: Canadian data hosting with the access logging PHIPA expects for health apps, and Interac or Moneris alongside card payments. Both are priced separately in the CAD proposal, so you can see what compliance adds to the build.`,
       },
       {
         q: "Does my health app need to follow PHIPA?",
@@ -620,7 +619,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does a multilingual app cost in Vancouver?",
-        a: `With us, ${MID_FIVE_FIGURES}. Each extra language adds translation, longer-string layout checks and testing on every release — non-Latin scripts such as Chinese or Gurmukhi need the most care. We price languages individually in CAD, so you can launch in English and add others as your audience grows.`,
+        a: `With us, ${PRICE_SCOPE}. Each extra language adds translation, longer-string layout checks and testing on every release — non-Latin scripts such as Chinese or Gurmukhi need the most care. We price languages individually in CAD, so you can launch in English and add others as your audience grows.`,
       },
       {
         q: "Which privacy law applies to a BC business: PIPA or PIPEDA?",
@@ -679,7 +678,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does a bilingual app cost in Montreal?",
-        a: `With us, ${MID_FIVE_FIGURES}. A French-first app adds professional translation, layouts that fit longer French strings and a second round of testing per release, and Law 25 adds a privacy impact assessment before data leaves Quebec. We list both in the CAD proposal so nothing arrives as a surprise.`,
+        a: `With us, ${PRICE_SCOPE}. A French-first app adds professional translation, layouts that fit longer French strings and a second round of testing per release, and Law 25 adds a privacy impact assessment before data leaves Quebec. We list both in the CAD proposal so nothing arrives as a surprise.`,
       },
       {
         q: "What does Quebec's Law 25 require from my app?",
@@ -738,7 +737,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does a field app cost in Calgary?",
-        a: `With us, ${MID_FIVE_FIGURES}. For field apps, offline sync with conflict handling, downloadable maps and integration with your asset-management system are the main cost drivers — the screens themselves are usually the smaller part. Each is scoped separately in the CAD proposal after discovery.`,
+        a: `With us, ${PRICE_SCOPE}. For field apps, offline sync with conflict handling, downloadable maps and integration with your asset-management system are the main cost drivers — the screens themselves are usually the smaller part. Each is scoped separately in the CAD proposal after discovery.`,
       },
       {
         q: "Can the app work on remote sites with no signal?",
@@ -800,7 +799,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does app development cost in Dubai?",
-        a: `Dubai agency quotes vary widely with team size and overheads. With us, ${MID_FIVE_FIGURES}. A bilingual Arabic–English app costs more than an English-only one because every screen is designed, written and tested in both directions, so we show that as its own line in the AED or USD proposal.`,
+        a: `Dubai agency quotes vary widely with team size and overheads. With us, ${PRICE_SCOPE}. A bilingual Arabic–English app costs more than an English-only one because every screen is designed, written and tested in both directions, so we show that as its own line in the AED or USD proposal.`,
       },
       {
         q: "Can you build an app for a DIFC-registered company?",
@@ -860,7 +859,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does app development cost in Abu Dhabi?",
-        a: `With us, ${MID_FIVE_FIGURES}. In Abu Dhabi, UAE PASS integration and UAE-hosted infrastructure are the usual extra items, and UAE PASS onboarding with the programme also affects the timeline, so we plan around its approval. Each is priced separately in AED or USD.`,
+        a: `With us, ${PRICE_SCOPE}. In Abu Dhabi, UAE PASS integration and UAE-hosted infrastructure are the usual extra items, and UAE PASS onboarding with the programme also affects the timeline, so we plan around its approval. Each is priced separately in AED or USD.`,
       },
       {
         q: "Can you build an app for an ADGM-registered company?",
@@ -916,7 +915,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does an app cost for a Sharjah SME?",
-        a: `With us, ${MID_FIVE_FIGURES}. Many Sharjah SMEs start smaller: one core flow such as ordering or booking, in Arabic and English, launched first and extended once customers use it. We give a fixed AED or USD price for that first phase, and tell you honestly if an existing platform would serve you better.`,
+        a: `With us, ${PRICE_SCOPE}. Many Sharjah SMEs start smaller: one core flow such as ordering or booking, in Arabic and English, launched first and extended once customers use it. We give a fixed AED or USD price for that first phase, and tell you honestly if an existing platform would serve you better.`,
       },
       {
         q: "Is a custom app worth it for a small Sharjah business?",

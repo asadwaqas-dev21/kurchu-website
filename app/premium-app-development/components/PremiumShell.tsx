@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import "../premium.css";
 import { fontVariables } from "../fonts";
+import { AskKurchu } from "./AskKurchu";
 import { Footer } from "./Footer";
 import { InquiryModal } from "./InquiryModal";
 import { Nav } from "./Nav";
@@ -37,6 +38,7 @@ export function PremiumShell({
       <main id="main">{children}</main>
       <Footer stickyCta={stickyCta} />
       <InquiryModal />
+      <AskKurchu />
     </PremiumRoot>
   );
 }

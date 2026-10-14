@@ -11,6 +11,7 @@ import { OutsideCosts, PriceDrivers, QuoteSteps } from "@/app/premium-app-develo
 import { PremiumShell } from "@/app/premium-app-development/components/PremiumShell";
 import { Summary } from "@/app/premium-app-development/components/Summary";
 import { models, pricingFaqs } from "@/app/premium-app-development/data";
+import { PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 
 export const metadata = buildMetadata({
   title: "App Development Pricing & Costs | Kurchu",
@@ -32,7 +33,7 @@ export default function PricingPage() {
         lede="No hourly billing and no open-ended estimates. Every project starts with a written scope and a fixed price for the first phase — so you know the commitment before you make it."
         meta={["Fixed price per phase", "Written scope first", "Priced in GBP, USD, CAD or AED"]}
         cta={{ label: "Get a Quote" }}
-        secondary={{ href: "#estimate", label: "Size your project" }}
+        secondary={{ href: "/app-cost-estimator", label: "Estimate my idea with AI" }}
       />
       <Summary
         title={
@@ -40,7 +41,7 @@ export default function PricingPage() {
             What an app costs <em>with Kurchu.</em>
           </>
         }
-        answer="Kurchu Software Solutions prices mobile app projects by phase, never by the hour. Focused MVPs typically start in the mid five figures and take 12–16 weeks; full platforms with several apps and an admin panel run into six figures over five to nine months. Each phase has a written scope and a fixed price, agreed before work begins, and the client owns all of the code."
+        answer={`Kurchu Software Solutions never charges by the hour: ${PRICE_SCOPE}. ${PRICE_EXAMPLES} Each phase has a written scope and a fixed price, agreed before work begins, and the client owns all of the code.`}
         facts={[
           ...models.map<[string, string]>((model) => [model.title, `${model.pricing} · ${model.timeline}`]),
           ["Currencies", "GBP, USD, CAD or AED"],

@@ -8,6 +8,7 @@
  * ──────────────────────────────────────────────*/
 import type { MetadataRoute } from "next";
 import { posts } from "./blog";
+import { appIdeaPath, appIdeas } from "./app-ideas";
 import { cities, cityPath } from "./cities";
 import { regionLanguageAlternates, regionPath, regions } from "./regions";
 
@@ -29,6 +30,8 @@ const PAGES_REDESIGNED = "2026-10-08";
 const MARKETS_ADDED = "2026-10-08";
 const CITIES_ADDED = "2026-10-12";
 const PRICING_REDESIGNED = "2026-10-13";
+const ESTIMATOR_ADDED = "2026-10-14";
+const APP_IDEAS_ADDED = "2026-10-15";
 const CONTACT_REBUILT = "2026-10-08";
 const LEGAL_UPDATED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
@@ -40,6 +43,17 @@ export const routes: SiteRoute[] = [
   { path: "/services", name: "Services", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.9 },
   { path: "/mobile-app-development", name: "Mobile App Development", parent: "/services", priority: 0.9 },
   { path: "/pricing", name: "Pricing", parent: "/services", lastModified: PRICING_REDESIGNED, priority: 0.7 },
+  { path: "/app-cost-estimator", name: "App Cost Estimator", parent: "/pricing", lastModified: ESTIMATOR_ADDED, priority: 0.8 },
+
+  // App Ideas Library: one static page per app type.
+  { path: "/app-ideas", name: "App Ideas", parent: "/", lastModified: APP_IDEAS_ADDED, priority: 0.8 },
+  ...appIdeas.map<SiteRoute>((idea) => ({
+    path: appIdeaPath(idea),
+    name: idea.name,
+    parent: "/app-ideas",
+    lastModified: APP_IDEAS_ADDED,
+    priority: 0.7,
+  })),
 
   // Target markets: a hub (hreflang x-default) and one page per region.
   { path: "/locations", name: "Locations", parent: "/", lastModified: MARKETS_ADDED, priority: 0.8, languages: regionLanguageAlternates() },

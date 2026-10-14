@@ -1,5 +1,6 @@
 /** Copy for the repeated blocks on the page. */
 
+import { PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 import { regionPath, regions } from "@/app/lib/regions";
 import { siteConfig } from "@/app/lib/site-config";
 
@@ -286,7 +287,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "How much does it cost to build an app?",
-    a: "It depends on scope, platforms and integrations, so we never quote blind. As a guide, focused MVPs typically start in the mid five figures, while full platforms with several apps and an admin panel run into six. After a short discovery call we send a written scope with a fixed price for the first phase, so you know the commitment before any work begins.",
+    a: `With Kurchu, ${PRICE_SCOPE}. ${PRICE_EXAMPLES} You can price your own idea in seconds with the AI cost estimator, and after a short discovery call we send a written scope with a fixed price for the first phase.`,
   },
   {
     q: "How long does a mobile app take?",
@@ -341,6 +342,8 @@ export const footerColumns: Array<{ title: string; links: Array<{ href: string; 
       { href: "/services", label: "All services" },
       { href: "/mobile-app-development", label: "Mobile app development" },
       { href: "/pricing", label: "Pricing" },
+      { href: "/app-cost-estimator", label: "AI cost estimator" },
+      { href: "/app-ideas", label: "App ideas library" },
     ],
   },
   {
@@ -432,7 +435,7 @@ export const outsideCosts: Array<{ item: string; amount: string; note: string }>
 export const pricingFaqs = [
   {
     q: "How much does it cost to build an app with Kurchu?",
-    a: "It depends on scope, platforms and integrations. As a guide, focused MVPs typically start in the mid five figures, while full platforms with several apps and an admin panel run into six. Every project starts with a written scope and a fixed price for the first phase, so you know the commitment before any work begins.",
+    a: `It depends on scope: ${PRICE_SCOPE}. ${PRICE_EXAMPLES} Every project starts with a written scope and a fixed price for the first phase, so you know the commitment before any work begins.`,
   },
   {
     q: "Do you charge by the hour?",
