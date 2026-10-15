@@ -485,18 +485,20 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
 .kp .hero-copy{position:relative;z-index:3;padding-bottom:clamp(24px,4vh,56px)}
 .kp .h1{margin:30px 0 30px;font:500 clamp(46px,5.3vw,86px)/.95 var(--f-display);letter-spacing:-.045em;text-wrap:balance}
 .kp .h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
-.kp .h1 .ln>span{display:block;transform:translate3d(0,108%,0);transition:transform 1.4s var(--ease)}
-.kp .h1 .ln:nth-child(2)>span{transition-delay:.08s}
-.kp .h1 .ln:nth-child(3)>span{transition-delay:.16s}
-.kp .h1 .ln:nth-child(4)>span{transition-delay:.24s}
-.kp.is-loaded .h1 .ln>span{transform:none}
+/* Hero entrance runs on first paint (no JavaScript needed), so the heading is visible to crawlers
+   and slow devices straight away and LCP is not held back by hydration. */
+@keyframes lnUp{from{transform:translate3d(0,108%,0)}to{transform:none}}
+@keyframes heroIn{from{opacity:0;transform:translate3d(0,16px,0)}to{opacity:1;transform:none}}
+.kp .h1 .ln>span{display:block;animation:lnUp 1s var(--ease) both}
+.kp .h1 .ln:nth-child(2)>span{animation-delay:.06s}
+.kp .h1 .ln:nth-child(3)>span{animation-delay:.12s}
+.kp .h1 .ln:nth-child(4)>span{animation-delay:.18s}
 .kp .h1 em{color:var(--accent-2);padding-right:.04em}
 .kp .hero-sub{max-width:47ch}
 .kp .hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:40px}
-.kp .hero-fade{opacity:0;transform:translate3d(0,16px,0);transition:opacity 1.2s var(--ease) .5s,transform 1.2s var(--ease) .5s}
-.kp .hero-fade.d2{transition-delay:.65s}
-.kp .hero-fade.d3{transition-delay:.8s}
-.kp.is-loaded .hero-fade{opacity:1;transform:none}
+.kp .hero-fade{animation:heroIn .9s var(--ease) .25s both}
+.kp .hero-fade.d2{animation-delay:.35s}
+.kp .hero-fade.d3{animation-delay:.45s}
 .kp .hero-stage{position:relative;height:clamp(540px,76vh,780px);perspective:2000px;perspective-origin:50% 42%}
 .kp .stage-glow{position:absolute;left:52%;top:50%;width:min(720px,110%);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(126,166,255,.2),rgba(126,166,255,.06) 55%,transparent 72%);pointer-events:none}
 .kp .stage-floor{position:absolute;left:4%;right:-6%;bottom:2%;height:120px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.75),transparent 70%);pointer-events:none}
@@ -1190,7 +1192,7 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
   html:has(.kp){scroll-behavior:auto}
   .kp *,.kp *::before,.kp *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
   .kp.js [data-reveal]{opacity:1;transform:none;clip-path:none}
-  .kp .h1 .ln>span,.kp .hero-fade{transform:none;opacity:1}
+  .kp .h1 .ln>span,.kp .hero-fade{transform:none;opacity:1;animation:none}
   .kp .cs-bg{transform:none}
   .kp .cs-in{transform:none;opacity:1}
   .kp .nv-line{stroke-dashoffset:0}
