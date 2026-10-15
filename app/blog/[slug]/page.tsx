@@ -135,6 +135,18 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
             </div>
           )}
 
+          {post.cta && (
+            <Link href={post.cta.href} className="art-next">
+              <span>
+                <b>{post.cta.title}</b>
+                {post.cta.body}
+              </span>
+              <span className="btn btn-primary btn-sm">
+                {post.cta.label} <Arr />
+              </span>
+            </Link>
+          )}
+
           <div className="legal-body">
             <aside className="art-side">
               <nav className="legal-toc art-toc" aria-label="In this article">

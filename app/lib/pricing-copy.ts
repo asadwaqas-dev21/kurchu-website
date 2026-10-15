@@ -19,6 +19,29 @@ export const PRICE_SCOPE = `prices start from ${formatUsd(MIN_PRICE)} and grow w
 /** Two concrete examples from the App Ideas plans, as a full sentence. */
 export const PRICE_EXAMPLES = `For example, a salon booking app's first release is estimated at ${range(firstRelease("salon-booking-app"))}, and a food delivery app's at ${range(firstRelease("food-delivery-app"))}.`;
 
+/** First-release timelines of every App Ideas plan (one codebase, ready-made design), shortest first. */
+const mvpPlans = appIdeas
+  .map((idea) => ({ idea, release: firstRelease(idea.slug)! }))
+  .sort((a, b) => a.release.weeks[0] - b.release.weeks[0] || a.release.weeks[1] - b.release.weeks[1]);
+
+/** "5–13 weeks" — the span of typical MVP timelines, from the price table. */
+export const MVP_WEEKS = `${Math.min(...mvpPlans.map((p) => p.release.weeks[0]))}–${Math.max(...mvpPlans.map((p) => p.release.weeks[1]))} weeks`;
+
+/** Table rows for "how long does an MVP take by app type": app, core features, weeks. */
+export const MVP_TIMELINE_ROWS = mvpPlans.map(({ idea, release }) => [
+  idea.name,
+  `${idea.mvp.length} core features`,
+  `${release.weeks[0]}–${release.weeks[1]} weeks`,
+]);
+
+/** Shortest and longest plans, for a one-sentence example. */
+export const MVP_WEEKS_EXAMPLE = (() => {
+  const first = mvpPlans[0];
+  const last = mvpPlans[mvpPlans.length - 1];
+  const weeks = (p: (typeof mvpPlans)[number]) => `${p.release.weeks[0]}–${p.release.weeks[1]} weeks`;
+  return `For example, a ${first.idea.name.toLowerCase()} is estimated at ${weeks(first)}, and a ${last.idea.name.toLowerCase()} at ${weeks(last)}.`;
+})();
+
 /** "What does MVP development cost?" — from the same table. */
 export const MVP_COST_ANSWER = `It depends on what the first release must do: ${PRICE_SCOPE}. ${PRICE_EXAMPLES} The App Ideas library lists MVP development cost for ${appIdeas.length} popular app types, and the AI estimator prices your own idea.`;
 

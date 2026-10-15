@@ -27,6 +27,8 @@ export type BlogPost = {
   sections: BlogSection[];
   /** Answer-first summary (40–70 words) shown under the title as "In short". */
   summary?: string;
+  /** Highlighted next step shown right under the summary — e.g. "see the timeline for your idea". */
+  cta?: { title: string; body: string; href: string; label: string };
   takeaways?: string[];
   /** FAQ answers are 60–65 words each and emitted as FAQPage schema. */
   faqs?: Array<{ q: string; a: string }>;

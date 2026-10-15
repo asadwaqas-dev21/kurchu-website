@@ -243,7 +243,7 @@ export const regions: Region[] = [
   },
   {
     slug: "uae",
-    guides: ["arabic-rtl-app-development-uae", "how-long-does-it-take-to-build-an-mvp", "how-to-choose-an-app-development-company"],
+    guides: ["add-tabby-tamara-to-mobile-app-uae", "arabic-rtl-app-development-uae", "how-long-does-it-take-to-build-an-mvp"],
     name: "United Arab Emirates",
     short: "UAE",
     hreflang: "en-AE",

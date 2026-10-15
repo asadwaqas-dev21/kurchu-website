@@ -92,7 +92,7 @@ export const routes: SiteRoute[] = [
     path: `/blog/${post.slug}`,
     name: post.title,
     parent: "/blog",
-    lastModified: post.date,
+    lastModified: post.updated ?? post.date,
     priority: 0.6,
     images: [post.image],
   })),
