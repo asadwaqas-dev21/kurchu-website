@@ -13,7 +13,7 @@
   --line-3:rgba(255,255,255,.2);
   --text:#F3F0EA;
   --text-2:#A6A7AC;
-  --text-3:#6C6E75;
+  --text-3:#7F8188;
   --accent:#7EA6FF;
   --accent-2:#B3C8FF;
   --accent-ink:#0A1430;
@@ -1701,3 +1701,39 @@ body:has(.kp){padding-bottom:0;background:#09090A}
 
 /* Mobile app development page: links inside app-type cards */
 .kp .mad-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:auto;padding-top:12px;font-size:14px}
+
+/* ── Performance ─────────────────────────────── */
+/* Hero idle sway runs as a compositor animation; JS (interactions.ts) only takes over while a mouse tilts it. */
+@keyframes heroSway{
+  0%,100%{transform:rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz))}
+  25%{transform:rotateX(calc(var(--rx) - 1deg)) rotateY(calc(var(--ry) + 2.6deg)) rotateZ(var(--rz))}
+  50%{transform:rotateX(calc(var(--rx) + .4deg)) rotateY(var(--ry)) rotateZ(var(--rz))}
+  75%{transform:rotateX(calc(var(--rx) + 1deg)) rotateY(calc(var(--ry) - 2.6deg)) rotateZ(var(--rz))}
+}
+.kp .stage-rig{--rx:7deg;--ry:-16deg;--rz:1.5deg;animation:heroSway 28s ease-in-out infinite}
+.kp .stage-rig.is-tracking{animation:none}
+@media (max-width:640px){.kp .stage-rig{--rx:6deg;--ry:-12deg;--rz:0deg}}
+@media (prefers-reduced-motion:reduce){.kp .stage-rig{animation:none}}
+
+/* Off-screen sections skip style, layout and paint until scrolled near. Sections that the scroll
+   scripts measure (hero, services, idea, gallery, process) are deliberately left out. */
+.kp :is(#work,#technology,#about,#engagement,#estimate,#faq,#contact),.kp .footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+@media print{.kp :is(#work,#technology,#about,#engagement,#estimate,#faq,#contact),.kp .footer{content-visibility:visible}}
+
+/* ── Performance, part 2 ─────────────────────── */
+/* Floating bars sit over scrolling content, so a live backdrop blur is redrawn every scroll frame.
+   A near-opaque fill looks the same on the dark design at a fraction of the cost. */
+.kp .mcta,.kp .ak-launch{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(22,22,26,.97)}
+
+/* Services only reacts to clicks, so it can skip rendering while off-screen at every size. */
+.kp #services{content-visibility:auto;contain-intrinsic-size:auto 1100px}
+
+/* Phones: the gallery's scroll script is off (interactions.ts, ≤640px), so it can render lazily too;
+   the hero keeps its centre phone only and stops the idle float. Desktop is unchanged. */
+@media (max-width:640px){
+  .kp #gallery{content-visibility:auto;contain-intrinsic-size:auto 760px}
+  .kp .hero .hp-l,.kp .hero .hp-r{display:none}
+  .kp .hero .flo,.kp .hero .fc-flo{animation:none}
+  .kp .stage-rig{animation:none}
+}
+@media print{.kp #services,.kp #gallery{content-visibility:visible}}

@@ -263,26 +263,11 @@ export const models = [
   },
 ];
 
-export const testimonials = [
-  {
-    quote: "They talked us out of two features in the first week. That decision saved us a month of build and gave us a cleaner launch.",
-    initials: "HB",
-    name: "Helena Brandt",
-    role: "COO · Logistics scale-up · Operations app",
-  },
-  {
-    quote: "Every Friday we had a build on our phones. As a non-technical founder, that's the first time I've always known exactly where a project stood.",
-    initials: "RM",
-    name: "Rami Mansour",
-    role: "Founder · Wellness booking · MVP",
-  },
-  {
-    quote: "Our in-house engineers took over the codebase after launch with almost no ramp-up. The documentation was better than our own.",
-    initials: "JO",
-    name: "Julia Okafor",
-    role: "VP Engineering · Retail group · App rebuild",
-  },
-];
+/**
+ * Client-approved quotes only. The testimonials section is hidden while this
+ * list is empty, and appears automatically once a real quote is added.
+ */
+export const testimonials: Array<{ quote: string; initials: string; name: string; role: string }> = [];
 
 export const faqs = [
   {

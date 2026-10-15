@@ -2,6 +2,8 @@ import { testimonials } from "../data";
 import { SectionHead, rv } from "./ui";
 
 export function Testimonials() {
+  // Hidden until there are client-approved quotes in data.ts.
+  if (testimonials.length === 0) return null;
   const delays = [undefined, ".08s", ".16s"];
   return (
     <section className="section" aria-labelledby="quotes-title" style={{ paddingTop: 0 }}>
@@ -35,7 +37,6 @@ export function Testimonials() {
             </figure>
           ))}
         </div>
-        <p className="label quotes-note">Sample testimonials — placeholders for client-approved quotes</p>
       </div>
     </section>
   );

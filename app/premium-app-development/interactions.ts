@@ -174,15 +174,22 @@ export function initPremiumPage(root: HTMLElement): () => void {
     let pointerActive = false;
     let heroFrame = 0;
 
-    const heroLoop = (t: number) => {
+    // The idle sway is a CSS animation (heroSway), which runs off the main thread. This loop only
+    // runs while a mouse tilts the rig, then hands back to CSS once it has eased back to rest.
+    const startLoop = () => {
+      if (!heroFrame && heroVisible && !reduce) heroFrame = requestAnimationFrame(heroLoop);
+    };
+    const heroLoop = () => {
       heroFrame = 0;
       if (!heroVisible || reduce) return;
-      if (!pointerActive) {
-        tx = Math.sin(t / 4200) * 0.22;
-        ty = Math.cos(t / 5300) * 0.14;
-      }
       cx += (tx - cx) * 0.055;
       cy += (ty - cy) * 0.055;
+      if (!pointerActive && Math.abs(cx) < 0.002 && Math.abs(cy) < 0.002) {
+        cx = cy = 0;
+        rig.style.transform = "";
+        rig.classList.remove("is-tracking");
+        return;
+      }
       const base = small.matches ? [6, -12, 0] : [7, -16, 1.5];
       rig.style.transform = `rotateX(${(base[0] - cy * 7).toFixed(3)}deg) rotateY(${(base[1] + cx * 12).toFixed(3)}deg) rotateZ(${base[2]}deg)`;
       heroFrame = requestAnimationFrame(heroLoop);
@@ -190,7 +197,7 @@ export function initPremiumPage(root: HTMLElement): () => void {
     observe(
       new IntersectionObserver((entries) => {
         heroVisible = entries[0].isIntersecting;
-        if (heroVisible && !reduce && !heroFrame) heroFrame = requestAnimationFrame(heroLoop);
+        if (heroVisible && rig.classList.contains("is-tracking")) startLoop();
       }),
       [hero],
     );
@@ -199,11 +206,13 @@ export function initPremiumPage(root: HTMLElement): () => void {
       listen(hero, "pointermove", (e: PointerEvent) => {
         if (e.pointerType !== "mouse") return;
         pointerActive = true;
+        rig.classList.add("is-tracking");
         const r = hero.getBoundingClientRect();
         tx = (e.clientX - r.left) / r.width - 0.5;
         ty = (e.clientY - r.top) / r.height - 0.5;
+        startLoop();
       });
-      listen(hero, "pointerleave", () => { pointerActive = false; tx = 0; ty = 0; });
+      listen(hero, "pointerleave", () => { pointerActive = false; tx = 0; ty = 0; startLoop(); });
       onScrollFns.push((y) => {
         if (y <= window.innerHeight * 1.2) stage.style.transform = `translate3d(0,${(y * 0.1).toFixed(1)}px,0)`;
       });

@@ -34,6 +34,23 @@ const LEGACY_PAGES: Record<string, string> = {
 const LEGACY_LOCALES = "ar|ur|it";
 
 const nextConfig: NextConfig = {
+  // Baseline security headers on every response. HSTS covers this host only (no includeSubDomains or
+  // preload), since browsers remember it for two years and that is hard to undo.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Strict-Transport-Security", value: "max-age=63072000" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       // The design was first built at this path; "/" now serves it, so send
