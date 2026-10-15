@@ -163,8 +163,8 @@ function lumenHome() {
   return (
     '<div class="ui s-lumen">' +
     statusBar() +
-    '<div class="lm-head"><div><small>Thursday, 12 November</small><h5>Good morning,<br>Daniel</h5></div><div class="lm-av">DW</div></div>' +
-    `<div class="lm-appt"><small>Next appointment · in 2h 15m</small><h6>Dr. Sara Malik</h6><p>Cardiology · Video consultation</p><div class="lm-row"><span>${ic("cal")}Thu 12</span><span>${ic("clock")}10:30</span><em>Join</em></div></div>` +
+    '<div class="lm-head"><div><small>Thursday, 12 November</small><div class="lm-hi">Good morning,<br>Daniel</div></div><div class="lm-av">DW</div></div>' +
+    `<div class="lm-appt"><small>Next appointment · in 2h 15m</small><div class="lm-dr">Dr. Sara Malik</div><p>Cardiology · Video consultation</p><div class="lm-row"><span>${ic("cal")}Thu 12</span><span>${ic("clock")}10:30</span><em>Join</em></div></div>` +
     `<div class="lm-vitals"><div><small>Heart rate</small><b>64 <span>bpm</span></b><svg viewBox="0 0 100 34"><path d="M0 20 H22 L27 8 L33 30 L38 14 L42 20 H60 L65 6 L71 30 L75 20 H100" fill="none" stroke="#1C5D58" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div><small>Sleep</small><b>7h 20m</b><div class="lm-bars">${bars}</div></div></div>` +
     '<div class="lm-sec"><b>Specialists for you</b><span>See all</span></div>' +
     '<ul class="lm-docs"><li><div class="lm-av" style="background:linear-gradient(135deg,#E8D5C4,#C9A88C)">AK</div><div><b>Dr. Amir Karimi</b><small>Dermatology · ★ 4.9</small></div><span>Today<br>16:00</span></li>' +
@@ -239,7 +239,7 @@ function moveMap() {
   return (
     `<div class="ui s-move"><div class="mv-map">${moveMapSvg(false)}</div><div class="mv-over">${statusBar()}` +
     '<div class="mv-search"><div><i></i><span><small>Pickup</small><b>12 Canal Street</b></span></div><div><i></i><span><small>Drop-off</small><b>Union Station</b></span></div></div>' +
-    '<div class="mv-sheet"><div class="mv-grab"></div><h6>Choose a ride</h6>' +
+    '<div class="mv-sheet"><div class="mv-grab"></div><div class="mv-title">Choose a ride</div>' +
     opt(true, "Move", "4 min away · 3 seats", "£14.20") +
     opt(false, "Comfort", "6 min · extra legroom", "£18.90") +
     opt(false, "XL", "9 min · 6 seats", "£24.10") +
@@ -270,7 +270,7 @@ function arcaDiscover() {
     '<div class="ui s-arca">' +
     statusBar() +
     `<div class="ar-top"><span class="ar-logo">ARCA</span><span>${ic("search")}${ic("bag")}</span></div>` +
-    '<h5 class="ar-h">Objects for<br><em>slow living</em></h5>' +
+    '<div class="ar-h">Objects for<br><em>slow living</em></div>' +
     '<div class="ar-cats"><span class="on">All</span><span>Ceramics</span><span>Lighting</span><span>Textiles</span></div>' +
     `<div class="ar-grid">${arcaItem("obj-vase", "Oslo Vessel", "Studio Vale", "£180")}${arcaItem("obj-lamp", "Halo Lamp", "Kiln &amp; Co", "£320")}${arcaItem("obj-bowl", "Tide Bowl", "Mareo", "£64")}${arcaItem("obj-throw", "Fold Throw", "Wefts", "£140")}</div>` +
     homeIndicator +
@@ -284,7 +284,7 @@ function arcaProduct() {
     statusBar() +
     `<div class="ar-top"><span>${ic("back")}</span><span class="ar-logo">ARCA</span><span>${ic("bag")}</span></div>` +
     `<div class="ar-hero"><div class="obj obj-vase"></div><span class="fav">${ic("heart")}</span><div class="ar-dots"><i class="on"></i><i></i><i></i></div></div>` +
-    '<div class="ar-pd"><small>Studio Vale · Lisbon</small><h6>Oslo Vessel</h6><div class="row"><b>£180</b><div class="ar-sw"><i class="on" style="background:#D9CDB9"></i><i style="background:#3E4A47"></i><i style="background:#A6533A"></i></div></div><p>Hand-thrown stoneware with a raw foot and satin glaze. Each piece is slightly different.</p></div>' +
+    '<div class="ar-pd"><small>Studio Vale · Lisbon</small><div class="ar-name">Oslo Vessel</div><div class="row"><b>£180</b><div class="ar-sw"><i class="on" style="background:#D9CDB9"></i><i style="background:#3E4A47"></i><i style="background:#A6533A"></i></div></div><p>Hand-thrown stoneware with a raw foot and satin glaze. Each piece is slightly different.</p></div>' +
     '<div class="ar-cta"><span>Add to bag</span><span>£180</span></div>' +
     homeIndicator +
     "</div>"

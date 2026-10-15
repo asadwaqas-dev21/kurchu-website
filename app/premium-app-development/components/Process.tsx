@@ -67,7 +67,7 @@ export function Process() {
                 <p>{step.body}</p>
                 <div className="step-cols">
                   <div>
-                    <h4>Decisions made</h4>
+                    <div className="step-h">Decisions made</div>
                     <ul>
                       {step.decisions.map((item) => (
                         <li key={item}>{item}</li>
@@ -75,7 +75,7 @@ export function Process() {
                     </ul>
                   </div>
                   <div>
-                    <h4>Your involvement</h4>
+                    <div className="step-h">Your involvement</div>
                     <ul>
                       {step.involvement.map((item) => (
                         <li key={item}>{item}</li>

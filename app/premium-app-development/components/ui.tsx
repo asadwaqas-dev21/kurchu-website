@@ -54,7 +54,7 @@ export function Check() {
 }
 
 export function LogoMark() {
-  return <Image src="/logo.png" alt="" width={28} height={28} priority />;
+  return <Image src="/logo.png" alt="Kurchu logo" width={28} height={28} priority />;
 }
 
 /** A 3D phone showing one of the screen mockups. */

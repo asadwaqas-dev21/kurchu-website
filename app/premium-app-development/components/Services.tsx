@@ -78,7 +78,7 @@ const previewBodies: ReactNode[] = [
     <div className="road">
       {roadmap.map((col) => (
         <div className="road-col" key={col.title}>
-          <h4>{col.title}</h4>
+          <div className="road-t">{col.title}</div>
           {col.items.map((item) => (
             <span className={col.key ? "k" : undefined} key={item}>
               {item}

@@ -29,7 +29,7 @@ export function Hero() {
             </span>
           </h1>
           <p className="lede hero-sub hero-fade d2">
-            Kurchu is a senior product team for founders and operators. Strategy, UX, engineering and launch are run by the same people — so the app you approve in design is the app that ships.
+            Kurchu is a senior product team for founders and operators. Every app is designed and engineered to be kept: strategy, UX, engineering and launch are run by the same people, so the app you approve in design is the app that ships.
           </p>
           <div className="hero-ctas hero-fade d3">
             <button className="btn btn-primary" data-magnetic="" {...inquiry()}>
