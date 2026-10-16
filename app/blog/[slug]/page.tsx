@@ -30,7 +30,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">) {
   if (!post) return {};
   return buildMetadata({
     title: post.seoTitle ?? (post.title.length > 51 ? post.title : `${post.title} | Kurchu`),
-    description: post.excerpt,
+    description: post.metaDescription ?? post.excerpt,
     path: `/blog/${post.slug}`,
   });
 }

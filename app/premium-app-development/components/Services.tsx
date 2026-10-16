@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { services } from "../data";
 import { Device, SectionHead } from "./ui";
@@ -286,6 +287,15 @@ export function Services() {
                           </li>
                         ))}
                       </ul>
+                      {service.links && (
+                        <span className="mad-links">
+                          {service.links.map((link) => (
+                            <Link key={link.href} className="tlink" href={link.href}>
+                              {link.label}
+                            </Link>
+                          ))}
+                        </span>
+                      )}
                       <div className="mob-pv" aria-hidden="true">
                         <Preview index={i} active />
                       </div>

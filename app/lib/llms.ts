@@ -8,13 +8,14 @@ import { cities, cityPath, citiesIn } from "./cities";
 import { companyFacts, companySummary } from "./facts";
 import { regionPath, regions } from "./regions";
 import { serviceLines } from "./services";
+import { specialistServices } from "./specialist-services";
 import { siteConfig } from "./site-config";
 import { faqs } from "@/app/premium-app-development/data";
 
 const url = (path: string) => `${siteConfig.url}${path}`;
 
 const company = [
-  ["Services overview", "/services", "All three service lines, engagement models and a scope estimator."],
+  ["Services overview", "/services", "Every service, the engagement models and a scope estimator."],
   ["Selected work", "/work", "Concept case studies in fintech, healthcare, mobility and commerce."],
   ["Process", "/process", "The eight delivery stages, what each produces and how clients are involved."],
   ["Technology", "/technology", "Reference architecture and the engineering standard applied to every build."],
@@ -35,6 +36,7 @@ export function llmsTxt() {
     "",
     "## Services",
     ...serviceLines.map((s) => `- [${s.name}](${url(s.path)}): ${s.description}`),
+    ...specialistServices.map((s) => `- [${s.name}](${url(s.path)}): ${s.description}`),
     "",
     "## Markets",
     `- [All locations](${url("/locations")}): How the four markets compare — time zone, privacy law, payments and languages.`,

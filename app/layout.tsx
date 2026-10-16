@@ -9,7 +9,7 @@ import HideOnRoutes from "./components/shared/HideOnRoutes";
 
 // Pages built on the dark premium design have their own nav and inquiry flow.
 const premiumRoutes = ["/", "/services", "/work", "/process", "/technology", "/about", "/contact", "/pricing", "/app-cost-estimator", "/mobile-app-development", "/privacy", "/terms"];
-const premiumPrefixes = ["/premium-app-development", "/locations", "/blog", "/app-ideas"];
+const premiumPrefixes = ["/premium-app-development", "/locations", "/blog", "/app-ideas", "/services/"];
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

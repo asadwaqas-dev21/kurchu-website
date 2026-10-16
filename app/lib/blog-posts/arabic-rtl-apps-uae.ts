@@ -126,6 +126,7 @@ export const arabicRtlAppsUae: BlogPost = {
     { href: "/locations/uae", label: "App development for UAE businesses" },
     { href: "/locations/uae/dubai", label: "App development in Dubai" },
     { href: "/locations/uae/abu-dhabi", label: "App development in Abu Dhabi" },
+    { href: "/services/mobile-app-design", label: "Mobile app UI/UX design, including right-to-left layouts" },
     { href: "/mobile-app-development", label: "Mobile app development services" },
     { href: "/blog/flutter-vs-react-native", label: "Flutter vs React Native: which should you choose?" },
   ],

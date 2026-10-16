@@ -5,7 +5,7 @@ import { cities, cityPath, getCity } from "@/app/lib/cities";
 import { cityServiceJsonLd, faqPageJsonLd } from "@/app/lib/jsonld";
 import { buildMetadata } from "@/app/lib/metadata";
 import { regionPhrase } from "@/app/lib/regions";
-import { CityApps, CityDetails, CityLinks, Guides } from "@/app/premium-app-development/components/Cities";
+import { CityApps, CityDetails, CityLinks, Guides, ServiceLinks } from "@/app/premium-app-development/components/Cities";
 import { Faq } from "@/app/premium-app-development/components/Faq";
 import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
 import { PageHero } from "@/app/premium-app-development/components/PageHero";
@@ -73,6 +73,7 @@ export default async function CityPage(props: PageProps<"/locations/[region]/[ci
       />
       <CityDetails city={city} />
       <CityApps city={city} />
+      <ServiceLinks place={`${city.name} businesses`} />
       <Faq
         items={city.faqs}
         eyebrow={`FAQ · ${city.name}`}

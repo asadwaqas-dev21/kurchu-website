@@ -19,11 +19,12 @@ import { Trust } from "./components/Trust";
 import { WhyUs } from "./components/WhyUs";
 import { Work } from "./components/Work";
 
-// Brand-level title: the specific service keywords belong to /services and the
-// service line pages, so the homepage does not compete with them.
-const title = "Kurchu Software Solutions — Mobile App Design & Development";
+// Company-level keyword ("mobile app development company"). The service keywords belong to
+// /mobile-app-development ("custom mobile app development services") and the specialist pages,
+// so the homepage does not compete with them.
+const title = "Mobile App Development Company | Kurchu Software Solutions";
 const description =
-  "Kurchu designs, engineers and launches iOS, Android and cross-platform apps — senior-led from Lahore for clients in the UK, USA, Canada and UAE.";
+  "Kurchu is a mobile app development company designing, building and launching iOS, Android and cross-platform apps for clients in the UK, USA, Canada and UAE.";
 
 export const metadata: Metadata = {
   title,

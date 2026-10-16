@@ -111,6 +111,7 @@ export const flutterVsReactNative: BlogPost = {
     },
   ],
   relatedLinks: [
+    { href: "/services/cross-platform-app-development", label: "Cross-platform app development with Flutter and React Native" },
     { href: "/blog/flutter-vs-native-mobile-app", label: "Flutter vs native: choosing the right approach" },
     { href: "/technology", label: "Our technology and engineering standards" },
     { href: "/blog/how-long-does-it-take-to-build-an-mvp", label: "How long does it take to build an MVP?" },

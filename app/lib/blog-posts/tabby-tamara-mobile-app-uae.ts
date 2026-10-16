@@ -1,8 +1,4 @@
 import type { BlogPost } from "../blog";
-import { FEATURES, formatUsd } from "../estimator";
-
-// The integration price comes from the same table as the AI estimator, so the two never disagree.
-const payments = FEATURES.find((feature) => feature.key === "payments")!;
 
 export const tabbyTamaraMobileAppUae: BlogPost = {
   slug: "add-tabby-tamara-to-mobile-app-uae",
@@ -10,6 +6,7 @@ export const tabbyTamaraMobileAppUae: BlogPost = {
   seoTitle: "Add Tabby & Tamara to a Mobile App (UAE Guide)",
   excerpt:
     "A developer-checked guide to adding Tabby and Tamara buy-now-pay-later to an iOS, Android, Flutter or React Native app: the payment flow, SDKs, UAE ID checks and go-live tests.",
+  metaDescription: "How to add Tabby and Tamara buy-now-pay-later to an iOS, Android, Flutter or React Native app: payment flow, SDKs, UAE ID checks and go-live tests.",
   category: "Payments",
   date: "2026-10-15",
   readTime: "9 min read",
@@ -140,7 +137,7 @@ export const tabbyTamaraMobileAppUae: BlogPost = {
     {
       heading: "How long does it take, and what does it cost?",
       paragraphs: [
-        `For an app that already takes payments, adding one BNPL provider is usually days of engineering, not weeks; adding both mostly reuses the same payments module. In our published price table, online payments add ${formatUsd(payments.low)}–${formatUsd(payments.high)} to an app's build price. Merchant onboarding and each provider's go-live review run on their own schedule, so start the merchant applications early.`,
+        "For an app that already takes payments, adding one BNPL provider is usually days of engineering, not weeks; adding both mostly reuses the same payments module. The cost depends on your app's existing checkout, backend and platforms, so it is quoted from a written scope like any other feature. Merchant onboarding and each provider's go-live review run on their own schedule, so start the merchant applications early.",
         "The providers' own fees are set in your merchant agreement with them, separately from the cost of building the app.",
       ],
     },
@@ -148,7 +145,7 @@ export const tabbyTamaraMobileAppUae: BlogPost = {
   faqs: [
     {
       q: "Do I need both Tabby and Tamara in my app?",
-      a: "Not necessarily. Each provider has its own customer base and approval decisions, so offering both can help more shoppers complete a purchase, while one is simpler to run and reconcile. Many UAE retailers start with one and add the second later. Because the checkout flows are so similar, a well-built payments module makes adding the second provider a small, low-risk change.",
+      a: "Not necessarily. Each provider has its own customer base and approval decisions, so offering both can help more shoppers complete a purchase, while one is simpler to run and reconcile. You can start with one and add the second later. Because the checkout flows are so similar, a well-built payments module makes adding the second provider a small, low-risk change.",
     },
     {
       q: "Can I add Tabby or Tamara to a Flutter or React Native app?",

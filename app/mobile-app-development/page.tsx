@@ -16,10 +16,11 @@ import { PremiumShell } from "@/app/premium-app-development/components/PremiumSh
 import { Summary } from "@/app/premium-app-development/components/Summary";
 import { SectionHead, rv } from "@/app/premium-app-development/components/ui";
 
-// The primary commercial page: "custom mobile app development company / services".
+// The pillar: "custom mobile app development services". The homepage owns "mobile app development
+// company"; platform and MVP intents have their own pages under /services/ (lib/specialist-services.ts).
 export const metadata = buildMetadata({
-  title: "Custom Mobile App Development Company | Kurchu",
-  description: `Custom mobile app development services for startups and businesses: iOS, Android, Flutter and React Native apps priced by scope from ${formatUsd(MIN_PRICE)}, with a free AI estimate.`,
+  title: "Custom Mobile App Development Services | Kurchu",
+  description: `Custom mobile app development services: iOS, Android, Flutter and React Native apps for startups and businesses, priced by scope from ${formatUsd(MIN_PRICE)}.`,
   path: "/mobile-app-development",
 });
 
@@ -79,27 +80,34 @@ const appTypes: Array<{ title: string; description: string; links?: Array<{ href
   {
     title: "MVP app development",
     description: "A focused first release that proves the idea with real users before the full build.",
-    links: [{ href: "/blog/how-long-does-it-take-to-build-an-mvp", label: "How long an MVP takes" }],
+    links: [
+      { href: "/services/mvp-app-development", label: "MVP development" },
+      { href: "/blog/how-long-does-it-take-to-build-an-mvp", label: "How long an MVP takes" },
+    ],
   },
 ];
 
 const platforms = [
   {
+    href: "/services/ios-app-development",
     name: "iOS app development",
     tech: "Swift · SwiftUI",
     when: "Your audience is mostly on iPhone, or the product leans on Apple-only features.",
   },
   {
+    href: "/services/android-app-development",
     name: "Android app development",
     tech: "Kotlin · Jetpack Compose",
     when: "Your audience is mostly on Android — common in Pakistan, India and many emerging markets.",
   },
   {
+    href: "/services/cross-platform-app-development",
     name: "Flutter app development",
     tech: "Dart · one codebase",
     when: "You need iOS and Android quickly from one team, with a highly custom interface.",
   },
   {
+    href: "/services/cross-platform-app-development",
     name: "React Native development",
     tech: "TypeScript · one codebase",
     when: "You want iOS and Android from one codebase and already work with React on the web.",
@@ -256,7 +264,11 @@ export default function MobileAppDevelopmentPage() {
             }
             lede={
               <>
-                We recommend one approach in writing, with the cost of each option. Still deciding? Read{" "}
+                We recommend one approach in writing, with the cost of each option. Need the screens first? See{" "}
+                <Link className="tlink" href="/services/mobile-app-design">
+                  mobile app UI/UX design
+                </Link>
+                . Still deciding? Read{" "}
                 <Link className="tlink" href="/blog/flutter-vs-react-native">
                   Flutter vs React Native
                 </Link>{" "}
@@ -271,11 +283,12 @@ export default function MobileAppDevelopmentPage() {
           <ul className="mkt-grid n4">
             {platforms.map((platform, i) => (
               <li key={platform.name} {...rv(i ? `${(i * 0.05).toFixed(2)}s` : undefined)}>
-                <div className="mkt-card">
+                <Link href={platform.href} className="mkt-card">
                   <span className="mkt-code mono">{platform.tech}</span>
                   <h3>{platform.name}</h3>
                   <p>{platform.when}</p>
-                </div>
+                  <span className="svl-go">Learn more →</span>
+                </Link>
               </li>
             ))}
           </ul>

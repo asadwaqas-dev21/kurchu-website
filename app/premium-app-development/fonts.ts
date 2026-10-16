@@ -35,11 +35,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// Handwriting is only used in the "Idea to product" sketch, far below the fold, so it isn't
+// preloaded: the browser fetches it when that text first renders.
 const caveat = Caveat({
   subsets: ["latin"],
   weight: "500",
   variable: "--font-caveat",
   display: "swap",
+  preload: false,
 });
 
 /** Class names that declare every font variable the page stylesheet reads. */

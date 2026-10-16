@@ -54,13 +54,13 @@ export const regions: Region[] = [
     languages: "English (British)",
     cities: ["London", "Manchester", "Birmingham", "Edinburgh"],
     seo: {
-      title: "Mobile App Developers for UK Businesses | Kurchu",
+      title: "App Development Services in the UK | iOS & Android | Kurchu",
       description:
-        "Mobile app developers for UK businesses — iOS and Android apps with UK GDPR-ready builds, UK payment integrations and calls inside UK business hours.",
+        "App development services in the UK: iOS, Android and Flutter apps built to UK GDPR, with UK payment integrations and calls inside UK business hours.",
     },
     hero: {
       eyebrow: "Mobile app development · United Kingdom",
-      lines: ["Mobile apps", "designed and built", "for UK businesses."],
+      lines: ["App development", "services for", "UK businesses."],
       lede: "A senior product team for founders and operators in London, Manchester and across the UK — building to UK GDPR from day one, integrating the payment rails your customers use, and meeting inside your working day.",
       meta: ["Calls inside UK business hours", "UK GDPR & PECR-ready builds", "Proposals priced in GBP"],
     },
@@ -78,6 +78,10 @@ export const regions: Region[] = [
     payments: ["Stripe and Apple Pay / Google Pay", "GoCardless Direct Debit", "Open Banking payments and account data", "Xero and Sage accounting integrations"],
     localisation: ["British English copy, dates and currency formats", "WCAG 2.2 AA accessibility, in line with the Equality Act 2010", "VAT-aware pricing and receipts"],
     faqs: [
+      {
+        q: "What do your app development services in the UK include?",
+        a: "Everything needed to take an app from idea to the stores: product strategy, UX/UI design, iOS, Android or cross-platform Flutter and React Native development, backend and admin tools, testing on real devices, and App Store and Google Play launch. UK projects are built to UK GDPR and PECR, integrate UK payment providers, are priced in GBP and run inside UK business hours.",
+      },
       {
         q: "Can you work during UK business hours?",
         a: "Yes. Lahore is five hours ahead of the UK in winter and four hours ahead during British Summer Time, so our afternoon and evening cover your entire working day. Calls, demos and stand-ups are booked in UK time, and work continues in our morning, so updates and fresh builds are often waiting for you before your own day even starts.",
@@ -122,13 +126,13 @@ export const regions: Region[] = [
     languages: "English (American)",
     cities: ["New York", "San Francisco", "Austin", "Chicago"],
     seo: {
-      title: "Mobile App Development Company for USA Businesses | Kurchu",
+      title: "Mobile App Development Company in the USA | Kurchu",
       description:
         "Mobile app development company for USA startups and businesses — CCPA- and HIPAA-aware iOS and Android builds, US payments and overlap with US hours.",
     },
     hero: {
       eyebrow: "Mobile app development · United States",
-      lines: ["Mobile apps", "designed and built", "for US businesses."],
+      lines: ["Mobile app development", "for businesses", "across the USA."],
       lede: "A senior product team for founders and operators from New York to San Francisco — building with US privacy and accessibility law in mind, integrating the payment stack US customers expect, and meeting at the start of your day.",
       meta: ["Morning overlap with US time zones", "CCPA, HIPAA & COPPA-aware builds", "Proposals priced in USD"],
     },
@@ -190,13 +194,13 @@ export const regions: Region[] = [
     languages: "English and French",
     cities: ["Toronto", "Vancouver", "Montreal", "Calgary"],
     seo: {
-      title: "Mobile App Development Services for Canada | Kurchu",
+      title: "Mobile App Development Services in Canada | Kurchu",
       description:
         "Mobile app development services for Canadian businesses — PIPEDA and Quebec Law 25-ready builds, English–French apps and Canadian payments.",
     },
     hero: {
       eyebrow: "Mobile app development · Canada",
-      lines: ["Mobile apps", "designed and built", "for Canadian businesses."],
+      lines: ["Mobile app development", "services for", "Canadian businesses."],
       lede: "A senior product team for founders and operators in Toronto, Vancouver, Montreal and beyond — building to Canadian privacy law, planning English and French from the first wireframe, and integrating Canadian payment rails.",
       meta: ["Overlap with Eastern & Pacific time", "PIPEDA & Quebec Law 25-ready", "English–French localisation"],
     },
@@ -259,13 +263,13 @@ export const regions: Region[] = [
     languages: "Arabic and English (right-to-left)",
     cities: ["Dubai", "Abu Dhabi", "Sharjah"],
     seo: {
-      title: "Mobile App Development Company for Dubai & the UAE | Kurchu",
+      title: "Mobile App Development Company in the UAE | Kurchu",
       description:
-        "Custom app development for UAE businesses — Arabic and right-to-left iOS and Android apps, UAE PDPL-ready builds and local payment gateways.",
+        "Mobile app development for UAE businesses: Arabic and right-to-left iOS and Android apps, UAE PDPL-ready builds, local payment gateways, Tabby and Tamara.",
     },
     hero: {
       eyebrow: "Mobile app development · United Arab Emirates",
-      lines: ["Mobile apps", "designed and built", "for UAE businesses."],
+      lines: ["Mobile app development", "for businesses", "across the UAE."],
       lede: "A senior product team for founders and operators in Dubai, Abu Dhabi and across the Emirates — Arabic and right-to-left from day one, built for UAE data protection law, and just one hour ahead of your working day.",
       meta: ["Only 1 hour from UAE time", "Arabic & right-to-left built in", "Proposals priced in AED or USD"],
     },

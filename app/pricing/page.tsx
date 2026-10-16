@@ -14,9 +14,9 @@ import { models, pricingFaqs } from "@/app/premium-app-development/data";
 import { PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 
 export const metadata = buildMetadata({
-  title: "App Development Pricing & Costs | Kurchu",
+  title: "Mobile App Development Cost & Pricing | Kurchu",
   description:
-    "How Kurchu prices mobile app projects: fixed-price phases, milestones or a monthly team — with a written scope before any work starts. No hourly billing.",
+    "What mobile app development costs with Kurchu: fixed-price phases, milestones or a monthly team, with a written scope before work starts. No hourly billing.",
   path: "/pricing",
 });
 
@@ -29,7 +29,7 @@ export default function PricingPage() {
       <PageHero
         path="/pricing"
         eyebrow="Pricing"
-        lines={["A clear price", "for every phase,", <em key="em">before work begins.</em>]}
+        lines={["App development cost:", "a clear price for", <em key="em">every phase, up front.</em>]}
         lede="No hourly billing and no open-ended estimates. Every project starts with a written scope and a fixed price for the first phase — so you know the commitment before you make it."
         meta={["Fixed price per phase", "Written scope first", "Priced in GBP, USD, CAD or AED"]}
         cta={{ label: "Get a Quote" }}

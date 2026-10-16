@@ -14,10 +14,10 @@ export function Hero() {
           </span>
           <h1 className="h1" id="hero-title">
             <span className="ln">
-              <span>Mobile apps,</span>
+              <span>Mobile app</span>
             </span>
             <span className="ln">
-              <span>designed and</span>
+              <span>development,</span>
             </span>
             <span className="ln">
               <span>engineered</span>

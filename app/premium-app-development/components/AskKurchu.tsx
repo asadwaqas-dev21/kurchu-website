@@ -52,8 +52,9 @@ async function shrinkImage(file: File) {
   }
 }
 
-export function AskKurchu() {
-  const [open, setOpen] = useState(false);
+/** Loaded on demand by AskKurchuLauncher, which mounts it already open. */
+export function AskKurchu({ defaultOpen = false }: { defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
   const [messages, setMessages] = useState<ChatMessage[]>(() => [intro()]);
   const [input, setInput] = useState("");
   const [pending, setPending] = useState(false);

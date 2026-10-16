@@ -119,6 +119,7 @@ export const chooseAppDevelopmentCompany: BlogPost = {
   ],
   relatedLinks: [
     { href: "/process", label: "How we run projects, stage by stage" },
+    { href: "/mobile-app-development", label: "Custom mobile app development services" },
     { href: "/services", label: "Ways to work with Kurchu" },
     { href: "/contact", label: "Talk to us about your app" },
   ],

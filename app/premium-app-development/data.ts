@@ -37,21 +37,30 @@ export const domains = [
   "B2B operations",
 ];
 
-export const services = [
+/** `links` point each discipline at the page that covers it in depth (pillar → specialist pages). */
+export const services: Array<{ title: string; body: string; chips: string[]; links?: Array<{ href: string; label: string }> }> = [
   {
     title: "Product Strategy",
     body: "Before a line of code, we pressure-test the idea: who it's for, what they'll pay for, and the smallest version that proves it. You leave with a scope you can defend to investors and a plan your engineers can estimate.",
     chips: ["Product discovery", "MVP definition", "Competitive analysis", "Feature prioritisation", "Technical planning"],
+    links: [{ href: "/services/mvp-app-development", label: "MVP app development for startups" }],
   },
   {
     title: "UX/UI Design",
     body: "Research-led journeys, then a visual system with real taste. Every key flow is prototyped and tested with users before it reaches engineering — so the expensive mistakes happen in Figma, not in production.",
     chips: ["User research", "Information architecture", "User journeys", "Wireframes", "Interactive prototypes", "Design systems"],
+    links: [{ href: "/services/mobile-app-design", label: "Mobile app UI/UX design services" }],
   },
   {
     title: "Mobile App Development",
     body: "Native Swift and Kotlin when the device is the product. Flutter or React Native when one codebase across both stores is the smarter bet. We'll tell you which — and why — in writing.",
     chips: ["iOS · SwiftUI", "Android · Compose", "Flutter", "React Native", "Offline-first"],
+    links: [
+      { href: "/mobile-app-development", label: "Custom mobile app development" },
+      { href: "/services/ios-app-development", label: "iOS apps" },
+      { href: "/services/android-app-development", label: "Android apps" },
+      { href: "/services/cross-platform-app-development", label: "Flutter & React Native" },
+    ],
   },
   {
     title: "Backend Engineering",
@@ -62,6 +71,7 @@ export const services = [
     title: "Quality Engineering",
     body: "Automated tests on every merge, manual passes across a real device matrix, and performance budgets we actually measure. Release candidates go out with a QA report, not a hope.",
     chips: ["Automated testing", "Device validation", "Performance budgets", "Security review", "Release readiness"],
+    links: [{ href: "/technology", label: "Our engineering standards" }],
   },
   {
     title: "Launch & Growth",

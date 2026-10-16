@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { getPost } from "@/app/lib/blog";
 import { cityPath, citiesIn, type City } from "@/app/lib/cities";
 import { regionPath, regionPhrase, regions, type Region } from "@/app/lib/regions";
+import { specialistServices } from "@/app/lib/specialist-services";
 import { SectionHead, rv } from "./ui";
 
 const Go = ({ children }: { children: ReactNode }) => (
@@ -13,6 +14,40 @@ const Go = ({ children }: { children: ReactNode }) => (
     </svg>
   </span>
 );
+
+/** Links a market or city page to the services it is about: the pillar plus every specialist page. */
+export function ServiceLinks({ place }: { place: string }) {
+  const cards = [
+    { href: "/mobile-app-development", title: "Custom mobile app development", code: "iOS · Android · Flutter" },
+    ...specialistServices.map((service) => ({ href: service.path, title: service.short, code: service.meta[0] })),
+  ];
+  return (
+    <section className="section mkt" id="services" aria-labelledby="services-title" style={{ paddingTop: 0 }}>
+      <div className="wrap">
+        <SectionHead
+          eyebrow="Services"
+          titleId="services-title"
+          title={
+            <>
+              What we build <em>for {place}.</em>
+            </>
+          }
+        />
+        <ul className="mkt-grid n3">
+          {cards.map((card, i) => (
+            <li key={card.href} {...rv(i % 3 ? `${((i % 3) * 0.05).toFixed(2)}s` : undefined)}>
+              <Link href={card.href} className="mkt-card">
+                <span className="mkt-code mono">{card.code}</span>
+                <h3>{card.title}</h3>
+                <Go>Explore the service</Go>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
 
 /**
  * Grid of a market's city pages. On a city page, pass `exclude` to list the

@@ -11,7 +11,7 @@ import { PremiumShell } from "@/app/premium-app-development/components/PremiumSh
 import { Process } from "@/app/premium-app-development/components/Process";
 
 export const metadata = buildMetadata({
-  title: "Our App Development Process | Kurchu Software Solutions",
+  title: "Mobile App Development Process: 8 Stages | Kurchu",
   description:
     "Discovery, strategy, UX, UI, engineering, testing, launch and growth. See what happens at each stage, what you receive and how involved you'll be.",
   path: "/process",
@@ -33,7 +33,7 @@ export default function ProcessPage() {
       <PageHero
         path="/process"
         eyebrow="How we work"
-        lines={["How an idea", "becomes an app", <em key="em">you can ship.</em>]}
+        lines={["The app development", "process: how an idea", <em key="em">becomes an app you ship.</em>]}
         lede="Every stage ends with something you can hold — a document, a prototype, a build. You install a real build on your own phone every week, and always know what's being decided and why."
         meta={["Discovery sprint in 10 working days", "Fortnightly demos with real builds", "Written weekly progress summary"]}
         cta={{ label: "Start a Project" }}

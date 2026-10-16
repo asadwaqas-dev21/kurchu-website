@@ -7,6 +7,7 @@ export const mvpTimeline: BlogPost = {
   slug: "how-long-does-it-take-to-build-an-mvp",
   title: "How long does it take to build an MVP app?",
   excerpt: `Most app MVPs take ${MVP_WEEKS} from discovery to store launch, depending on scope. Here is where that time goes, what speeds it up and how to see the timeline for your own idea.`,
+  metaDescription: `Most app MVPs take ${MVP_WEEKS} from discovery to store launch. See timelines by app type, where the time goes and what speeds an MVP up.`,
   category: "Product strategy",
   date: "2026-10-08",
   updated: "2026-10-15",
@@ -138,6 +139,7 @@ export const mvpTimeline: BlogPost = {
     },
   ],
   relatedLinks: [
+    { href: "/services/mvp-app-development", label: "MVP app development for startups" },
     { href: "/app-cost-estimator", label: "See the timeline and price for your own idea" },
     { href: "/app-ideas", label: "MVP plans for popular app types" },
     { href: "/process", label: "Our eight-stage delivery process" },
