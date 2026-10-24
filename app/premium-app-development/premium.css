@@ -961,7 +961,7 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
 .kp .foot-grid{display:grid;grid-template-columns:minmax(0,4fr) repeat(4,minmax(0,2fr));gap:clamp(32px,4vw,64px)}
 .kp .foot-brand p{margin-top:20px;color:var(--text-2);max-width:34ch}
 .kp .foot-brand .tlink{margin-top:24px;font:400 20px var(--f-display)}
-.kp .foot-col h4{font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:18px}
+.kp .foot-col h2{font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:18px}
 .kp .foot-col li{margin-bottom:10px}
 .kp .foot-col a{font-size:14.5px;color:var(--text-2);transition:color .3s}
 .kp .foot-col a:hover{color:var(--text)}
@@ -1747,6 +1747,9 @@ body:has(.kp){padding-bottom:0;background:#09090A}
   .kp .stage-rig{animation:none}
 }
 @media print{.kp #services,.kp #gallery{content-visibility:visible}}
+
+/* The classic site's bottom nav and chat widget (root layout) never belong on a page in this design. */
+body:has(.kp) [data-classic-chrome]{display:none!important} /* beats the wrapper's inline display:contents */
 
 /* ── Performance, part 3 ─────────────────────── */
 /* "Idea to product" and the Process timeline (homepage and /process) are tall, scroll-driven sections,

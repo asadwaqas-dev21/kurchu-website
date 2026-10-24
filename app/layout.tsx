@@ -54,8 +54,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <StructuredData />
         {children}
         <HideOnRoutes exact={premiumRoutes} prefixes={premiumPrefixes}>
-          <MobileBottomNav />
-          <ChatWidget />
+          {/* Also hidden by premium.css on any page in the new design (e.g. the 404 page), which the route list can't know about. */}
+          <div data-classic-chrome="" style={{ display: "contents" }}>
+            <MobileBottomNav />
+            <ChatWidget />
+          </div>
         </HideOnRoutes>
       </body>
     </html>

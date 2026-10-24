@@ -144,7 +144,7 @@ export const cities: City[] = [
     integrations: ["Shopify and headless commerce back ends", "Klarna and Clearpay buy-now-pay-later", "Stripe, Apple Pay and Google Pay", "Courier tracking from Royal Mail, DPD and Evri"],
     sources: [
       { label: "Information Commissioner's Office (ICO)", url: "https://ico.org.uk/" },
-      { label: "NHS Digital Technology Assessment Criteria (DTAC)", url: "https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac/" },
+      { label: "NHS Digital Technology Assessment Criteria (DTAC)", url: "https://digital.nhs.uk/services/digital-technology-assessment-criteria-dtac" },
     ],
     faqs: [
       {
@@ -203,7 +203,7 @@ export const cities: City[] = [
     integrations: ["Offline-first sync for field and warehouse teams", "ERP links to SAP Business One and Microsoft Dynamics", "Xero and Sage accounting", "Barcode, QR and photo capture"],
     sources: [
       { label: "Information Commissioner's Office (ICO)", url: "https://ico.org.uk/" },
-      { label: "HMRC — Making Tax Digital", url: "https://www.gov.uk/government/collections/making-tax-digital" },
+      { label: "HMRC — Making Tax Digital", url: "https://www.gov.uk/government/publications/making-tax-digital" },
     ],
     faqs: [
       {

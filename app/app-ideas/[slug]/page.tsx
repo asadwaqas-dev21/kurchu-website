@@ -97,9 +97,11 @@ export default async function AppIdeaPage({ params }: Props) {
   const { mvpKeys, laterKeys, mvp, full } = plan(idea);
   const path = appIdeaPath(idea);
   const faqs = faqsFor(idea);
-  const related = appIdeas.filter((other) => other.slug !== idea.slug && other.category === idea.category)
-    .concat(appIdeas.filter((other) => other.slug !== idea.slug && other.category !== idea.category))
-    .slice(0, 3);
+  // Same category first, then the plans that follow this one (wrapping round), so every plan is linked
+  // from its neighbours instead of all pages pointing at the first few in the list.
+  const at = appIdeas.indexOf(idea);
+  const ring = [...appIdeas.slice(at + 1), ...appIdeas.slice(0, at)];
+  const related = [...ring.filter((other) => other.category === idea.category), ...ring.filter((other) => other.category !== idea.category)].slice(0, 3);
   const platformRows = PLATFORMS.filter((p) => p.value !== "android").map((p) => ({
     label: p.value === "ios" ? "One platform (iOS or Android)" : p.label,
     mvp: priceFor(mvpKeys, p.value, "template"),
