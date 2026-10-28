@@ -54,9 +54,9 @@ export function Footer({ stickyCta = true }: { stickyCta?: boolean }) {
       {stickyCta && (
         <div className="mcta" id="mcta">
           <span>Have an app in mind?</span>
-          <button className="btn btn-primary btn-sm" {...inquiry()}>
+          <a href="/contact" className="btn btn-primary btn-sm" {...inquiry()}>
             Start a Project <Arr />
-          </button>
+          </a>
         </div>
       )}
     </>

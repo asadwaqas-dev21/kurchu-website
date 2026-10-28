@@ -32,9 +32,9 @@ export function Hero() {
             Kurchu is a senior product team for founders and operators. Every app is designed and engineered to be kept: strategy, UX, engineering and launch are run by the same people, so the app you approve in design is the app that ships.
           </p>
           <div className="hero-ctas hero-fade d3">
-            <button className="btn btn-primary" data-magnetic="" {...inquiry()}>
+            <a href="/contact" className="btn btn-primary" data-magnetic="" {...inquiry()}>
               Start a Project <Arr />
-            </button>
+            </a>
             <Link className="btn btn-ghost" href="/work">
               See selected work
             </Link>

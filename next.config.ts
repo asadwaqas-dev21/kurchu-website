@@ -34,6 +34,9 @@ const LEGACY_PAGES: Record<string, string> = {
 const LEGACY_LOCALES = "ar|ur|it";
 
 const nextConfig: NextConfig = {
+  // Drop the X-Powered-By header: it advertises the framework and adds nothing for visitors.
+  poweredByHeader: false,
+
   // Baseline security headers on every response. HSTS covers this host only (no includeSubDomains or
   // preload), since browsers remember it for two years and that is hard to undo.
   async headers() {

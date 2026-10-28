@@ -53,12 +53,13 @@ export function Engagement({ eyebrow = "08 — Ways to work together" }: { eyebr
                     </li>
                   ))}
                 </ul>
-                <button
+                <a
+                  href="/contact"
                   className={`btn ${featured ? "btn-primary" : "btn-ghost has-arr"} btn-sm btn-full go`}
                   {...inquiry(model.preset)}
                 >
                   {model.cta} <Arr />
-                </button>
+                </a>
               </div>
             );
           })}

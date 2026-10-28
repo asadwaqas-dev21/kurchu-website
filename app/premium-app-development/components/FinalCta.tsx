@@ -25,15 +25,15 @@ export function FinalCta() {
           <h3>Where are you today?</h3>
           <div className="inq-opts">
             {inquiryStarters.map((option) => (
-              <button key={option.title} className="inq-opt" {...inquiry(option.preset)}>
+              <a href="/contact" key={option.title} className="inq-opt" {...inquiry(option.preset)}>
                 <b>{option.title}</b>
                 <span>{option.sub}</span>
-              </button>
+              </a>
             ))}
           </div>
-          <button className="btn btn-primary btn-full" data-magnetic="" {...inquiry()}>
+          <a href="/contact" className="btn btn-primary btn-full" data-magnetic="" {...inquiry()}>
             Start Your Project <Arr />
-          </button>
+          </a>
           <p className="fine">Currently scheduling discovery sprints · Reply within one working day</p>
         </div>
       </div>

@@ -70,9 +70,9 @@ export function PageHero({ path, eyebrow, lines, lede, meta, cta, secondary, pag
           <div className="ph-side">
             <p className="lede hero-fade d2">{lede}</p>
             <div className="hero-ctas hero-fade d3">
-              <button className="btn btn-primary" data-magnetic="" {...inquiry(cta.preset)}>
+              <a href="/contact" className="btn btn-primary" data-magnetic="" {...inquiry(cta.preset)}>
                 {cta.label} <Arr />
-              </button>
+              </a>
               {secondary && (
                 <Link className="btn btn-ghost" href={secondary.href}>
                   {secondary.label}

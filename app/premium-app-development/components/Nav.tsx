@@ -32,9 +32,9 @@ export function Nav({ current }: { current?: string }) {
             </ul>
           </nav>
           <div className="nav-right">
-            <button className="btn btn-primary btn-sm" data-magnetic="" {...inquiry()}>
+            <a href="/contact" className="btn btn-primary btn-sm" data-magnetic="" {...inquiry()}>
               Start a Project <Arr />
-            </button>
+            </a>
             <button className="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
               <span></span>
               <span></span>
@@ -56,9 +56,9 @@ export function Nav({ current }: { current?: string }) {
           </ul>
         </nav>
         <div className="drawer-foot">
-          <button className="btn btn-primary" {...inquiry()}>
+          <a href="/contact" className="btn btn-primary" {...inquiry()}>
             Start a Project <Arr />
-          </button>
+          </a>
           <p>{email} · Replies within one working day</p>
         </div>
       </div>

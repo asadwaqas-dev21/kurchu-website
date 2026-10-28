@@ -13,7 +13,11 @@ export function rv(delay?: string, kind?: "fade" | "mask") {
   };
 }
 
-/** Props that make an element open the project-inquiry dialog, optionally pre-filled. */
+/**
+ * Props that make an element open the project-inquiry dialog, optionally pre-filled.
+ * Put them on `<a href="/contact">`: until the page's script has loaded (or without
+ * JavaScript) the link still takes the visitor to the contact form.
+ */
 export function inquiry(preset?: Partial<Record<string, string | string[]>>) {
   return {
     "data-open-inquiry": "",

@@ -1,37 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "./lib/site-config";
 import StructuredData from "./components/shared/StructuredData";
-import { ChatWidget } from "./components/chat/ChatWidget";
-import MobileBottomNav from "./components/MobileBottomNav";
-import HideOnRoutes from "./components/shared/HideOnRoutes";
 
-// Pages built on the dark premium design have their own nav and inquiry flow.
-const premiumRoutes = ["/", "/services", "/work", "/process", "/technology", "/about", "/contact", "/pricing", "/app-cost-estimator", "/mobile-app-development", "/privacy", "/terms"];
-const premiumPrefixes = ["/premium-app-development", "/locations", "/blog", "/app-ideas", "/services/"];
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+// No canonical or og:url here: every indexable page sets its own, and a root
+// default would point any page that forgets to (and the 404 page) at "/".
 export const metadata: Metadata = {
   title: "Kurchu Software Solutions — Mobile App Development",
   description:
     "Kurchu Software Solutions designs, engineers and launches iOS, Android and cross-platform apps for businesses in the UK, USA, Canada and UAE.",
   metadataBase: new URL(siteConfig.url),
-  alternates: { canonical: "/" },
   openGraph: {
     title: "Kurchu Software Solutions — Mobile App Development",
     description:
       "Kurchu Software Solutions designs, engineers and launches iOS, Android and cross-platform apps for businesses in the UK, USA, Canada and UAE.",
-    url: siteConfig.url,
     siteName: "Kurchu Software Solutions",
     locale: "en_US",
     type: "website",
@@ -46,20 +28,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-white pb-[calc(68px+env(safe-area-inset-bottom))] text-[#0b1220] lg:pb-0">
         <StructuredData />
         {children}
-        <HideOnRoutes exact={premiumRoutes} prefixes={premiumPrefixes}>
-          {/* Also hidden by premium.css on any page in the new design (e.g. the 404 page), which the route list can't know about. */}
-          <div data-classic-chrome="" style={{ display: "contents" }}>
-            <MobileBottomNav />
-            <ChatWidget />
-          </div>
-        </HideOnRoutes>
       </body>
     </html>
   );

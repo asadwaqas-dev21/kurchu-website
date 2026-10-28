@@ -32,6 +32,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">) {
     title: post.seoTitle ?? (post.title.length > 51 ? post.title : `${post.title} | Kurchu`),
     description: post.metaDescription ?? post.excerpt,
     path: `/blog/${post.slug}`,
+    article: { publishedTime: post.date, modifiedTime: post.updated ?? post.date },
   });
 }
 
@@ -173,9 +174,9 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
               <div className="art-cta">
                 <h2>Planning an app?</h2>
                 <p>Tell us what you want to build. A senior member of the team replies within one working day.</p>
-                <button className="btn btn-primary btn-sm btn-full" {...inquiry()}>
+                <a href="/contact" className="btn btn-primary btn-sm btn-full" {...inquiry()}>
                   Get a free quote <Arr />
-                </button>
+                </a>
                 <a
                   className="btn btn-ghost btn-sm btn-full has-arr"
                   href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, "")}`}
