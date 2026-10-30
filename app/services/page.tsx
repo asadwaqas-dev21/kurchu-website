@@ -18,9 +18,10 @@ import { services } from "@/app/premium-app-development/data";
 // The services hub: a directory of every service page plus the engagement models. The keyword-focused
 // pillar is /mobile-app-development; specialist pages live at /services/<slug>.
 export const metadata = buildMetadata({
-  title: "App Development Services: iOS, Android & MVP | Kurchu",
+  // Kept hub-like on purpose: "app development services" belongs to /mobile-app-development, so the two don't compete.
+  title: "Our Services: iOS, Android, MVP & UI/UX Design | Kurchu",
   description:
-    "Every app development service we offer: iOS, Android, Flutter and React Native apps, startup MVPs and UI/UX design, for the UK, USA, Canada and UAE.",
+    "Every Kurchu service in one place: iOS, Android and cross-platform apps, startup MVPs and UI/UX design, plus the ways we work, from MVPs to dedicated teams.",
   path: "/services",
 });
 
@@ -33,7 +34,7 @@ export default function ServicesPage() {
       <PageHero
         path="/services"
         eyebrow="Everything an app needs"
-        lines={["App development", "services, from first", <em key="em">sketch to store.</em>]}
+        lines={["Every service,", "from first sketch", <em key="em">to store.</em>]}
         lede="Product strategy, UX/UI design, iOS and Android engineering, backend, quality engineering and launch — planned, designed and built by the same accountable team."
         meta={["Six disciplines, one team", "Fixed scope per phase", "You own 100% of the code"]}
         cta={{ label: "Start a Project" }}

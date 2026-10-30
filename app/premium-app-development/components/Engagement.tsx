@@ -1,7 +1,7 @@
 import { models } from "../data";
 import { Arr, Check, SectionHead, inquiry, rv } from "./ui";
 
-export function Engagement({ eyebrow = "08 — Ways to work together" }: { eyebrow?: string }) {
+export function Engagement({ eyebrow = "06 — Ways to work together" }: { eyebrow?: string }) {
   return (
     <section className="section" id="engagement" aria-labelledby="eng-models-title" style={{ paddingTop: 0 }}>
       <div className="wrap">

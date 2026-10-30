@@ -7,16 +7,17 @@ import { Estimator } from "@/app/premium-app-development/components/Estimator";
 import { Faq } from "@/app/premium-app-development/components/Faq";
 import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
 import { PageHero } from "@/app/premium-app-development/components/PageHero";
-import { OutsideCosts, PriceDrivers, QuoteSteps } from "@/app/premium-app-development/components/Pricing";
+import { OutsideCosts, PriceDrivers, PriceIncludes, QuoteSteps } from "@/app/premium-app-development/components/Pricing";
 import { PremiumShell } from "@/app/premium-app-development/components/PremiumShell";
 import { Summary } from "@/app/premium-app-development/components/Summary";
 import { models, pricingFaqs } from "@/app/premium-app-development/data";
+import { MIN_PRICE, formatUsd } from "@/app/lib/estimator";
 import { PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 
 export const metadata = buildMetadata({
   title: "Mobile App Development Cost & Pricing | Kurchu",
   description:
-    "What mobile app development costs with Kurchu: fixed-price phases, milestones or a monthly team, with a written scope before work starts. No hourly billing.",
+    `What mobile app development costs with Kurchu: a published price for every feature, from ${formatUsd(MIN_PRICE)}, and a fixed price per phase. No hourly billing.`,
   path: "/pricing",
 });
 
@@ -48,6 +49,7 @@ export default function PricingPage() {
           ["Code ownership", "100% yours, from the first commit"],
         ]}
       />
+      <PriceIncludes />
       <Engagement eyebrow="Ways to work together" />
       <PriceDrivers />
       <QuoteSteps />

@@ -7,7 +7,7 @@
  *  Google to ignore the field).
  * ──────────────────────────────────────────────*/
 import type { MetadataRoute } from "next";
-import { posts } from "./blog";
+import { postShareImage, posts } from "./blog";
 import { appIdeaPath, appIdeas } from "./app-ideas";
 import { cities, cityPath } from "./cities";
 import { regionLanguageAlternates, regionPath, regions } from "./regions";
@@ -34,15 +34,17 @@ const SERVICE_PAGE_REBUILT = "2026-10-16";
 const SPECIALIST_SERVICES_ADDED = "2026-10-16";
 /** Keyword-clustering pass: titles, H1s, service links and new sections on these pages. */
 const SEO_PASS = "2026-10-16";
-const CONTACT_REBUILT = "2026-10-08";
+/** Audit pass: pricing aligned to the price table, new titles on these pages. */
+const AUDIT_PASS = "2026-10-30";
+const CITIES_UPDATED_IN_AUDIT = new Set(["birmingham", "manchester", "san-francisco"]);
 const LEGAL_UPDATED = "2026-10-08";
 const latestPostDate = posts.map((post) => post.date).sort().at(-1);
 
 export const routes: SiteRoute[] = [
-  { path: "/", name: "Home", lastModified: SEO_PASS, changeFrequency: "weekly", priority: 1 },
+  { path: "/", name: "Home", lastModified: AUDIT_PASS, changeFrequency: "weekly", priority: 1 },
 
   // Services and the mobile app development detail page.
-  { path: "/services", name: "Services", parent: "/", lastModified: SEO_PASS, priority: 0.9 },
+  { path: "/services", name: "Services", parent: "/", lastModified: AUDIT_PASS, priority: 0.9 },
   { path: "/mobile-app-development", name: "Mobile App Development", parent: "/services", lastModified: SERVICE_PAGE_REBUILT, priority: 0.9 },
   // Specialist services sit under the pillar, so breadcrumbs and the sitemap show the hierarchy.
   ...specialistServices.map<SiteRoute>((service) => ({
@@ -52,7 +54,7 @@ export const routes: SiteRoute[] = [
     lastModified: SPECIALIST_SERVICES_ADDED,
     priority: 0.8,
   })),
-  { path: "/pricing", name: "Pricing", parent: "/services", lastModified: SEO_PASS, priority: 0.7 },
+  { path: "/pricing", name: "Pricing", parent: "/services", lastModified: AUDIT_PASS, priority: 0.7 },
   { path: "/app-cost-estimator", name: "App Cost Estimator", parent: "/pricing", lastModified: ESTIMATOR_ADDED, priority: 0.8 },
 
   // App Ideas Library: one static page per app type.
@@ -80,16 +82,16 @@ export const routes: SiteRoute[] = [
     path: cityPath(city),
     name: city.name,
     parent: `/locations/${city.region}`,
-    lastModified: SEO_PASS,
+    lastModified: CITIES_UPDATED_IN_AUDIT.has(city.slug) ? AUDIT_PASS : SEO_PASS,
     priority: 0.7,
   })),
 
   // Company.
-  { path: "/work", name: "Work", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.8 },
+  { path: "/work", name: "Work", parent: "/", lastModified: AUDIT_PASS, priority: 0.8 },
   { path: "/process", name: "Process", parent: "/", lastModified: SEO_PASS, priority: 0.7 },
   { path: "/technology", name: "Technology", parent: "/", lastModified: SEO_PASS, priority: 0.7 },
   { path: "/about", name: "About", parent: "/", lastModified: PAGES_REDESIGNED, priority: 0.7 },
-  { path: "/contact", name: "Contact", parent: "/", lastModified: CONTACT_REBUILT, priority: 0.8 },
+  { path: "/contact", name: "Contact", parent: "/", lastModified: AUDIT_PASS, priority: 0.8 },
 
   // Legal.
   { path: "/privacy", name: "Privacy Policy", parent: "/", lastModified: LEGAL_UPDATED, changeFrequency: "yearly", priority: 0.3 },
@@ -103,7 +105,7 @@ export const routes: SiteRoute[] = [
     parent: "/blog",
     lastModified: post.updated ?? post.date,
     priority: 0.6,
-    images: [post.image],
+    images: [postShareImage(post)],
   })),
 ];
 

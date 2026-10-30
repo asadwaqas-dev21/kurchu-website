@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { companyFacts, companySummary } from "@/app/lib/facts";
 import { faqs } from "./data";
 import { Engagement } from "./components/Engagement";
-import { Engineering } from "./components/Engineering";
 import { Estimator } from "./components/Estimator";
 import { Faq } from "./components/Faq";
 import { FinalCta } from "./components/FinalCta";
@@ -13,7 +12,6 @@ import { PremiumShell } from "./components/PremiumShell";
 import { Process } from "./components/Process";
 import { Services } from "./components/Services";
 import { Summary } from "./components/Summary";
-import { Technology } from "./components/Technology";
 import { Testimonials } from "./components/Testimonials";
 import { Trust } from "./components/Trust";
 import { WhyUs } from "./components/WhyUs";
@@ -72,8 +70,6 @@ export default function PremiumAppDevelopmentPage() {
       <Work />
       <Gallery />
       <Process />
-      <Technology />
-      <Engineering />
       <WhyUs />
       <Engagement />
       <Estimator />

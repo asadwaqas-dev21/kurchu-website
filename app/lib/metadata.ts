@@ -23,8 +23,11 @@ export function buildMetadata(opts: {
   keywords?: string[];
   /** Marks the page as an article (og:type "article") with its publish dates. */
   article?: { publishedTime: string; modifiedTime?: string };
+  /** A page-specific share image in place of the site default. */
+  image?: { url: string; width: number; height: number; alt: string };
 }): Metadata {
   const url = `${siteConfig.url}${opts.path ?? ""}`;
+  const image = opts.image ?? shareImage;
 
   return {
     title: opts.title,
@@ -38,14 +41,14 @@ export function buildMetadata(opts: {
       url,
       siteName: siteConfig.name,
       locale: opts.locale ?? "en_US",
-      images: [shareImage],
+      images: [image],
       ...(opts.article ? { type: "article", ...opts.article } : { type: "website" }),
     },
     twitter: {
       card: "summary_large_image",
       title: opts.title,
       description: opts.description,
-      images: [shareImage.url],
+      images: [image.url],
     },
     ...(opts.noIndex ? { robots: { index: false, follow: false } } : {}),
   };

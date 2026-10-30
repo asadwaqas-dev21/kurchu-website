@@ -6,6 +6,7 @@
  *  the Organization schema read from here, so the entity is described the same
  *  way everywhere. Only verifiable facts belong here — not marketing figures.
  * ──────────────────────────────────────────────*/
+import { MVP_WEEKS } from "./pricing-copy";
 import { marketsSentence } from "./regions";
 import { siteConfig } from "./site-config";
 
@@ -20,7 +21,7 @@ export const companyFacts: Array<[string, string]> = [
   ["Markets served", "United Kingdom, United States, Canada, United Arab Emirates"],
   ["Services", "Mobile app development — strategy, UX/UI, iOS & Android, backend, QA and launch"],
   ["Platforms", "iOS (Swift), Android (Kotlin), Flutter, React Native"],
-  ["Typical MVP timeline", "12–16 weeks from discovery to store launch"],
+  ["Typical MVP timeline", `${MVP_WEEKS} to store launch, depending on the app type`],
   ["Engagement models", "MVP launch, full product, dedicated team, app upgrade"],
   ["Code ownership", "The client owns all code, designs and documentation"],
   ["Contact", siteConfig.contact.email],

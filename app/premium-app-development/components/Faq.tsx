@@ -8,7 +8,7 @@ import { rv } from "./ui";
  */
 export function Faq({
   items = faqs,
-  eyebrow = "10 — FAQ",
+  eyebrow = "09 — FAQ",
   title = (
     <>
       Straight <em>answers.</em>

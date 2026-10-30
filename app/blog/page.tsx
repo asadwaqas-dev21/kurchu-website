@@ -11,7 +11,7 @@ import { SectionHead } from "@/app/premium-app-development/components/ui";
 export const metadata = buildMetadata({
   title: "App Development Guides & Insights | Kurchu",
   description:
-    "Practical guides on planning, costing and building mobile apps — MVP timelines, Flutter vs React Native, UK GDPR, Arabic apps and choosing a developer.",
+    "Practical guides on planning, costing and building mobile apps: MVP timelines, Flutter vs React Native, AI builders vs teams, UK GDPR and hiring a developer.",
   path: "/blog",
 });
 

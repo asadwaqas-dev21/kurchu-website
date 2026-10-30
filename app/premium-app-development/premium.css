@@ -24,7 +24,8 @@
   --f-body:var(--font-inter),ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --f-serif:var(--font-instrument-serif),"Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif;
   --f-mono:var(--font-jetbrains-mono),ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --f-hand:var(--font-caveat),"Bradley Hand","Segoe Print",cursive;
+  /* System handwriting fonts only: the "Idea to product" sketch is too small to justify a web font. */
+  --f-hand:"Bradley Hand","Segoe Print","Comic Sans MS",cursive;
 
   --ease:cubic-bezier(.16,1,.3,1);
   --ease-io:cubic-bezier(.65,0,.35,1);
@@ -1210,10 +1211,10 @@ html:has(.kp){-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavio
 
 /* =========================================================
    11. NEXT.JS INTEGRATION
-   The page lives inside the site's root layout, so neutralise the
-   layout's body padding / background while this route is mounted.
+   The page lives inside the site's root layout, so replace the
+   layout's white body background while this route is mounted.
    ========================================================= */
-body:has(.kp){padding-bottom:0;background:#09090A}
+body:has(.kp){background:#09090A}
 .kp{width:100%}
 @media (max-width:1024px){html:has(.kp){scroll-padding-top:80px}}
 .kp .logo img{width:28px;height:28px;border-radius:7px;flex:none}

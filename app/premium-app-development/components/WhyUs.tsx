@@ -8,7 +8,7 @@ export function WhyUs() {
         <div className="why-head">
           <div>
             <span className="eyebrow" {...rv()}>
-              07 — Why Kurchu
+              05 — Why Kurchu
             </span>
             <h2 className="h2" id="why-title" {...rv(".05s")}>
               A product team, <em>not a vendor.</em>

@@ -10,7 +10,7 @@
  *  says so plainly. Laws, regulators and time differences are general facts;
  *  lines about how Kurchu works are business commitments to confirm.
  * ──────────────────────────────────────────────*/
-import { PRICE_SCOPE } from "./pricing-copy";
+import { MVP_WEEKS, PRICE_EXAMPLES, PRICE_SCOPE } from "./pricing-copy";
 import { getRegion, type Region } from "./regions";
 
 export type City = {
@@ -110,15 +110,15 @@ export const cities: City[] = [
     slug: "manchester",
     name: "Manchester",
     region: "uk",
-    keywords: [...searchTerms("Manchester"), "e-commerce app developers Manchester"],
+    keywords: [...searchTerms("Manchester"), "app development Greater Manchester", "e-commerce app developers Manchester"],
     seo: {
-      title: "Mobile App Development Manchester | E-commerce Apps | Kurchu",
+      title: "App Development in Manchester | iOS & Android | Kurchu",
       description:
-        "Mobile app developers for Manchester businesses — e-commerce, media and health apps for iOS and Android, built to UK GDPR with calls in UK hours.",
+        "App development for Manchester businesses and startups: iOS, Android and Flutter apps for retail, bookings, media and health, with fixed GBP prices.",
     },
     hero: {
-      lede: "A senior remote product team for Manchester's e-commerce brands, media companies and health-tech startups — iOS and Android apps built to UK GDPR, with calls inside your working day.",
-      meta: ["Calls in UK business hours", "E-commerce & retail apps", "Proposals priced in GBP"],
+      lede: "A senior remote product team for Manchester startups and businesses — retail, booking, media and health apps for iOS and Android, built to UK GDPR, with calls inside your working day.",
+      meta: ["Calls in UK business hours", "Startups to established brands", "Proposals priced in GBP"],
     },
     timeZone: {
       zone: "GMT / BST",
@@ -128,11 +128,12 @@ export const cities: City[] = [
     context:
       "Manchester has the UK's largest digital and tech cluster outside London, anchored by MediaCityUK in Salford, with major online fashion and e-commerce brands and a growing health and life-sciences sector.",
     answer:
-      "Kurchu Software Solutions designs and builds mobile apps for Manchester's online retailers, media companies and health-tech teams, working remotely from Lahore, Pakistan. Apps connect to the commerce and content systems you already run, such as Shopify, are built to UK GDPR and PECR, and ship with buy-now-pay-later and courier tracking where customers expect them.",
+      "Kurchu Software Solutions designs and builds mobile apps for Manchester startups, online retailers, service businesses, media companies and health-tech teams, working remotely from Lahore, Pakistan. Apps connect to the commerce and content systems you already run, such as Shopify, are built to UK GDPR and PECR, and ship with buy-now-pay-later and courier tracking where customers expect them.",
     appIdeas: [
       { title: "Fashion drop and wishlist app", desc: "Early access to drops, size-aware wishlists and push alerts when stock returns, synced with your Shopify catalogue." },
       { title: "Subscription content app", desc: "Video, audio or articles behind an in-app subscription, with offline downloads and App Store and Google Play billing." },
       { title: "Patient self-management app", desc: "Symptom diaries, appointment reminders and secure messaging, built to the areas NHS organisations assess under DTAC." },
+      { title: "Startup MVP", desc: "A focused first release for a Manchester founder — one core journey on iOS and Android, analytics from day one, ready to show investors." },
     ],
     sectors: ["E-commerce and online fashion retail", "Media, broadcasting and digital content", "Health and life sciences", "Logistics and B2B operations"],
     rules: [
@@ -152,6 +153,14 @@ export const cities: City[] = [
         a: "No — our developers are in Lahore, Pakistan, and work with Manchester remotely. A typical rhythm is a fifteen-minute stand-up at 10:00 UK time, which is mid-afternoon in Lahore, a shared Slack or Teams channel through the day, and a demo of the latest build every Friday. You always talk to the senior people building your app, never a go-between.",
       },
       {
+        q: "How much does app development cost in Manchester?",
+        a: `With Kurchu, ${PRICE_SCOPE}. ${PRICE_EXAMPLES} Manchester clients get proposals in GBP with a fixed price for each phase, so a startup can launch a lean first release and add features once real users show what matters. Try the AI estimator for a price on your own idea.`,
+      },
+      {
+        q: "How quickly can a Manchester startup launch an app?",
+        a: `Most first releases reach the App Store and Google Play in ${MVP_WEEKS}. A single-journey MVP with a ready-made design lands at the short end; payments, several user roles or an admin dashboard push it later. A test build arrives early, so you can put the app in front of customers or investors well before launch day.`,
+      },
+      {
         q: "How much does a retail app cost to build in Manchester?",
         a: `With us, ${PRICE_SCOPE}. For a retail app, cost depends mostly on how much it shares with your existing store: reading products and orders from Shopify is quick, while custom loyalty rules, returns flows or a headless rebuild add weeks. We price each of those separately, in GBP, so you can launch lean and add the rest later.`,
       },
@@ -169,14 +178,14 @@ export const cities: City[] = [
     slug: "birmingham",
     name: "Birmingham",
     region: "uk",
-    keywords: [...searchTerms("Birmingham"), "field service app development Birmingham"],
+    keywords: [...searchTerms("Birmingham"), "app development West Midlands", "field service app development Birmingham"],
     seo: {
-      title: "App Developers in Birmingham | Field & ERP Apps | Kurchu",
+      title: "App Development in Birmingham & West Midlands | Kurchu",
       description:
-        "Mobile app developers for Birmingham and West Midlands businesses — field-service, operations and customer apps for iOS and Android, built to UK GDPR.",
+        "App development for Birmingham and West Midlands businesses: iOS, Android and Flutter apps for customers, bookings and field teams, with fixed GBP prices.",
     },
     hero: {
-      lede: "A senior remote product team for Birmingham and West Midlands businesses — operations and field-service apps that work offline, connect to your existing systems and meet UK GDPR.",
+      lede: "A senior remote product team for Birmingham and West Midlands businesses — customer and booking apps, plus field-service and operations apps that work offline, connect to your existing systems and meet UK GDPR.",
       meta: ["Calls in UK business hours", "Offline-first field apps", "Proposals priced in GBP"],
     },
     timeZone: {
@@ -187,11 +196,12 @@ export const cities: City[] = [
     context:
       "Birmingham is the UK's second-largest city and the centre of the West Midlands' manufacturing and automotive supply chain, with a large professional and financial services sector and one of Europe's youngest populations.",
     answer:
-      "Kurchu Software Solutions builds operations, field-service and customer apps for Birmingham and West Midlands businesses, working remotely from Lahore, Pakistan. Field apps are offline-first, connect to ERPs such as SAP Business One or Microsoft Dynamics and to Xero or Sage, and are built to UK GDPR — with proposals in GBP and full code ownership.",
+      "Kurchu Software Solutions builds customer, booking, field-service and operations apps for Birmingham and West Midlands businesses, working remotely from Lahore, Pakistan. Field apps are offline-first, connect to ERPs such as SAP Business One or Microsoft Dynamics and to Xero or Sage, and are built to UK GDPR — with proposals in GBP and full code ownership.",
     appIdeas: [
       { title: "Field-service job app", desc: "Job sheets, checklists, photos and customer signatures that work without signal and sync back to the office automatically." },
       { title: "Warehouse and stock app", desc: "Barcode and QR scanning for goods-in, picking and stock counts on ordinary phones or rugged scanners." },
       { title: "Apprentice training app", desc: "Course modules, sign-offs and evidence uploads for apprentices and assessors, with progress dashboards for managers." },
+      { title: "Local services booking app", desc: "Online booking, deposits, reminders and staff schedules for cleaning companies, salons and trades across the West Midlands." },
     ],
     sectors: ["Manufacturing and automotive supply chain", "Professional and financial services", "Logistics, construction and field service", "Education and training"],
     rules: [
@@ -209,6 +219,14 @@ export const cities: City[] = [
       {
         q: "Are you a Birmingham app development company?",
         a: "We are a Lahore-based team working remotely with Birmingham and the West Midlands. For field and warehouse apps we keep in sync with recorded walkthroughs on real devices and a weekly test build your own staff can try on the shop floor or on site. Lahore is four to five hours ahead, so feedback sent in the morning is usually fixed the same day.",
+      },
+      {
+        q: "How much does app development cost in Birmingham?",
+        a: `With Kurchu, ${PRICE_SCOPE}. ${PRICE_EXAMPLES} Birmingham proposals are priced in GBP, with a written scope and a fixed price for each phase agreed before work starts, so the number you approve is the number you pay. The App Ideas library and the AI estimator show the cost of your own idea in seconds.`,
+      },
+      {
+        q: "How long does it take to build an app for a Birmingham business?",
+        a: `Most first releases reach the App Store and Google Play in ${MVP_WEEKS}, depending on the app type: a booking app sits at the shorter end, while a field-service app with offline sync and ERP integration can take longer. You install a working test build on your own phone every week or two, so progress is never a surprise.`,
       },
       {
         q: "What does a field-service app cost in Birmingham?",
@@ -362,7 +380,7 @@ export const cities: City[] = [
     context:
       "San Francisco and the Bay Area are the centre of US venture-backed software and AI, so founders here usually need to ship quickly, learn from real users and show investors a working product rather than slides.",
     answer:
-      "Kurchu Software Solutions builds MVPs and AI-powered mobile apps for San Francisco and Bay Area startups, working remotely from Lahore, Pakistan, twelve to thirteen hours ahead of Pacific time — so work moves forward overnight. Apps are built to CCPA / CPRA and CalOPPA, typically reach the stores in 12–16 weeks, and all code belongs to the founders.",
+      `Kurchu Software Solutions builds MVPs and AI-powered mobile apps for San Francisco and Bay Area startups, working remotely from Lahore, Pakistan, twelve to thirteen hours ahead of Pacific time — so work moves forward overnight. Apps are built to CCPA / CPRA and CalOPPA, typically reach the stores in ${MVP_WEEKS}, and all code belongs to the founders.`,
     appIdeas: [
       { title: "AI assistant MVP", desc: "A chat or voice assistant grounded in your own content, with cost caps, fallbacks and evaluation tests from the first release." },
       { title: "Two-sided marketplace MVP", desc: "Listings, search, booking and payouts with Stripe Connect, scoped to prove one core metric before your raise." },
@@ -395,7 +413,7 @@ export const cities: City[] = [
       },
       {
         q: "Can you get an MVP ready before our next fundraise?",
-        a: "Most MVPs take 12–16 weeks from discovery to store launch. If a raise is planned, we work back from the date: the first installable build arrives early, analytics are in from the first release, and the scope is cut to what proves your core metric. Investors see a live product with real usage data, not a prototype.",
+        a: `Most MVPs take ${MVP_WEEKS} to reach the stores, depending on the app type. If a raise is planned, we work back from the date: the first installable build arrives early, analytics are in from the first release, and the scope is cut to what proves your core metric. Investors see a live product with real usage data, not a prototype.`,
       },
     ],
   },

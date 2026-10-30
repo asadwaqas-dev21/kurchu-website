@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { SCOPE_LEVELS, scopeEstimate } from "@/app/lib/estimator";
 import { Arr, SectionHead, rv } from "./ui";
 
 type Option = { value: string; label: string; hint?: string };
@@ -28,8 +30,11 @@ const features: Array<[string, string, boolean?]> = [
   ["subs", "Subscriptions"],
 ];
 
+/** The default choices' result, so the panel is correct before interactions.ts runs. */
+const initial = scopeEstimate({ platform: "both", complexity: "mvp", feats: features.filter(([, , on]) => on).map(([value]) => value) });
+
 /** Markup only — the scoring logic lives in interactions.ts. */
-export function Estimator({ eyebrow = "09 — Scope estimator" }: { eyebrow?: string }) {
+export function Estimator({ eyebrow = "07 — Scope estimator" }: { eyebrow?: string }) {
   return (
     <section className="section" id="estimate" aria-labelledby="est-title" style={{ paddingTop: 0 }}>
       <div className="wrap">
@@ -41,7 +46,7 @@ export function Estimator({ eyebrow = "09 — Scope estimator" }: { eyebrow?: st
               Size your project <em>in thirty seconds.</em>
             </>
           }
-          lede="An honest first read, not a price. Accurate proposals need a conversation — but this tells you which conversation to have."
+          lede="An honest first read from the same price table as our quotes. Accurate proposals need a conversation — but this tells you which conversation to have."
         />
         <div className="est">
           <form className="est-panel" id="estForm" {...rv()}>
@@ -100,13 +105,12 @@ export function Estimator({ eyebrow = "09 — Scope estimator" }: { eyebrow?: st
           <div className="est-result" {...rv(".08s")} aria-live="polite">
             <span className="label">Likely project scope</span>
             <p className="est-scope" id="estScope">
-              Lean
+              {initial.level === 1 ? <em>Medium</em> : SCOPE_LEVELS[initial.level]}
             </p>
             <div className="est-meter" id="estMeter" aria-hidden="true">
-              <i className="on"></i>
-              <i></i>
-              <i></i>
-              <i></i>
+              {SCOPE_LEVELS.map((level, k) => (
+                <i key={level} className={k <= initial.level ? "on" : undefined}></i>
+              ))}
             </div>
             <div className="est-meter-l" aria-hidden="true">
               <span>Lean</span>
@@ -116,12 +120,12 @@ export function Estimator({ eyebrow = "09 — Scope estimator" }: { eyebrow?: st
             </div>
             <dl className="est-dl">
               <div>
-                <dt>Indicative timeline</dt>
-                <dd id="estTime">8–12 weeks</dd>
+                <dt>Indicative price</dt>
+                <dd id="estPrice">{initial.price}</dd>
               </div>
               <div>
-                <dt>Suggested team</dt>
-                <dd id="estTeam">Product lead, designer, 2 engineers</dd>
+                <dt>Indicative timeline</dt>
+                <dd id="estTime">{initial.timeline}</dd>
               </div>
               <div>
                 <dt>Recommended start</dt>
@@ -133,7 +137,9 @@ export function Estimator({ eyebrow = "09 — Scope estimator" }: { eyebrow?: st
             <button className="btn btn-primary btn-full" id="estCta" type="button">
               Discuss this scope <Arr />
             </button>
-            <p className="est-fine">Indicative only — not a quote. Every proposal follows a short call and a written scope.</p>
+            <p className="est-fine">
+              Indicative only — not a quote. Priced from our <Link className="tlink" href="/pricing#included">published price table</Link>; every proposal follows a short call and a written scope.
+            </p>
           </div>
         </div>
       </div>

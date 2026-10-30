@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { enquiryMailto, enquiryWhatsApp, submitEnquiry, type EnquiryFields } from "@/app/lib/enquiry";
+import { BUDGET_BANDS as BUDGETS } from "@/app/lib/estimator";
 import { siteConfig } from "@/app/lib/site-config";
 import { Arr } from "./ui";
 
 const SERVICES = ["New mobile app", "MVP", "Existing app upgrade", "Ongoing app support", "Not sure yet"];
 const MARKETS = ["United Kingdom", "United States", "Canada", "United Arab Emirates", "Other"];
-const BUDGETS = ["Under $25k", "$25k – $60k", "$60k – $150k", "$150k+", "Not sure yet"];
 
 type Errors = Partial<Record<"name" | "email", string>>;
 

@@ -1,5 +1,81 @@
+import Link from "next/link";
+import { DESIGNS, FOUNDATION, MIN_PRICE, PLATFORMS, formatUsd } from "@/app/lib/estimator";
+import { PRICE_EXAMPLES } from "@/app/lib/pricing-copy";
+import { PLANS } from "@/app/lib/running-costs";
 import { outsideCosts, priceDrivers, quoteSteps } from "../data";
 import { SectionHead, rv } from "./ui";
+
+/** "+25%" — how much a platform or design choice adds to the base price. */
+const surcharge = (factor = 1) => `+${Math.round((factor - 1) * 100)}%`;
+const factorOf = <T extends { value: string; factor: number }>(list: T[], value: string) => list.find((item) => item.value === value)?.factor;
+const carePlan = PLANS.find((plan) => plan.value === "essential");
+
+const included = {
+  title: "Included in every price",
+  items: [
+    `${FOUNDATION.label}: project setup, navigation, app icon, testing and store submission`,
+    "Every feature you choose, each at its published price",
+    "A clean, ready-made design",
+    "One platform: iOS or Android",
+    "A written scope and a fixed price before work starts",
+    "100% ownership of the code, designs and documentation",
+  ],
+};
+
+const extras = {
+  title: "Priced as separate lines",
+  items: [
+    `Both stores from one codebase (Flutter or React Native): ${surcharge(factorOf(PLATFORMS, "cross-platform"))}`,
+    `Native iOS and Android (Swift and Kotlin): ${surcharge(factorOf(PLATFORMS, "native-both"))}`,
+    `Custom UI/UX design with user research: ${surcharge(factorOf(DESIGNS, "custom"))}`,
+    "Features added after the scope is agreed, at the same table prices",
+    ...(carePlan ? [`Support after launch: a monthly care plan, from ${formatUsd(carePlan.monthly[0])}/month`] : []),
+  ],
+};
+
+/** What the headline price covers and what costs extra, so a low starting price doesn't read as a catch. */
+export function PriceIncludes() {
+  return (
+    <section className="section mk" id="included" aria-labelledby="included-title" style={{ paddingTop: 0 }}>
+      <div className="wrap">
+        <SectionHead
+          eyebrow="What the price includes"
+          titleId="included-title"
+          title={
+            <>
+              From {formatUsd(MIN_PRICE)}, <em>and what that covers.</em>
+            </>
+          }
+          lede={`${PRICE_EXAMPLES} Here is exactly what those prices include, and what is quoted on top.`}
+        />
+        <div className="mk-grid" {...rv()}>
+          {[included, extras].map((group) => (
+            <div className="mk-col" key={group.title}>
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <div className="mk-col">
+            <h3>Paid to providers, not to us</h3>
+            <ul>
+              <li>Apple Developer Program and Google Play fees</li>
+              <li>Hosting, maps, messaging and other usage-based services</li>
+              <li>
+                <Link className="tlink" href="#running-costs">
+                  See typical running costs
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /** The factors that move a quote, grouped so the reader can place their own project. */
 export function PriceDrivers() {

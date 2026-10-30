@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-white pb-[calc(68px+env(safe-area-inset-bottom))] text-[#0b1220] lg:pb-0">
+      <body className="min-h-full flex flex-col bg-white text-[#0b1220]">
         <StructuredData />
         {children}
       </body>

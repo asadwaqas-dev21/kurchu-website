@@ -1,6 +1,6 @@
 /** Copy for the repeated blocks on the page. */
 
-import { BOOKING_COST_ANSWER, MVP_COST_ANSWER, PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
+import { BOOKING_COST_ANSWER, MVP_COST_ANSWER, MVP_WEEKS, MVP_WEEKS_EXAMPLE, PRICE_EXAMPLES, PRICE_SCOPE } from "@/app/lib/pricing-copy";
 import { regionPath, regions } from "@/app/lib/regions";
 import { siteConfig } from "@/app/lib/site-config";
 
@@ -10,15 +10,21 @@ export const email = siteConfig.contact.email;
 export const navLinks = [
   { href: "/services", label: "Services", section: "services" },
   { href: "/work", label: "Work", section: "work" },
-  { href: "/process", label: "Process", section: "process" },
   { href: "/pricing", label: "Pricing", section: "pricing" },
-  { href: "/technology", label: "Technology", section: "technology" },
   { href: "/about", label: "About", section: "about" },
   { href: "/blog", label: "Blog", section: "blog" },
   { href: "/contact", label: "Contact", section: "contact" },
 ];
 
-export const drawerLinks = [...navLinks, { href: "/#faq", label: "FAQ", section: "faq" }];
+// Process and Technology stay out of the desktop bar to keep it short; the drawer and footer still list them.
+export const drawerLinks = [
+  ...navLinks.slice(0, 2),
+  { href: "/process", label: "Process", section: "process" },
+  navLinks[2],
+  { href: "/technology", label: "Technology", section: "technology" },
+  ...navLinks.slice(3),
+  { href: "/#faq", label: "FAQ", section: "faq" },
+];
 
 export const trustFacts: Array<{ value: string; unit?: string; label: string }> = [
   { value: "38", label: "Products shipped to the App Store and Google Play" },
@@ -231,7 +237,7 @@ export const models = [
     badge: "Most common",
     title: "MVP Launch",
     forWho: "For founders going from concept to first release.",
-    timeline: "12–16 weeks",
+    timeline: MVP_WEEKS,
     team: "Product lead, designer, 2–3 engineers, QA",
     pricing: "Fixed scope per phase",
     points: ["Discovery & UX/UI", "Mobile & backend", "QA & store launch"],
@@ -286,7 +292,7 @@ export const faqs = [
   },
   {
     q: "How long does a mobile app take?",
-    a: "Most MVPs take 12–16 weeks from discovery to store launch, with design and engineering overlapping so the first installable build arrives early. Larger platforms with several apps and an admin panel take five to nine months. Those are usually released in phases, so real users arrive and give feedback long before the full scope is finished, and priorities can shift with evidence.",
+    a: `Most MVPs take ${MVP_WEEKS} to reach the stores, depending on the app type. ${MVP_WEEKS_EXAMPLE} Design and engineering overlap so the first installable build arrives early. Larger platforms with several apps and an admin panel take five to nine months. Those are usually released in phases, so real users arrive and give feedback long before the full scope is finished, and priorities can shift with evidence.`,
   },
   {
     q: "Native or cross-platform?",

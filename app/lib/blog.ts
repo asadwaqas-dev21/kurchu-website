@@ -52,6 +52,15 @@ export function getPost(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
 
+/**
+ * Raster copy of a post's cover (public/blog/<name>.png, 1200×750) for share cards,
+ * Article schema and the image sitemap — Google doesn't use SVG for those. The page
+ * itself keeps the sharper, lighter SVG.
+ */
+export function postShareImage(post: BlogPost) {
+  return post.image.replace(/\.svg$/, ".png");
+}
+
 export function formatPostDate(date: string) {
   return new Date(`${date}T00:00:00Z`).toLocaleDateString("en-US", {
     day: "numeric",

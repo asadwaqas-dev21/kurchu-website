@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import JsonLd from "@/app/components/shared/JsonLd";
-import { getPost, posts } from "@/app/lib/blog";
+import { getPost, postShareImage, posts } from "@/app/lib/blog";
 import { ORGANIZATION_ID, WEBSITE_ID, breadcrumbJsonLd, faqPageJsonLd } from "@/app/lib/jsonld";
 import { buildMetadata } from "@/app/lib/metadata";
 import { breadcrumbTrail } from "@/app/lib/routes";
@@ -33,6 +33,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">) {
     description: post.metaDescription ?? post.excerpt,
     path: `/blog/${post.slug}`,
     article: { publishedTime: post.date, modifiedTime: post.updated ?? post.date },
+    image: { url: postShareImage(post), width: 1200, height: 750, alt: post.imageAlt },
   });
 }
 
@@ -63,7 +64,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
     dateModified: post.updated ?? post.date,
     wordCount,
     ...(post.keywords && { keywords: post.keywords.join(", ") }),
-    image: `${siteConfig.url}${post.image}`,
+    image: `${siteConfig.url}${postShareImage(post)}`,
     url,
     mainEntityOfPage: url,
     articleSection: post.category,

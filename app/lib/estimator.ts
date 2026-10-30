@@ -111,6 +111,47 @@ export function priceFor(keys: FeatureKey[], platform: Platform, design: Design)
 
 export const formatUsd = (value: number) => `$${value.toLocaleString("en-US")}`;
 
+/* ── Scope estimator (homepage and /pricing) ──────
+ * The quick estimator's choices, priced from the same table so its numbers
+ * never contradict the AI estimator or the App Ideas plans.
+ */
+
+/** Its feature checkboxes, as price-table keys. */
+const SCOPE_FEATURES: Record<string, FeatureKey> = {
+  auth: "accounts",
+  payments: "payments",
+  maps: "maps",
+  chat: "chat",
+  push: "push",
+  admin: "admin",
+  subs: "subscriptions",
+};
+
+/** What "Grow it" and "Scale it" add on top of the chosen features. */
+const AMBITION_EXTRAS: Record<string, FeatureKey[]> = {
+  mvp: [],
+  standard: ["profiles", "analytics"],
+  advanced: ["profiles", "analytics", "integrations", "offline"],
+};
+
+export const SCOPE_LEVELS = ["Lean", "Medium", "Substantial", "Complex"];
+
+/** Budget choices on the enquiry forms. Most first releases in the App Ideas plans land between $900 and $4,200. */
+export const BUDGET_BANDS = ["Under $1,000", "$1,000 – $2,500", "$2,500 – $5,000", "$5,000 – $10,000", "$10,000+", "Not sure yet"];
+
+export function scopeEstimate({ platform, complexity, feats }: { platform: string; complexity: string; feats: string[] }) {
+  const keys = [...new Set([...feats.flatMap((f) => SCOPE_FEATURES[f] ?? []), ...(AMBITION_EXTRAS[complexity] ?? [])])];
+  const target: Platform = platform === "ios" || platform === "android" ? platform : complexity === "advanced" ? "native-both" : "cross-platform";
+  const price = priceFor(keys, target, complexity === "mvp" ? "template" : "custom");
+  const level = price.high < 2500 ? 0 : price.high < 5000 ? 1 : price.high < 10000 ? 2 : 3;
+  return {
+    ...price,
+    level,
+    price: `${formatUsd(price.low)}–${formatUsd(price.high)}`,
+    timeline: `${price.weeks[0]}–${price.weeks[1]} weeks`,
+  };
+}
+
 /* ── Budget fitting ─────────────────────────────
  * Runs in the browser on the features an estimate already chose — no AI.
  * A scope "fits" when the middle of its price range is within the budget.

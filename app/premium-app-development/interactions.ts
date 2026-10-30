@@ -8,6 +8,7 @@
  */
 
 import { enquiryMailto, enquiryWhatsApp, submitEnquiry } from "@/app/lib/enquiry";
+import { BUDGET_BANDS, SCOPE_LEVELS, scopeEstimate } from "@/app/lib/estimator";
 
 type Preset = Record<string, string | string[] | undefined>;
 
@@ -39,19 +40,11 @@ const STEPS: Step[] = [
   { key: "platform", title: "Which platforms?", hint: "“Not decided” is a perfectly good answer.", kind: "single", opts: [["iOS"], ["Android"], ["Both"], ["Not decided"]] },
   { key: "need", title: "What do you need from us?", hint: "Select everything that applies.", kind: "multi", opts: [["Strategy", "Discovery, scope, roadmap"], ["UX/UI", "Research, flows, visual design"], ["Development", "iOS, Android, cross-platform"], ["Backend", "APIs, data, integrations"], ["Full product team", "End to end, one team"]] },
   { key: "stage", title: "Where is the project today?", hint: "So we know where to start.", kind: "single", opts: [["Idea", "A clear problem, no designs yet"], ["Wireframes", "Rough flows exist"], ["Design ready", "High-fidelity designs done"], ["Existing product", "Live in the stores"]] },
-  { key: "budget", title: "Approximate budget?", hint: "Helps us propose the right shape of team. Shared in confidence.", kind: "single", opts: [["Under $25k"], ["$25k – $60k"], ["$60k – $150k"], ["$150k+"], ["Not sure yet"]] },
+  { key: "budget", title: "Approximate budget?", hint: "Helps us propose the right scope for a first release. Shared in confidence.", kind: "single", opts: BUDGET_BANDS.map((band): [string] => [band]) },
   { key: "timeline", title: "Ideal timeline?", hint: "When would you like to start?", kind: "single", opts: [["As soon as possible", "Within 4 weeks"], ["1–3 months"], ["3–6 months"], ["Just exploring"]] },
   { key: "contact", title: "Last step — where should we reply?", hint: "A senior member of the team replies within one working day.", kind: "form" },
 ];
 
-const LEVELS = ["Lean", "Medium", "Substantial", "Complex"];
-const TIMELINES = ["6–10 weeks", "12–18 weeks", "18–28 weeks", "28+ weeks, released in phases"];
-const TEAMS = [
-  "Product lead, designer, 2 engineers",
-  "Product lead, designer, 2–3 engineers, QA",
-  "Product lead, 2 designers, 4 engineers, QA",
-  "Dedicated squad of 7–9 across product, design, mobile, backend and QA",
-];
 const STARTS: Record<string, string> = {
   idea: "2-week discovery sprint",
   design: "1-week design & technical review",
@@ -608,7 +601,7 @@ export function initPremiumPage(root: HTMLElement): () => void {
   if (estForm) {
     const scopeEl = $("#estScope")!;
     let lastLevel = -1;
-    let estState = { platform: "both", stage: "idea", complexity: "mvp", feats: [] as string[], level: 0 };
+    let estState = { platform: "both", stage: "idea", complexity: "mvp", feats: [] as string[], level: 0, price: "" };
 
     const estimate = () => {
       const fd = new FormData(estForm);
@@ -617,12 +610,8 @@ export function initPremiumPage(root: HTMLElement): () => void {
       const complexity = String(fd.get("complexity"));
       const feats = fd.getAll("feat").map(String);
 
-      const stageWeight: Record<string, number> = { idea: 2, design: 0, existing: 1.5 };
-      const complexityWeight: Record<string, number> = { mvp: 0, standard: 3, advanced: 6 };
-      const featWeight: Record<string, number> = { auth: 0.5, payments: 1.5, maps: 1.5, chat: 2, push: 0.5, admin: 2, subs: 1.5 };
-      let score = (platform === "both" ? 2 : 1) + stageWeight[stage] + complexityWeight[complexity];
-      feats.forEach((f) => (score += featWeight[f] ?? 0));
-      const level = score <= 4.5 ? 0 : score <= 8.5 ? 1 : score <= 12.5 ? 2 : 3;
+      const result = scopeEstimate({ platform, complexity, feats });
+      const level = result.level;
 
       const notes: string[] = [];
       if (platform === "both" && complexity !== "advanced") notes.push("One cross-platform codebase (Flutter or React Native) could cover both stores efficiently.");
@@ -634,7 +623,7 @@ export function initPremiumPage(root: HTMLElement): () => void {
       if (feats.includes("maps")) notes.push("Live location needs battery and accuracy testing on real devices.");
       if (stage === "existing") notes.push("We'd start by auditing what to keep — rewrites are rarely the answer.");
 
-      scopeEl.innerHTML = level === 1 ? "<em>Medium</em>" : LEVELS[level];
+      scopeEl.innerHTML = level === 1 ? "<em>Medium</em>" : SCOPE_LEVELS[level];
       if (level !== lastLevel) {
         scopeEl.classList.remove("flash");
         void scopeEl.offsetWidth;
@@ -642,12 +631,12 @@ export function initPremiumPage(root: HTMLElement): () => void {
         lastLevel = level;
       }
       $$("#estMeter i").forEach((i, k) => i.classList.toggle("on", k <= level));
-      $("#estTime")!.textContent = TIMELINES[level];
-      $("#estTeam")!.textContent = TEAMS[level];
+      $("#estPrice")!.textContent = result.price;
+      $("#estTime")!.textContent = result.timeline;
       $("#estStart")!.textContent = STARTS[stage];
       $("#estNotes")!.innerHTML = notes.slice(0, 3).map((n) => `<li>${n}</li>`).join("");
       $("#featCount")!.textContent = `${feats.length} selected`;
-      estState = { platform, stage, complexity, feats, level };
+      estState = { platform, stage, complexity, feats, level, price: result.price };
     };
     listen(estForm, "submit", (e: Event) => e.preventDefault());
     listen(estForm, "change", estimate);
@@ -661,7 +650,7 @@ export function initPremiumPage(root: HTMLElement): () => void {
           type,
           platform: platformLabel[estState.platform],
           stage: stageLabel[estState.stage],
-          details: `Estimator: ${LEVELS[estState.level]} scope. Features: ${estState.feats.join(", ") || "none selected"}.`,
+          details: `Estimator: ${SCOPE_LEVELS[estState.level]} scope, ${estState.price}. Features: ${estState.feats.join(", ") || "none selected"}.`,
         },
         e.currentTarget as HTMLElement,
       );

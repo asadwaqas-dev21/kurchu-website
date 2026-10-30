@@ -8,9 +8,10 @@ import { Testimonials } from "@/app/premium-app-development/components/Testimoni
 import { Work } from "@/app/premium-app-development/components/Work";
 
 export const metadata = buildMetadata({
-  title: "Selected Work — App Case Studies | Kurchu Software Solutions",
+  // The page shows concept studies (client case studies are shared under NDA), so the title says so.
+  title: "Selected Work: Mobile App Concepts & Design | Kurchu",
   description:
-    "Mobile app case studies across fintech, healthcare, mobility and commerce: the challenge, our role, the platforms and the outcome for each product.",
+    "Mobile app product concepts across fintech, healthcare, mobility and commerce: the brief, our approach, platforms and design. Client case studies on request.",
   path: "/work",
 });
 

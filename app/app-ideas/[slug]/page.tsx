@@ -28,6 +28,8 @@ type Props = { params: Promise<{ slug: string }> };
 const keysOf = (items: AppIdea["mvp"]) => items.map(([key]) => key as FeatureKey);
 const range = (r: { low: number; high: number }) => `${formatUsd(r.low)}–${formatUsd(r.high)}`;
 const weeks = (r: { weeks: [number, number] }) => `${r.weeks[0]}–${r.weeks[1]} weeks`;
+/** "a salon booking app" / "an e-commerce shopping app". */
+const withArticle = (name: string) => `${/^[aeiou]/i.test(name) ? "an" : "a"} ${name.toLowerCase()}`;
 
 function plan(idea: AppIdea) {
   const mvpKeys = keysOf(idea.mvp);
@@ -61,16 +63,16 @@ function estimatorLink(idea: AppIdea) {
 
 function faqsFor(idea: AppIdea) {
   const { mvp, full } = plan(idea);
-  const lower = idea.name.toLowerCase();
+  const lower = withArticle(idea.name);
   return [
     {
-      q: `How much does a ${lower} cost?`,
+      q: `How much does ${lower} cost?`,
       a: `With Kurchu, a first release with ${idea.mvp.length} core features is estimated at ${range(mvp)} for iOS and Android from one codebase with a ready-made design. The full product, adding ${idea.later
         .map(([key]) => getFeature(key)?.label.toLowerCase())
         .join(", ")}, is estimated at ${range(full)}. A fixed price follows a short discovery call.`,
     },
     {
-      q: `How long does it take to build a ${lower}?`,
+      q: `How long does it take to build ${lower}?`,
       a: `The first release takes about ${weeks(mvp)} from discovery to store launch; the full product about ${weeks(full)}. Building natively for iOS and Android, or with a custom design, adds time — the price table on this page shows the difference.`,
     },
     ...idea.faqs,
@@ -84,7 +86,7 @@ export async function generateMetadata({ params }: Props) {
   return buildMetadata({
     // Long names fall back to a shorter pattern so Google shows the whole title (~60 characters).
     title: [`${idea.name}: Features, Cost & Timeline | Kurchu`, `${idea.name}: Cost & Features | Kurchu`].find((t) => t.length <= 60) ?? `${idea.name} | Kurchu`,
-    description: `What a ${idea.name.toLowerCase()} needs, what it costs (MVP from ${formatUsd(mvp.low)}) and how long it takes — with wireframes, a budget planner and launch advice.`,
+    description: `What ${withArticle(idea.name)} needs, what it costs (MVP from ${formatUsd(mvp.low)}) and how long it takes — with wireframes, a budget planner and launch advice.`,
     path: appIdeaPath(idea),
   });
 }

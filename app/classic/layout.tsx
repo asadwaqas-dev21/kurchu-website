@@ -19,6 +19,8 @@ export default function ClassicLayout({ children }: LayoutProps<"/classic">) {
     // `contents` keeps the children as direct flex items of <body>.
     <div className={`${geistSans.variable} ${geistMono.variable} font-sans`} style={{ display: "contents" }}>
       {children}
+      {/* Keeps the end of the page clear of the fixed bottom nav on mobile. */}
+      <div aria-hidden="true" className="h-[calc(68px+env(safe-area-inset-bottom))] shrink-0 lg:hidden" />
       <MobileBottomNav />
       <ChatWidget />
     </div>
