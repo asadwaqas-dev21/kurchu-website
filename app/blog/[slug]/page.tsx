@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import JsonLd from "@/app/components/shared/JsonLd";
-import { getPost, postShareImage, posts } from "@/app/lib/blog";
+import { getPost, postAuthor, postShareImage, posts } from "@/app/lib/blog";
 import { ORGANIZATION_ID, WEBSITE_ID, breadcrumbJsonLd, faqPageJsonLd } from "@/app/lib/jsonld";
 import { buildMetadata } from "@/app/lib/metadata";
 import { breadcrumbTrail } from "@/app/lib/routes";
@@ -43,6 +43,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
   if (!post) notFound();
 
   const url = `${siteConfig.url}/blog/${post.slug}`;
+  const author = postAuthor(post);
   // Kurchu has one service line, so every article links to it unless another category matches.
   const relatedService = serviceLines.find((service) => service.blogCategory === post.category) ?? serviceLines[0];
   const wordCount = [
@@ -70,7 +71,8 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
     articleSection: post.category,
     inLanguage: "en",
     isPartOf: { "@id": WEBSITE_ID },
-    author: { "@id": ORGANIZATION_ID },
+    // A named person (E-E-A-T): the full Person node (photo, role, LinkedIn) is in the root layout's graph.
+    author: { "@type": "Person", "@id": author.schemaId, name: author.name, url: `${siteConfig.url}${author.profile}` },
     publisher: { "@id": ORGANIZATION_ID },
     // The Service node lives on its own page; type, name and url let this page's graph stand alone.
     ...(relatedService && {
@@ -113,7 +115,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
             </span>
             <h1 id="art-title">{post.title}</h1>
             <p className="art-intro">{post.excerpt}</p>
-            <PostMeta post={post} by={siteConfig.name} />
+            <PostMeta post={post} by={author} />
           </header>
 
           {(post.summary || post.takeaways) && (

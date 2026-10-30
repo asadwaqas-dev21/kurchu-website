@@ -7,12 +7,13 @@ import { ORGANIZATION_ID, WEBSITE_ID, marketsAreaServed } from "@/app/lib/jsonld
 import { companySummary, technologies } from "@/app/lib/facts";
 import { regions } from "@/app/lib/regions";
 import { serviceLines } from "@/app/lib/services";
-import { siteConfig } from "@/app/lib/site-config";
+import { personFor, siteConfig, type AuthorId } from "@/app/lib/site-config";
 import JsonLd from "./JsonLd";
 
 export default function StructuredData() {
   // Placeholder links ("#") would be invalid sameAs values, so only real URLs are listed.
   const sameAs = Object.values(siteConfig.social).filter((href) => href.startsWith("http"));
+  const people = (Object.keys(siteConfig.authors) as AuthorId[]).map(personFor);
 
   const graph = {
     "@context": "https://schema.org",
@@ -45,7 +46,19 @@ export default function StructuredData() {
         },
         knowsAbout: [...serviceLines.map((service) => service.serviceType), ...technologies],
         ...(sameAs.length > 0 && { sameAs }),
+        founder: people.filter((person) => person.jobTitle === "Founder").map((person) => ({ "@id": person.schemaId })),
       },
+      // Named people (article authors, founder): a real team behind the content is an E-E-A-T signal.
+      ...people.map((person) => ({
+        "@type": "Person",
+        "@id": person.schemaId,
+        name: person.name,
+        jobTitle: person.jobTitle,
+        image: `${siteConfig.url}${person.image}`,
+        url: `${siteConfig.url}${person.profile}`,
+        sameAs: [person.linkedin],
+        worksFor: { "@id": ORGANIZATION_ID },
+      })),
       {
         "@type": "WebSite",
         "@id": WEBSITE_ID,

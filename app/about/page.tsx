@@ -6,6 +6,7 @@ import { FinalCta } from "@/app/premium-app-development/components/FinalCta";
 import { PageHero } from "@/app/premium-app-development/components/PageHero";
 import { PremiumShell } from "@/app/premium-app-development/components/PremiumShell";
 import { Summary } from "@/app/premium-app-development/components/Summary";
+import { Team } from "@/app/premium-app-development/components/Team";
 import { Testimonials } from "@/app/premium-app-development/components/Testimonials";
 import { Trust } from "@/app/premium-app-development/components/Trust";
 import { WhyUs } from "@/app/premium-app-development/components/WhyUs";
@@ -41,6 +42,7 @@ export default function AboutPage() {
         answer={companySummary}
         facts={companyFacts}
       />
+      <Team />
       <Trust />
       <WhyUs />
       <Testimonials />

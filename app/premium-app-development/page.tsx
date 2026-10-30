@@ -1,26 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import { companyFacts, companySummary } from "@/app/lib/facts";
 import { faqs } from "./data";
-import { Engagement } from "./components/Engagement";
 import { Estimator } from "./components/Estimator";
 import { Faq } from "./components/Faq";
 import { FinalCta } from "./components/FinalCta";
-import { Gallery } from "./components/Gallery";
 import { Hero } from "./components/Hero";
-import { IdeaToProduct } from "./components/IdeaToProduct";
 import { PremiumShell } from "./components/PremiumShell";
 import { Process } from "./components/Process";
 import { Services } from "./components/Services";
 import { Summary } from "./components/Summary";
 import { Testimonials } from "./components/Testimonials";
 import { Trust } from "./components/Trust";
-import { WhyUs } from "./components/WhyUs";
 import { Work } from "./components/Work";
 
 // Company-level keyword ("mobile app development company"). The service keywords belong to
 // /mobile-app-development ("custom mobile app development services") and the specialist pages,
-// so the homepage does not compete with them.
-const title = "Mobile App Development Company | Kurchu Software Solutions";
+// so the homepage does not compete with them. "for Startups" adds a winnable long-tail modifier to the head term.
+const title = "Mobile App Development Company for Startups | Kurchu";
 const description =
   "Kurchu is a mobile app development company designing, building and launching iOS, Android and cross-platform apps for clients in the UK, USA, Canada and UAE.";
 
@@ -66,12 +62,8 @@ export default function PremiumAppDevelopmentPage() {
         facts={companyFacts}
       />
       <Services />
-      <IdeaToProduct />
-      <Work />
-      <Gallery />
+      <Work preview />
       <Process />
-      <WhyUs />
-      <Engagement />
       <Estimator />
       <Testimonials />
       <Faq />

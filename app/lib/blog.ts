@@ -3,6 +3,7 @@
  *  Add a new object to `posts` to publish an article —
  *  the homepage, /blog and /blog/[slug] pick it up automatically.
  * ──────────────────────────────────────────────*/
+import { DEFAULT_AUTHOR, personFor, type AuthorId } from "./site-config";
 
 export type BlogSection = {
   /** Phrase as the question a reader would search for — answer engines match on it. */
@@ -38,6 +39,8 @@ export type BlogPost = {
   updated?: string;
   keywords?: string[];
   relatedLinks?: Array<{ href: string; label: string }>;
+  /** Key in siteConfig.authors; defaults to DEFAULT_AUTHOR. */
+  author?: AuthorId;
 };
 
 import { newPosts } from "./blog-posts";
@@ -59,6 +62,11 @@ export function getPost(slug: string) {
  */
 export function postShareImage(post: BlogPost) {
   return post.image.replace(/\.svg$/, ".png");
+}
+
+/** The person credited on a post. */
+export function postAuthor(post: BlogPost) {
+  return personFor(post.author ?? DEFAULT_AUTHOR);
 }
 
 export function formatPostDate(date: string) {

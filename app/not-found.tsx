@@ -33,10 +33,10 @@ export default function NotFound() {
               <h1 className="h1" id="page-title">
                 <span className="ln">
                   <span>This page</span>
-                </span>
+                </span>{" "}
                 <span className="ln">
                   <span>doesn&apos;t exist,</span>
-                </span>
+                </span>{" "}
                 <span className="ln">
                   <span>
                     <em>but your app can.</em>

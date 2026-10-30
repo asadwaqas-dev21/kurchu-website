@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { enquiryMailto, enquiryWhatsApp, submitEnquiry, type EnquiryFields } from "@/app/lib/enquiry";
 import { BUDGET_BANDS as BUDGETS } from "@/app/lib/estimator";
 import { siteConfig } from "@/app/lib/site-config";
@@ -22,6 +22,17 @@ export function ContactForm() {
   /** "delivered" = our server accepted it; "fallback" = handed to the visitor's email app. */
   const [mode, setMode] = useState<"delivered" | "fallback">("delivered");
   const [sending, setSending] = useState(false);
+  const serviceRef = useRef<HTMLSelectElement>(null);
+  const detailsRef = useRef<HTMLTextAreaElement>(null);
+
+  // CTAs elsewhere link here as /contact?type=MVP&stage=Idea (see inquiry() in ui.tsx): pre-fill from that.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+    const stage = params.get("stage");
+    if (type && SERVICES.includes(type) && serviceRef.current) serviceRef.current.value = type;
+    if (stage && detailsRef.current && !detailsRef.current.value) detailsRef.current.value = `Where the project is today: ${stage.slice(0, 40)}.\n\n`;
+  }, []);
 
   function read(form: HTMLFormElement): EnquiryFields {
     const data = new FormData(form);
@@ -138,7 +149,7 @@ export function ContactForm() {
         </div>
         <div className="field">
           <label htmlFor="cf-service">Looking for</label>
-          <select id="cf-service" name="service" defaultValue={SERVICES[0]}>
+          <select id="cf-service" name="service" defaultValue={SERVICES[0]} ref={serviceRef}>
             {SERVICES.map((option) => (
               <option key={option}>{option}</option>
             ))}
@@ -163,7 +174,7 @@ export function ContactForm() {
         </div>
         <div className="field full">
           <label htmlFor="cf-details">Project details</label>
-          <textarea id="cf-details" name="details" placeholder="What are you building, who is it for, and what does success look like?"></textarea>
+          <textarea id="cf-details" name="details" ref={detailsRef} placeholder="What are you building, who is it for, and what does success look like?"></textarea>
         </div>
       </div>
       <div className="cf-acts">

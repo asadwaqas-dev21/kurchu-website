@@ -13,15 +13,16 @@ export function Hero() {
             <span className="dot"></span>Mobile app development company · iOS, Android &amp; cross-platform
           </span>
           <h1 className="h1" id="hero-title">
+            {/* Spaces between lines keep the words apart in the indexed text (lines are display:block). */}
             <span className="ln">
               <span>Mobile app</span>
-            </span>
+            </span>{" "}
             <span className="ln">
               <span>development,</span>
-            </span>
+            </span>{" "}
             <span className="ln">
               <span>engineered</span>
-            </span>
+            </span>{" "}
             <span className="ln">
               <span>
                 <em>to be kept.</em>

@@ -1,6 +1,7 @@
+import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import type { ScreenName } from "../screens";
-import { Device, SectionHead, rv, vars } from "./ui";
+import { Arr, Device, SectionHead, rv, vars } from "./ui";
 
 type Placement = {
   screen: ScreenName;
@@ -58,12 +59,16 @@ function Result({ figure, children, ...props }: { figure: string; children: Reac
 
 const cs = (value: CSSProperties) => value;
 
-export function Work() {
+/**
+ * `preview` (homepage) shows the first two concepts and links to /work for the rest: each concept
+ * carries several phone mock-ups, so all four would add ~500 DOM elements to the homepage.
+ */
+export function Work({ preview = false }: { preview?: boolean }) {
   return (
     <section className="section" id="work" aria-labelledby="work-title">
       <div className="wrap">
         <SectionHead
-          eyebrow="03 — Selected work"
+          eyebrow="02 — Selected work"
           titleId="work-title"
           title={
             <>
@@ -159,6 +164,14 @@ export function Work() {
           </div>
         </article>
 
+        {preview ? (
+          <p className="work-more">
+            <Link className="btn btn-ghost" href="/work">
+              See all four product concepts <Arr />
+            </Link>
+          </p>
+        ) : (
+        <>
         {/* Case 03 · Move */}
         <article className="case case-split rev" data-case="" aria-labelledby="c3-t">
           <div className="case-info">
@@ -248,6 +261,8 @@ export function Work() {
             </div>
           </div>
         </article>
+        </>
+        )}
       </div>
     </section>
   );

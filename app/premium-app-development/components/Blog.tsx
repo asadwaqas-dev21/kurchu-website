@@ -17,11 +17,19 @@ const Go = ({ children }: { children: ReactNode }) => (
 );
 
 /** Category · date · read time, in the mono label style. */
-export function PostMeta({ post, by }: { post: BlogPost; by?: string }) {
+export function PostMeta({ post, by }: { post: BlogPost; by?: { name: string; image: string; profile: string } }) {
   return (
     <p className="bl-meta">
       <span className="cat">{post.category}</span>
-      {by && <span>By {by}</span>}
+      {by && (
+        <span className="bl-by">
+          <Image src={by.image} alt="" width={24} height={24} />
+          By{" "}
+          <Link className="tlink" href={by.profile} rel="author">
+            {by.name}
+          </Link>
+        </span>
+      )}
       <time dateTime={post.date}>{formatPostDate(post.date)}</time>
       {post.updated && (
         <span>

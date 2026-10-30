@@ -11,7 +11,7 @@ export function Testimonials() {
         <div className="sec-head" style={{ marginBottom: "clamp(40px,5vw,72px)" }}>
           <div>
             <span className="eyebrow" {...rv()}>
-              08 — In their words
+              05 — In their words
             </span>
             <h2 className="h2" id="quotes-title" {...rv(".05s")}>
               Quiet confidence, <em>earned.</em>

@@ -34,7 +34,7 @@ const features: Array<[string, string, boolean?]> = [
 const initial = scopeEstimate({ platform: "both", complexity: "mvp", feats: features.filter(([, , on]) => on).map(([value]) => value) });
 
 /** Markup only — the scoring logic lives in interactions.ts. */
-export function Estimator({ eyebrow = "07 — Scope estimator" }: { eyebrow?: string }) {
+export function Estimator({ eyebrow = "04 — Scope estimator" }: { eyebrow?: string }) {
   return (
     <section className="section" id="estimate" aria-labelledby="est-title" style={{ paddingTop: 0 }}>
       <div className="wrap">

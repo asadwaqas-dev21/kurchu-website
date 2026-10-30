@@ -60,10 +60,15 @@ export function PageHero({ path, eyebrow, lines, lede, meta, cta, secondary, pag
               {eyebrow}
             </span>
             <h1 className="h1" id="page-title">
+              {/* The space between lines keeps words apart in the text Google and screen readers read;
+                  the lines are display:block, so it doesn't change the layout. */}
               {lines.map((line, i) => (
-                <span className="ln" key={i}>
-                  <span>{line}</span>
-                </span>
+                <Fragment key={i}>
+                  {i > 0 && " "}
+                  <span className="ln">
+                    <span>{line}</span>
+                  </span>
+                </Fragment>
               ))}
             </h1>
           </div>

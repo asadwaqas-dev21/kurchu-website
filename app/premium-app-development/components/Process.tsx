@@ -9,7 +9,7 @@ export function Process() {
     <section className="section" id="process" aria-labelledby="process-title">
       <div className="wrap">
         <SectionHead
-          eyebrow="04 — Process"
+          eyebrow="03 — Process"
           titleId="process-title"
           title={
             <>

@@ -16,10 +16,17 @@ export function rv(delay?: string, kind?: "fade" | "mask") {
 /**
  * Props that make an element open the project-inquiry dialog, optionally pre-filled.
  * Put them on `<a href="/contact">`: until the page's script has loaded (or without
- * JavaScript) the link still takes the visitor to the contact form.
+ * JavaScript, or opened in a new tab) the link still takes the visitor to the contact
+ * form — and a preset's project type and stage travel in the URL, so the form opens pre-filled.
  */
 export function inquiry(preset?: Partial<Record<string, string | string[]>>) {
+  const params = new URLSearchParams();
+  for (const key of ["type", "stage"]) {
+    const value = preset?.[key];
+    if (typeof value === "string") params.set(key, value);
+  }
   return {
+    ...(params.size > 0 && { href: `/contact?${params}` }),
     "data-open-inquiry": "",
     "data-preset": preset ? JSON.stringify(preset) : undefined,
   };
@@ -61,10 +68,13 @@ export function LogoMark() {
   return <Image src="/logo.png" alt="Kurchu logo" width={28} height={28} priority />;
 }
 
-/** A 3D phone showing one of the screen mockups. */
+/**
+ * A 3D phone showing one of the screen mockups. `data-nosnippet` keeps the mock-up's sample text
+ * ("Bloom Coffee", balances, names) out of Google's search snippets.
+ */
 export function Device({ screen }: { screen: ScreenName }) {
   const gradientId = "g" + useId().replace(/\W/g, "");
-  return <div className="device" dangerouslySetInnerHTML={{ __html: renderDevice(screen, gradientId) }} />;
+  return <div className="device" data-nosnippet="" dangerouslySetInnerHTML={{ __html: renderDevice(screen, gradientId) }} />;
 }
 
 /** Shared eyebrow / heading / lede block used by most sections. */
